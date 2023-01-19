@@ -1,2 +1,2 @@
 # asiclab-docs
-Documentation for ASICLab servers, workstations, and other infrastructure
+Documentation for ASICLab software, servers, workstations, and other infrastructure
