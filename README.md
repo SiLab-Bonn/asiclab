@@ -18,3 +18,5 @@ CMAKe installation, etc
 License server:
 Cadence installation/setup, etc
 
+This is a test [link](admin.md)
+
