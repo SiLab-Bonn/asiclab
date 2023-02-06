@@ -1,3 +1,5 @@
+This is a backward test [link](README.md)
+
 What should the script do? After Fedora has been installed, the local user has been created (with default password), you will reach the home screen. From here we must simple 
 
 User Machines (asiclab###)
