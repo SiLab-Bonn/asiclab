@@ -14,7 +14,6 @@ How to install Git and Github-CLI:
 
 https://github.com/git-guides/install-git
 
-
 I need to understand:
 Origin and Remote: These refer to remote repositories, which are pulled from with `clone` and `pull`, and pushed to with `push`.
 

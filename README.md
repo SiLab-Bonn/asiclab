@@ -1,6 +1,12 @@
 Documentation for ASICLab software, servers, workstations, and other infrastructure
 
-# Asiclab### Machines
+# Asiclab Machines
+
+```mermaid
+graph LR;
+    asiclab###;
+    penelope;
+```
 
 
 Lab Configuration Overview and Philosphy: Up to Date Fedora, with containers for backward compatibility, minimal tools, no configuration management
@@ -19,4 +25,6 @@ License server:
 Cadence installation/setup, etc
 
 This is a test [link](admin.md)
+
+
 
