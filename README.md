@@ -29,8 +29,8 @@ Start here to configure a fresh installation of Fedora Linux on a lab desktop wo
 1. Once inside the Fedora installer, select "Install to Hard Drive", choose your desired region and keyboard setup, and select the machine's solid state drive for install. After install has completed and the computer has rebooted, accept the prompt to opt into 'Third Party Repositories', and create a local user account called `asiclab`. Ask one of the older lab members for the default admin password for this account. You should now be on the desktop.
 1. Check for and install any packages updates with `sudo dnf update` and `sudo dnf clean packages`.
 1. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server.
-1. [Connect to the NFS file server] providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist. This configures RAID array, drive mounting, NFS (client and server)
-1. Follow instructions in User Management via LDAP (which connects home directories, LDAP, user accounts, GID, UID, groups, etc, restrictions for different groups, passwords on machines)
+1. [Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
+1. [Connect to the LDAP server](user_management.md) to synchronize user accounts and group settings. No other local user accounts should exist.
 1. follow Inscutrions in Printer Configuration
 1. Follow Instructions in Licesnse Server: For Cadence, 
 1. Follow instructions for Cadence Containerization, if you need it, using apptainer
