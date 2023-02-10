@@ -18,7 +18,7 @@ The documentation covers ASICLab software, servers, workstations, and other infr
 
 `apollo`: (retired)
 
-`asiclab##`: (retired, or used with windows)
+`asiclab##`: Retired user workstations, still good for less demanding work. Easily configured for Linux or Windows
 
 ## Workstation Linux Install
 
