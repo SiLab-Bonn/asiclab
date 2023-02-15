@@ -25,7 +25,7 @@ ldap[(LDAP)]-->noyce(noyce VM)
 samba[(Samba)]-->noyce
 nfs[(NFS)]-->penelope
 noyce-->faust02
-sos[(SOS)]-->faust02
+sos[(Cliosoft SOS)]-->faust02
 
 penelope---switch[[switch]]
 faust02---switch
