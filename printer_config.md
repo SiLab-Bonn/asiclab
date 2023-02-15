@@ -1,16 +1,20 @@
 
-## adding a printer:
-Configure the CUPS client to use one of the following CUPS servers:
-cups.physik.uni-bonn.de (PI network)
+## Configuring printers
 
-To do this, create a file /etc/cups/client.conf  with the contents:
-`ServerName cups.physik.uni-bonn.de`
+To configure a machine's CUPS client to connect to the PI `cups.physik.uni-bonn.de` printer server, you can create `/etc/cups/client.conf` file:
 
+```
+touch /etc/cups/client.conf
+```
 
-setting up wireguard:
-https://confluence.team.uni-bonn.de/display/PHYIT/WireGuard+VPN#tab-Linux
+And then edit the empty file, so that is contains the line:
 
-To check the port of service:
-`cat /etc/service | less`
+```
+echo "ServerName cups.physik.uni-bonn.de"
+```
 
+All printers on the FTD network should now be available. To check, you can view a summary of available network printers with the following command:
 
+```
+lpstat -t
+```
