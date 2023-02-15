@@ -58,7 +58,7 @@ switch---asiclabwinXXX
 
 `juno`: Simulation server (identical configuration of jupiter)
 
-`faust02`: (retired)
+`faust02`: (soon to be decomissioned, still running LDAP and License Server)
 
 `apollo`: (retired)
 
