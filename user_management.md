@@ -8,6 +8,14 @@
 
 ## LDAP Client
 
+To ping a remote LDAP server and see the users it's providing from a Fedora Linux clientfirst install the ldapsearch tool on your Fedora client if it's not already installed. You can do this by running the following command:
+
+```
+sudo dnf install -y openldap-clients
+```
+
+
+
 
 
 
