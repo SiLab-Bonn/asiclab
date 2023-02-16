@@ -94,16 +94,19 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
   `cd /opt/tivoli/tsm/client/ba/bin`
 
 2. Create the file "dsm.opt" and add the configurations  
-  `sudo vi dsm.opt`  
-  insert the following lines (Ctrl + Shift + V)  
+   `sudo vi dsm.opt`
+  
+    Insert the following lines (Ctrl + Shift + V)  
     ```
     Servername tsm3.rhrz.uni-bonn.de
     Domain all-local
     Subdir yes
     ```
+
 3. Create the file "dsm.sys" and insert the following configuration  
-   `sudo vi dsm.sys`
-   Insert the following lines (Str + Shift + V) but replace *[nodename]* with the name assigned by HRZ 
+    `sudo vi dsm.sys`
+   
+    Insert the following lines (Str + Shift + V) but replace *[nodename]* with the name assigned by HRZ 
      ```
     Servername tsm3.rhrz.uni-bonn.de
     CommMethod tcpip
