@@ -70,7 +70,67 @@ Mounting points /cadence and /faust/user
 
 
 # Backup System for File Server
+We use IBM Spectrum Protect (SP), provided by the HRZ to backup our Penelope file server. The services comes with an annual fee, based on the used data volume.
 
+## Installation
+The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM SP) is described on the HRZ Confluence page: https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichtung#. Here's a short summary:
+
+1. Download latest TSM client from http://www-01.ibm.com/support/docview.wss?rs=663&uid=swg21239415 or  
+   `wget ftp://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/`
+
+2. Unpack installation archive  
+   `tar -xvf [filename.tar]`
+
+3. Installation (in this order)  
+   `rpm -ivh gskcrypt*`  
+   `rpm -ivh gskssl64*`  
+   `yum localinstall TIVsm-API64.x86_64.rpm`  
+   `rpm -ivh TIVsm-BA.x86_64.rpm`  
+   `rpm -ivh TIVsm-APIcit.x86_64.rpm`  
+   `rpm -ivh TIVsm-BAcit.x86_64.rpm`  
+
+## Configuration
+1. Navigation in installation directory  
+  `cd /opt/tivoli/tsm/client/ba/bin`
+
+2. Create the file "dsm.opt" and add the configurations  
+  `sudo vi dsm.opt`  
+  insert the following lines (Ctrl + Shift + V)  
+    ```
+    Servername tsm3.rhrz.uni-bonn.de
+    Domain all-local
+    Subdir yes
+    ```
+3. Create the file "dsm.sys" and insert the following configuration  
+   `sudo vi dsm.sys`
+   Insert the following lines (Str + Shift + V) but replace *[nodename]* with the name assigned by HRZ 
+     ```
+    Servername tsm3.rhrz.uni-bonn.de
+    CommMethod tcpip
+    TCPPort 1500
+    TCPClientPort 1501
+    WEBPorts 1501,0
+    NODEname [nodename]
+    TCPServeraddress tsm2.rhrz.uni-bonn.de
+    PASSWORDAccess generate
+    INCLEXCL /opt/tivoli/tsm/client/ba/bin/dsm.excl_incl
+    SCHEDLOGNAME /var/log/tsm/dsmsched.log
+    ERRORLOGNAME /var/log/tsm/dsmerror.log
+    SCHEDLOGRETENTION 7 S
+    ERRORLOGRETENTION 7 S
+    schedmode prompted
+    managedservices schedule
+     ```
+4. Create Include/Exclude file (leave empty, or read more here)  
+   `sudo touch /opt/tivoli/tsm/client/ba/bin/dsm.excl_incl`
+
+5. Running the command line programme  
+   `sudo dsmc`
+
+6. Change password  
+  `sudo dsmc set passsword [old passwort] [new passwort]`
+
+Include list etc ... TBC
 
 
 # General Commands for Checking Drives
