@@ -71,6 +71,7 @@ Mounting points /cadence and /faust/user
 
 # Backup System for File Server
 We use IBM Spectrum Protect (SP), provided by the HRZ to backup our Penelope file server. The services comes with an annual fee, based on the used data volume.
+Email notifications will be sent to the contacts after each scheduled activity.
 
 ## Installation
 The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM SP) is described on the HRZ Confluence page: https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichtung#. Here's a short summary:
@@ -88,6 +89,7 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
    `rpm -ivh TIVsm-BA.x86_64.rpm`  
    `rpm -ivh TIVsm-APIcit.x86_64.rpm`  
    `rpm -ivh TIVsm-BAcit.x86_64.rpm`  
+
 
 ## Configuration
 1. Navigation in installation directory  
@@ -133,7 +135,146 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
 6. Change password  
   `sudo dsmc set passsword [old passwort] [new passwort]`
 
-Include list etc ... TBC
+
+## Include/exclude list
+Next we have to define which files and folder to be backed up. This is managed with the file ´/opt/tivoli/tsm/client/ba/bin/dsm.excl_incl´ as  defined in ´dsm.sys´.
+
+Allowed statements are
+
+   Include/Exclude | Statement Options
+   --- | ---
+   include | Includes files in backup
+   exclude | Exclude files from backup. Exclude a directory including all subdirectories and files it contains.
+   exclude.dir | Subdirectories and files. It is not possible to include options to override exclude.dir
+   exclude.fs | Exclude a file system
+
+Example: If we want to backup the /home directory but exclude the asiclab user, we would define
+   ```
+   include /home/*
+   exclude /home/asiclab/*
+   ```
+
+
+## Commands for data store and restore
+Start by ´$ sudo dsmc´. Enter in command line after prompt Protect>. This is only a subset. Partitions can also be saved and restored, but this seems to be less relevant for us.
+
+
+### Data backup
+1. Save the whole folder   
+   ```bash incr /[path]/* ```
+
+2. Back up individual files   
+   ```bash incr /[path]/[file] ```
+
+
+Example of a backup procedure:
+
+   ```
+   Protect> incr /mnt/md127/vm/* -su=yes
+
+   Incremental backup of volume '/mnt/md127/vm/*'
+   Successful incremental backup of '/mnt/md127/vm/*'
+
+   Total number of objects inspected:            5
+   Total number of objects backed up:            0
+   Total number of objects updated:              0
+   Total number of objects rebound:              0
+   Total number of objects deleted:              0
+   Total number of objects expired:              0
+   Total number of objects failed:               0
+   Total number of objects encrypted:            0
+   Total number of objects grew:                 0
+   Total number of retries:                      0
+   Total number of bytes inspected:          11.69 GB
+   Total number of bytes transferred:            0  B
+   Data transfer time:                        0.00 sec
+   Network data transfer rate:                0.00 KB/sec
+   Aggregate data transfer rate:              0.00 KB/sec
+   Objects compressed by:                        0%
+   Total data reduction ratio:              100.00%
+   Elapsed processing time:               00:00:01
+   ```
+
+
+
+### Query for data backup
+1. Includes/Excludes   
+   ```bash
+   q inclexcl
+   ```
+
+2. Files   
+   ```bash
+   q ba /[path]/* -subdir=yes
+   ```
+   
+### Restore data
+When restoring data, make a concious decision about the destination path. Most of the times, it is better to restore data to a temporary folder instead of the original location.
+1. Individual files   
+   ```bash
+   rest /[source-path]/[soruce-file]
+   ```
+
+2. Multiple files, folders and partitions   
+   ```bash
+   rest /[source-path]/* /[destination-path]/ -su=yes
+   ```
+   
+3. Display what is backed up on TSM nodes (and subsequent restore to second folder path when files are selected)
+   ```bash
+   restore -subdir=yes -pick "/*" "/[destination-path]/"
+   ```
+
+   In this mode, you can interactivly browse the backup and select folders and files.
+   Example:
+   ```
+   restore -subdir=yes -pick "/mnt/md127/vm/*" "/tmp/restore-test/"
+
+   Scrollable PICK Window - Restore
+
+        #    Backup Date/Time        File Size A/I  File
+           ----------------------------------------------------------------------------------------------------------------
+        1. | 03/03/2023 13:29:47       4.00 KB  A   /mnt/md127/vm
+        2. | 03/03/2023 13:29:47       5.00 GB  A   /mnt/md127/vm/noyce.physik.uni-bonn.de-disk1-2022-11-09.img
+        3. | 03/03/2023 13:29:47       4.00 KB  A   /mnt/md127/vm/tests
+        4. | 03/03/2023 13:31:16       5.00 GB  A   /mnt/md127/vm/tests/noyce.physik.uni-bonn.de-disk1.img
+        5. | 03/03/2023 13:32:42       1.69 GB  A   /mnt/md127/vm/tests/noyce.physik.uni-bonn.de-disk1.qcow2
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           |
+           0---------10--------20--------30--------40--------50--------60--------70--------80--------90--------100-------11
+   <U>=Up  <D>=Down  <T>=Top  <B>=Bottom  <R#>=Right  <L#>=Left
+   <G#>=Goto Line #  <#>=Toggle Entry  <+>=Select All  <->=Deselect All
+   <#:#+>=Select A Range <#:#->=Deselect A Range  <O>=Ok  <C>=Cancel
+   pick>
+   ```
+   
+   If the files already exist in the destination, you will be prompted to descide whether you want to replace or skip the object in questions.
+   ```
+   --- User Action is Required ---
+   File '/tmp/restore-test/vm/tests/noyce.physik.uni-bonn.de-disk1.img' exists
+
+   Select an appropriate action
+     1. Replace this object
+     2. Replace all objects that already exist
+     3. Skip this object
+     4. Skip all objects that already exist
+     A. Abort this operation
+   Action [1,2,3,4,A] :
+   ```
 
 
 # General Commands for Checking Drives
