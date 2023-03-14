@@ -63,11 +63,11 @@ switch---asiclabwinXXX
 
 `apollo`: (retired)
 
-`asiclab##`: Retired user workstations, still good for less demanding work. Easily configured for Linux or Windows
+`asiclab##`: Retired user workstations, still good for less demanding work. Easily configured for Linux or Windows.
 
-## Workstation Linux Install
+## Workstation Setup with Linux
 
-Start here to configure a fresh installation of Fedora Linux on a lab desktop workstation.
+Start here to configure a fresh installation of Fedora Linux (>=37) on a lab desktop workstation.
 
 1. Create a bootable USB drive with the latest version of Fedora Workstation. The easiest way to do this is on Fedora, MacOS, or Windows using the [Fedora Media Writer](https://getfedora.org/en/workstation/download/). Alternatively, download the latest Fedora ISO file, check the name of your drive with `sudo fdisk -l`, unmount the drive with `sudo umount /dev/sdb*`, and write the ISO image to the drive with `sudo dd bs=4M if=/path/to/fedora.iso of=/dev/sdb status=progress oflag=sync`. Wait for the writing to complete, which could take several minutes.
 1. Insert the bootable USB drive into the machine to be configured and change the boot order in the BIOS or UEFI to boot from the USB drive first. Reboot the machine.
@@ -80,10 +80,10 @@ Start here to configure a fresh installation of Fedora Linux on a lab desktop wo
 1. Follow Instructions in Licesnse Server: For Cadence, 
 1. Follow instructions for Cadence Containerization, if you need it, using apptainer
 1. Finally, enable 3rd party repos, and follow instruction to install proprietary software, like Slack, Chrome, etc.
-1. If you plan to work remotely, read the section of REmote connection, which covers SSH, VNC, Wireguard (in network-manager interface)
+1. If you plan to work remotely, read the section on Remote Connection, which covers SSH, VNC, Wireguard (in network-manager interface)
 
-## Workstation Windows Setup
+## Workstation Setup with Windows
 
-Start here in you need to configure a fresh installation of Windows on a 
+Start here in you need to configure a fresh installation of Windows on a ASICLab machine...
 
 [Under construction]
