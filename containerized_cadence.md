@@ -204,6 +204,17 @@ Apptainer> /bin/tcsh /faust/user/kcaisley/cadence/tsmc65/tsmc_crn65lp_1.7a
 On the host machine, before running the startup script, we must start a `xhost +` 
 Solution found [here](https://rescale.com/documentation/main/rescale-advanced-features/running-your-custom-code-on-rescale/using-apptainer-singularity/)
 
+
+for the whole bash  vs tcsh problem:
+
+ps -p $$ – Display your current shell name reliably. 
+
+echo "$SHELL" – Print the shell for the current user but not necessarily the shell that is running at the movement. 
+
+echo $0 – Another reliable and simple method to get the current shell interpreter name on Linux or Unix-like systems.
+
+
+
 I may want to look at passing the `--nv` flag when trying to do heavy layout work flows.
 
 I think that the reason why `xdpyinfo` didn't work is because I hadn't made the xhost visible to the container.
@@ -224,6 +235,10 @@ Yes, it does appear that the package is no longer missing. However, now there is
 
 
 check where container is running
+
+
+
+
 
 
 
