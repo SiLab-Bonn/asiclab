@@ -2,6 +2,13 @@
 
 As of Fedora 38, which is built on Gnome 44, you can simply import Wireguard `.conf` files directly in the Settings application, under the Network tab.
 
+# Github
+
+(Instructions for SSH key authentication.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+
+
+
 
 ## Use with wg-quick
 
