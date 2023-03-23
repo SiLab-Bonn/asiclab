@@ -4,47 +4,7 @@ As of Fedora 38, which is built on Gnome 44, you can simply import Wireguard `.c
 
 # Github
 
-(Instructions for SSH key authentication.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-
-
-
-
-
-## Use with wg-quick
-
-## Use in Network Manager
-#### Networking
-
-systemd is controlled via the `systemctl` command. The networking components of it can be controlled by either `systemd-networkd` or `NetworkManager`. Both are present on a Fedora install as systemd modules, but `systmed-networkd` is still feature incomplete, and is deactivated by default.
-
-Therefore `NetworkManager` is the standard method for controlling network interfaces. It has gnome shell integration, and provides command line control via `nmcli`. You can inspect it's service status with `systemctl status NetworkManager`. 
-
-If we wanted to use NetworkManager with wireguard, we could follow this tutorial: https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/
-
-But a simpler way is to just use `wg-quick` which reads files stored at `/etc/wireguard/`
-
-The current WireGuard configuration can be saved by utilizing the [wg(8)](https://man.archlinux.org/man/wg.8) utility's `showconf` command. For example:
-
-```
-# sudo wg showconf wg0 > /etc/wireguard/wg0.conf
-```
-
-To start a tunnel with a configuration file, use
-
-```
-# sudo wg-quick up interfacename
-```
-
-To quickly see the status of the interface is to just run the command
-
-`# sudo wg show`
-
-If this isn't working, it may be because `NetworkManager` is also automatically trying to control the wireguard interface. Check this section of this article: https://wiki.archlinux.org/title/WireGuard#Persistent_configuration
-
-
-
-
-
+[Instructions for SSH key authentication.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
 
 # SSH
 
