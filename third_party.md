@@ -1,4 +1,4 @@
-## How to install vscode
+# How to install vscode
 VS Code is currently only shipped in a yum repository, and so the following script will install the key and repository:
 
 ```
@@ -17,3 +17,22 @@ sudo dnf install code
 # Python venvs
 
 If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new feature in Python, and will make your life better
+
+
+
+# Neovim and Copilot:
+
+Following instructions from [here](https://docs.github.com/en/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-neovim).
+
+```
+sudo dnf install nodejs neovim
+git clone https://github.com/github/copilot.vim \
+   ~/.config/nvim/pack/github/start/copilot.vim
+```
+
+Then in vim:
+
+```
+:Copilot setup
+:Copilot enable
+```
