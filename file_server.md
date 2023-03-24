@@ -61,6 +61,32 @@ sudo mkfs.ext4 -F /dev/md/0
 
 ## Mounting
 
+## Integrity check
+The RAID array should be checked on a regular basis to detect emerging issues early. This can be handled by a cron job, but the Fedora default method is systemd.
+   ```
+   sudo systemctl list-timers --all
+   ```
+   lists the active timers.
+
+In our case, we are interested in `raid-check.timer` which we can edit with  
+   ```sudo systemctl edit raid-check.timer```
+
+For example, the entry `OnCalendar=*-*-* Fri 19:00:00/4w` schedules a check on Friday at 19:00 every 4 weeks.
+
+The change is applied with
+   ```
+   sudo systemctl daemon-reload
+   sudo systemctl restart raid-check.timer
+   ```
+
+To turn the automatic check off, run the following commands:
+   ```
+   sudo systemctl stop raid-check.timer
+   sudo systemctl disable raid-check.timer
+   sudo systemctl daemon-reload
+   sudo systemctl restart raid-check.timer
+   ```
+
 # NFS Server
 
 ## Remirror to Export
