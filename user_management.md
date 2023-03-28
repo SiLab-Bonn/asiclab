@@ -1,21 +1,74 @@
-# Users and Groups List
-
-# Local Users and Groups
-
-# LDAP User and Groups
-
-## LDAP Server
-
 ## LDAP Client
 
 To ping a remote LDAP server and see the users it's providing from a Fedora Linux clientfirst install the ldapsearch tool on your Fedora client if it's not already installed. You can do this by running the following command:
 
 ```
-sudo dnf install -y openldap-clients
+sudo dnf install -y openldap-clients sssd sssd-ldap nss-pam-ldapd sssd-common
 ```
 
+```
+authconfig --enableldap --enableldapauth --ldapserver=noyce.physik.uni-bonn.de --ldapbasedn=dc=faust,dc=de --enablerfc2307bis --enableforcelegacy --update
+```
 
+```
+sudo authselect list
+sudo authselect select sssd
+sudo vim /etc/sssd/sssd.conf
+```
 
+Create and fill out `/etc/sssd/sssd.conf` with:
+
+```
+[domain/default]
+id_provider = ldap
+auth_provider = ldap
+ldap_uri = ldap://noyce.physik.uni-bonn.de
+ldap_search_base = dc=faust,dc=de
+cache_credentials = True
+
+[sssd]
+services = nss, pam
+domains = default
+
+[nss]
+homedir_substring = /faust/user
+```
+
+Then `sudo vim /etc/openldap/ldap.conf`
+
+```
+# See ldap.conf(5) for details
+# This file should be world readable but not world writable.
+
+BASE    dc=faust,dc=de
+URI     ldap://noyce.physik.uni-bonn.de
+
+#SIZELIMIT      12
+#TIMELIMIT      15
+#DEREF          never
+
+# When no CA certificates are specified the Shared System Certificates
+# are in use. In order to have these available along with the ones specified
+# by TLS_CACERTDIR one has to include them explicitly:
+#TLS_CACERT     /etc/pki/tls/cert.pem
+
+# System-wide Crypto Policies provide up to date cipher suite which should
+# be used unless one needs a finer grinded selection of ciphers. Hence, the
+# PROFILE=SYSTEM value represents the default behavior which is in place
+# when no explicit setting is used. (see openssl-ciphers(1) for more info)
+#TLS_CIPHER_SUITE PROFILE=SYSTEM
+
+# Turning this off breaks GSSAPI used with krb5 when rdns = false
+SASL_NOCANON    on
+```
+
+finally
+
+```
+sudo authselect apply-changes
+systemctl restart sssd
+systemctl enable sssd
+```
 
 
 
