@@ -71,6 +71,41 @@ systemctl enable sssd
 ```
 
 
+to check contents of LDAP server:
+```
+ldapsearch -x -H ldap://noyce.physik.uni-bonn.de -b dc=faust,dc=de
+```
+
+
+[nss] [cache_req_common_process_dp_reply] (0x3f7c0): [CID#265] CR #557: Could not get account info [1432158212]: SSSD is offline
+
+
+[asiclab@asiclab008 ~]$ sudo systemctl status sssd
+● sssd.service - System Security Services Daemon
+     Loaded: loaded (/usr/lib/systemd/system/sssd.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2023-03-28 16:26:27 CEST; 12min ago
+   Main PID: 868 (sssd)
+      Tasks: 4 (limit: 76850)
+     Memory: 56.6M
+        CPU: 338ms
+     CGroup: /system.slice/sssd.service
+             ├─868 /usr/sbin/sssd -i --logger=files
+             ├─922 /usr/libexec/sssd/sssd_be --domain default --uid 0 --gid 0 --logger=files
+             ├─939 /usr/libexec/sssd/sssd_nss --uid 0 --gid 0 --logger=files
+             └─940 /usr/libexec/sssd/sssd_pam --uid 0 --gid 0 --logger=files
+
+Mar 28 16:26:26 fedora systemd[1]: Starting sssd.service - System Security Services Daemon...
+Mar 28 16:26:26 fedora sssd[868]: Starting up
+Mar 28 16:26:26 fedora sssd_be[922]: Starting up
+Mar 28 16:26:27 fedora sssd_nss[939]: Starting up
+Mar 28 16:26:27 fedora sssd_pam[940]: Starting up
+Mar 28 16:26:27 fedora systemd[1]: Started sssd.service - System Security Services Daemon.
+Mar 28 16:26:51 asiclab008.physik.uni-bonn.de sssd_be[922]: Could not start TLS encryption. unknown error
+Mar 28 16:28:15 asiclab008.physik.uni-bonn.de sssd_be[922]: Backend is online
+
+
+
+
 
 
 
