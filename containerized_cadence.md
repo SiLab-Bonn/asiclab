@@ -1,4 +1,6 @@
-# Starting Cadence Virtuoso from Fedora Linux Client
+# Containerization
+
+## Starting Cadence Virtuoso from Fedora Linux Client
 
 Install apptainer
 
@@ -64,9 +66,21 @@ Else you need to source the script instead, and run the command `virtuoso &` man
 
 
 
+## Troubleshooting
 
+* If you are not able to start Cadence, ensure your environment has both `tcsh` and `ksh` installed.
+* Check to make sure the cadence executable is known: `which virutoso`
+* To check the current shell interpreter:
+```
+# Display your current shell name reliably. 
+ps -p $$
 
+# Print the shell for the current user but not necessarily the shell that is running at the movement. 
+echo "$SHELL"
 
+# Another reliable and simple method to get the current shell interpreter name on Linux or Unix-like systems.
+echo $0
+```
 
 
 
@@ -81,7 +95,7 @@ cat /etc/passwd | grep `cd; pwd`
 
 To change shell, by running this and then restarting termina:
 
-`chsh -s /usr/bin/zsh`
+chsh -s /usr/bin/tcsh
 
 
 
@@ -377,4 +391,5 @@ From: centos:7
 The fix is to just write on the host system. If I can't delete a file, just do this first:
 
 `chmod -R +rw cbag_centos7_sandbox.sif/`
+
 `rm -rf cbag_centos7_sandbox.sif/`
