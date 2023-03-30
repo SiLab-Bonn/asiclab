@@ -55,7 +55,7 @@ Apptainer> /cadence/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
 Finally, run the virtuoso start-up script, using the full path to `tcsh`. Make sure the start up script contains the line `virtuoso &`. 
 
 ```
-Apptainer> /bin/tcsh /faust/user/kcaisley/cadence/tsmc65/tsmc_crn65lp_1.7a
+Apptainer> /bin/tcsh ./startup.sh
 
 ```
 
