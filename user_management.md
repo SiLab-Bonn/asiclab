@@ -104,6 +104,16 @@ Mar 28 16:26:51 asiclab008.physik.uni-bonn.de sssd_be[922]: Could not start TLS 
 Mar 28 16:28:15 asiclab008.physik.uni-bonn.de sssd_be[922]: Backend is online
 
 
+SEE ALSO
+       sssd(8), sssd.conf(5), sssd-ldap(5), sssd-krb5(5), sssd-simple(5), sssd-ipa(5), sssd-ad(5), sssd-files(5), sssd-sudo(5), sssd-session-recording(5), sss_cache(8),
+       sss_debuglevel(8), sss_obfuscate(8), sss_seed(8), sssd_krb5_locator_plugin(8), sss_ssh_authorizedkeys(8), sss_ssh_knownhostsproxy(8), sssd-ifp(5), pam_sss(8).  sss_rpcidmapd(5)
+       sssd-systemtap(5)
+
+AUTHORS
+       The SSSD upstream - https://github.com/SSSD/sssd/
+
+
+
 
 
 
