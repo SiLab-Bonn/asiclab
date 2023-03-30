@@ -1,3 +1,20 @@
+## Short Term Method for Adding a User to Fedora
+
+# create groups
+sudo groupadd -g 200 faust
+sudo groupadd -g 1001 icdesign
+sudo groupadd -g 1003 tsmcpdk
+sudo groupadd -g 1004 tsmcpdk28
+
+# create user
+sudo useradd -u 37838 -g faust --no-create-home kcaisley
+
+# add user to groups
+sudo usermod -a -G icdesign kcaisley
+sudo usermod -a -G tsmcpdk kcaisley
+sudo usermod -a -G tsmcpdk28 kcaisley
+
+
 ## LDAP Client
 
 To ping a remote LDAP server and see the users it's providing from a Fedora Linux clientfirst install the ldapsearch tool on your Fedora client if it's not already installed. You can do this by running the following command:
