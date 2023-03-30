@@ -14,7 +14,14 @@ sudo useradd -u 37838 -g faust --no-create-home -d /faust/user/kcaisley kcaisley
 sudo usermod -a -G icdesign kcaisley
 sudo usermod -a -G tsmcpdk kcaisley
 sudo usermod -a -G tsmcpdk28 kcaisley
+sudo usermod -a -G wheel kcaisley
+
+# change user password
+sudo passwd kcaisley
 ```
+
+
+
 
 ## LDAP Client
 
