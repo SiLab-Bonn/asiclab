@@ -23,7 +23,7 @@ sudo passwd kcaisley
 
 
 
-## LDAP Client
+## SSSD Client with LDAP Provider
 
 To ping a remote LDAP server and see the users it's providing from a Fedora Linux clientfirst install the ldapsearch tool on your Fedora client if it's not already installed. You can do this by running the following command:
 
@@ -31,15 +31,31 @@ To ping a remote LDAP server and see the users it's providing from a Fedora Linu
 sudo dnf install -y openldap-clients sssd sssd-ldap nss-pam-ldapd sssd-common
 ```
 
+Also, you may need package `openssl`
+
+Also, be sure to get the `sssctl` command. I can't recall what package providers it. Maybe sssctl-tools or something?
+
+
+Old command from Piotr
+
 ```
 authconfig --enableldap --enableldapauth --ldapserver=noyce.physik.uni-bonn.de --ldapbasedn=dc=faust,dc=de --enablerfc2307bis --enableforcelegacy --update
 ```
 
+New command:
+
 ```
+authselect apply-changes
+sudo sssctl {config-check,domain-list,user-show,user-checks, debug-level 0x0070, cache-remove,}
 sudo authselect list
 sudo authselect select sssd
 sudo vim /etc/sssd/sssd.conf
+sudo vim /etc/openldap/ldap.conf    # but I think this doesn't apply to our client side?
+id kcaisley
+man {many differe docs!}
 ```
+
+
 
 Create and fill out `/etc/sssd/sssd.conf` with:
 
@@ -62,6 +78,35 @@ homedir_substring = /faust/user
 Then `sudo vim /etc/openldap/ldap.conf`
 
 ```
+
+My final config:
+
+```
+[domain/default]
+id_provider = ldap
+auth_provider = ldap
+ldap_uri = ldap://noyce.physik.uni-bonn.de
+ldap_search_base = dc=faust,dc=de
+ldap_group_search_base = ou=group,dc=faust,dc=de
+ldap_tls_reqcert = never
+ldap_schema = rfc2307bis
+ldap_default_bind_dn = cn=root,dc=faust,dc=de
+ldap_default_authtok_type = password
+ldap_default_authtok = %Silab246%
+cache_credentials = true
+
+[sssd]
+config_file_version = 2
+services = nss, pam
+domains = default
+
+[nss]
+homedir_substring = /faust/use
+
+```
+
+
+
 # See ldap.conf(5) for details
 # This file should be world readable but not world writable.
 
@@ -100,6 +145,18 @@ to check contents of LDAP server:
 ```
 ldapsearch -x -H ldap://noyce.physik.uni-bonn.de -b dc=faust,dc=de
 ```
+
+misc commands:
+
+```
+sudo cat /var/log/sssd/sssd.log
+sudo cat /var/log/sssd/sssd_nss.log
+sudo cat /var/log/sssd/sssd_pam.log
+man sssd-ldap
+```
+
+
+
 
 
 [nss] [cache_req_common_process_dp_reply] (0x3f7c0): [CID#265] CR #557: Could not get account info [1432158212]: SSSD is offline
