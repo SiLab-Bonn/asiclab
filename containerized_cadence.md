@@ -24,7 +24,7 @@ From: centos:7
     yum -y update && yum clean all
     
     #list of packages required by Cadence
-    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb    xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-    drivers openssl-devel
+    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
     yum install -y xorg-x11-utils                           
 ```
 
