@@ -8,7 +8,7 @@ sudo groupadd -g 1003 tsmcpdk
 sudo groupadd -g 1004 tsmcpdk28
 
 # create user
-sudo useradd -u 37838 -g faust --no-create-home kcaisley
+sudo useradd -u 37838 -g faust --no-create-home -d /faust/user/kcaisley kcaisley
 
 # add user to groups
 sudo usermod -a -G icdesign kcaisley
