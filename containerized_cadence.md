@@ -1,3 +1,76 @@
+# Starting Cadence Virtuoso from Fedora Linux Client
+
+Install apptainer
+
+```
+sudo dnf install apptainer
+```
+
+Create a `.def` file with the name `virtuoso_centos7.def`:
+
+```
+Bootstrap: docker
+From: centos:7
+
+    
+%setup
+    #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
+    mkdir ${APPTAINER_ROOTFS}/cadence
+
+%post
+    #section to download and install packages before container is immutable
+    
+    #CentOS 7 image on dockerhub isn't updated, so run this first
+    yum -y update && yum clean all
+    
+    #list of packages required by Cadence
+    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb    xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-    drivers openssl-devel
+    yum install -y xorg-x11-utils                           
+```
+
+Build the container, in an immutable mode:
+
+```
+apptainer build virtuoso_centos7.sif virtuoso_centos7.def
+```
+
+On the host machine, before running the startup script, we must start a `xhost +`, as discussed in this solution found [here](https://rescale.com/documentation/main/rescale-advanced-features/running-your-custom-code-on-rescale/using-apptainer-singularity/):
+
+```
+xhost +
+```
+
+Run the immutable container, and start a shell inside:
+
+```
+apptainer shell -B /cadence:/cadence virtuoso_centos7.sif
+```
+
+Inside the container, check the system configuration with the Cadence provided tool `checkSysConf`:
+
+```
+Apptainer> /cadence/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
+```
+
+Finally, run the virtuoso start-up script, using the full path to `tcsh`. Make sure the start up script contains the line `virtuoso &`. 
+
+```
+Apptainer> /bin/tcsh /faust/user/kcaisley/cadence/tsmc65/tsmc_crn65lp_1.7a
+
+```
+
+Else you need to source the script instead, and run the command `virtuoso &` manually.
+
+
+
+
+
+
+
+
+
+
+
 ## Changing shell
 
 Need the `tcsh` and `chsh` commands to be 
