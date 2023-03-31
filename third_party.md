@@ -1,7 +1,6 @@
 # H.264 Support
 
-As of Fedora 37+, H.264 decoders were removed from the based distribution due to legal reasons (alongside H.265). To install alternative H.264 decoders, you can follow the instructions found [here:]
-(https://fedoraproject.org/wiki/OpenH264)
+As of Fedora 37+, H.264 decoders were removed from the based distribution due to legal reasons (alongside H.265). To install alternative H.264 decoders, you can follow the instructions found [here:](https://fedoraproject.org/wiki/OpenH264)
 
 ```
 $ sudo dnf config-manager --set-enabled fedora-cisco-openh264
@@ -16,7 +15,6 @@ $ sudo dnf install gstreamer1-plugin-openh264 mozilla-openh264
 Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable OpenH264 plugin.
 
 You can do a simple test whether your H.264 works in RTC on [this page](https://mozilla.github.io/webrtc-landing/pc_test.html) (check Require H.264 video). 
-
 
 
 
