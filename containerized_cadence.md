@@ -18,6 +18,7 @@ From: centos:7
 %setup
     #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
     mkdir ${APPTAINER_ROOTFS}/cadence
+    mkdir ${APPTAINER_ROOTFS}/faust
 
 %post
     #section to download and install packages before container is immutable
@@ -45,7 +46,7 @@ xhost +
 Run the immutable container, and start a shell inside:
 
 ```
-apptainer shell -B /cadence:/cadence virtuoso_centos7.sif
+apptainer shell -B /cadence,/faust virtuoso_centos7.sif
 ```
 
 Inside the container, check the system configuration with the Cadence provided tool `checkSysConf`:
