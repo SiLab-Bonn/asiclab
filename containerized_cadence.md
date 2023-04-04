@@ -26,8 +26,15 @@ From: centos:7
     #CentOS 7 image on dockerhub isn't updated, so run this first
     yum -y update && yum clean all
     
-    #list of packages required by Cadence
-    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libXpm libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+    #list of packages required by Cadence Virtusoso IC618
+    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+    
+    #For IC617 and below, i686 package versions are required (not sure why)
+    
+    # additional packages required by Cliosoft SOS
+    yum install -y libXpm
+    
+    # additional package required for X11 forwarding
     yum install -y xorg-x11-utils                           
 ```
 
