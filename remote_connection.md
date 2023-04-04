@@ -26,6 +26,12 @@ Clone down a repository, to proceed with work. For example:
 git clone -b develop git@github.com:SiLab-Bonn/pybag.git --recurse-submodules
 ```
 
+To add commits, and push back to github, make sure your configure your local git with your username and password, matching those of Github:
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Username"
+```
+
 # SSH
 
 To enable SSH public key authentication on Fedora, make sure you go to /etc/ssh/sshd_config and uncomment the line PubkeyAuthentication yes.
