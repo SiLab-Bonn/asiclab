@@ -21,6 +21,10 @@ Test the connection
 ssh -T git@github.com
 ```
 
+If you have issues, try changing the permissions of the key pair using `chmod 600 {key}` and add the keys to the SSH agent with `ssh-add`.
+
+# Copying down repos
+
 Clone down a repository, to proceed with work. For example:
 ```
 git clone -b develop git@github.com:SiLab-Bonn/pybag.git --recurse-submodules
