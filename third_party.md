@@ -34,9 +34,13 @@ sudo dnf install code
 ```
 
 
+# Zoom
+Simplest way is just to download the official Fedora.rpm from https:/zoom.us. Then just double click on downloaded file in Files GUI. Will figure out Zoom install via command line later.
+
+
 # Python venvs
 
-If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new feature in Python, and will make your life better
+If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new-ish feature in Python, and will make your life better.
 
 
 
