@@ -1,6 +1,6 @@
 # Containerization
 
-## Starting Cadence Virtuoso from Fedora Linux Client
+## Starting Cadence Virtuoso (IC617 and IC618) from Fedora Linux Client
 
 Install apptainer
 
@@ -13,12 +13,15 @@ Create a `.def` file with the name `virtuoso_centos7.def`:
 ```
 Bootstrap: docker
 From: centos:7
-
     
 %setup
     #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
     mkdir ${APPTAINER_ROOTFS}/cadence
     mkdir ${APPTAINER_ROOTFS}/faust
+    
+%environment
+    # IC617 doesn't recognize the OS environment properly, need to specify it manually
+    export OA_UNSUPPORTED_PLAT=linux_rhel50_gcc48x
 
 %post
     #section to download and install packages before container is immutable
@@ -29,8 +32,9 @@ From: centos:7
     #list of packages required by Cadence Virtusoso IC618
     yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
     
-    #For IC617 and below, i686 package versions are required (not sure why)
-    
+    #For IC617 and below, i686 package versions are required to support 32-bit binaries
+    yum install -y glibc.i686 elfutils-libelf.i686 mesa-libGL.i686 mesa-libGLU.i686 motif.i686 libXp.i686 libpng.i686 libjpeg-turbo.i686 expat.i686 glibc-devel.i686 redhat-lsb.i686  
+        
     # additional packages required by Cliosoft SOS
     yum install -y libXpm
     
