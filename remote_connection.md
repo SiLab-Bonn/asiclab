@@ -1,3 +1,33 @@
+# Thunderbird Email
+
+```
+sudo dnf install thundbird
+```
+
+Uni-Bonn email setup described [here](https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichten+von+E-Mail+Clients#expand-AccountSetUp) is summarized below:
+
+### Incoming Server Settings:
+
+```
+Protocol: IMAP
+Hostname: mail.uni-bonn.de
+Port: 933
+Connection Security: SSL/TLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
+### Outgoing Server Settings:
+
+```
+Protocol: IMAP
+Server Name: mail.uni-bonn.de
+Port: 587
+Connection Security: STARTTLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
 # Wireguard
 
 As of Fedora 38, which is built on Gnome 44, you can simply import Wireguard `.conf` files directly in the Settings application, under the Network tab.
