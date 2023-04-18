@@ -83,6 +83,9 @@ Note: If you're trying to connect to, or from an older system, you may run into 
 sudo systemctl enable sshd
 sudo systemctl start sshd
 
+# SSH Keys
+ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
+
 
 # SiRUSH SMB Server
 
