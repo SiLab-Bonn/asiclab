@@ -23,7 +23,7 @@ VS Code is currently only shipped in a yum repository, so first add the reposito
 
 ```
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-``
+```
 
 Then install install the key
 
