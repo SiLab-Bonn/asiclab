@@ -1,3 +1,49 @@
+## To Do
+
+- [ ] **Improve Documentation** (this repo, alway ongoing)
+
+    
+
+- [ ] **Move workstations to Fedora**
+    
+    - [x] Develop Apptainer container for running Cadence Virtuoso (based on CentOS7)
+        - [ ] Do benchmarking of containerized Virtuoso read performance from NFS share.
+        
+    - [ ] Extend Apptainer container to run other tools (Synopsys, Mentor, Vivado, etc)
+    
+        
+    
+- [ ] **Update Tools + PDKs** 
+    - [x] Get Querio Credentials
+    - [ ] Download/Install TSMC 28nm HPC+ PDK from Querio
+    - [ ] Update Cliosoft License (Exp: 15-Jul-2024)
+    - [ ] Download and install 2023 Europractice tools
+    - [ ] Update 2023 Europractice tools license
+
+      
+    
+- [ ] **User Management**
+    
+    - [x] Migrate Noyce VM from HRZ -> Faust02
+    - [x] Security fix: Create new `asiclab` user password for admin access
+    - [ ] Switch UID of tools directories to `asiclab` (UID=1000), to removing need for `cdsmgr` (UID=204).
+    - [ ] Investigate bare metal LDAP on Penelope or Faust02
+    - [ ] LDAP server as a provider for Fedora SSSD cache isn't working. User management section has more notes. While most of RHEL IdM doesn't have upstream documentation (FreeIPA and friends), fortunately the SSSD spin-off project does. We can find more information [here](https://sssd.io/troubleshooting/basics.html)
+    
+      
+    
+- [x] **NFS Data Migration** (penelope)
+
+  - [x] Data Backup Penelope -> Apollo
+  - [x] Fedora Install
+  - [x] Remove Old/Install New HDDs
+  - [x] RAID6 Array Creation
+  - [x] Data Transfer Penelope <- Apollo
+  - [x] Enable NFS Share
+  - [x] Data Backup w/ TSM
+  - [ ] Apollo Retirement/Powerdown?
+
+
 ## Overview
 
 The documentation covers ASICLab software, servers, workstations, and other infrastructure. The scope of this document is information that a user with basic familiarity with Linux systems would need to fix problems with existing systems or add new systems to the network. Therefore, extensive documentation of general Linux knowledge should be avoided to avoid diluting the usefulness of information.
