@@ -24,7 +24,7 @@
     
 - [ ] **User Management**
     
-    - [x] Migrate Noyce VM from HRZ -> Faust02
+- [x] Migrate Noyce VM from HRZ -> Faust02
     - [x] Security fix: Create new `asiclab` user password for admin access
     - [ ] Switch UID of tools directories to `asiclab` (UID=1000), to removing need for `cdsmgr` (UID=204).
     - [ ] Investigate bare metal LDAP on Penelope or Faust02
@@ -33,7 +33,6 @@
       
     
 - [x] **NFS Data Migration** (penelope)
-
   - [x] Data Backup Penelope -> Apollo
   - [x] Fedora Install
   - [x] Remove Old/Install New HDDs
@@ -41,8 +40,9 @@
   - [x] Data Transfer Penelope <- Apollo
   - [x] Enable NFS Share
   - [x] Data Backup w/ TSM
+    - [ ] Test data recovery
+    - [ ] Disable status emails
   - [ ] Apollo Retirement/Powerdown?
-
 
 ## Overview
 
