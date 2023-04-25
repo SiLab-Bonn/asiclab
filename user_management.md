@@ -94,7 +94,7 @@ When running `ls -l`, the second column is the number of hardlinks (which is equ
 
 ### To enable Wheel Group (replacement for sudoers)
 
-[https://docs.fedoraproject.org/en-US/quick-docs/adding_user_to_sudoers_file/](Adding a user to sudoers and wheel group)
+Tutorial: [Adding a user to sudoers and wheel group](https://docs.fedoraproject.org/en-US/quick-docs/adding_user_to_sudoers_file/)
 
 On Fedora, it is the wheel group the user has to be added to, as this group has full admin privileges. Add a user to the group using the following command:
 sudo usermod -aG wheel username
@@ -115,7 +115,7 @@ After users are locally created, and login, check the umask bit to make sure the
 
 ```umask```
 
-The [umask](https://en.wikipedia.org/wiki/umask) utility is used to control the file-creation mode mask, which determines the initial value of file permission bits for newly created files. [This page] on the Arch wiki has good info. https://wiki.archlinux.org/title/Umask
+The [umask](https://en.wikipedia.org/wiki/umask) utility is used to control the file-creation mode mask, which determines the initial value of file permission bits for newly created files. [This page](https://wiki.archlinux.org/title/Umask) on the Arch wiki has good info. 
 
 running `umask` shows bits, and `umask -S` in the derived permissions. Note that the bits are a mask of what should *not* be set. So 7777 - umask = chmod, sorta.
 
