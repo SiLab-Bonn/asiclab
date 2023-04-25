@@ -37,6 +37,7 @@ Approach 1 and 2 can be done via:
 ```cat /etc/passwd```
 
 ### To check groups of a user
+
 ```groups kcaisley```
 
 ### To check full group and user info of user
@@ -86,11 +87,18 @@ When you add users to a group, using the `-g` commands makes it the users primar
 
 The `groupname` can be omitted if not desired.
 
-### Listing GIDs and UIDs of Files
+### Listing GIDs and UIDs and permissions of Files
 
 ```ls -la```
 
 When running `ls -l`, the second column is the number of hardlinks (which is equal to the number of directories, sorta?) Anyways, I can just think of it as the approximate number of directories inside this one.
+
+### To recursively change file permission
+
+`chown` command doesn't work recursively on hidden files, and so using `chmod` is the best approach. This affects everything in the current working directory and below.
+
+```sudo chmod -R 775 .```
+
 
 ### To enable Wheel Group (replacement for sudoers)
 
@@ -321,5 +329,4 @@ SEE ALSO
 
 AUTHORS
        The SSSD upstream - https://github.com/SSSD/sssd/
-
 

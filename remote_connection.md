@@ -86,7 +86,6 @@ sudo systemctl start sshd
 # SSH Keys
 ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
 
-
 # SiRUSH SMB Server
 
 Sirrush is shared via smb. You can simply use a file manager and go to smb://sirrush.physik.uni-bonn.de and log in with silab/pidub12. One can only access the `/silab` directory with this login. If you also want
@@ -157,5 +156,4 @@ NetBIOS over TCP/IP client used to lookup NetBIOS names, part of samba suite.
 
 List info about machines that respond to SMB name queries on a subnet. Uses nmblookup and smbclient as backend.
 `findsmb`
-
 
