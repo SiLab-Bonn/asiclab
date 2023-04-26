@@ -5,7 +5,7 @@
     
 
 - [ ] **Move workstations to Fedora**
-    
+  
     - [x] Develop Apptainer container for running Cadence Virtuoso (based on CentOS7)
         - [ ] Do benchmarking of containerized Virtuoso read performance from NFS share.
         
@@ -23,7 +23,7 @@
       
     
 - [ ] **User Management**
-    
+  
 - [x] Migrate Noyce VM from HRZ -> Faust02
     - [x] Security fix: Create new `asiclab` user password for admin access
     - [ ] Switch UID of tools directories to `asiclab` (UID=1000), to removing need for `cdsmgr` (UID=204).
@@ -111,21 +111,52 @@ switch---asiclabwinXXX
 
 `asiclab##`: Retired user workstations, still good for less demanding work. Easily configured for Linux or Windows.
 
-## Workstation Setup with Linux
+## Workstation Setup for Fedora Linux
 
 Start here to configure a fresh installation of Fedora Linux (>=37) on a lab desktop workstation.
 
 1. Create a bootable USB drive with the latest version of Fedora Workstation. The easiest way to do this is on Fedora, MacOS, or Windows using the [Fedora Media Writer](https://getfedora.org/en/workstation/download/). Alternatively, download the latest Fedora ISO file, check the name of your drive with `sudo fdisk -l`, unmount the drive with `sudo umount /dev/sdb*`, and write the ISO image to the drive with `sudo dd bs=4M if=/path/to/fedora.iso of=/dev/sdb status=progress oflag=sync`. Wait for the writing to complete, which could take several minutes.
+
 1. Insert the bootable USB drive into the machine to be configured and change the boot order in the BIOS or UEFI to boot from the USB drive first. Reboot the machine.
-1. Once the Fedora installer has loaded, select "Install to Hard Drive", choose your desired region and keyboard setup, and select the machine's solid state drive for install. After install has completed and the computer has rebooted, accept the prompt to opt into 'Third Party Repositories', and create a local user account called `asiclab`. Ask one of the older lab members for the default admin password for this account. You should now be on the desktop.
+
+1. Once the Fedora installer has loaded, select "Install to Hard Drive", choose your desired region and keyboard setup, and select the machine's solid state drive for install. After install has completed and the computer has rebooted, accept the prompt to opt into 'Third Party Repositories', and create a local user account called `asiclab`. Ask one of the older lab members for the default admin password for this account. (Password updated as of April 2023.) You should now be on the desktop.
+
+1. Verying [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
+
+   **From here forward, remote config management is possible.**
+
 1. Check for and install any packages updates with `sudo dnf update` and `sudo dnf clean packages`.
-1. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server.
+
+   Especially important are security updates and firmware upgrades.
+
 1. [Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
-1. [Connect to the LDAP directory server](user_management.md) to synchronize user accounts and group settings. Additional local user accounts should not be created.
+
+   ```
+   $ cd /
+   $ sudo mkdir users
+   $ sudo mkdir tools
+   
+   $ sudo vim /etc/fstab
+   penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
+   penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
+   ```
+
+   Reboot to mount.
+
+1. [Connect to the FreeIPA integrated LDAP directory server](user_management.md) to read user accounts and group settings. 
+
+   ```bash
+   sudo realm join asiclabwin001.physik.uni-bonn.de -v
+   ```
+
+   In this process, authenticate as `admin` account
+
 1. [Setup the printers!](printer_config.md)
-1. Follow Instructions in Licesnse Server: For Cadence, 
-1. Follow instructions for Cadence Containerization, if you need it, using apptainer
-1. Finally, enable 3rd party repos, and follow instruction to install proprietary software, like Slack, Chrome, etc.
+
+1. Follow instructions for running containerized Cadence, if you need it, using `apptainer`.
+
+1. Finally, enable 3rd party repos (if not already done), and follow instruction to install proprietary software, like Slack, Chrome, etc.
+
 1. If you plan to work remotely, read the section on Remote Connection, which covers SSH, VNC, Wireguard (in network-manager interface)
 
 ## Workstation Setup with Windows

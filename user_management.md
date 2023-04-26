@@ -181,6 +181,55 @@ how does the homedir work?
 
 https://www.freeipa.org/page/Quick_Start_Guide#Web_User_Interface
 
+LDAP or freeipa will only be a source for account information: username, password, address, fax number, home directory location. Similar to a phone book. To get file "sync" you need a network home directory provided by something like NFS (or SMB if you want Windows support). Create a share on one machine, (for me this is /space/homedirs/$username), mount it on all of your other machines in the same place, and set your homedir in LDAP to be that new location.
+
+Combine this with autofs, which you can also manage in FreeIPA, it will mount your homedir from NFS only when required, and when logged off it unmounts the NFS share. I hate stuck NFS mounts. But don't use 'softmounts' This can introduce silent data corruption.
+
+This explains the difference between [hard and soft mounts](https://forums.centos.org/viewtopic.php?t=8787)
+
+#### Some potential firewall fixes, in case there are probs:
+
+https://kenmoini.com/post/2022/04/qnap-nfs-home-directories/
+
+```bash
+## Enable Firewalld
+systemctl enable --now firewalld
+
+## [Optional] Enable Cockpit
+systemctl enable --now cockpit.socket
+
+## Open the needed Firewall ports
+firewall-cmd --add-service=cockpit --permanent
+firewall-cmd --add-service=dns --permanent
+firewall-cmd --add-service=freeipa-ldap --permanent
+firewall-cmd --add-service=freeipa-ldaps --permanent
+firewall-cmd --add-service=http --permanent
+firewall-cmd --add-service=https --permanent
+firewall-cmd --add-service=ssh --permanent
+firewall-cmd --add-port=88/tcp --permanent
+firewall-cmd --add-port=88/udp --permanent
+firewall-cmd --add-port=464/tcp --permanent
+firewall-cmd --add-port=464/udp --permanent
+firewall-cmd --add-port=8080/tcp --permanent
+```
+
+
+
+#### An in depth look at IPA/NFS home directories:
+
+https://blog.khmersite.net/2020/09/automating-home-directory-with-ipa/
+
+
+
+##### Adding clients to FreeIPA domain
+
+https://fedoramagazine.org/join-fedora-linux-enterprise-domain/
+
+```bash
+sudo realm join asiclabwin001.physik.uni-bonn.de -v
+```
+
+authenticate as admin account.
 
 
 
@@ -196,15 +245,11 @@ user3           2003  ...etc
 
 GID:
 asiclab         1000    (just local asiclab user on each computer)
-basegroup       1001    (all user directories, and default setting in tools directory)
-icdesign        1002    (access to cadence tools? Does this include mentor and synonpsys as well?)
+base 	      	1001    (all user directories, and default setting in tools directory)
+icdesign        1002    (access to cadence/mentor/synonsys tools)
 tsmc65          1003
 tsmc28          1004
 ```
-
-
-
-
 
 
 
@@ -263,7 +308,7 @@ homedir_substring = /faust/user
 
 Then `sudo vim /etc/openldap/ldap.conf`
 
-```
+
 
 My final config:
 
@@ -288,11 +333,10 @@ domains = default
 
 [nss]
 homedir_substring = /faust/use
-
 ```
 
 
-
+```
 # See ldap.conf(5) for details
 # This file should be world readable but not world writable.
 
@@ -326,8 +370,8 @@ systemctl restart sssd
 systemctl enable sssd
 ```
 
-
 to check contents of LDAP server:
+
 ```
 ldapsearch -x -H ldap://noyce.physik.uni-bonn.de -b dc=faust,dc=de
 ```
@@ -344,7 +388,7 @@ man sssd-ldap
 
 
 
-
+```
 [nss] [cache_req_common_process_dp_reply] (0x3f7c0): [CID#265] CR #557: Could not get account info [1432158212]: SSSD is offline
 
 
@@ -379,4 +423,4 @@ SEE ALSO
 
 AUTHORS
        The SSSD upstream - https://github.com/SSSD/sssd/
-
+```

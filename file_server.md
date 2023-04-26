@@ -1,3 +1,17 @@
+## Client NFS Mounting (For Fedora)
+
+```
+$ cd /
+$ sudo mkdir users
+$ sudo mkdir tools
+
+$ sudo vim /etc/fstab
+penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
+penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
+```
+
+
+
 # Base Drive Configurtion
 
 Could have used BTRFS as it has built-in volume management, but EXT4 - LVM combination is simple and good enough for our uses
@@ -326,8 +340,6 @@ List Hardware devices:
 
 To check the status of current NFS or SMB shares, use the following (TYPE = nfs4, smb, autofs,cifs,etc)
 `mount -l -t TYPE`
-
-## NFS
 
 ## NFS
 
