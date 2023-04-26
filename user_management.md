@@ -34,62 +34,90 @@ This can mean different things:
 
 Approach 1 and 2 can be done via:
 
-```cat /etc/passwd```
+```
+cat /etc/passwd
+```
 
 ### To check groups of a user
 
-```groups kcaisley```
+```
+groups kcaisley
+```
 
 ### To check full group and user info of user
-```id kcaisley```
+```
+id kcaisley
+```
 
 You can omit username for current user.
 
 ### To check all members in a group
-```getent groups icdesign```
+```
+getent groups icdesign
+```
 
 ### To list all groups, and their members
 Groups can be supplied from both `/etc/group` and from LDAP. The combination of both these will be show in:
 
-```getent group```
+```
+getent group
+```
 
 ### To add a group with gid
-```sudo groupadd -g 1001 icdesign```
+```
+sudo groupadd -g 1001 icdesign
+```
 
 When you add users to a group, using the `-g` commands makes it the users primary group, where as the `-G` flag makes it a secondary group. The primary group is the default GID assigned newly created or copied files.
 
 ### To delete a group:
-```sudo groupdel kcaisley```
+```
+sudo groupdel kcaisley
+```
 
 ### To change the UID of a user
 
-```sudo usermod -u 2002 kcaisley```
+```
+sudo usermod -u 2002 kcaisley
+```
 
 ### To change the GID of a group
 
-```sudo groupmod -g 1001 icdesign```
+```
+sudo groupmod -g 1001 icdesign
+```
 
 ### To create a group in linux
 
-```sudo usermod -a -G groupname username```
+```
+sudo usermod -a -G groupname username
+```
 
 ### To become another user
 
-```su – <username>```
+```
+su – <username>
+```
 
 ### To change a user's password
 
-```passwd kcaisley```
+```
+passwd kcaisley
+```
 
 ### To recursively change all UID and GID set on files in a directory
 
-```chown -R ownername:groupname foldername```
+```
+chown -R ownername:groupname foldername
+```
 
 The `groupname` can be omitted if not desired.
 
 ### Listing GIDs and UIDs and permissions of Files
 
-```ls -la```
+```
+ls -la
+```
 
 When running `ls -l`, the second column is the number of hardlinks (which is equal to the number of directories, sorta?) Anyways, I can just think of it as the approximate number of directories inside this one.
 
@@ -97,7 +125,9 @@ When running `ls -l`, the second column is the number of hardlinks (which is equ
 
 `chown` command doesn't work recursively on hidden files, and so using `chmod` is the best approach. This affects everything in the current working directory and below.
 
-```sudo chmod -R 775 .```
+```
+sudo chmod -R 775 .
+```
 
 
 ### To enable Wheel Group (replacement for sudoers)
@@ -114,14 +144,17 @@ $ sudo visudo
 %wheel ALL=(ALL) ALL
 ...
 ```
-Then logout and back in
+
+Then logout and back in again.
 
 
 ### To set the default permissions for new files
 
 After users are locally created, and login, check the umask bit to make sure they are creating files properly:
 
-```umask```
+```
+umask
+```
 
 The [umask](https://en.wikipedia.org/wiki/umask) utility is used to control the file-creation mode mask, which determines the initial value of file permission bits for newly created files. [This page](https://wiki.archlinux.org/title/Umask) on the Arch wiki has good info. 
 
@@ -130,6 +163,23 @@ running `umask` shows bits, and `umask -S` in the derived permissions. Note that
 For example umask = 0022 yeilds effectively a mod = 7755, or u=rwx,g=rx,o=rx
 
 And `umask 0077` means that permission will be `7700`
+
+## FreeIPA Setup:
+
+Starting from Fresh Fedora install
+
+```
+sudo firewall-cmd --add-service=freeipa-4 --permanent
+sudo dnf install freeipa-server
+```
+
+Accept all defaults usering ENTER, and at the end type 'yes' to accept to proposed settings.
+
+https://serverfault.com/questions/1069847/how-should-we-automount-home-directories-stored-at-different-nfs-paths-at-home
+
+how does the homedir work?
+
+https://www.freeipa.org/page/Quick_Start_Guide#Web_User_Interface
 
 
 
@@ -145,11 +195,11 @@ user2           2002
 user3           2003  ...etc
 
 GID:
-admingroup      1000    (just local asiclab user on each computer)
+asiclab         1000    (just local asiclab user on each computer)
 basegroup       1001    (all user directories, and default setting in tools directory)
-cdsgroup        1002    (access to cadence tools? Does this include mentor and synonpsys as well?)
-tsmc65group     1003
-tsmc28group     1004
+icdesign        1002    (access to cadence tools? Does this include mentor and synonpsys as well?)
+tsmc65          1003
+tsmc28          1004
 ```
 
 

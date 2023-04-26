@@ -119,7 +119,7 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
 
 ## Configuration
 1. Navigation in installation directory  
-  `cd /opt/tivoli/tsm/client/ba/bin`
+    `cd /opt/tivoli/tsm/client/ba/bin`
 
 2. Create the file "dsm.opt" and add the configurations  
    `sudo vi dsm.opt`
@@ -159,7 +159,7 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
    `sudo dsmc`
 
 6. Change password  
-  `sudo dsmc set passsword [old passwort] [new passwort]`
+    `sudo dsmc set passsword [old passwort] [new passwort]`
 
 
 ## Include/exclude list
@@ -255,9 +255,9 @@ When restoring data, make a concious decision about the destination path. Most o
    Example:
    ```
    restore -subdir=yes -pick "/mnt/md127/vm/*" "/tmp/restore-test/"
-
+   
    Scrollable PICK Window - Restore
-
+   
         #    Backup Date/Time        File Size A/I  File
            ----------------------------------------------------------------------------------------------------------------
         1. | 03/03/2023 13:29:47       4.00 KB  A   /mnt/md127/vm
@@ -292,7 +292,7 @@ When restoring data, make a concious decision about the destination path. Most o
    ```
    --- User Action is Required ---
    File '/tmp/restore-test/vm/tests/noyce.physik.uni-bonn.de-disk1.img' exists
-
+   
    Select an appropriate action
      1. Replace this object
      2. Replace all objects that already exist
@@ -429,24 +429,35 @@ https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/s
 4. create mount points For legacy export locations:
 
 `sudo mkdir -p /export/disks`
+
+The `-p` creates necessary parent directories.
+
 `sudo mount --bind /mnt/md0/ /export/disk/`     (using bind mount, rather than regular, as we both locations must be readable, rather than one being a /dev/ location)
 
 this is bad form, one should instead add both the ext4 mount and the bind mount to the /etc/fstab file:
 
-sudo vim /etc/fstab
+`sudo vim /etc/fstab`
 
+```
 /dev/md127 /mnt/md127 ext4 defaults,nofail,discard 0 0
 /mnt/md127/users /export/disk/users none bind
 /mnt/md127/tools /export/disk/cadence none bind
 
+# new bind mount for tools
+
+/mnt/md127/tools /export/disk/tools none bind
+```
+
 After saving, make sure to restart the systemctl daemon and remount:
 
+```
 sudo systemctl daemon-reload
 sudo mount -a
+```
 
 5. Properly set permissions of export directory before exporting:
 
-6. Create `/etc/exports` file: (don't use the last location, as it is just for backups)
+6. Now that our directory to be exported is availalb, we must create/config the  `/etc/exports` NFS file: (don't use the last location, as it is just for backups)
 
 ```
 /export/disk/cadence   apollo(rw,sync,no_root_squash,no_all_squash) faust02(rw,sync,no_root_squash,no_all_squash) asiclab*(ro,sync,root_squash,no_all_squash) jupiter(ro,sync,root_squash,no_all_squash) noyce(ro,sync,root_squash,no_all_squash) juno(rw,sync,root_squash,no_all_squash)
@@ -504,6 +515,18 @@ Add lines:
 options for the mounting drives are: https://help.ubuntu.com/community/Fstab#Options
 `https://wiki.archlinux.org/title/Fstab`
 
+#### Updated mount points:
+
+
+
+```
+cd /
+sudo mkdir users
+sudo mkdir tools
+
+penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
+penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
+```
 
 
 
