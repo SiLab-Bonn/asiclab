@@ -8,6 +8,9 @@ $ sudo mkdir tools
 $ sudo vim /etc/fstab
 penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
 penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
+
+# To remount, but only works 
+sudo
 ```
 
 
