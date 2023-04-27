@@ -1,4 +1,98 @@
-# Containerization
+## Intro to Containers
+
+OS-level virtualization is an operating system (OS) paradigm in which the kernel allows the existence of multiple isolated user space instances, called containers (LXC, Solaris containers, Docker, Podman), zones (Solaris containers), virtual private servers (OpenVZ), partitions, virtual environments (VEs), virtual kernels (DragonFly BSD), or jails (FreeBSD jail or chroot jail).[1] Such instances may look like real computers from the point of view of programs running in them. A computer program running on an ordinary operating system can see all resources (connected devices, files and folders, network shares, CPU power, quantifiable hardware capabilities) of that computer. However, programs running inside of a container can only see the container's contents and devices assigned to the container.
+
+A short list of tech to consider: Docker, Fedora CoreOS, Silverblue, Ansible, Toolbx, Singularity/Apptainer, Podman, LXC, Flatpak
+
+In short, unlike a virtual machine, containers provide abstraction at the operating system level. This can be useful for running proprietary GUI-based applications like Cadence Virtuoso, which e
+
+We can use a CentOS7 image for setting up and running our cadence development.
+
+But how do we then access data?
+
+Docker is a single-purpose *application virtualization* and LXC is a multi-purpose *operating system* virtualization. If one looks for a portability and scalability of the application / micro-service, Docker and Kubernetes is a good choice. If one would like to have several (or even thousands of) portable systems on a single computer, LXC is a good choice.
+
+Docker was not designed out of the box for GUI apps, so you need to have a video server with X11 typically for that.
+
+Linux containers are all based on the virtualization, isolation, and resource management mechanisms provided by the [Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel), notably [Linux namespaces](https://en.wikipedia.org/wiki/Linux_namespaces) and [cgroups](https://en.wikipedia.org/wiki/Cgroups).
+
+#### OS-Level Virtualization (Containers) and Application Virtualization Technologies:
+
+With this tech, different distributions are fine, but other operating systems or kernels are not. Full application virtualization requires a virtualization layer.[[2\]](https://en.wikipedia.org/wiki/Application_virtualization#cite_note-Husain-2) Application virtualization layers replace part of the [runtime environment](https://en.wikipedia.org/wiki/Runtime_environment) normally provided by the operating system. The layer intercepts all disk operations of virtualized applications and transparently redirects them to a virtualized location, often a single file.[[3\]](https://en.wikipedia.org/wiki/Application_virtualization#cite_note-Gurr-3) The application remains unaware that it accesses a virtual resource instead of a physical one. Since the application is now working with one file instead of many files spread throughout the system, it becomes easy to run the application on a different computer and previously incompatible applications can be run side by side. 
+
+A container image is simply a file (or collection of files) saved on disk that stores everything you need to run a target application or applications:
+
+* code
+* runtime
+* system tools
+* libraries
+* etc
+
+A container process is simply a standard (Linux) process running on top of the underlying host's operating system and kernel, but whose software environment is defined by the contents of the container image.
+
+> How do I develop in a container, when I need to run a GUI as part of my workflow? What are the limits of containerization? 
+
+#### Limitations of Containers
+
+1. Architecture dependent; always limited by CPU architecture (x86 vs ARM) and binary format (ELF)
+2. Portability: Requires glibc and kernel compatibility between host and container; also requires any other kernel-user space API compatibility (e.g., OFED/IB, NVIDIA/GPUs)
+   1. Like something built on Ubuntu 22.04 wouldn't work on CentOS 6
+3. Filesystem isolation: Filesystem paths are (mostly) different when viewed inside and outside container
+   1. By default containers can't see the contents of the host file system. To access host filesystem from inside the file system requires a bit of extra work to 'bind' it. 
+
+
+#### Most Common Use Cases
+
+* Building and running applications that require older/newer system libraries than are available on the host system
+  * Most modern tools, like PyTorch, assume the latest packages, and expect a debian-based environment like Ubuntu, which most HPC system aren't doing. Containers can solve these incompatibilities.
+* Running commercial applications binaries that have specific OS requirements not met by the host system.
+  * Your license agreement may only give you a compiled binary, which you're  
+  * Oh! Wow this is exactly my use case. How do I build a repoducible environment when commercial binaries (maybe even with GUI?) are part of the workflow?
+* Converting prexisting Docker containers, which won't work for HPC clusters, to Singularity containers
+
+#### Workflow
+
+1. **Build** your Singularity containers on you local system where you have root or sudo access; e.g., a personal computer where you have installed Singularity
+   1. You can't work on native MacOS, as you need to use a Virtual machine with a Ubuntu or Fedora-based OS. This is doubly true, if your Mac has an M1 ARM chipset.
+2. **Transfer** your Singularity containers to the HPC system where you want to run them
+3. **Run** your Singularity containers on that HPC system
+
+
+
+
+## Why Apptainer? (open-source Singularity fork)
+
+#### Docker
+
+Really designed for network centric services like web servers and databases, but not really meant for HPC systems where many users are sharing a space. Docker assumes you have trust for all users running on systems. Whereas in HPC, the admins don't even trust the users.
+
+Docker also wasn't designed to support batch-based workflows
+
+Docker not designed to support tightly-coupled, highly distributed parallel applications (MPI)
+
+#### Singularity
+
+* Designed at Berkeley Lab as the equivalent for HPC.
+* Each container is a single (read-only) image file (unlike the layered arch. in Docker). If you want to change it, you have to to rebuild it.
+* No root owned daemon processes
+* Support shared/multi-tenant resource environments
+* Support HPC Hardware: Infiniband, GPUs
+* Supports HPC applications: MPI
+
+
+#### Conclusion: Use Apptainer
+
+Overview of why not Docker, and the better options:
+
+https://blog.jwf.io/2019/08/hpc-workloads-containers/
+
+Using Singularity/Apptainer with GUI commercial applications:
+
+https://learningpatterns.me/posts/2018-01-30-abaqus-singularity/
+
+https://apptainer.org
+
+
 
 ## Starting Cadence Virtuoso (IC617 and IC618) from Fedora Linux Client
 
@@ -163,92 +257,6 @@ Okay, I'm still having issues, and cadence isn't giving me any useful messages. 
 
 Before I start hacking away and changing packages like openssl-devel to be more inline with the CentOS7 system, perhaps I can figure out better exactly what may need to change. Let's look at the CheckSysConf script and try to figure out what the latest supported version of the packages is. What version of Ubuntu is supported? Maybe there is a log message being written somewhere, and the people [here](https://www.edaboard.com/forums/linux-software.21/) might know where to find that log message.
 
-## Containers
-
-OS-level virtualization is an operating system (OS) paradigm in which the kernel allows the existence of multiple isolated user space instances, called containers (LXC, Solaris containers, Docker, Podman), zones (Solaris containers), virtual private servers (OpenVZ), partitions, virtual environments (VEs), virtual kernels (DragonFly BSD), or jails (FreeBSD jail or chroot jail).[1] Such instances may look like real computers from the point of view of programs running in them. A computer program running on an ordinary operating system can see all resources (connected devices, files and folders, network shares, CPU power, quantifiable hardware capabilities) of that computer. However, programs running inside of a container can only see the container's contents and devices assigned to the container. 
-
-A short list of tech to consider: Docker, Fedora CoreOS, Silverblue, Ansible, Toolbx, Singularity/Apptainer, Podman, LXC, Flatpak
-
-Unlike a virtual machine, container are abstraction at the operating system level.
-
-We can use a CentOS7 image for setting up and running our cadence development.
-
-But how do we then access data?
-
-Docker is a single-purpose *application virtualization* and LXC is a multi-purpose *operating system* virtualization. If one looks for a portability and scalability of the application / micro-service, Docker and Kubernetes is a good choice. If one would like to have several (or even thousands of) portable systems on a single computer, LXC is a good choice.
-
-Docker was not designed out of the box for GUI apps, so you need to have a video server with X11 typically for that.
-
-Linux containers are all based on the virtualization, isolation, and resource management mechanisms provided by the [Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel), notably [Linux namespaces](https://en.wikipedia.org/wiki/Linux_namespaces) and [cgroups](https://en.wikipedia.org/wiki/Cgroups).
-
-#### OS-Level Virtualization (Containers) and Application Virtualization Technologies:
-
-With this tech, different distributions are fine, but other operating systems or kernels are not. Full application virtualization requires a virtualization layer.[[2\]](https://en.wikipedia.org/wiki/Application_virtualization#cite_note-Husain-2) Application virtualization layers replace part of the [runtime environment](https://en.wikipedia.org/wiki/Runtime_environment) normally provided by the operating system. The layer intercepts all disk operations of virtualized applications and transparently redirects them to a virtualized location, often a single file.[[3\]](https://en.wikipedia.org/wiki/Application_virtualization#cite_note-Gurr-3) The application remains unaware that it accesses a virtual resource instead of a physical one. Since the application is now working with one file instead of many files spread throughout the system, it becomes easy to run the application on a different computer and previously incompatible applications can be run side by side. 
-
-A container image is simply a file (or collection of files) saved on disk that stores everything you need to run a target application or applications:
-
-* code
-* runtime
-* system tools
-* libraries
-* etc
-
-A container process is simply a standard (Linux) process running on top of the underlying host's operating system and kernel, but whose software environment is defined by the contents of the container image.
-
-> How do I develop in a container, when I need to run a GUI as part of my workflow? What are the limits of containerization? 
-
-#### Limitations of Containers
-
-1. Architecture dependent; always limited by CPU architecture (x86 vs ARM) and binary format (ELF)
-2. Portability: Requires glibc and kernel compatibility between host and container; also requires any other kernel-user space API compatibility (e.g., OFED/IB, NVIDIA/GPUs)
-   1. Like something built on Ubuntu 22.04 wouldn't work on CentOS 6
-3. Filesystem isolation: Filesystem paths are (mostly) different when viewed inside and outside container
-   1. By default containers can't see the contents of the host file system. To access host filesystem from inside the file system requires a bit of extra work to 'bind' it. 
-
-#### Docker
-
-Really designed for network centric services like web servers and databases, but not really meant for HPC systems where many users are sharing a space. Docker assumes you have trust for all users running on systems. Whereas in HPC, the admins don't even trust the users.
-
-Docker also wasn't designed to support batch-based workflows
-
-Docker not designed to support tightly-coupled, highly distributed parallel applications (MPI)
-
-#### Singularity
-
-* Designed at Berkeley Lab as the equivalent for HPC.
-* Each container is a single (read-only) image file (unlike the layered arch. in Docker). If you want to change it, you have to to rebuild it.
-* No root owned daemon processes
-* Support shared/multi-tenant resource environments
-* Support HPC Hardware: Infiniband, GPUs
-* Supports HPC applications: MPI
-
-#### Most Common Use Cases
-
-* Building and running applications that require older/newer system libraries than are available on the host system
-  * Most modern tools, like PyTorch, assume the latest packages, and expect a debian-based environment like Ubuntu, which most HPC system aren't doing. Containers can solve these incompatibilities.
-* Running commercial applications binaries that have specific OS requirements not met by the host system.
-  * Your license agreement may only give you a compiled binary, which you're  
-  * Oh! Wow this is exactly my use case. How do I build a repoducible environment when commercial binaries (maybe even with GUI?) are part of the workflow?
-* Converting prexisting Docker containers, which won't work for HPC clusters, to Singularity containers
-
-#### Workflow
-
-1. **Build** your Singularity containers on you local system where you have root or sudo access; e.g., a personal computer where you have installed Singularity
-   1. You can't work on native MacOS, as you need to use a Virtual machine with a Ubuntu or Fedora-based OS. This is doubly true, if your Mac has an M1 ARM chipset.
-2. **Transfer** your Singularity containers to the HPC system where you want to run them
-3. **Run** your Singularity containers on that HPC system
-
-#### Conclusion: Use Apptainer
-
-Overview of why not Docker, and the better options:
-
-https://blog.jwf.io/2019/08/hpc-workloads-containers/
-
-Using Singularity/Apptainer with GUI commercial applications:
-
-https://learningpatterns.me/posts/2018-01-30-abaqus-singularity/
-
-https://apptainer.org
 
 ## Which package provides file on RHEL Based System
 `dnf provides ./filename`
