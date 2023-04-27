@@ -77,7 +77,7 @@ Start here to configure a fresh installation of Fedora Linux (>=37) on a lab des
 
 1. Verying [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
 
-   **From here forward, remote config management is possible.**
+   **From here forward, remote config management is possible. See [Ansible notes](ansible.md) for more info.**
 
 1. Check for and install any packages updates with `sudo dnf update` and `sudo dnf clean packages`.
 
