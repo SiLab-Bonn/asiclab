@@ -53,18 +53,28 @@ ssh -T git@github.com
 
 If you have issues, try changing the permissions of the key pair using `chmod 600 {key}` and add the keys to the SSH agent with `ssh-add`.
 
-# Copying down repos
-
-Clone down a repository, to proceed with work. For example:
-```
-git clone -b develop git@github.com:SiLab-Bonn/pybag.git --recurse-submodules
-```
+### Then to allow copying down repos
 
 To add commits, and push back to github, make sure your configure your local git with your username and password, matching those of Github:
 ```
 git config --global user.email "you@example.com"
 git config --global user.name "Username"
 ```
+
+Check settings with:
+
+```
+git config --get user.email
+```
+
+
+
+
+Clone down a repository, to proceed with work. For example:
+```
+git clone -b develop git@github.com:SiLab-Bonn/pybag.git --recurse-submodules
+```
+
 
 # SSH
 

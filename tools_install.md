@@ -49,3 +49,12 @@ Also note that `set ssl:verify-certificate no` is unsecure, as it could allow fo
 ```bash
 cat HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz.* > HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz
 ```
+
+
+
+### To untar the files, with progress bar:
+
+```
+pv HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz | tar -xz
+```
+

@@ -413,3 +413,49 @@ The fix is to just write on the host system. If I can't delete a file, just do t
 `chmod -R +rw cbag_centos7_sandbox.sif/`
 
 `rm -rf cbag_centos7_sandbox.sif/`
+
+
+
+# Determining dependencies on Linux:
+
+show library dependencies (pretty simple, actually):
+`ldd "executable name"`
+including nested dependencies
+ `ldd -v  "executable name"`
+
+One has to target the direct (and full) path to the binary:
+`/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso`Interestingly, the are a lot of libraries which are not found, even from within the apptainer:
+
+```
+Apptainer> ldd  /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.22' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+	linux-vdso.so.1 =>  (0x00007ffd18935000)
+	libap_sh.so => not found
+	libapAssist_sh.so => not found
+	libapInfra_sh.so => not found
+	libpl_sh.so => not found
+	libplt_sh.so => not found
+	libadeStateXML_sh.so => not found
+	libeadSpectreEmir.so => not found
+	libvsacpp.so => not found
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fa524600000)
+	libpython3.6m.so.1.0 => not found
+	libvpsl.so => not found
+	libcthDRM.so => not found
+	libcrypt.so.1 => /lib64/libcrypt.so.1 (0x00007fa524200000)
+	libxerces-c-3.1.so => not found
+	libcrypto.so.10 => /lib64/libcrypto.so.10 (0x00007fa523c00000)
+	libPolyBool.so => not found
+	libprotobuf.so.3.12.2.0 => not found
+	libgrpc++.so.1 => not found
+	libgrpc.so.11 => not found
+	libaddress_sorting.so.11 => not found
+	libre2.so => not found
+	libupb.so.11 => not found
+	libz.so.1 => /lib64/libz.so.1 (0x00007fa523800000)
+.....
+```
