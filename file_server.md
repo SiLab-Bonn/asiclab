@@ -10,7 +10,7 @@ penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
 penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
 
 # To remount, but only works 
-sudo
+sudo mount -a
 ```
 
 
@@ -320,8 +320,6 @@ When restoring data, make a concious decision about the destination path. Most o
    ```
 
 
-# General Commands for Checking Drives
-`lsblk` command is useful for this.
 
 
 
@@ -329,6 +327,8 @@ When restoring data, make a concious decision about the destination path. Most o
 
 
 ## Raid Server management
+
+`lsblk` command is useful foor checking drive names
 
 mdadm  `--query` option
 
@@ -344,11 +344,9 @@ List Hardware devices:
 To check the status of current NFS or SMB shares, use the following (TYPE = nfs4, smb, autofs,cifs,etc)
 `mount -l -t TYPE`
 
-## NFS
 
 
-
-#Software Raid Re-Setup:
+# Software Raid Re-Setup:
 https://serverfault.com/questions/32709/how-do-i-move-a-linux-software-raid-to-a-new-machine
 
 `mdadm --assemble --scan --verbose /dev/md{number} /dev/{disk1} /dev/{disk2} /dev/{disk3} /dev/{disk4}`
@@ -456,10 +454,11 @@ this is bad form, one should instead add both the ext4 mount and the bind mount 
 ```
 /dev/md127 /mnt/md127 ext4 defaults,nofail,discard 0 0
 /mnt/md127/users /export/disk/users none bind
+
+# old bind for tools
 /mnt/md127/tools /export/disk/cadence none bind
 
 # new bind mount for tools
-
 /mnt/md127/tools /export/disk/tools none bind
 ```
 

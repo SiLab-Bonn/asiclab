@@ -110,8 +110,8 @@ From: centos:7
     
 %setup
     #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
-    mkdir ${APPTAINER_ROOTFS}/cadence
-    mkdir ${APPTAINER_ROOTFS}/faust
+    mkdir ${APPTAINER_ROOTFS}/users
+    mkdir ${APPTAINER_ROOTFS}/tools
     
 %environment
     # IC617 doesn't recognize the OS environment properly, need to specify it manually
@@ -151,7 +151,7 @@ xhost +
 Run the immutable container, and start a shell inside:
 
 ```
-apptainer shell -B /cadence,/faust virtuoso_centos7.sif
+apptainer shell -B /tools,/users virtuoso_centos7.sif
 ```
 
 Inside the container, check the system configuration with the Cadence provided tool `checkSysConf`:
@@ -216,36 +216,6 @@ okay, still complaining that it's not a supported OS. Tried running the checkSys
 /cadence/cadence/IC618/tools.lnx86/bin/checkSysConf
 ```
 
-
-installed Zoom
-
-## Packages needed (underlined weren't needed on CentOS 7)
-
-glibc                  		2.17								2.36
-elfutils-libelf        	0.166							0.187			
-ksh                   	 	20120801				  **1.0.3**				manually installed
-mesa-libGL            11.2.2							**22.2.3**
-mesa-libGLU			9.0.0							9.0.1				manually installed
-motif                  		2.3.4							2.3.4				manually installed
-libXp                  		1.0.2							1.0.3				manually installed
-libpng                 	1.5.13								1.6.37		
-libjpeg-turbo          1.2.90							**2.1.3**
-expat                  	2.1.0								2.5.0
-glibc-devel            2.17									2.36
-gdb                    	7.6.1								12.1.0
-xorg-x11-fonts-misc    						7.5		7.5				manually installed
-<u>xorg-x11-fonts-ISO8859-1-75dpi</u>   7.5		
-<u>redhat-lsb</u>             				4.1
-libXScrnSaver          		1.2.2						1.2.3
-apr                    			1.4.8							1.7.0
-apr-util               				1.5.2						1.6.1
-compat-db47					4.7.25						5.3.28 (libdb: Berkeley DB library for C)
-<u>org-x11-server-Xvfb</u>   	1.15.0
-mesa-dri-drivers       	17.2.3						22.2.3
-openssl-devel          	1.0.1e							**3.0.5**  this was a big change, it could be a problem??
-
-
-
 Okay, I'm still having issues, and cadence isn't giving me any useful messages. I've ruled the issue with wayland and Xorg, and I've switched to Xorg. My next step is to figure out how to get more verbose information on why Virtuoso isn't starting. All it says right now is:
 
 ```
@@ -263,20 +233,74 @@ Before I start hacking away and changing packages like openssl-devel to be more 
 
 Then check why a package was explici
 
-# How to use Apptainer
 
-I don't technically need to use a define file to make sure that this work. I can, at least for prototyping, try creating a container in sandbox mode:
-
-```
-$ apptainer build --sandbox virtuoso_centos7.sif docker://centos:7
-WARNING: The sandbox contain files/dirs that cannot be removed with 'rm'.
-```
-
-Next we can start a shell inside this modifiable container:
-
-`$ apptainer shell virtuoso_centos7.sif`
 
 The `run`, `exec`, and `shell` commands are the three primary ways in which to interact with a container image. The `run` command will start the container, run the scripts marked for execution inside the container (if any), and then exit. The `exec` commands allows a one time command to be run inside the shell, which then exits. The `shell` command allows an interactive shell to be spun up, which can be exited at will. The first option is good for image usage once it is finalized. The latter two are best for prototyping when building in sandbox mode.
+
+```
+WARNING: The sandbox contain files/dirs that cannot be removed with 'rm'.
+WARNING: Use 'chmod -R u+rwX' to set permissions that allow removal with 'rm -rf'
+WARNING: Use the '--fix-perms' option to 'apptainer build' to modify permissions at build time.Creating a container for BAG3++
+```
+
+
+
+# BAG3++ Container
+
+I don't technically need to use a full define file to make sure that this work. So we'll start with just a lightweight one:
+
+```
+Bootstrap: docker
+From: centos:7
+    
+%setup
+    #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
+    mkdir ${APPTAINER_ROOTFS}/users
+    mkdir ${APPTAINER_ROOTFS}/tools
+%post
+	#CentOS 7 image on dockerhub isn't updated, so run this first
+    yum -y update && yum clean all
+    
+    # Extras repo needed to provide some packages below
+    yum install -y centos-release-scl centos-release-scl-rh
+    
+    # rh-git29 isn't in official repos anymore, so use this instead
+    yum install -y devtoolset-8 httpd24-curl httpd24-libcurl rh-git218
+    
+    #
+    yum install -y conda curl make wget
+```
+
+Then for prototyping, I make a container in sandbox mode:
+
+```
+apptainer build --sandbox bag3++_centos7.sif bag3++_centos7.def
+```
+
+And start a shell inside this writable container, as root, so that you can install and modify contents:
+
+```
+apptainer shell -B /tools,/users --fakeroot --writable bag3++_centos7.sif/
+```
+
+
+
+rh-git29 didn't exist: https://www.softwarecollections.org/en/scls/rhscl/rh-git29/
+
+conda install doesn't work well: https://github.com/ContinuumIO/anaconda-issues/issues/9480
+
+```
+conda env create -f environment.yml --force
+```
+
+
+
+
+
+
+
+
+
 
 I need to install a couple packages within this container. The right process is **not** to enter a shell within the container and run sudo yum install.
 

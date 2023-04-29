@@ -89,6 +89,30 @@ PubkeyAcceptedAlgorithms=+ssh-rsa,ssh-rsa-cert-v01@openssh.com
 
 Note: If you're trying to connect to, or from an older system, you may run into issues where the version keys supported is deprecated. I found a solution to this, which Lise has in her Github issues.
 
+
+
+### Changing computer Sleep, suspend, and hibernate settings:
+
+```
+sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+
+There are [multiple methods](https://docs.kernel.org/admin-guide/pm/sleep-states.html) of suspending available, notably:
+
+- Suspend to RAM (aka suspend, aka sleep)
+
+  The **S3** sleeping state as defined by ACPI. Works by cutting  off power to most parts of the machine aside from the RAM, which is  required to restore the machine's state. Because of the large power  savings, it is advisable for laptops to automatically enter this mode  when the computer is running on batteries and the lid is closed (or the  user is inactive for some time).
+
+- Suspend to disk (aka hibernate)
+
+  The **S4** sleeping state as defined by ACPI. Saves the machine's state into [swap space](https://wiki.archlinux.org/title/Swap_space) and completely powers off the machine. When the machine is powered on, the state is restored. Until then, there is [zero](https://en.wikipedia.org/wiki/Standby_power) power consumption.
+
+- Hybrid suspend
+
+  A hybrid of suspending and hibernating, sometimes called **suspend to both**. Saves the machine's state into swap space, but does not power off the  machine. Instead, it invokes the default suspend. Therefore, if the  battery is not depleted, the system can resume instantly. If the battery is depleted, the system can be resumed from disk, which is much slower  than resuming from RAM, but the machine's state has not been lost.
+
 ## Server Start
 sudo systemctl enable sshd
 sudo systemctl start sshd

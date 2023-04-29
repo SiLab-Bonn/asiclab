@@ -19,3 +19,6 @@ Compaing against our Toshiba MG08 drives, which have these specs:
 | Weight ( Max )                                            | 720g                                          |
 
 Thus we're using ~60% of our max transfer speed? Do we have to include Read and Write? How does Raid6 config affect this?
+
+## Untarring a 650 GB file took the following time:
+628GiB 8:13:34 [21.7MiB/s]
