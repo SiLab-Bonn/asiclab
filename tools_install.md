@@ -67,14 +67,3 @@ sudo dnf install perl-FileHandle
 ```
 
 
-
-
-
-# To upgrade to new version of Fedora Server:
-
-```
-sudo dnf upgrade --refresh
-sudo dnf install dnf-plugin-system-upgrade	# was already there
-sudo dnf system-upgrade download --releasever=38
-```
-

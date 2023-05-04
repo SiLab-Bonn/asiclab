@@ -295,6 +295,10 @@ conda env create -f environment.yml --force
 
 
 
+#### No don't make it a sandbox, as this will cause plocate to use so much space
+
+
+
 
 
 
@@ -434,7 +438,7 @@ From: centos:7
 
 The fix is to just write on the host system. If I can't delete a file, just do this first:
 
-`chmod -R +rw cbag_centos7_sandbox.sif/`
+` sudo chmod -R +rw cbag_centos7_sandbox.sif/`
 
 `rm -rf cbag_centos7_sandbox.sif/`
 
