@@ -1,5 +1,3 @@
-
-
 # Wireguard
 
 As of Fedora 38, which is built on Gnome 44, you can simply import Wireguard `.conf` files directly in the Settings application, under the Network tab.
