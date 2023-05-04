@@ -58,3 +58,23 @@ cat HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz.* > HEP_DesignKit_TSMC28_HPCplusR
 pv HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz | tar -xz
 ```
 
+
+
+To run the installPdk.pl file, a perl module is needed:
+
+```
+sudo dnf install perl-FileHandle
+```
+
+
+
+
+
+# To upgrade to new version of Fedora Server:
+
+```
+sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade	# was already there
+sudo dnf system-upgrade download --releasever=38
+```
+

@@ -558,3 +558,30 @@ Take back any files that have been made under user or personal group name, and a
 
 
 Note: the general status of the penelope server can be found by checking the webserver status page.
+
+# Trying to debug slow speeds on NFS server.
+
+Programs like Typora take forever to open on an NFS user, but with local users is very fast.
+
+Read first about Raid Array Speeds: https://www.raid-calculator.com/raid-types-reference.aspx
+
+Our 5 disk, 14.6TB per disk machine in Raid 6 has:
+
+Capacity	43.8 TB
+Speed gain	3x read speed, no write speed gain
+Fault tolerance	2-drive failure
+
+
+
+On the server side: https://linux.die.net/man/5/exports
+
+
+
+When mounting: noatime: Setting this value disables the NFS server from updating the inodes access time. As most applications do not necessarily need this value, you can safely disable this updating.
+
+nocto: Suppress the retrieval of new attributes when creating a file.
+
+
+This page has lots of things tried: https://serverfault.com/questions/682000/nfs-poor-write-performance
+
+

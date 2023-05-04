@@ -1,32 +1,4 @@
-# Thunderbird Email
 
-```
-sudo dnf install thundbird
-```
-
-Uni-Bonn email setup described [here](https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichten+von+E-Mail+Clients#expand-AccountSetUp) is summarized below:
-
-### Incoming Server Settings:
-
-```
-Protocol: IMAP
-Hostname: mail.uni-bonn.de
-Port: 933
-Connection Security: SSL/TLS
-Authentication Method: Normal Password
-Username: kcaisley@uni-bonn.de
-```
-
-### Outgoing Server Settings:
-
-```
-Protocol: IMAP
-Server Name: mail.uni-bonn.de
-Port: 587
-Connection Security: STARTTLS
-Authentication Method: Normal Password
-Username: kcaisley@uni-bonn.de
-```
 
 # Wireguard
 
@@ -66,9 +38,6 @@ Check settings with:
 ```
 git config --get user.email
 ```
-
-
-
 
 Clone down a repository, to proceed with work. For example:
 ```
@@ -120,6 +89,36 @@ sudo systemctl start sshd
 # SSH Keys
 ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
 
+# Thunderbird Email
+
+```
+sudo dnf install thundbird
+```
+
+Uni-Bonn email setup described [here](https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichten+von+E-Mail+Clients#expand-AccountSetUp) is summarized below:
+
+### Incoming Server Settings:
+
+```
+Protocol: IMAP
+Hostname: mail.uni-bonn.de
+Port: 933
+Connection Security: SSL/TLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
+### Outgoing Server Settings:
+
+```
+Protocol: IMAP
+Server Name: mail.uni-bonn.de
+Port: 587
+Connection Security: STARTTLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
 # SiRUSH SMB Server
 
 Sirrush is shared via smb. You can simply use a file manager and go to smb://sirrush.physik.uni-bonn.de and log in with silab/pidub12. One can only access the `/silab` directory with this login. If you also want
@@ -128,6 +127,8 @@ to access project folder, an account has to be made for you.
 ## SSH Key Gen
 
 ## SSH Config
+
+
 
 
 # X11 Forwarding
