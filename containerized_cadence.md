@@ -158,13 +158,14 @@ Inside the container, check the system configuration with the Cadence provided t
 
 ```
 Apptainer> /cadence/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
+or
+Apptainer> /tools/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
 ```
 
 Finally, run the virtuoso start-up script, using the full path to `tcsh`. Make sure the start up script contains the line `virtuoso &`. 
 
 ```
 Apptainer> /bin/tcsh ./startup.sh
-
 ```
 
 Else you need to source the script instead, and run the command `virtuoso &` manually.
@@ -240,62 +241,8 @@ The `run`, `exec`, and `shell` commands are the three primary ways in which to i
 ```
 WARNING: The sandbox contain files/dirs that cannot be removed with 'rm'.
 WARNING: Use 'chmod -R u+rwX' to set permissions that allow removal with 'rm -rf'
-WARNING: Use the '--fix-perms' option to 'apptainer build' to modify permissions at build time.Creating a container for BAG3++
+WARNING: Use the '--fix-perms' option to 'apptainer build' to modify permissions at build time.
 ```
-
-
-
-# BAG3++ Container
-
-I don't technically need to use a full define file to make sure that this work. So we'll start with just a lightweight one:
-
-```
-Bootstrap: docker
-From: centos:7
-    
-%setup
-    #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
-    mkdir ${APPTAINER_ROOTFS}/users
-    mkdir ${APPTAINER_ROOTFS}/tools
-%post
-	#CentOS 7 image on dockerhub isn't updated, so run this first
-    yum -y update && yum clean all
-    
-    # Extras repo needed to provide some packages below
-    yum install -y centos-release-scl centos-release-scl-rh
-    
-    # rh-git29 isn't in official repos anymore, so use this instead
-    yum install -y devtoolset-8 httpd24-curl httpd24-libcurl rh-git218
-    
-    #
-    yum install -y conda curl make wget
-```
-
-Then for prototyping, I make a container in sandbox mode:
-
-```
-apptainer build --sandbox bag3++_centos7.sif bag3++_centos7.def
-```
-
-And start a shell inside this writable container, as root, so that you can install and modify contents:
-
-```
-apptainer shell -B /tools,/users --fakeroot --writable bag3++_centos7.sif/
-```
-
-
-
-rh-git29 didn't exist: https://www.softwarecollections.org/en/scls/rhscl/rh-git29/
-
-conda install doesn't work well: https://github.com/ContinuumIO/anaconda-issues/issues/9480
-
-```
-conda env create -f environment.yml --force
-```
-
-
-
-#### No don't make it a sandbox, as this will cause plocate to use so much space
 
 
 

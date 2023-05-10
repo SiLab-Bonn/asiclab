@@ -7,7 +7,7 @@ This should be run once every couple of weeks, or whenever a new package needs t
 1. Update repositories, update packages, autoremove/clean
 1. Install FOSS packages:
 ```
-sudo dnf install apptainer vim tmux htop pandoc
+sudo dnf install apptainer vim tmux htop pandoc curl wget cmake make gcc-g++
 ```
 
 1. vscode, zoom, slack,

@@ -231,6 +231,22 @@ sudo realm join asiclabwin001.physik.uni-bonn.de -v
 
 authenticate as admin account.
 
+### Backing up LDAP data
+
+FreeIPA has commands for backup and restore of LDAP data:
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/backup-restore
+
+```
+sudo ipa-backup --data --online
+```
+
+Both flags are use, as they backup data only, and do that backup without restarting the server.
+
+Data is saved to `/var/lib/ipa/backup/`
+
+
+
 
 
 
