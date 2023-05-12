@@ -47,6 +47,10 @@ sudo dnf install code
 # Zoom
 Simplest way is just to download the official Fedora.rpm from https:/zoom.us. Then just double click on downloaded file in Files GUI. Will figure out Zoom install via command line later.
 
+https://eu02web.zoom.us/support/down4j
+
+
+
 
 # Python venvs
 

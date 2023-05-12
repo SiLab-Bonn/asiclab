@@ -103,9 +103,11 @@ Start here to configure a fresh installation of Fedora Linux (>=37) on a lab des
    sudo realm join asiclabwin001.physik.uni-bonn.de -v
    ```
 
-   In this process, authenticate as `admin` account
+   In this process, authenticate as `admin` account. This will create remote LDAP+NFS users, plus a local LDAP only lab user, with /home/ director
 
 1. [Setup the printers!](printer_config.md)
+
+1. 
 
 1. Follow instructions for running containerized Cadence, if you need it, using `apptainer`.
 

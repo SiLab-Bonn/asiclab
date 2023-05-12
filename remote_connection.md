@@ -85,12 +85,18 @@ sudo systemctl enable sshd
 sudo systemctl start sshd
 
 # SSH Keys
+Generate SSH key, and move it to another computer for remote authentication
+
+```
+ssh-keygen -t ed25519
+
 ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
+```
 
 # Thunderbird Email
 
 ```
-sudo dnf install thundbird
+sudo dnf install thunderbird
 ```
 
 Uni-Bonn email setup described [here](https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichten+von+E-Mail+Clients#expand-AccountSetUp) is summarized below:
