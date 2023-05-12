@@ -1,0 +1,5 @@
+workstations:
+  hosts:
+    asiclab001.physik.uni-bonn.de:
+    asiclab002.physik.uni-bonn.de:
+    asiclab003.physik.uni-bonn.de:

@@ -1,0 +1,57 @@
+---
+- name: Workstation Configuration
+  hosts: workstations
+  tasks:
+    - name: Pinging workstations
+      ansible.builtin.ping: null
+    - name: Cleaning DNF Cache
+      shell: dnf clean all
+    - name: Install necessary packages
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - apptainer
+          - vim
+          - tmux
+          - htop
+          - pandoc
+          - texlive
+          - curl
+          - wget
+          - git
+        state: latest
+    - name: Upgrade all packages
+      become: true
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+    - name: Create directory for users
+      become: true
+      ansible.builtin.file:
+        path: /users
+        state: directory
+        owner: 0
+        group: 0
+        mode: 755
+    - name: Create directory for tools directory
+      become: true
+      ansible.builtin.file:
+        path: /tools
+        state: directory
+        owner: 0
+        group: 0
+        mode: 755
+    - name: Install necessary packages
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - fxload
+          - libusb1
+          - libusb1-devel
+          - libusb-compat-0.1
+          - libusb-compat-0.1-devel
+        state: latest
+    - name: Autoremove unused orphan packaging
+      become: true
+      ansible.builtin.dnf:
+        autoremove: true
