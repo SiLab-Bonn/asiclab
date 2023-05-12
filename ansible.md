@@ -145,12 +145,28 @@ sudo fwupdmgr update
 ```
 
 
+## How to log:
+
+Append the regiser and debug
+
+```
+   - name: Cleaning DNF Cache
+     shell: dnf clean all
+     register: command_output
+       
+   - debug: var=command_output
+```
+
+
 to do list:
 
 - create user and tools directory
 - mount NFS directories (fstab and mount -a)
 - connect to LDAP, test users?
 - 
+
+- configure Drivers for USB JTAG programmers?
+
 
 
 on each machine, change the BIOS to boot from SSD, make sure BIOS is UEFI, ensure AHCI boot is on, and make sure Wake-on-lan is enabled
@@ -159,7 +175,9 @@ enable location services
 
 enable automatic time zone
 
-change power settings
+change power settings, system wide for all users, so that system goes into sleep, but is still pingable to wake back up
+
+configure internal drive, on a mount point, for scratch space
 
 additional installs: pycharm gstreamer1-plugin-openh264 mozilla-openh264
 

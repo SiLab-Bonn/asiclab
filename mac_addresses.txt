@@ -1,0 +1,10 @@
+54:bf:64:98:25:d4   asiclab001
+54:bf:64:98:25:cc   aisclab002
+54:bf:64:98:25:ba   asiclab003
+54:bf:64:98:25:f0   asiclab006
+54:bf:64:98:25:ed   asiclab008
+
+44:37:e6:89:c3:50   asiclab00
+
+
+
