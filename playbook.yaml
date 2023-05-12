@@ -1,7 +1,19 @@
 ---
 - name: Workstation Configuration
   hosts: workstations
+  gather_facts: no
   tasks:
+    - name: Send a magic packet to asiclab001
+      community.general.wakeonlan:
+        mac: '{{ mac }}'
+      delegate_to: localhost
+
+    - name: Wait to computers to become reachable
+      ansible.builtin.wait_for_connection: 
+    
+    - name: Gather facts for the first time
+      ansible.builtin.setup:
+
     - name: Pinging workstations
       ansible.builtin.ping: null
     - name: Cleaning DNF Cache

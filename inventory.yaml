@@ -1,5 +1,12 @@
 workstations:
   hosts:
     asiclab001.physik.uni-bonn.de:
+      mac: 54:BF:64:98:25:D4
     asiclab002.physik.uni-bonn.de:
+      mac: 54:BF:64:98:25:CC
     asiclab003.physik.uni-bonn.de:
+      mac: 54:BF:64:98:25:BA
+    asiclab006.physik.uni-bonn.de:
+      mac: 54:BF:64:98:25:F0
+    asiclab00.physik.uni-bonn.de:
+      mac: 44:37:E6:89:C3:50
