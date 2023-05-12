@@ -48,10 +48,6 @@ all:
       asiclab08
 ```
 
-
-
-
-
 # Base Fedora Repos
 
 ```
@@ -102,8 +98,6 @@ rpmfusion-nonfree                                           RPM Fusion for Fedor
 rpmfusion-nonfree-updates                                   RPM Fusion for Fedora 38 - Nonfree - Updates
 ```
 
-
-
 # Flatpak
 
 Fedora by default has just a Fedora flapak repo. Additionally, from the software center you can enable a filtered flathub. But from the command below will enable an unfiltered version:
@@ -121,19 +115,7 @@ The `flatpak` command also lists and installs apps and runtimes. To list all app
 $ flatpak remote-ls flathub --app
 ```
 
-Then, install an app with the `install` command:
-
-```
-$ flatpak install flathub org.gnome.Polari
-```
-
-Once installed, you can use the `run` command to run the application:
-
-```
-$ flatpak run org.gnome.Polari
-```
-
-
+Then, install an app with the `install` command
 
 ```
 flatpak install flathub us.zoom.Zoom
@@ -165,7 +147,13 @@ sudo fwupdmgr update
 
 to do list:
 
-on each machine, change the 
+- create user and tools directory
+- mount NFS directories (fstab and mount -a)
+- connect to LDAP, test users?
+- 
+
+
+on each machine, change the BIOS to boot from SSD, make sure BIOS is UEFI, ensure AHCI boot is on, and make sure Wake-on-lan is enabled
 
 enable location services
 
@@ -176,4 +164,5 @@ change power settings
 additional installs: pycharm gstreamer1-plugin-openh264 mozilla-openh264
 
 zoom vscode slack typora? Not sure if custom rpm or flathub?
+
 
