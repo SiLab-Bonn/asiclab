@@ -10,3 +10,11 @@ workstations:
       mac: 54:BF:64:98:25:F0
     asiclab00.physik.uni-bonn.de:
       mac: 44:37:E6:89:C3:50
+    asiclab01.physik.uni-bonn.de:
+      mac: 44:37:E6:94:CB:C8
+    asiclab02.physik.uni-bonn.de:
+      mac: 44:37:E6:94:A6:63
+    asiclab05.physik.uni-bonn.de:
+      mac: 44:37:E6:94:CB:DE
+    asiclab07.physik.uni-bonn.de:
+      mac: 44:37:E6:94:A6:5f

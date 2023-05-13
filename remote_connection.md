@@ -91,6 +91,9 @@ Generate SSH key, and move it to another computer for remote authentication
 ssh-keygen -t ed25519
 
 ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
+
+# alternatively
+ssh-copy-id -i ~/.ssh/id_ed25519.pub asiclab@asiclab07 
 ```
 
 # Thunderbird Email

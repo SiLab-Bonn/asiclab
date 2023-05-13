@@ -303,3 +303,37 @@ https://jfearn.fedorapeople.org/fdocs/en-US/Fedora/20/html/Networking_Guide/sec-
 
 https://docs.fedoraproject.org/en-US/fedora-coreos/sysconfig-network-configuration/
 
+
+# Hardware settings and config
+
+The older machines are Lenovo E30 machines, wtih a IS6XM mother board, with a i7-2600 CPU. The 256 SSH should be connected to the first sata port: SATA 1. In the boot configuration, the USB key should be first, and SSD should be second. BIOS updates can be found here:
+https://support.lenovo.com/my/en/downloads/DS018245
+
+Press CTRL ALT delete to get back to spalsh screen from error 1962. Ideally I would enable Compatibility Support Module (CSM) but I guess this isn't supporoted in my bios version.
+
+This answer indicates I probably need to update the BIOS: https://askubuntu.com/questions/1414366/no-operating-system-found-after-clean-install-of-ubuntu-22-04
+
+`fdisk` and `gdisk` could be a good way to examine the structure of the boot disk. I need to understand what a EFI partition is.
+
+The reason this process worked on asiclab00 is because it has slightly older firmware, I belive, and it didn't install a EFI partition. It installed as a legacy system. I don't think this can be done on 
+
+Note that fwupgrade requires UEFI, and 
+
+
+sudo efibootmgr -c -L "Windows Boot Manager" -l "\EFI\fedora\grubx64.efi"
+sudo efibootmgr -c -d /dev/sdX -p Y -L "Windows Boot Manager" -l "\EFI\path\file.efi"
+sudo efibootmgr -c -d /dev/sda1 -p 1 -L "Windows Boot Manager" -l "\EFI\boot\grubx64.efi"
+
+default is sda so, -d flat isn't really needed. Also default partition -p is 1 so also not needed
+
+The command that appears to work, assuming /dev/sda1 is the partition of interest:
+
+sudo efibootmgr -c -L "Windows Boot Manager" -l "\EFI\fedora\shimx64.efi"
+
+https://forums.fedoraforum.org/showthread.php?317210-EFI-boot-issues-Lenovo-AIO-Error-1962-No-Operating-System-Found
+https://unix.stackexchange.com/questions/324753/pernicious-1962-error-installing-fedora-server-24-no-operating-system-found
+https://www.reddit.com/r/ManjaroLinux/comments/e682d6/fixing_lenovos_error_code_1962_by_spoofing_the/
+https://superuser.com/questions/913779/how-can-i-know-which-partition-is-efi-system-partition
+
+
+make sure I can still ping asiclb010, as this is yannik's machine?
