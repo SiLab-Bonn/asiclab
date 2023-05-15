@@ -53,6 +53,10 @@
         owner: 0
         group: 0
         mode: 755
+    - name: "Add mount points to /etc/fstab"
+    lineinfile:
+      path: '/etc/fstab'
+      line: 
     - name: Install necessary packages
       become: true
       ansible.builtin.dnf:

@@ -157,6 +157,20 @@ Append the regiser and debug
    - debug: var=command_output
 ```
 
+## Roles, Tasks, Modules, etc
+https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook
+
+
+Playbook: the highest level, just a list of plays
+    Play: ties tasks to host lists, often just one per playbook)
+    Tasks: definition of a call to a module (undelying execution can be written in any language)
+    Besides tasks, a play may have pre-tasks, post-tasks and handlers, which are all task-like, and roles.
+    
+
+
+
+
+
 
 to do list:
 
@@ -182,5 +196,8 @@ configure internal drive, on a mount point, for scratch space
 additional installs: pycharm gstreamer1-plugin-openh264 mozilla-openh264
 
 zoom vscode slack typora? Not sure if custom rpm or flathub?
+
+
+
 
 
