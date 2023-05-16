@@ -22,6 +22,16 @@ sudo make
 
 The one-time initial setup is as follows
 
+
+## Digilent JTAG adapter
+```
+cd [workdir]
+cp -r /tools/xilinx/14.7/ISE_DS/common/bin/lin64/digilent/ .
+sudo ./install_digilent.sh
+```
+
+
+## Xilinx JTAG adapter
 ```
 sudo dnf install fxload libusb1 libusb1-devel libusb-compat-0.1 libusb-compat-0.1-devel
 ./setup_pcusb /tools/xilinx/14.7/ISE_DS/ISE
@@ -36,12 +46,20 @@ You may need to set the following env variable after sourcing a settings file (d
 export LD_PRELOAD=/opt/Xilinx/usb-driver/libusb-driver.so   #not needed
 ```
 
-Then finally, from user home directory, or some local work dir:
+## Environment
 
+Then finally, from user home directory, or some local work dir:
 ```
 cd [workdir]
-source /tools/xilinx/14.7/ISE_DS/settings64.sh
+source setup_ise.sh
 impact &
 ```
+
+*setup_ise.sh* (/tools/xilinx/FPGA_tutorial) sets paths for the Xilinx tools and the licence server
+```
+source /tools/xilinx/14.7/ISE_DS/settings64.sh
+export XILINXD_LICENSE_FILE=8000@faust02.physik.uni-bonn.de
+```
+
 
 This last block is all to should need to on subsequent use.
