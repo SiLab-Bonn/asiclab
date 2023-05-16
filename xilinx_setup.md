@@ -55,7 +55,7 @@ source setup_ise.sh
 impact &
 ```
 
-*setup_ise.sh* sets paths for the Xilinx tools and the licence server
+*setup_ise.sh* (/tools/xilinx/FPGA_tutorial) sets paths for the Xilinx tools and the licence server
 ```
 source /tools/xilinx/14.7/ISE_DS/settings64.sh
 export XILINXD_LICENSE_FILE=8000@faust02.physik.uni-bonn.de
