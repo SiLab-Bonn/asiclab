@@ -1,25 +1,33 @@
 ---
+# Command: ansible-playbook --limit asiclab00.physik.uni-bonn.de -K -i inventory.yaml playbook.yaml --tags nfs
 - name: Workstation Configuration
   hosts: workstations
+  become: true
   gather_facts: no
   tasks:
-    - name: Send a magic packet to asiclab001
+    - name: Send a WOL magic packet to workstation machines
       community.general.wakeonlan:
         mac: '{{ mac }}'
       delegate_to: localhost
-
+      tags: init
+      
     - name: Wait to computers to become reachable
       ansible.builtin.wait_for_connection: 
-    
+      tags: init
+      
     - name: Gather facts for the first time
       ansible.builtin.setup:
-
+      tags: init
+      
     - name: Pinging workstations
       ansible.builtin.ping: null
+      tags: init
+      
     - name: Cleaning DNF Cache
       shell: dnf clean all
-    - name: Install necessary packages
-      become: true
+      tags: clean
+      
+    - name: Install basic userspace tools packages
       ansible.builtin.dnf:
         name:
           - apptainer
@@ -27,38 +35,55 @@
           - tmux
           - htop
           - pandoc
+          - yamllint
           - texlive
           - curl
           - wget
           - git
         state: latest
+      tags: update
+      
     - name: Upgrade all packages
-      become: true
       ansible.builtin.dnf:
         name: "*"
         state: latest
-    - name: Create directory for users
-      become: true
-      ansible.builtin.file:
+      tags: update
+      
+    - name: Autoremove unused orphan packaging
+      ansible.builtin.dnf:
+        autoremove: true
+      tags: update
+      
+    - name: Create mount point, and add mount for /users
+      ansible.posix.mount:
+        src: penelope.physik.uni-bonn.de:/export/disk/users
         path: /users
-        state: directory
-        owner: 0
-        group: 0
-        mode: 755
-    - name: Create directory for tools directory
-      become: true
-      ansible.builtin.file:
+        opts: rw
+        boot: true
+        state: mounted
+        fstype: nfs4
+      tags: nfs
+
+    - name: Create mount point, and add mount for /tools
+      ansible.posix.mount:
+        src: penelope.physik.uni-bonn.de:/export/disk/tools
         path: /tools
+        opts: ro
+        boot: true
+        state: mounted
+        fstype: nfs4
+      tags: nfs
+      
+    - name: Create guest home directory
+      ansible.builtin.file:
+        path: /home/guest
         state: directory
-        owner: 0
-        group: 0
-        mode: 755
-    - name: "Add mount points to /etc/fstab"
-    lineinfile:
-      path: '/etc/fstab'
-      line: 
-    - name: Install necessary packages
-      become: true
+        owner: 1001
+        group: 200
+        mode: 0755
+      tags: fpga
+      
+    - name: Install necessary USB drivers for FPGA programmers
       ansible.builtin.dnf:
         name:
           - fxload
@@ -67,7 +92,13 @@
           - libusb-compat-0.1
           - libusb-compat-0.1-devel
         state: latest
-    - name: Autoremove unused orphan packaging
-      become: true
-      ansible.builtin.dnf:
-        autoremove: true
+      tags: fpga
+      
+    - name: Copy fpga project directory to guest home
+      become: false
+      ansible.builtin.copy:
+        src: /tools/xilinx/FPGA_tutorial
+        dest: /home/guest/
+        owner: 1001
+        group: 200
+      tags: fpga

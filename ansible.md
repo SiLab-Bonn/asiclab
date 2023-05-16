@@ -174,9 +174,9 @@ Playbook: the highest level, just a list of plays
 
 to do list:
 
-- create user and tools directory
-- mount NFS directories (fstab and mount -a)
-- connect to LDAP, test users?
+- ~~create user and tools directory~~
+- ~~mount NFS directories (fstab and mount -a)~~
+- ~~connect to LDAP, test users?~~
 - 
 
 - configure Drivers for USB JTAG programmers?
@@ -199,5 +199,59 @@ zoom vscode slack typora? Not sure if custom rpm or flathub?
 
 
 
+# Unused commands:
+
+```
+    - name: Create directory for users
+      become: true
+      ansible.builtin.file:
+        path: /users
+        state: directory
+        owner: 0
+        group: 0
+        mode: 0755
+      tags: nfs
+      
+    - name: Create directory for tools directory
+      become: true
+      ansible.builtin.file:
+        path: /tools
+        state: directory
+        owner: 0
+        group: 0
+        mode: 0755
+      tags: nfs
+      
+    - name: Add users mount to /etc/fstab
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        line: penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
+        create: yes
+      tags: nfs
+      
+    - name: Add tool mount to /etc/fstab
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        line: penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
+        create: yes
+      tags: nfs
+    
+    - name: Reload system daemon to mount
+      become: true
+      ansible.builtin.systemd:
+        daemon_reload: true
+```
 
 
+
+guest password is 'guestpassword'
+
+
+
+for freeipa syntax, use the following:
+
+https://github.com/freeipa/ansible-freeipa
+
+https://github.com/freeipa/ansible-freeipa/blob/master/roles/ipaclient/README.md

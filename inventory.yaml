@@ -1,3 +1,5 @@
+# Command to run: ansible-playbook --limit asiclab00.physik.uni-bonn.de -K -i inventory.yaml playbook.yaml --tags nfs
+
 workstations:
   hosts:
     asiclab001.physik.uni-bonn.de:
@@ -17,6 +19,6 @@ workstations:
     asiclab05.physik.uni-bonn.de:
       mac: 44:37:E6:94:CB:DE
     asiclab07.physik.uni-bonn.de:
-      mac: 44:37:E6:94:A6:5f
+      mac: 44:37:E6:94:A6:5F
     asiclab08.physik.uni-bonn.de:
       mac: 44:37:E6:94:FC:39

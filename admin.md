@@ -2,11 +2,9 @@
 
 Untarring a 650 GB file on Penelope produces the following system usage:
 
-![image-20230428172805088](assets/image-20230428172805088.png)
+>  The read/write I/O jumps to 40MB/s and 150 MB/S. But essentially no CPU or RAM  (<5%) is used.
 
-So the write I/O is 150 MB/S. But essentially no CPU or RAM  (<5%) is used.
-
-Compaing against our Toshiba MG08 drives, which have these specs:
+Comparing against our Toshiba MG08 drives, which have these specs:
 
 | Available Capacities                                      | 16 TB, 14 TB                                  |
 | --------------------------------------------------------- | --------------------------------------------- |

@@ -116,9 +116,3 @@ Start here to configure a fresh installation of Fedora Linux (>=37) on a lab des
 1. Finally, enable 3rd party repos (if not already done), and follow instruction to install proprietary software, like Slack, Chrome, etc.
 
 1. If you plan to work remotely, read the section on Remote Connection, which covers SSH, VNC, Wireguard (in network-manager interface)
-
-## Workstation Setup with Windows
-
-Start here in you need to configure a fresh installation of Windows on a ASICLab machine...
-
-[Under construction]

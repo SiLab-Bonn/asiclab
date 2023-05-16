@@ -1,0 +1,9 @@
+---
+# Command to run: # Command to run: ansible-playbook -K -v -i inventory.ini install-client.yml
+- name: Playbook to configure IPA clients with username/password
+  hosts: ipaclients
+  become: true
+
+  roles:
+  - role: ipaclient
+    state: present
