@@ -81,7 +81,7 @@
         owner: 1001
         group: 200
         mode: 0755
-      tags: fpga
+      tags: fpga-dis
       
     - name: Install necessary USB drivers for FPGA programmers
       ansible.builtin.dnf:
@@ -92,13 +92,33 @@
           - libusb-compat-0.1
           - libusb-compat-0.1-devel
         state: latest
-      tags: fpga
+      tags: fpga-dis
       
     - name: Copy fpga project directory to guest home
-      become: false
       ansible.builtin.copy:
         src: /tools/xilinx/FPGA_tutorial
         dest: /home/guest/
         owner: 1001
         group: 200
-      tags: fpga
+      tags: fpga-dis
+    
+    - name: Copy Digilent JTAG USB Drivers to asiclab user home
+      ansible.builtin.copy:
+        src: /tools/xilinx/14.7/ISE_DS/common/bin/lin64/digilent
+        dest: /home/asiclab/
+        owner: 1000
+        group: 1000
+      tags: fpga-dis
+      
+    - name: Run digilent install script
+      ansible.builtin.expect:
+        command: /home/asiclab/install_digilent.sh
+        responses:
+          'In which directory should libraries be installed? \[/usr/local/lib64/digilent/adept\]': "\n"
+          'In which directory should the Adept Runtime Configuration file be installed? [/etc]': "\n"
+          'In which directory should libraries be installed? \[/usr/local/lib64\]': "\n"
+          'In which directory should plugins be installed? \[/root/.cse\]': "\n"
+          'Overwrite existing plugin "/root/.cse/lin64/14.1/plugins/Digilent/libCseDigilent"? \(y/n\) \[y\]': "\n"
+      
+      # use expect
+      # then just run the script without the sudos above

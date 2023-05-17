@@ -23,18 +23,22 @@ sudo make
 The one-time initial setup is as follows
 
 
+
+
+
+
 ## Digilent JTAG adapter
 ```
 cd [workdir]
-cp -r /tools/xilinx/14.7/ISE_DS/common/bin/lin64/digilent/ .
+cp -r /tools/xilinx/14.7/ISE_DS/common/bin/lin64/digilent .
 sudo ./install_digilent.sh
 ```
 
-
 ## Xilinx JTAG adapter
+
 ```
 sudo dnf install fxload libusb1 libusb1-devel libusb-compat-0.1 libusb-compat-0.1-devel
-./setup_pcusb /tools/xilinx/14.7/ISE_DS/ISE
+sudo ./setup_pcusb /tools/xilinx/14.7/ISE_DS/ISE
 sudo udevadm control --reload-rules
 ```
 
