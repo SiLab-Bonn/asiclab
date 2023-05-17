@@ -67,3 +67,9 @@ export XILINXD_LICENSE_FILE=8000@faust02.physik.uni-bonn.de
 
 
 This last block is all to should need to on subsequent use.
+
+
+- Make sure the gcc gdb and dumptool thing is installed.
+- Make sure permissions are perserved when copying the driver install and projects
+- Try and understand why install digital install script needed /etc/hotplug/usb needed to be manually created
+- remember that Impact bitstream programmer isn't synced with ISE, and so you must manually select a new project's bitstream to be loaded. 
