@@ -9,7 +9,7 @@
 in GRUB, press 'e' to edit kernel parameters
 Kernel command line parameters either have the format 'parameter' or 'parameter=value'
 
-Ctrl + x to boot
+`Ctrl + x` to boot
 
 Remove the arguments rhgb quiet and add the arguments loglevel=7 and systemd.log_level=debug instead to change the verbosity to highest level. Press CTRL+x to accept the changes and boot the system. You should see a lot of logs on you screen now.
 
