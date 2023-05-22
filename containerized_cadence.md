@@ -1,8 +1,24 @@
+
+
+# Motivation
+
+Proprietary EDA tools like Cadence Virtuoso are typically only supported on [a handful of operating systems](https://www.cadence.com/content/dam/cadence-www/global/en_US/documents/support/2021-2024-cadence-compute-platform-roadmap-v1-public.pdf). As machines for ASIC design are typically dedicated for that purpose, this can therefore lead to 
+
+
+
+
+
+
+
+# Containers
+
+Container provide for operating system virtualization,  in which the kernel allows the existence of multiple isolated user space instances.
+
 ## Intro to Containers
 
 OS-level virtualization is an operating system (OS) paradigm in which the kernel allows the existence of multiple isolated user space instances, called containers (LXC, Solaris containers, Docker, Podman), zones (Solaris containers), virtual private servers (OpenVZ), partitions, virtual environments (VEs), virtual kernels (DragonFly BSD), or jails (FreeBSD jail or chroot jail).[1] Such instances may look like real computers from the point of view of programs running in them. A computer program running on an ordinary operating system can see all resources (connected devices, files and folders, network shares, CPU power, quantifiable hardware capabilities) of that computer. However, programs running inside of a container can only see the container's contents and devices assigned to the container.
 
-A short list of tech to consider: Docker, Fedora CoreOS, Silverblue, Ansible, Toolbx, Singularity/Apptainer, Podman, LXC, Flatpak
+A short list of tech to consider: Docker, Fedora CoreOS, Silverblue, Toolbx, Singularity/Apptainer, Podman, LXC, Flatpak
 
 In short, unlike a virtual machine, containers provide abstraction at the operating system level. This can be useful for running proprietary GUI-based applications like Cadence Virtuoso, which e
 
