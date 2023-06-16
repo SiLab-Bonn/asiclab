@@ -15,7 +15,6 @@
 | Read 1 MB sequentially from disk    | 30,000,000 ns  | 30 ms     |
 | Send packet CA->Netherlands->CA     | 150,000,000 ns | 150 ms    |
 
-
 # Admin Experiments
 
 Untarring a 650 GB file on Penelope produces the following system usage:

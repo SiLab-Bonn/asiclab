@@ -164,6 +164,29 @@ For example umask = 0022 yeilds effectively a mod = 7755, or u=rwx,g=rx,o=rx
 
 And `umask 0077` means that permission will be `7700`
 
+## Users and Groups Scheme
+
+Local users are UID 1000-1999, and have matching group IDs.
+LDAP users are UID 2000-2999, and don't have matching groups.
+User groups are in range 3000-3999.
+
+```
+UID:
+asiclab         1000 (local on each computer)
+user1           2001
+user2           2002
+user3           2003  ...etc
+
+GID:
+asiclab         1000, etc    (matching local users on each computer)
+base 	      	3001    (all user directories, default for tools directory)
+icdesign        3002    (access to cadence/mentor/synonsys tools)
+tsmc65          3003
+tsmc28          3004
+```
+
+
+
 ## FreeIPA Setup:
 
 Starting from Fresh Fedora install
@@ -244,29 +267,6 @@ sudo ipa-backup --data --online
 Both flags are use, as they backup data only, and do that backup without restarting the server.
 
 Data is saved to `/var/lib/ipa/backup/`
-
-
-
-
-
-
-## Sketch of Planned UIDs and GIDs
-
-```
-UID:
-asiclab         1000 (local on each computer)
-user1           2001
-user2           2002
-user3           2003  ...etc
-
-GID:
-asiclab         1000    (just local asiclab user on each computer)
-base 	      	1001    (all user directories, and default setting in tools directory)
-icdesign        1002    (access to cadence/mentor/synonsys tools)
-tsmc65          1003
-tsmc28          1004
-```
-
 
 
 
