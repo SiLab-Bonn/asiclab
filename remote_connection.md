@@ -54,7 +54,17 @@ HostKeyAlgorithms=ssh-rsa,ssh-rsa-cert-v01@openssh.com
 PubkeyAcceptedAlgorithms=+ssh-rsa,ssh-rsa-cert-v01@openssh.com
 ```
 
-Note: If you're trying to connect to, or from an older system, you may run into issues where the version keys supported is deprecated. I found a solution to this, which Lise has in her Github issues.
+Note: If you're trying to connect to, or from an older system, you may run into issues where the version keys supported is deprecated.
+
+An alternative way to enable ssh-rsa is to just create a `.ssh/config` file:
+
+```
+Host ssh.dev.azure.com
+    User git
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+```
+
 
 
 

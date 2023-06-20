@@ -20,7 +20,6 @@ The table below gives an overview of the FTP server settings that your FTP clien
 | Transfer mode:       | Passive                        |
 
 
-
 The following transcript shows how to download:
 
 ```

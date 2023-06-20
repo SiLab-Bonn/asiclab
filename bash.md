@@ -13,6 +13,7 @@ To make sure that these are available then in the terminal session that launched
 
 
 # Find all files with certain extension:
+
 `find . -type f -name "*.txt"`
 
 
@@ -20,7 +21,6 @@ To make sure that these are available then in the terminal session that launched
 
 `grep -R "text to find" .`
 
-## 
 note, when running ls -l, the second column is the number of hardlinks (which is equal to the number of directories, sorta?) anyways, i can just think of it as the approximate number of directories inside this one.
 
 ### Using Git to restore a deleted, uncommitted file:
@@ -28,12 +28,15 @@ If your changes have not been staged or committed: The command you should use in
 
 
 ## to figure out current tty number
-w
+
+`w`
 
 
 ## to show which tty are being used
-ps -e | grep tty
 
+```
+ps -e | grep tty
+```
 
 to kill another tty
 pkill -9 -t tty1
