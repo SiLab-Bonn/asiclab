@@ -2,7 +2,57 @@
 
 As of Fedora 38, which is built on Gnome 44, you can simply import Wireguard `.conf` files directly in the Settings application, under the Network tab.
 
-# Github Access w/ SSH Keys
+# SSH
+
+## Basics
+
+SSH can be enabled on hosts graphically on workstations in settings, and on Fedora servers via:
+
+```
+sudo systemctl enable sshd
+sudo systemctl start sshd
+```
+
+## Enabling Older OpenSSH Algorithms
+
+To enable SSH-RSA (and outdated protocol) on new machines
+To permit using old RSA keys for OpenSSH 8.8+, add the following lines to your sshd_config:
+
+```
+HostKeyAlgorithms=ssh-rsa,ssh-rsa-cert-v01@openssh.com
+PubkeyAcceptedAlgorithms=+ssh-rsa,ssh-rsa-cert-v01@openssh.com
+```
+
+Note: If you're trying to connect to, or from an older system, you may run into issues where the version keys supported is deprecated.
+
+An alternative way to enable ssh-rsa is to just create a `.ssh/config` file:
+
+```
+Host ssh.dev.azure.com
+    User git
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+```
+
+## Passwordless Authentication
+For passwordless authentication, one can generate SSH keys, and move it to another computer for authentication
+
+```
+ssh-keygen -t ed25519
+
+ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
+
+# alternatively
+ssh-copy-id -i ~/.ssh/id_ed25519.pub asiclab@asiclab07 
+```
+
+To enable SSH public key authentication on a Fedora host, make sure you go to `/etc/ssh/sshd_config` and uncomment the line
+
+```
+PubkeyAuthentication yes.
+```
+
+## Github Access via Key Pairs
 
 [Instructions for SSH key authentication.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
 
@@ -23,7 +73,7 @@ ssh -T git@github.com
 
 If you have issues, try changing the permissions of the key pair using `chmod 600 {key}` and add the keys to the SSH agent with `ssh-add`.
 
-### Then to allow copying down repos
+To allow copying down repos:
 
 To add commits, and push back to github, make sure your configure your local git with your username and password, matching those of Github:
 ```
@@ -43,32 +93,7 @@ git clone -b develop git@github.com:SiLab-Bonn/pybag.git --recurse-submodules
 ```
 
 
-# SSH
-
-To enable SSH public key authentication on Fedora, make sure you go to /etc/ssh/sshd_config and uncomment the line PubkeyAuthentication yes.
-To enable SSH-RSA (and outdated protocol) on new machines
-To permit using old RSA keys for OpenSSH 8.8+, add the following lines to your sshd_config:
-
-```
-HostKeyAlgorithms=ssh-rsa,ssh-rsa-cert-v01@openssh.com
-PubkeyAcceptedAlgorithms=+ssh-rsa,ssh-rsa-cert-v01@openssh.com
-```
-
-Note: If you're trying to connect to, or from an older system, you may run into issues where the version keys supported is deprecated.
-
-An alternative way to enable ssh-rsa is to just create a `.ssh/config` file:
-
-```
-Host ssh.dev.azure.com
-    User git
-    PubkeyAcceptedAlgorithms +ssh-rsa
-    HostkeyAlgorithms +ssh-rsa
-```
-
-
-
-
-### Changing computer Sleep, suspend, and hibernate settings:
+# Sleep, suspend, and hibernate settings:
 
 ```
 sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
@@ -90,21 +115,6 @@ There are [multiple methods](https://docs.kernel.org/admin-guide/pm/sleep-states
 
   A hybrid of suspending and hibernating, sometimes called **suspend to both**. Saves the machine's state into swap space, but does not power off the  machine. Instead, it invokes the default suspend. Therefore, if the  battery is not depleted, the system can resume instantly. If the battery is depleted, the system can be resumed from disk, which is much slower  than resuming from RAM, but the machine's state has not been lost.
 
-## Server Start
-sudo systemctl enable sshd
-sudo systemctl start sshd
-
-# SSH Keys
-Generate SSH key, and move it to another computer for remote authentication
-
-```
-ssh-keygen -t ed25519
-
-ssh-copy-id -i ~/.ssh/asiclab008.pub kcaisley@asiclab008.physik.uni-bonn.de
-
-# alternatively
-ssh-copy-id -i ~/.ssh/id_ed25519.pub asiclab@asiclab07 
-```
 
 # Thunderbird Email
 
@@ -141,11 +151,6 @@ Username: kcaisley@uni-bonn.de
 Sirrush is shared via smb. You can simply use a file manager and go to smb://sirrush.physik.uni-bonn.de and log in with silab/pidub12. One can only access the `/silab` directory with this login. If you also want
 to access project folder, an account has to be made for you.
 
-## SSH Key Gen
-
-## SSH Config
-
-
 
 
 # X11 Forwarding
@@ -158,10 +163,11 @@ https://linuxize.com/post/how-to-install-and-configure-vnc-on-centos-7/
 
 # RDP
 
+Enable in Workstation settings, then using gnome connections, check the RDP connection type. The format is:
 
-### enable and connect via RDP:
-
-app????
+```
+rdp://asiclab008.physik.uni-bonn.de:3389
+```
 
 
 # SFTP

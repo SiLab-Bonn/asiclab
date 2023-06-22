@@ -1,4 +1,5 @@
 "Numbers everyone should know"
+
 | Action                              | Time (ns)      | Time (ms) |
 | ----------------------------------- | -------------- | --------- |
 | L1 cache reference                  | 0.5 ns         |           |

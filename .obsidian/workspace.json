@@ -11,8 +11,12 @@
             "id": "8fce03da1112e172",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "admin.md",
+                "mode": "source",
+                "source": true
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "admin.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "admin.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,10 +124,13 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "admin.md"
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -139,5 +148,15 @@
     }
   },
   "active": "8fce03da1112e172",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "bash.md",
+    "boot_sequence.md",
+    "checksum_notes.md",
+    "clonezilla.md",
+    "network_configuration.md",
+    "license_server.md",
+    "setup_xilinx.md",
+    "setup_pdk.md",
+    "remote_connection.md"
+  ]
 }
