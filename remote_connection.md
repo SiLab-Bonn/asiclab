@@ -49,7 +49,7 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub asiclab@asiclab07
 To enable SSH public key authentication on a Fedora host, make sure you go to `/etc/ssh/sshd_config` and uncomment the line
 
 ```
-PubkeyAuthentication yes.
+PubkeyAuthentication yes
 ```
 
 ## Github Access via Key Pairs
