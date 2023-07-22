@@ -54,7 +54,7 @@
         autoremove: true
       tags: update
       
-    - name: Create mount point, and add mount for /users
+    - name: Create directory and mount /users
       ansible.posix.mount:
         src: penelope.physik.uni-bonn.de:/export/disk/users
         path: /users
@@ -64,7 +64,7 @@
         fstype: nfs4
       tags: nfs
 
-    - name: Create mount point, and add mount for /tools
+    - name: Create directory and mount /tools
       ansible.posix.mount:
         src: penelope.physik.uni-bonn.de:/export/disk/tools
         path: /tools

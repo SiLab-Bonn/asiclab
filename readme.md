@@ -4,7 +4,7 @@ The documentation covers ASICLab software, servers, workstations, and other infr
 
 ## Network Architecture
 
-The follow diagram shows the various workstations and servers (i.e. infrastructure used in the lab, and the major services that run on the servers like NFS and LDAP. Additionall, some useful services like DNS and CUPS are inherited from the larger PI network, as seen on the right.
+The follow diagram shows the various workstations and servers (i.e. infrastructure used in the lab, and the major services that run on the servers like NFS and LDAP. Additionally, some useful services like DNS and CUPS are inherited from the larger PI network, as seen on the right.
 
 ```mermaid
 graph TB
@@ -59,7 +59,7 @@ switch---asiclabwinXXX
 
 `juno`: Simulation server (identical configuration of jupiter)
 
-`faust02`: (soon to be decomissioned, still running LDAP and License Server)
+`faust02`: (soon to be decommissioned, still running LDAP and License Server)
 
 `apollo`: (retired)
 
@@ -77,7 +77,7 @@ Start here to configure a fresh installation of Fedora Linux (>=37) on a lab des
 
 1. Once the Fedora installer has loaded, select "Install to Hard Drive", choose your desired region and keyboard setup, and select the machine's solid state drive for install. After install has completed and the computer has rebooted, accept the prompt to opt into 'Third Party Repositories', and create a local user account called `asiclab`. Ask one of the older lab members for the default admin password for this account. (Password updated as of April 2023.) You should now be on the desktop.
 
-1. Verying [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
+1. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
 
    **From here forward, remote config management is possible. See [Ansible notes](ansible.md) for more info.**
 
@@ -108,8 +108,6 @@ Start here to configure a fresh installation of Fedora Linux (>=37) on a lab des
    In this process, authenticate as `admin` account. This will create remote LDAP+NFS users, plus a local LDAP only lab user, with /home/ director
 
 1. [Setup the printers!](printer_config.md)
-
-1. 
 
 1. Follow instructions for running containerized Cadence, if you need it, using `apptainer`.
 

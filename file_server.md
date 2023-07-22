@@ -1,4 +1,4 @@
-## Client NFS Mounting (For Fedora)
+# Client NFS Mounting (For Fedora)
 
 ```
 $ cd /

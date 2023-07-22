@@ -5,11 +5,6 @@
 Proprietary EDA tools like Cadence Virtuoso are typically only supported on [a handful of operating systems](https://www.cadence.com/content/dam/cadence-www/global/en_US/documents/support/2021-2024-cadence-compute-platform-roadmap-v1-public.pdf). As machines for ASIC design are typically dedicated for that purpose, this can therefore lead to 
 
 
-
-
-
-
-
 # Containers
 
 Container provide for operating system virtualization,  in which the kernel allows the existence of multiple isolated user space instances.

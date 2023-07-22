@@ -1,4 +1,4 @@
-## Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:
+# Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:
 
 https://stackoverflow.com/questions/7124486/what-to-do-with-commit-made-in-a-detached-head
 
@@ -8,7 +8,7 @@ The latter page includes info about `git pop` and `git stash`
 
 
 
-## Github Contribution Workflow
+# Github Contribution Workflow
 
 This explains why you should Fork a project you plan to contribute to, if you're not already a contributor in the direct project:
 

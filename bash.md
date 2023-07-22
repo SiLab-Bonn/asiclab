@@ -1,4 +1,3 @@
-
 # Bash:
 
 You can set env variables in a bash script by just writing X='text', where X is the env variable name. You don't have to export.

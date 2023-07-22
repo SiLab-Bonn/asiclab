@@ -1,3 +1,5 @@
+# Checksum notes
+
 https://getfedora.org/en/security/
 
 RPM files are signed by 'GPG signatures'; be sure to 'verify signatures'

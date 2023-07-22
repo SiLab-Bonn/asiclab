@@ -322,16 +322,16 @@ https://docs.fedoraproject.org/en-US/fedora-coreos/sysconfig-network-configurati
 
 # Hardware settings and config
 
-The older machines are Lenovo E30 machines, wtih a IS6XM mother board, with a i7-2600 CPU. The 256 SSH should be connected to the first sata port: SATA 1. In the boot configuration, the USB key should be first, and SSD should be second. BIOS updates can be found here:
+The older machines are Lenovo E30 machines, with a IS6XM mother board, with a i7-2600 CPU. The 256 SSH should be connected to the first sata port: SATA 1. In the boot configuration, the USB key should be first, and SSD should be second. BIOS updates can be found here:
 https://support.lenovo.com/my/en/downloads/DS018245
 
-Press CTRL ALT delete to get back to spalsh screen from error 1962. Ideally I would enable Compatibility Support Module (CSM) but I guess this isn't supporoted in my bios version.
+Press CTRL ALT delete to get back to splash screen from error 1962. Ideally I would enable Compatibility Support Module (CSM) but I guess this isn't supported in my BIOS version.
 
 This answer indicates I probably need to update the BIOS: https://askubuntu.com/questions/1414366/no-operating-system-found-after-clean-install-of-ubuntu-22-04
 
 `fdisk` and `gdisk` could be a good way to examine the structure of the boot disk. I need to understand what a EFI partition is.
 
-The reason this process worked on asiclab00 is because it has slightly older firmware, I belive, and it didn't install a EFI partition. It installed as a legacy system. I don't think this can be done on 
+The reason this process worked on asiclab00 is because it has slightly older firmware, I believe, and it didn't install a EFI partition. It installed as a legacy system. I don't think this can be done on 
 
 Note that fwupgrade requires UEFI, and 
 
@@ -352,4 +352,4 @@ https://www.reddit.com/r/ManjaroLinux/comments/e682d6/fixing_lenovos_error_code_
 https://superuser.com/questions/913779/how-can-i-know-which-partition-is-efi-system-partition
 
 
-make sure I can still ping asiclb010, as this is yannik's machine?
+make sure I can still ping asiclab010, as this is yannik's machine?
