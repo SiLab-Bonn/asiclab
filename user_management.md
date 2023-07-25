@@ -189,6 +189,10 @@ tsmc28          3004
 
 ## FreeIPA Setup:
 
+Ansible has both playbooks (which can call modules), or there is the other idea of 'roles'. The FreeIPA with Ansible package uses the latter: https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook
+
+
+
 Starting from Fresh Fedora install
 
 ```
