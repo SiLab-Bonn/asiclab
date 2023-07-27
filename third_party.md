@@ -44,6 +44,11 @@ sudo dnf install code
 ```
 
 
+# Additional packages:
+
+ngspice wol xclock xpdf pandoc inkscape evolution code seahorse texlive iperf apptainer
+
+
 # Zoom
 Simplest way is just to download the official Fedora.rpm from https:/zoom.us. Then just double click on downloaded file in Files GUI. Will figure out Zoom install via command line later.
 
