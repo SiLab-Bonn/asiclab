@@ -16,7 +16,18 @@ Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable Op
 
 You can do a simple test whether your H.264 works in RTC on [this page](https://mozilla.github.io/webrtc-landing/pc_test.html) (check Require H.264 video). 
 
+# how to install and uninstall standalone rpm packages
 
+To install, just click it. To uninstall.
+
+Execute the following command to discover the name of the installed package:
+
+```rpm -qa | grep PackageName```
+
+This returns PackageName, the RPM name of your Micro Focus product which is used to identify the install package.
+Execute the following command to uninstall the product:
+
+```rpm -e PackageName```
 
 # How to install vscode
 VS Code is currently only shipped in a yum repository, so first add the repository:
@@ -60,22 +71,3 @@ https://eu02web.zoom.us/support/down4j
 # Python venvs
 
 If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new-ish feature in Python, and will make your life better.
-
-
-
-# Neovim and Copilot:
-
-Following instructions from [here](https://docs.github.com/en/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-neovim).
-
-```
-sudo dnf install nodejs neovim
-git clone https://github.com/github/copilot.vim \
-   ~/.config/nvim/pack/github/start/copilot.vim
-```
-
-Then in vim:
-
-```
-:Copilot setup
-:Copilot enable
-```

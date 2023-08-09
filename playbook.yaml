@@ -22,36 +22,56 @@
     - name: Pinging workstations
       ansible.builtin.ping: null
       tags: init
-      
+
+    # - name: "Enable test repo"
+    #   community.general.ini_file:
+    #     path:       /etc/yum.repos.d/almalinux-powertools.repo
+    #     section:    powertools
+    #     option:     enabled
+    #     value:      1
+    #     create:     no
+
+    - name: Add VSCode repository
+      ansible.builtin.yum_repository:
+        name: code
+        description: VSCode Repository
+        gpgcheck: no
+        enabled: yes
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+
+
     - name: Cleaning DNF Cache
       shell: dnf clean all
       tags: clean
-      
+    
     - name: Install basic userspace tools packages
       ansible.builtin.dnf:
         name:
           - apptainer
+          - docker
           - vim
           - tmux
           - htop
           - pandoc
           - yamllint
           - texlive
+          - texlive-standalone  # for lcapy/schtex
+          - texlive-circuitikz  # for lcapy/schtex
           - curl
           - wget
           - git
+          - gcc
+          - code
         state: latest
+        autoremove: true
       tags: update
       
     - name: Upgrade all packages
       ansible.builtin.dnf:
         name: "*"
         state: latest
-      tags: update
-      
-    - name: Autoremove unused orphan packaging
-      ansible.builtin.dnf:
-        autoremove: true
       tags: update
       
     - name: Create directory and mount /users
@@ -73,7 +93,17 @@
         state: mounted
         fstype: nfs4
       tags: nfs
-      
+
+    # fedora h245 repo also must be enabled (if not already)
+    - name: Add packages to enable H264 support
+      ansible.builtin.dnf:
+        name:
+          - gstreamer1-plugin-openh264
+          - mozilla-openh264
+        state: latest
+        autoremove: true
+      tags: update
+
     - name: Create guest home directory
       ansible.builtin.file:
         path: /home/guest
