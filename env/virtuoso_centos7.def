@@ -1,0 +1,32 @@
+Bootstrap: docker
+From: centos:7
+    
+%setup
+    #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
+    mkdir ${APPTAINER_ROOTFS}/tools
+    mkdir ${APPTAINER_ROOTFS}/users
+    
+%environment
+    # IC617 doesn't recognize the OS environment properly, need to specify it manually
+    export OA_UNSUPPORTED_PLAT=linux_rhel50_gcc48x
+
+%post
+    #section to download and install packages before container is immutable
+    
+    #CentOS 7 image on dockerhub isn't updated, so run this first
+    yum -y update && yum clean all
+    
+    #list of packages required by Cadence Virtusoso IC618
+    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+    
+    #For IC617 and below, i686 package versions are required to support 32-bit binaries
+    yum install -y glibc.i686 elfutils-libelf.i686 mesa-libGL.i686 mesa-libGLU.i686 motif.i686 libXp.i686 libpng.i686 libjpeg-turbo.i686 expat.i686 glibc-devel.i686 redhat-lsb.i686  
+    
+    # For Spectre, at least this additional package is required
+    yum install -y cpp
+    
+    # additional packages required by Cliosoft SOS
+    yum install -y libXpm
+    
+    # additional package required for X11 forwarding
+    yum install -y xorg-x11-utils                           

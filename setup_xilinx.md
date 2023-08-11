@@ -19,16 +19,9 @@ sudo nano Makefile    #comment out the line about '-m32', to disable 32bit build
 sudo make
 ```
 
-
-
 # On client
 
 The one-time initial setup is as follows
-
-
-
-
-
 
 ## Digilent JTAG adapter
 ```

@@ -1,3 +1,11 @@
+# Tables of contents
+
+- [Tables of contents](#tables-of-contents)
+  - [Overview](#overview)
+  - [Network Architecture](#network-architecture)
+  - [List of Machines and their Purpose](#list-of-machines-and-their-purpose)
+  - [Workstation Setup for Fedora Linux](#workstation-setup-for-fedora-linux)
+
 ## Overview
 
 The documentation covers ASICLab software, servers, workstations, and other infrastructure. The scope of this document is information that a user with basic familiarity with Linux systems would need to fix problems with existing systems or add new systems to the network. Therefore, extensive documentation of general Linux knowledge should be avoided to avoid diluting the usefulness of information.

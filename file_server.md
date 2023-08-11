@@ -583,5 +583,3 @@ nocto: Suppress the retrieval of new attributes when creating a file.
 
 
 This page has lots of things tried: https://serverfault.com/questions/682000/nfs-poor-write-performance
-
-
