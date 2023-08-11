@@ -1,9 +1,9 @@
 ---
-# Command: ansible-playbook --limit asiclab00.physik.uni-bonn.de -K -i inventory.yaml playbook.yaml --tags nfs
+# Command: ansible-playbook -K -i inventory.yaml playbook.yaml --tags init
 - name: Workstation Configuration
   hosts: workstations
   become: true
-  gather_facts: no
+  gather_facts: yes
   tasks:
     - name: Send a WOL magic packet to workstation machines
       community.general.wakeonlan:
