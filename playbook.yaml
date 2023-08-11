@@ -1,5 +1,9 @@
 ---
 # Command: ansible-playbook -K -i inventory.yaml playbook.yaml --tags init
+# For this to work, must be run from asiclab account on penelope
+# as that account has SSH keys already setup: `ssh-copy-id -i ~/.ssh/id_ed25519.pub asiclab@asiclab011.physik.uni-bonn.de`
+# and has WOL ethernet connectivity
+
 - name: Workstation Configuration
   hosts: workstations
   become: true

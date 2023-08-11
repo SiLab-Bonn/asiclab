@@ -2,7 +2,10 @@
 
 workstations:
   hosts:
-    # next to me
+    # Hans' workstation
+    asiclab000.physik.uni-bonn.de:
+      mac: 54:BF:64:98:25:B6
+    # to my left
     asiclab001.physik.uni-bonn.de:
       mac: 54:BF:64:98:25:D4
     # next to Snow, saqlain's old desk  
@@ -14,7 +17,7 @@ workstations:
     # in front of me
     asiclab006.physik.uni-bonn.de:
       mac: 54:BF:64:98:25:F0
-    # Ned  
+    # My computer
     asiclab008.physik.uni-bonn.de:
       mac: 54:BF:64:98:25:ED
     # dominic
