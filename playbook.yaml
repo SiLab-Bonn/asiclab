@@ -3,7 +3,7 @@
 - name: Workstation Configuration
   hosts: workstations
   become: true
-  gather_facts: yes
+  gather_facts: no
   tasks:
     - name: Send a WOL magic packet to workstation machines
       community.general.wakeonlan:
