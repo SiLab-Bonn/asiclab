@@ -1,4 +1,4 @@
-# Command to run: ansible-playbook --limit asiclab00.physik.uni-bonn.de -K -i inventory.yaml playbook.yaml --tags nfs
+# Command to run: ansible-playbook -K -i inventory.yaml playbook.yaml --tags init --limit workstations
 
 workstations:
   hosts:
@@ -24,6 +24,20 @@ workstations:
     asiclab011.physik.uni-bonn.de:
       mac: 54:BF:64:98:27:03
 
+centos:
+  hosts:
+    # tomek's old
+    asiclab004.physik.uni-bonn.de:
+    # marco's old
+    asiclab005.physik.uni-bonn.de:
+    # next to Dominic, not booting?
+    asiclab007.physik.uni-bonn.de:
+    # snow
+    asiclab009.physik.uni-bonn.de:
+    # saqlain
+    asiclab010.physik.uni-bonn.de:
+
+# in the electronics room, should maybe be ubuntu?
 workstations_old:
   hosts:
     asiclab00.physik.uni-bonn.de:
@@ -39,15 +53,8 @@ workstations_old:
     asiclab08.physik.uni-bonn.de:
       mac: 44:37:E6:94:FC:39
 
-centos:
+misc:
   hosts:
-    # tomek's old
-    asiclab004.physik.uni-bonn.de:
-    # marco's old
-    asiclab005.physik.uni-bonn.de:
-    # next to Dominic, not booting?
-    asiclab007.physik.uni-bonn.de:
-    # snow
-    asiclab009.physik.uni-bonn.de:
-    # saqlain
-    asiclab010.physik.uni-bonn.de:
+    asiclab06.physik.uni-bonn.de: # under dominik's desk, is windows
+    asiclab04.physik.uni-bonn.de: # in Eworkshop, isn't fedora
+    asiclabwin001.physik.uni-bonn.de: # running LDAP server, is Fedora

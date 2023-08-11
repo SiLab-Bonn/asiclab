@@ -5,14 +5,13 @@
 # and has WOL ethernet connectivity
 
 - name: Workstation Configuration
-  hosts: all
+  hosts: workstations
   become: true
   gather_facts: false
   tasks:
   - name: Send a WOL magic packet to workstation machines
     community.general.wakeonlan:
       mac: '{{ mac }}'
-
     delegate_to: localhost
     tags: init
 
@@ -58,16 +57,18 @@
   - name: Install basic userspace tools packages
     ansible.builtin.dnf:
       name:
-        - apptainer
-        - docker
+        - apptainer # needed for running containers
+        - docker # maybe needed for FOSS tools
         - vim
         - tmux
         - htop
         - pandoc
-        - yamllint
-        - texlive
+        - ansible-lint  # needed for checking playbooks
+        - yamllint  # needed for checking playbook, installed with the above
+        - texlive # for LaTex
         - texlive-standalone  # for lcapy/schtex
         - texlive-circuitikz  # for lcapy/schtex
+        # openldap-clients ...was on Hans' machine, but do I need it?
         - curl
         - wget
         - git
