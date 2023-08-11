@@ -35,16 +35,15 @@
       ansible.builtin.yum_repository:
         name: code
         description: VSCode Repository
-        gpgcheck: no
         enabled: yes
         baseurl: https://packages.microsoft.com/yumrepos/vscode
         gpgcheck: yes
         gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-
+      tags: update
 
     - name: Cleaning DNF Cache
       shell: dnf clean all
-      tags: clean
+      tags: update
     
     - name: Install basic userspace tools packages
       ansible.builtin.dnf:
