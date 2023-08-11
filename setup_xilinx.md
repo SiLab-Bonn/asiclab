@@ -1,6 +1,9 @@
+# To make Vivado work:
 
-
-
+```
+sudo dnf install ncurses-compat-libs
+source /tools/xilinx/Vivado/2022.2/settings64_fedora.sh
+```
 
 # Installation on penelope, as asiclab
 
