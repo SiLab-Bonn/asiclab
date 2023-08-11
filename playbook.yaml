@@ -5,7 +5,7 @@
 # and has WOL ethernet connectivity
 
 - name: Workstation Configuration
-  hosts: workstations
+  hosts: all
   become: true
   gather_facts: false
   tasks:
@@ -40,6 +40,7 @@
   #     option:     enabled
   #     value:      1
   #     create:     no
+
   - name: Add VSCode repository
     ansible.builtin.yum_repository:
       name: code
