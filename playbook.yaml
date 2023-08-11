@@ -26,10 +26,9 @@
     - name: Pinging workstations
       ansible.builtin.ping: null
       tags: init
-
-    - name: Getting OS version
-      - debug:
-          msg: "{{ hostvars[inventory_hostname].ansible_distribution_version }}"
+      
+    - debug:
+        msg: "{{ hostvars[inventory_hostname].ansible_distribution_version }}"
 
     # - name: "Enable test repo"
     #   community.general.ini_file:
