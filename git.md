@@ -32,7 +32,7 @@ Branches (labels you put on commits)
 commits
 trees
 
-HEAD is the 'you qqqare here' indicator. You get there by checking out a commit.
+HEAD is the 'you are here' indicator. You get there by checking out a commit.
 
 ## To get back to to the master branches latest commit
 `git checkout <branch name>` or `git switch <branch name>`

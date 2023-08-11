@@ -17,8 +17,6 @@ sudo dnf install apptainer vim tmux htop pandoc curl wget cmake make gcc-g++
 1. Setup printers
 1. dnf autoremove/autoclean
 
-
-
 # BAG + Cadence Setup
 User Workspace setup script? should maybe just be instructions
 
