@@ -7,154 +7,155 @@
 - name: Workstation Configuration
   hosts: workstations
   become: true
-  gather_facts: no
+  gather_facts: false
   tasks:
-    - name: Send a WOL magic packet to workstation machines
-      community.general.wakeonlan:
-        mac: '{{ mac }}'
-      delegate_to: localhost
-      tags: init
-      
-    - name: Wait to computers to become reachable
-      ansible.builtin.wait_for_connection: 
-      tags: init
-      
-    - name: Gather facts for the first time
-      ansible.builtin.setup:
-      tags: init
-      
-    - name: Pinging workstations
-      ansible.builtin.ping: null
-      tags: init
-      
-    - debug:
-        msg: "{{ hostvars[inventory_hostname].ansible_distribution_version }}"
+  - name: Send a WOL magic packet to workstation machines
+    community.general.wakeonlan:
+      mac: '{{ mac }}'
 
-    # - name: "Enable test repo"
-    #   community.general.ini_file:
-    #     path:       /etc/yum.repos.d/almalinux-powertools.repo
-    #     section:    powertools
-    #     option:     enabled
-    #     value:      1
-    #     create:     no
+    delegate_to: localhost
+    tags: init
 
-    - name: Add VSCode repository
-      ansible.builtin.yum_repository:
-        name: code
-        description: VSCode Repository
-        enabled: yes
-        baseurl: https://packages.microsoft.com/yumrepos/vscode
-        gpgcheck: yes
-        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-      tags: update
+  - name: Wait to computers to become reachable
+    ansible.builtin.wait_for_connection:
+    tags: init
 
-    - name: Cleaning DNF Cache
-      shell: dnf clean all
-      tags: update
-    
-    - name: Install basic userspace tools packages
-      ansible.builtin.dnf:
-        name:
-          - apptainer
-          - docker
-          - vim
-          - tmux
-          - htop
-          - pandoc
-          - yamllint
-          - texlive
-          - texlive-standalone  # for lcapy/schtex
-          - texlive-circuitikz  # for lcapy/schtex
-          - curl
-          - wget
-          - git
-          - gcc
-          - code
-        state: latest
-        autoremove: true
-      tags: update
-      
-    - name: Upgrade all packages
-      ansible.builtin.dnf:
-        name: "*"
-        state: latest
-      tags: update
-      
-    - name: Create directory and mount /users
-      ansible.posix.mount:
-        src: penelope.physik.uni-bonn.de:/export/disk/users
-        path: /users
-        opts: rw
-        boot: true
-        state: mounted
-        fstype: nfs4
-      tags: nfs
+  - name: Gather facts for the first time
+    ansible.builtin.setup:
+    tags: init
 
-    - name: Create directory and mount /tools
-      ansible.posix.mount:
-        src: penelope.physik.uni-bonn.de:/export/disk/tools
-        path: /tools
-        opts: ro
-        boot: true
-        state: mounted
-        fstype: nfs4
-      tags: nfs
+  - name: Pinging workstations
+    ansible.builtin.ping: null
+    tags: init
 
-    # fedora h245 repo also must be enabled (if not already)
-    - name: Add packages to enable H264 support
-      ansible.builtin.dnf:
-        name:
-          - gstreamer1-plugin-openh264
-          - mozilla-openh264
-        state: latest
-        autoremove: true
-      tags: update
+  - name: Print OS versions
+    ansible.builtin.debug:
+      msg: "{{ hostvars[inventory_hostname].ansible_distribution_version }}"
+    tags: init
 
-    - name: Create guest home directory
-      ansible.builtin.file:
-        path: /home/guest
-        state: directory
-        owner: 1001
-        group: 200
-        mode: 0755
-      tags: fpga-dis
-      
-    - name: Install necessary USB drivers for FPGA programmers
-      ansible.builtin.dnf:
-        name:
-          - fxload
-          - libusb1
-          - libusb1-devel
-          - libusb-compat-0.1
-          - libusb-compat-0.1-devel
-        state: latest
-      tags: fpga-dis
-      
-    - name: Copy fpga project directory to guest home
-      ansible.builtin.copy:
-        src: /tools/xilinx/FPGA_tutorial
-        dest: /home/guest/
-        owner: 1001
-        group: 200
-      tags: fpga-dis
-    
-    - name: Copy Digilent JTAG USB Drivers to asiclab user home
-      ansible.builtin.copy:
-        src: /tools/xilinx/14.7/ISE_DS/common/bin/lin64/digilent
-        dest: /home/asiclab/
-        owner: 1000
-        group: 1000
-      tags: fpga-dis
-      
-    - name: Run digilent install script
-      ansible.builtin.expect:
-        command: /home/asiclab/install_digilent.sh
-        responses:
-          'In which directory should libraries be installed? \[/usr/local/lib64/digilent/adept\]': "\n"
-          'In which directory should the Adept Runtime Configuration file be installed? [/etc]': "\n"
-          'In which directory should libraries be installed? \[/usr/local/lib64\]': "\n"
-          'In which directory should plugins be installed? \[/root/.cse\]': "\n"
-          'Overwrite existing plugin "/root/.cse/lin64/14.1/plugins/Digilent/libCseDigilent"? \(y/n\) \[y\]': "\n"
-      
-      # use expect
-      # then just run the script without the sudos above
+  # - name: "Enable test repo"
+  #   community.general.ini_file:
+  #     path:       /etc/yum.repos.d/almalinux-powertools.repo
+  #     section:    powertools
+  #     option:     enabled
+  #     value:      1
+  #     create:     no
+  - name: Add VSCode repository
+    ansible.builtin.yum_repository:
+      name: code
+      description: VSCode Repository
+      enabled: true
+      baseurl: https://packages.microsoft.com/yumrepos/vscode
+      gpgcheck: true
+      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    tags: update
+
+  - name: Cleaning DNF Cache
+    shell: dnf clean all
+    tags: update
+
+  - name: Install basic userspace tools packages
+    ansible.builtin.dnf:
+      name:
+        - apptainer
+        - docker
+        - vim
+        - tmux
+        - htop
+        - pandoc
+        - yamllint
+        - texlive
+        - texlive-standalone  # for lcapy/schtex
+        - texlive-circuitikz  # for lcapy/schtex
+        - curl
+        - wget
+        - git
+        - gcc
+        - code
+      state: latest
+      autoremove: true
+    tags: update
+
+  - name: Upgrade all packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+    tags: update
+
+  - name: Create directory and mount /users
+    ansible.posix.mount:
+      src: penelope.physik.uni-bonn.de:/export/disk/users
+      path: /users
+      opts: rw
+      boot: true
+      state: mounted
+      fstype: nfs4
+    tags: nfs
+
+  - name: Create directory and mount /tools
+    ansible.posix.mount:
+      src: penelope.physik.uni-bonn.de:/export/disk/tools
+      path: /tools
+      opts: ro
+      boot: true
+      state: mounted
+      fstype: nfs4
+    tags: nfs
+
+  # fedora h245 repo also must be enabled (if not already)
+  - name: Add packages to enable H264 support
+    ansible.builtin.dnf:
+      name:
+        - gstreamer1-plugin-openh264
+        - mozilla-openh264
+      state: latest
+      autoremove: true
+    tags: update
+
+  - name: Create guest home directory
+    ansible.builtin.file:
+      path: /home/guest
+      state: directory
+      owner: 1001
+      group: 200
+      mode: "0755"
+    tags: fpga-dis
+
+  - name: Install necessary USB drivers for FPGA programmers
+    ansible.builtin.dnf:
+      name:
+        - fxload
+        - libusb1
+        - libusb1-devel
+        - libusb-compat-0.1
+        - libusb-compat-0.1-devel
+      state: latest
+    tags: fpga-dis
+
+  - name: Copy fpga project directory to guest home
+    ansible.builtin.copy:
+      src: /tools/xilinx/FPGA_tutorial
+      dest: /home/guest/
+      owner: 1001
+      group: 200
+    tags: fpga-dis
+
+  - name: Copy Digilent JTAG USB Drivers to asiclab user home
+    ansible.builtin.copy:
+      src: /tools/xilinx/14.7/ISE_DS/common/bin/lin64/digilent
+      dest: /home/asiclab/
+      owner: 1000
+      group: 1000
+    tags: fpga-dis
+
+  - name: Run digilent install script
+    ansible.builtin.expect:
+      command: /home/asiclab/install_digilent.sh
+      responses:
+        'In which directory should libraries be installed? \[/usr/local/lib64/digilent/adept\]': "\n"
+        'In which directory should the Adept Runtime Configuration file be installed? [/etc]': "\n"
+        'In which directory should libraries be installed? \[/usr/local/lib64\]': "\n"
+        'In which directory should plugins be installed? \[/root/.cse\]': "\n"
+        'Overwrite existing plugin "/root/.cse/lin64/14.1/plugins/Digilent/libCseDigilent"? \(y/n\) \[y\]': "\n"
+    # use expect
+    # then just run the script without the sudos above
