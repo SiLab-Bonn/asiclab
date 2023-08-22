@@ -1,3 +1,11 @@
+# Changelog
+
+- [x] Increased password expiry (to >5 years)
+- [x] Update repo virtuoso .def to latest revision
+- [ ] Copy startup scripts
+- [x] Download and install 2022-2023 cadence tools
+- [ ] Update repo sentaurus .def to the latest revision (from my harddrive)
+
 # Tables of contents
 
 - [Tables of contents](#tables-of-contents)
