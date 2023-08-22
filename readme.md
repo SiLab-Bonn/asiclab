@@ -1,10 +1,13 @@
 # Changelog
 
-- [x] Increased password expiry (to >5 years)
-- [x] Update repo virtuoso .def to latest revision
-- [ ] Copy startup scripts
-- [x] Download and install 2022-2023 cadence tools
-- [ ] Update repo sentaurus .def to the latest revision (from my harddrive)
+Some updates today:
+- Increased the FreeIPA LDAP password expiration to a max value of 5 years.
+- Updated the asiclab-docs Github repo to contain the authoritative copy of the Apptainer define file for Virtuoso. It is cloned down at the read-only directory /tools/asiclab-docs/apptainer/virtuoso.centos7.def .
+- Downloaded the 2022-2023 versions of Cadence tools, and they are nearly finished installing (~1 hr left). They are located at /tools/cadence/2022-23/RHELx86/
+
+# To Do
+- Create authoratative copy of bash startup script for Virtuoso
+- Update repo sentaurus .def to the latest revision (from my harddrive)
 
 # Tables of contents
 
