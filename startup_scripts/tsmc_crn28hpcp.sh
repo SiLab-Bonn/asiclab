@@ -1,129 +1,124 @@
-#############################################################
-################ environment setting ########################
-#############################################################
+#!/bin/bash
 
-export LANG=C
+# Usage instructions:
+# * `cd ~/cadence/tsmc28`
+# * `source ./tsmc_crn28hpcp.sh`
+# * `virtuoso &`
 
-if [ $HOME == $PWD ]; then
-   echo "You can't start cadence from your HOME directory."
+# Cadence tools should be started from a PDK specific working dir, e.g. `~/cadence/tsmc28`
+if [ "$HOME" == "$PWD" ]; then
+   echo "You shouldn't start cadence tools from your HOME directory"
+   echo "Instead use a PDK-specific working dir, e.g: ~/cadence/tsmc28"
    exit 1
 fi
 
+### FlexLM: License manager server
+export LM_LICENSE_FILE="8000@faust02.physik.uni-bonn.de"
+
+# Tells Cadence tools which version of OA to use, if it can't intuit the OS
 export OA_UNSUPPORTED_PLAT=linux_rhel60
-
-export TOOLS_PATH=/tools/cadence
-export RELEASE_YEAR=2022-23
-
-export LM_LICENSE_FILE=8000@faust02.physik.uni-bonn.de
-
-export CDSDIR=$TOOLS_PATH/$RELEASE_YEAR/RHELx86/IC_6.1.8.320
-export MMSIM=$TOOLS_PATH/$RELEASE_YEAR/RHELx86/SPECTRE_21.10.751
-export PVSHOME=$TOOLS_PATH/$RELEASE_YEAR/RHELx86/PVS_21.12.000
-
-export CLIOSOFT_DIR=/cadence/clio/sos7
-
+# Make sure all CDS tools start in 64-bit mode
 export CDS_AUTO_64BIT=ALL
-export CDS=$CDSDIR
-export CDSHOME=$CDSDIR
-export CDS_HIER=$CDSDIR
 
-export QRC_ENABLE_EXTRACTION=1
-export QRC_HOME=EXT
+# Variables to just avoid repetition & easily change to new release
+export CDS_TOOLS_PREFIX="/tools/cadence"
+export RELEASE_YEAR="2022-23"
 
-#export=USE_CALIBRE_VCO ixl
-export MGC_HOME=/cadence/mentor/calibre
-export CALIBRE_HOME=/cadence/mentor/calibre
-export SYN_HSPICE=/cadence/synopsis/hspice/bin
+####################### Tool Specific Settings ########################
 
-export GDM_USE_SHLIB_ENVVAR=1
-export SOS_CDS_EXIT=yes
-
-export SPECTRE_DEFAULTS=-E
-export CDS_LOAD_ENV=CWDElseHome
-
+### Cadence Virtuoso: Full custom analog design
+export CDS_IC="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/IC_6.1.8.320"
+# This line is required by some design kits...
+export CDSDIR=$CDS_IC
+# When using ADE set netlisting mode to analog ("dfIIconfig.pdf"), p16. Alternative is 'digital'
+export CDS_Netlisting_Mode=Analog
+# Required for tutorial material and cadence libraries (eg analogLib)
+export CDSHOME=$CDS_IC
+export CDS_USE_PALETTE
+# provides commands `virtuoso` 
+export PATH="${PATH}:${CDS_IC}/tools/bin"
+export PATH="${PATH}:${CDS_IC}/tools/dfII/bin"
+export PATH="${PATH}:${CDS_IC}/tools/plot/bin"
 alias help_cds_ic='$CDS_IC/tools/cdnshelp/bin/cdnshelp &'
 
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/${CLIOSOFT_DIR}/lib:${CLIOSOFT_DIR}/lib/64bit:${PVSHOME}/tools/lib
+### Cadence Spectre: Analog simulation
+export CDS_SPECTRE="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/SPECTRE_21.10.751"
+export SPECTRE_DEFAULTS=-E
+# provides commands `spectre`, `ultrasim`, `aps`
+export PATH="${PATH}:${CDS_SPECTRE}/bin"
+export PATH="${PATH}:${CDS_SPECTRE}/tools/bin"
+export PATH="${PATH}:${CDS_SPECTRE}/tools/dfII/bin"
+export PATH="${PATH}:${CDS_SPECTRE}/tools/plot/bin"
+# Create alias to easily start help
+alias help_cds_spectre='$CDS_SPECTRE/tools/cdnshelp/bin/cdnshelp &'
 
-export PATH=${MMSIM}/tools/bin:${MMSIM}/tools/dfII/bin:${CDSDIR}/tools/bin:${CDSDIR}/tools/dfII/bin:${EXT}/bin:${EXT}/tools/bin:${MGC_HOME}/bin:${CLIOSOFT_DIR}/bin:${SYN_HSPICE}:${PVSHOME}/bin:${PATH}
+### Cadence PVS: a replacement for Assura, PVE, EXT, etc below 45nm
+export CDS_PVS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/PVS_21.12.000"
+# provides commands `pvs` and `k2_viewer`
+export PATH="${PATH}:${CDS_PVS}/bin"
+export PATH="${PATH}:${CDS_PVS}/tools/bin"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CDS_PVS}/tools/lib"    # not sure if necessary?
+# Create alias to easily start help
+alias help_cds_pvs='$CDS_PVS/tools/cdnshelp/bin/cdnshelp &'
 
-export CDS_USE_PALETTE
+### Cadence Xcelium: digital simulation replacement for Incisive, ncsim, AMSHOME etc
+export CDS_XCELIUM="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/XCELIUM_22.03.005"
+# provides commands `xrun`, `simvision`, `xmvhdl`, `xmvlog`, `xmsc`, `xmelab`, `xmsim`, `xmls`, `xmhelp`, `xfr`, `xmxlimport`
+export PATH="${PATH}:${CDS_XCELIUM}/bin"
+export PATH="${PATH}:${CDS_XCELIUM}/tools/bin"
+export PATH="${PATH}:${CDS_XCELIUM}/tools/cdsgcc/gcc/bin"
+# Create alias to easily start help
+alias help_cds_xcelium='$CDS_XCELIUM/tools/cdnshelp/bin/cdnshelp &'
 
-#############################################################
-####################### PDK SETTINGS ########################
-#############################################################
+# Cliosoft: Version control system for OA design libs
+export CLIOSOFT_DIR=/tools/clio/sos7
+export PATH="${CLIOSOFT_DIR}/bin:${PATH}"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CLIOSOFT_DIR}/lib"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CLIOSOFT_DIR}/lib/64bit"
+export SOS_CDS_EXIT=yes
 
-###  Setting for cds PDK
-export OSS_IRUN_BIND2=YES
-### 
-export PDK_PATH=/cadence/kits/TSMC/CRN28HPC+
-export PDK_RELEASE=HEP_DesignKit_TSMC28_HPCplusRF_v1.0 #cern.20210311
-export PDK_OPTION=1P9M_5X1Y1Z1U_UT_AlRDL
-export TSMC_PDK=$PDK_PATH/$PDK_RELEASE/
+####################### PDK Specific Settings ########################
 
-### Set the default netlisting mode to "Analog" - the recommended default 
-### Default may be "Digital" depending on the virtuoso executable. 
-export CDS_Netlisting_Mode=Analog
+export PDK_PATH="/tools/kits/TSMC/CRN28HPC+"
+export PDK_RELEASE="HEP_DesignKit_TSMC28_HPCplusRF_v1.0"  # e.g. cern.20210311
+export PDK_OPTION="1P9M_5X1Y1Z1U_UT_AlRDL"
+export TSMC_PDK="${PDK_PATH}/${PDK_RELEASE}/"
 
-### Setting for PVS/QUANTUS
-export PVS_QRCTECHDIR=$PDK_PATH/$PDK_RELEASE/pdk/$PDK_OPTION/cdsPDK/PVS_QUANTUS
-export PV_COLOR_DIR=$PVS_QRCTECHDIR/.color_setup
+# From `HEP_DesignKit_TSMC28_HPCplusRF_v1.0/cdsusers/setup.csh`
+export OSS_IRUN_BIND2=YES # Not sure of purpose... and should this be XRUN, as we use Xcelium and not Incisive?
 
-################ Create the local cds.lib file
- if [ ! -f ./cds.lib ]; then
-	cp $PDK_PATH/$PDK_RELEASE/CERN/StartFiles/cds.lib .
-	cp $PDK_PATH/$PDK_RELEASE/CERN/StartFiles/cdsinit.pdk .cdsinit
-	cp $PDK_PATH/$PDK_RELEASE/CERN/StartFiles/cdsLibMgr.il .
-	
-   echo "Creating new config files"
- fi
- 
-   chmod 775 ./cds.lib
-   chmod 775 ./.cdsinit
-   chmod 775 ./cdsLibMgr.il
-   
-################ Calibre Default Switches ################
+# Setting for PVS, again from `HEP_DesignKit_TSMC28_HPCplusRF_v1.0/cdsusers/setup.csh`
+export PVS_QRCTECHDIR="${PDK_PATH}/${PDK_RELEASE}/pdk/${PDK_OPTION}/cdsPDK/PVS_QUANTUS"
+export PV_COLOR_DIR="${PVS_QRCTECHDIR}/.color_setup"
 
+# Create the copy default 28nm Virtuoso files locally, if not already present
+if [ ! -f ./cds.lib ]; then
+    echo "Copying default config files (cds.lib, .cdsinit, cdsLibMgr.il) from PDK to local dir..."
+    cp $PDK_PATH/$PDK_RELEASE/CERN/StartFiles/cds.lib .
+    cp $PDK_PATH/$PDK_RELEASE/CERN/StartFiles/.cdsinit .    # This SKILL script calls the corresponding cdsinit.pdk script
+    cp $PDK_PATH/$PDK_RELEASE/CERN/StartFiles/cdsLibMgr.il .
+    echo "Copying done!"
+fi
 
-############### Create Temp Direcotories ################
+# Make sure Virtuoso config files are executable
+chmod 775 ./cds.lib
+chmod 775 ./.cdsinit
+chmod 775 ./cdsLibMgr.il
 
-	if [ ! -d /tmp/$USER/DRC ]; then
-  		mkdir -p /tmp/$USER/DRC
-	fi
-	
-    if [ ! -d ./DRC ]; then
-	  ln -s /tmp/$USER/DRC DRC
+############### Create Temp Directories ################
+
+directories=("DRC" "LVS" "SIM" "XRC")
+
+for dir in "${directories[@]}"; do
+    if [ ! -d /tmp/"$USER"/"$dir" ]; then
+        mkdir -p /tmp/"$USER"/"$dir"
+        echo "Created directory: /tmp/$USER/$dir"
     fi
-  
-    if [ ! -d /tmp/$USER/LVS ]; then
-  		mkdir -p /tmp/$USER/LVS
-	fi
-	
-    if [ ! -d ./LVS ]; then
-  	  ln -s /tmp/$USER/LVS LVS
-    fi
 
-   	if [ ! -d /tmp/$USER/SIM ]; then
-  		mkdir -p /tmp/$USER/SIM
-	fi
-	
-    if [ ! -d ./SIM ]; then
-  	  ln -s /tmp/$USER/SIM SIM
+    if [ ! -d ./"$dir" ]; then
+        ln -s /tmp/"$USER"/"$dir" "$dir"
+        echo "Created local symbolic link: $dir"
     fi
-  
-	if [ ! -d /tmp/$USER/XRC ]; then
-  		mkdir -p /tmp/$USER/XRC 
-	fi
-	
-    if [ ! -d ./XRC ]; then
-  	   ln -s /tmp/$USER/XRC  XRC
-    fi
-	
-##########################################
- 
-# xterm
-virtuoso
+done
 
 exit 0
-
-################ end of script ###########
