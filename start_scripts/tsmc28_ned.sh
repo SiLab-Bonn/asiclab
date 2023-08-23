@@ -14,7 +14,7 @@ export PATH=${QRC_HOME}/bin:${PATH}
 export PATH=${CDS_INST_DIR}/tools/plot/bin:${PATH}
 export PATH=${CDS_INST_DIR}/tools/dfII/bin:${PATH}
 export PATH=${CDS_INST_DIR}/tools/bin:${PATH}
-export PATH=${MMSIM_HOME}/bin:${PATH}
+export PATH=${MMSIM_HOME}/bin:${PATH}   # just get added to path
 
 # Virtuoso options
 export SPECTRE_DEFAULTS=-E

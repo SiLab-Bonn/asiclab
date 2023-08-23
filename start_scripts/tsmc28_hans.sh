@@ -5,7 +5,7 @@
 export LANG=C
 
 # Cadence should be started from a PDK specific working dir, e.g. `~/cadence/tsmc28`
-if [ $HOME == $PWD ]; then
+if [ "$HOME" == "$PWD" ]; then
    echo "You can't start cadence from your HOME directory."
    exit 1
 fi
