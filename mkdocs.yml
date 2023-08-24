@@ -4,10 +4,12 @@ highlightjs: true
 hljs_languages:
   - yaml
   - rust
+  - toml
+  - bash
 nav: 
   - Home: README.md
   - Workstations:
-    - 
+    - Remote Access: remote_access.md
     - User Management: user_management.md
     - Development Tools: git.md
     - ''

@@ -583,3 +583,64 @@ nocto: Suppress the retrieval of new attributes when creating a file.
 
 
 This page has lots of things tried: https://serverfault.com/questions/682000/nfs-poor-write-performance
+
+
+
+
+
+
+
+
+
+the below text was moved from 'remote connection'
+
+# SiRUSH SMB Server
+
+Sirrush is shared via smb. You can simply use a file manager and go to smb://sirrush.physik.uni-bonn.de and log in with silab/pidub12. One can only access the `/silab` directory with this login. If you also want
+to access project folder, an account has to be made for you.
+
+
+# SFTP
+
+# Samba
+
+## SMB/Samba/CIFS
+
+report status of connections on SMB server (noyce) (must be >=CentOS7)
+`smbstatus`
+
+ftp-like client to access SMB/CIFS resources on servers, with -U flag to check current config for a user,
+to ping and repo available servers of remote server from local client machine
+`smbclient -L noyce.physik.uni-bonn.de -U kcaisley`
+
+to add folders shares to the on the server:
+Edit the file "/etc/samba/smb.conf"
+`sudo vim /etc/samba/smb.conf`
+
+```
+Once "smb.conf" has loaded, add this to the very end of the file:
+    
+    [<folder_name>]
+    path = /home/<user_name>/<folder_name>
+    valid users = <user_name>
+    read only = no
+```
+    Tip: There Should be in the spaces between the lines, and note que also there should be a single space both before and after each of the equal signs.
+
+To access your network share from the client machines
+
+```
+      sudo apt-get install smbclient
+      # List all shares:
+      smbclient -L //<HOST_IP_OR_NAME>/<folder_name> -U <user>
+      # connect:
+      smbclient //<HOST_IP_OR_NAME>/<folder_name> -U <user>
+```
+
+#### Othere SMB commands:
+
+NetBIOS over TCP/IP client used to lookup NetBIOS names, part of samba suite.
+`nmblookup __SAMBA__`
+
+List info about machines that respond to SMB name queries on a subnet. Uses nmblookup and smbclient as backend.
+`findsmb`

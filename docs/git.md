@@ -1,3 +1,48 @@
+# Github access:
+
+### Github Access via Key Pairs
+
+[Instructions for SSH key authentication.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+Create a new key, if necessary, and following prompts.
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Print out public key, and paste into Github.
+```
+cat id_ed25519.pub
+```
+
+Test the connection
+```
+ssh -T git@github.com
+```
+
+If you have issues, try changing the permissions of the key pair using `chmod 600 {key}` and add the keys to the SSH agent with `ssh-add`.
+
+To allow copying down repos:
+
+To add commits, and push back to github, make sure your configure your local git with your username and password, matching those of Github:
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Username"
+```
+
+Check settings with:
+
+```
+git config --get user.email
+```
+
+Clone down a repository, to proceed with work. For example:
+```
+git clone -b develop git@github.com:SiLab-Bonn/pybag.git --recurse-submodules
+```
+
+
+
+
 # Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:
 
 https://stackoverflow.com/questions/7124486/what-to-do-with-commit-made-in-a-detached-head

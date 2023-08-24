@@ -73,3 +73,36 @@ https://eu02web.zoom.us/support/down4j
 # Python venvs
 
 If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new-ish feature in Python, and will make your life better.
+
+
+
+# Thunderbird Email
+
+```
+sudo dnf install thunderbird
+```
+
+Uni-Bonn email setup described [here](https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichten+von+E-Mail+Clients#expand-AccountSetUp) is summarized below:
+
+### Incoming Server Settings:
+
+```
+Protocol: IMAP
+Hostname: mail.uni-bonn.de
+Port: 933
+Connection Security: SSL/TLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
+### Outgoing Server Settings:
+
+```
+Protocol: IMAP
+Server Name: mail.uni-bonn.de
+Port: 587
+Connection Security: STARTTLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
