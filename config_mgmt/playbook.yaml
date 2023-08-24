@@ -53,6 +53,9 @@
   - name: Cleaning DNF Cache
     shell: dnf clean all
     tags: update
+    
+  # xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-fonts-ISO8859-1-100dpi xorg-x11-fonts-ISO8859-1-75dpi xorg-x11-fonts-ISO8859-9-100dpi xorg-x11-fonts-ISO8859-9-75dpi xorg-x11-fonts-Type1 xorg-x11-fonts-misc
+  # shellcheck
 
   - name: Install basic userspace tools packages
     ansible.builtin.dnf:
