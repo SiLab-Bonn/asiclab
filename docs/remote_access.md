@@ -87,13 +87,13 @@ Host asiclab001.physik.uni-bonn.de
     HostkeyAlgorithms +ssh-rsa
 ```
 
-
-
 ---
 
 ## RDP
 
 For graphical access, RDP has the best performance, with minimal setup. By default, Fedora includes a RDP server via the built-in `gnome-remote-desktop` package. One limitation is that it only allows for accessing an already existing display session.
+
+[These RHEL Docs](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/getting_started_with_the_gnome_desktop_environment/remotely-accessing-the-desktop-as-a-single-user_getting-started-with-the-gnome-desktop-environment) explain how to enable desktop sharing on a machine using GNOME.
 
 1. On the host, check the RDP status
 
@@ -121,7 +121,6 @@ RDP:
 
 ```
 
-
 Behind the scenes, this is actually just editing the dconf store with the standard `gsettings` command. Read more [here](https://askubuntu.com/questions/249887/gconf-dconf-gsettings-and-the-relationship-between-them)
 
 ```
@@ -135,11 +134,9 @@ To connect, run `gnome-connections`, and use:
 rdp://asiclab008.physik.uni-bonn.de:3389
 ```
 
-
 ## VNC
 
 Under construction. CentOS7 instructions may be relevant, [found here](https://linuxize.com/post/how-to-install-and-configure-vnc-on-centos-7/).
-
 
 ## X11 Forwarding
 
