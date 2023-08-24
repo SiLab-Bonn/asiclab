@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit: - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../admin/" class="nav-link">Admin</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_notes_delete_me/" class="nav-link">Bag 3 Install</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_old_notes_delete_me/" class="nav-link">BAG Analog Generator</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bash/" class="nav-link">Bash:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../boot_sequence/" class="nav-link">Boot sequence</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../checksum_notes/" class="nav-link">Checksum notes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../clonezilla/" class="nav-link">Clonezilla</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../containers/" class="nav-link">Motivation</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../file_server/" class="nav-link">Client NFS Mounting (For Fedora)</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../license_server/" class="nav-link">FlexNet License Server Configuration</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../network_configuration/" class="nav-link">Hostname and IP Address References</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../package_management/" class="nav-link">DNF and RPM package management:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../printer_config/" class="nav-link">Printer config</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../remote_connection/" class="nav-link">Wireguard</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_pdk/" class="nav-link">Setup pdk</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_synopsys/" class="nav-link">SFTP Download Instructions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_xilinx/" class="nav-link">To make Vivado work:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../third_party/" class="nav-link">H.264 Support</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../user_management/" class="nav-link">Credentials</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../file_server/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../license_server/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#fix-for-when-a-commit-has-been-made-in-a-detached-head-state-and-you-want-to-update-the-real-branch-to-include-this-commit" class="nav-link">Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#github-contribution-workflow" class="nav-link">Github Contribution Workflow</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#to-get-back-to-to-the-master-branches-latest-commit" class="nav-link">To get back to to the master branches latest commit</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#to-view-remote-origin-repository" class="nav-link">To view remote origin repository:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#to-report-current-branch" class="nav-link">To report current branch</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#report-commits-optionally-filtered-by-branch" class="nav-link">Report commits, optionally filtered by branch:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#the-command-to-list-all-branches-in-local-and-remote-repositories-is" class="nav-link">The command to list all branches in local and remote repositories is:</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#if-you-require-only-listing-the-remote-branches-from-git-bash-then-use-this-command" class="nav-link">If you require only listing the remote branches from Git Bash then use this command:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#you-may-also-use-the-show-branch-command-for-seeing-the-branches-and-their-commits-as-follows" class="nav-link">You may also use the show-branch command for seeing the branches and their commits as follows:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#if-the-remote-repository-has-been-updated-i-can-check-for-remote-references-updates-with" class="nav-link">If the remote repository has been updated, I can check for remote references updates with:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#to-merge-a-remote-branch-with-a-local-branch" class="nav-link">To merge a remote branch with a local branch</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#stage-and-commit-changes" class="nav-link">Stage and commit changes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#recurse-submodules" class="nav-link">Recurse submodules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sets-the-new-remote-naming-it-as-oriring" class="nav-link">Sets the new remote, naming it as oriring,</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#verifies-the-new-remote-urlc" class="nav-link">Verifies the new remote URLc</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#i-can-push-anywhere-i-want-but-if-i-want-to-be-able-to-simply-type-git-push-i-have-to-specify-which-repo-is-the-default-to-push-to" class="nav-link">I can push anywhere I want, but if I want to be able to simply type git push, I have to specify which repo is the default to push to</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#notes-about-using-git-submodules-for-dependency-management" class="nav-link">Notes about using git submodules for dependency management:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="fix-for-when-a-commit-has-been-made-in-a-detached-head-state-and-you-want-to-update-the-real-branch-to-include-this-commit">Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:</h1>
+<p>https://stackoverflow.com/questions/7124486/what-to-do-with-commit-made-in-a-detached-head</p>
+<p>https://stackoverflow.com/questions/10228760/how-do-i-fix-a-git-detached-head</p>
+<p>The latter page includes info about <code>git pop</code> and <code>git stash</code></p>
+<h1 id="github-contribution-workflow">Github Contribution Workflow</h1>
+<p>This explains why you should Fork a project you plan to contribute to, if you're not already a contributor in the direct project:</p>
+<p>https://opensource.com/article/19/11/first-open-source-contribution-fork-clone</p>
+<p>Once I have my own fork, this explains how I should go about making modifications to my Fork. Of course, I don't need to create a branch on my Fork, until i have have a change to make.</p>
+<p>https://docs.github.com/en/get-started/quickstart/github-flow</p>
+<p>I'm not sure where I'm going to run the latest versions of Jupiter Notebook, etc, with python, and so I should probably not install anything on my laptop or on the server. Let's just download the zip file from Github for now, and explore it.</p>
+<p>How to install Git and Github-CLI:</p>
+<p>https://github.com/git-guides/install-git</p>
+<p>I need to understand:
+Origin and Remote: These refer to remote repositories, which are pulled from with <code>clone</code> and <code>pull</code>, and pushed to with <code>push</code>.</p>
+<p>Master (branch)
+Branches (labels you put on commits)
+commits
+trees</p>
+<p>HEAD is the 'you are here' indicator. You get there by checking out a commit.</p>
+<h2 id="to-get-back-to-to-the-master-branches-latest-commit">To get back to to the master branches latest commit</h2>
+<p><code>git checkout &lt;branch name&gt;</code> or <code>git switch &lt;branch name&gt;</code></p>
+<h2 id="to-view-remote-origin-repository">To view remote origin repository:</h2>
+<p><code>git remote -v</code></p>
+<h2 id="to-report-current-branch">To report current branch</h2>
+<p><code>git branch -v</code></p>
+<h2 id="report-commits-optionally-filtered-by-branch">Report commits, optionally filtered by branch:</h2>
+<p><code>git log &lt;branch&gt;</code></p>
+<h1 id="the-command-to-list-all-branches-in-local-and-remote-repositories-is">The command to list all branches in local and remote repositories is:</h1>
+<p><code>git branch -a</code></p>
+<h2 id="if-you-require-only-listing-the-remote-branches-from-git-bash-then-use-this-command">If you require only listing the remote branches from Git Bash then use this command:</h2>
+<p><code>git branch -r</code></p>
+<h2 id="you-may-also-use-the-show-branch-command-for-seeing-the-branches-and-their-commits-as-follows">You may also use the show-branch command for seeing the branches and their commits as follows:</h2>
+<p><code>git show-branch</code></p>
+<h3 id="using-git-to-restore-a-deleted-uncommitted-file">Using Git to restore a deleted, uncommitted file:</h3>
+<p>If your changes have not been staged or committed: The command you should use in this scenario is <code>git restore FILENAME</code></p>
+<h3 id="view-changes-to-unstaged-files-before-staging-and-comitting-optinally-filtering-by-a-specific-file">View changes to unstaged files before staging and comitting, optinally filtering by a specific file</h3>
+<p><code>git diff &lt;filename&gt;</code></p>
+<h3 id="update-information-on-remote-repositories">Update information on remote repositories</h3>
+<p><code>git fetch --all</code></p>
+<h3 id="view-differences-between-state-of-current-local-repository-against-a-remote-branch-for-example-origindevelop">View differences between state of current local repository, against a remote branch, for example "origin/develop"</h3>
+<p><code>git diff origin/develop</code></p>
+<h2 id="if-the-remote-repository-has-been-updated-i-can-check-for-remote-references-updates-with">If the remote repository has been updated, I can check for remote references updates with:</h2>
+<p><code>git fetch --dry-run --verbose</code></p>
+<h2 id="to-merge-a-remote-branch-with-a-local-branch">To merge a remote branch with a local branch</h2>
+<p><code>git checkout aLocalBranch</code> if not already on that branch (could just be master!)
+<code>git merge origin/aRemoteBranch</code></p>
+<h2 id="stage-and-commit-changes">Stage and commit changes</h2>
+<p><code>git add -A &amp;&amp; git commit -m "Your Message"</code></p>
+<h2 id="recurse-submodules">Recurse submodules</h2>
+<p>Getting the repository:
+<code>git clone -b develop https://github.com/ucb-art/bag.git --recurse-submodules</code></p>
+<p>Figuring out what changes I've made to local:
+git status
+git log
+git info</p>
+<p>git fetch --dry-run
+git fetch --dry-run --all
+git remote update
+git show-branch *develop</p>
+<p>git config --global user.name "Kennedy Caisley"
+git config --global user.email kcaisley@uni-bonn.de
+git config --global core.editor vim</p>
+<p>To copy down submodule, if forgot to do during cloning:
+git submodule update --init --recursive --remote</p>
+<p>To reset all unstaged/uncommitted change:
+git checkout .</p>
+<p>git pull = git fetch + git merge</p>
+<p>Taking a local branch, and placing it on github, in a fresh repository is done via this instructions:</p>
+<p>https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github</p>
+<p>$ git remote add origin <REMOTE_URL></p>
+<h1 id="sets-the-new-remote-naming-it-as-oriring">Sets the new remote, naming it as oriring,</h1>
+<p>$ git remote -v</p>
+<h1 id="verifies-the-new-remote-urlc">Verifies the new remote URLc</h1>
+<p>In the last stage we do this:</p>
+<p>The command git push -u origin main is used to push the local branch named "main" to a remote repository named "origin". The -u option is used to set the "upstream" relationship between the local branch and the remote branch.</p>
+<p>Here's what happens when you run the command:</p>
+<pre><code>The local branch "main" is pushed to the remote repository "origin".
+
+The "origin/main" branch is created on the remote repository.
+
+The local branch "main" is configured to track the remote branch "origin/main". This means that in the future, you can simply use the command git push to push your local changes to the remote branch, without having to specify the remote repository and branch names.
+
+The "upstream" relationship between the local branch "main" and the remote branch "origin/main" is established. This makes it easier for Git to determine the correct branch to merge with when pulling updates from the remote repository.
+</code></pre>
+<p>In summary, the git push -u origin main command is used to push a local branch to a remote repository and establish an upstream relationship between the local and remote branches. This makes it easier to keep the branches in sync and ensures that Git knows which branch to merge with when pulling updates from the remote repository.</p>
+<p>The command <code>git push origin:develop develop</code> is used to push a local branch named "develop" to a remote repository named "origin", and create a remote branch named "develop". The colon (:) in origin: is used to delete the remote branch named "develop", if it already exists.</p>
+<p>Here's what happens when you run the command:</p>
+<pre><code>The remote branch named "develop" is deleted, if it already exists.
+
+The local branch named "develop" is pushed to the remote repository "origin".
+
+A remote branch named "develop" is created on the remote repository "origin".
+</code></pre>
+<p>In summary, the <code>git push origin:develop develop</code> command is used to delete the remote branch named "develop" (if it exists), and create a new remote branch named "develop" with the latest changes from the local branch named "develop". This can be useful when you want to force a fresh start for the remote branch, or when you want to create a new remote branch with the same name as a previously deleted branch.</p>
+<p>The command <code>git push origin/develop develop</code> is used to push a local branch named "develop" to a remote branch named "develop". The "origin/develop" syntax is used to specify the remote branch to push to.</p>
+<p>Here's what happens when you run the command:</p>
+<pre><code>The local branch named "develop" is pushed to the remote branch named "develop" on the remote repository "origin".
+
+The remote branch "origin/develop" is updated with the latest changes from the local branch "develop".
+</code></pre>
+<p>In summary, the <code>git push origin/develop develop</code> command is used to push a local branch to a specific remote branch. This can be useful when you want to update a specific remote branch with the latest changes from a local branch, or when you want to create a new remote branch with the same name as a local branch.</p>
+<h1 id="i-can-push-anywhere-i-want-but-if-i-want-to-be-able-to-simply-type-git-push-i-have-to-specify-which-repo-is-the-default-to-push-to">I can push anywhere I want, but if I want to be able to simply type git push, I have to specify which repo is the default to push to</h1>
+<p>fatal: The current branch develop_fedora has no upstream branch.
+To push the current branch and set the remote as upstream, use</p>
+<pre><code>git push --set-upstream origin develop_fedora
+</code></pre>
+<p>To have this happen automatically for branches without a tracking</p>
+<h1 id="notes-about-using-git-submodules-for-dependency-management">Notes about using git submodules for dependency management:</h1>
+<p>A submodule always result into a specific SHA1 being recorded by the parent repo: it is called a gitlink (special entry in the index of the parent repo).</p>
+<p>So simply add the repo as a submodule (it does not matter what branch/commit end up being actually recorded).</p>
+<p>cd /path/to/parent/repo
+git submodule add /url/of/submodule/repo</p>
+<p>Then go into the submodule folder and checkout the exact sHA1 or tag you want (the one corresponding to a release)</p>
+<p>cd mysubmodule
+git checkout <SHA1_of_a_release></p>
+<p>Go back to the parent repo, add, commit and push: you will record the new submodule state (which is to say you will record the SHA1 you want)</p>
+<p>cd ..
+ git add .
+ git commit -m "set submodule to a release SHA1"
+ git push</p>
+<p>Whenever you will clone --recursive your parent repo, your submodule willbe checked out to that release SHA1 again.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

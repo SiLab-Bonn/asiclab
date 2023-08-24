@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Credentials - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../admin/" class="nav-link">Admin</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_notes_delete_me/" class="nav-link">Bag 3 Install</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_old_notes_delete_me/" class="nav-link">BAG Analog Generator</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bash/" class="nav-link">Bash:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../boot_sequence/" class="nav-link">Boot sequence</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../checksum_notes/" class="nav-link">Checksum notes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../clonezilla/" class="nav-link">Clonezilla</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../containers/" class="nav-link">Motivation</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../file_server/" class="nav-link">Client NFS Mounting (For Fedora)</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../git/" class="nav-link">Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../license_server/" class="nav-link">FlexNet License Server Configuration</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../network_configuration/" class="nav-link">Hostname and IP Address References</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../package_management/" class="nav-link">DNF and RPM package management:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../printer_config/" class="nav-link">Printer config</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../remote_connection/" class="nav-link">Wireguard</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_pdk/" class="nav-link">Setup pdk</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_synopsys/" class="nav-link">SFTP Download Instructions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_xilinx/" class="nav-link">To make Vivado work:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../third_party/" class="nav-link">H.264 Support</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Credentials</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../third_party/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#credentials" class="nav-link">Credentials</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#tldr-short-term-approach-for-setting-up-new-fedora-machine" class="nav-link">TL;DR Short-Term Approach for Setting up New Fedora Machine</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#managing-users-and-groups" class="nav-link">Managing Users and Groups:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#users-and-groups-scheme" class="nav-link">Users and Groups Scheme</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#freeipa-setup" class="nav-link">FreeIPA Setup:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sssd-client-with-ldap-provider" class="nav-link">SSSD Client with LDAP Provider</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="credentials">Credentials</h1>
+<p>asiclabwin001.physik.uni-bonn.de:
+admin
+%nobody&lt;3cds%</p>
+<h2 id="tldr-short-term-approach-for-setting-up-new-fedora-machine">TL;DR Short-Term Approach for Setting up New Fedora Machine</h2>
+<pre><code># create groups
+sudo groupadd -g 200 faust
+sudo groupadd -g 1001 icdesign
+sudo groupadd -g 1003 tsmcpdk
+sudo groupadd -g 1004 tsmcpdk28
+
+# create user
+sudo useradd -u 37838 -g faust --no-create-home -d /faust/user/kcaisley kcaisley
+
+# add user to groups
+sudo usermod -a -G icdesign kcaisley
+sudo usermod -a -G tsmcpdk kcaisley
+sudo usermod -a -G tsmcpdk28 kcaisley
+sudo usermod -a -G wheel kcaisley
+
+# change user password
+sudo passwd kcaisley
+</code></pre>
+<h2 id="managing-users-and-groups">Managing Users and Groups:</h2>
+<p>Root is disabled as a login user on Fedora. The <code>asiclab</code> account, with <code>UID = 1000</code> and <code>GID = 1000</code> should be created as the default local account on the machine.</p>
+<h3 id="to-list-all-users-on-a-machine">To list all users on a machine</h3>
+<p>Listing users on a machine</p>
+<p>This can mean different things:
+1) The files for which the UID is set to a certain number.
+2) The accounts defined for login in /etc/passwd
+3) The groups of UIDs that own all the folders in a home directory</p>
+<p>Approach 1 and 2 can be done via:</p>
+<pre><code>cat /etc/passwd
+</code></pre>
+<h3 id="to-check-groups-of-a-user">To check groups of a user</h3>
+<pre><code>groups kcaisley
+</code></pre>
+<h3 id="to-check-full-group-and-user-info-of-user">To check full group and user info of user</h3>
+<pre><code>id kcaisley
+</code></pre>
+<p>You can omit username for current user.</p>
+<h3 id="to-check-all-members-in-a-group">To check all members in a group</h3>
+<pre><code>getent groups icdesign
+</code></pre>
+<h3 id="to-list-all-groups-and-their-members">To list all groups, and their members</h3>
+<p>Groups can be supplied from both <code>/etc/group</code> and from LDAP. The combination of both these will be show in:</p>
+<pre><code>getent group
+</code></pre>
+<h3 id="to-add-a-group-with-gid">To add a group with gid</h3>
+<pre><code>sudo groupadd -g 1001 icdesign
+</code></pre>
+<p>When you add users to a group, using the <code>-g</code> commands makes it the users primary group, where as the <code>-G</code> flag makes it a secondary group. The primary group is the default GID assigned newly created or copied files.</p>
+<h3 id="to-delete-a-group">To delete a group:</h3>
+<pre><code>sudo groupdel kcaisley
+</code></pre>
+<h3 id="to-change-the-uid-of-a-user">To change the UID of a user</h3>
+<pre><code>sudo usermod -u 2002 kcaisley
+</code></pre>
+<h3 id="to-change-the-gid-of-a-group">To change the GID of a group</h3>
+<pre><code>sudo groupmod -g 1001 icdesign
+</code></pre>
+<h3 id="to-create-a-group-in-linux">To create a group in linux</h3>
+<pre><code>sudo usermod -a -G groupname username
+</code></pre>
+<h3 id="to-become-another-user">To become another user</h3>
+<pre><code>su – &lt;username&gt;
+</code></pre>
+<h3 id="to-change-a-users-password">To change a user's password</h3>
+<pre><code>passwd kcaisley
+</code></pre>
+<h3 id="to-recursively-change-all-uid-and-gid-set-on-files-in-a-directory">To recursively change all UID and GID set on files in a directory</h3>
+<pre><code>chown -R ownername:groupname foldername
+</code></pre>
+<p>The <code>groupname</code> can be omitted if not desired.</p>
+<h3 id="listing-gids-and-uids-and-permissions-of-files">Listing GIDs and UIDs and permissions of Files</h3>
+<pre><code>ls -la
+</code></pre>
+<p>When running <code>ls -l</code>, the second column is the number of hardlinks (which is equal to the number of directories, sorta?) Anyways, I can just think of it as the approximate number of directories inside this one.</p>
+<h3 id="to-recursively-change-file-permission">To recursively change file permission</h3>
+<p><code>chown</code> command doesn't work recursively on hidden files, and so using <code>chmod</code> is the best approach. This affects everything in the current working directory and below.</p>
+<pre><code>sudo chmod -R 775 .
+</code></pre>
+<h3 id="to-enable-wheel-group-replacement-for-sudoers">To enable Wheel Group (replacement for sudoers)</h3>
+<p>Tutorial: <a href="https://docs.fedoraproject.org/en-US/quick-docs/adding_user_to_sudoers_file/">Adding a user to sudoers and wheel group</a></p>
+<p>On Fedora, it is the wheel group the user has to be added to, as this group has full admin privileges. Add a user to the group using the following command:
+sudo usermod -aG wheel username</p>
+<p>If adding the user to the group does not work immediately, you may have to edit the /etc/sudoers file to uncomment the line with the group name:</p>
+<pre><code>$ sudo visudo
+...
+%wheel ALL=(ALL) ALL
+...
+</code></pre>
+<p>Then logout and back in again.</p>
+<h3 id="to-set-the-default-permissions-for-new-files">To set the default permissions for new files</h3>
+<p>After users are locally created, and login, check the umask bit to make sure they are creating files properly:</p>
+<pre><code>umask
+</code></pre>
+<p>The <a href="https://en.wikipedia.org/wiki/umask">umask</a> utility is used to control the file-creation mode mask, which determines the initial value of file permission bits for newly created files. <a href="https://wiki.archlinux.org/title/Umask">This page</a> on the Arch wiki has good info. </p>
+<p>running <code>umask</code> shows bits, and <code>umask -S</code> in the derived permissions. Note that the bits are a mask of what should <em>not</em> be set. So 7777 - umask = chmod, sorta.</p>
+<p>For example umask = 0022 yeilds effectively a mod = 7755, or u=rwx,g=rx,o=rx</p>
+<p>And <code>umask 0077</code> means that permission will be <code>7700</code></p>
+<h2 id="users-and-groups-scheme">Users and Groups Scheme</h2>
+<p>Local users are UID 1000-1999, and have matching group IDs.
+LDAP users are UID 2000-2999, and don't have matching groups.
+User groups are in range 3000-3999.</p>
+<pre><code>UID:
+asiclab         1000 (local on each computer)
+user1           2001
+user2           2002
+user3           2003  ...etc
+
+GID:
+asiclab         1000, etc    (matching local users on each computer)
+base            3001    (all user directories, default for tools directory)
+icdesign        3002    (access to cadence/mentor/synonsys tools)
+tsmc65          3003
+tsmc28          3004
+</code></pre>
+<h2 id="freeipa-setup">FreeIPA Setup:</h2>
+<p>Ansible has both playbooks (which can call modules), or there is the other idea of 'roles'. The FreeIPA with Ansible package uses the latter: https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook</p>
+<p>Starting from Fresh Fedora install</p>
+<pre><code>sudo firewall-cmd --add-service=freeipa-4 --permanent
+sudo dnf install freeipa-server
+</code></pre>
+<p>Accept all defaults usering ENTER, and at the end type 'yes' to accept to proposed settings.</p>
+<p>https://serverfault.com/questions/1069847/how-should-we-automount-home-directories-stored-at-different-nfs-paths-at-home</p>
+<p>how does the homedir work?</p>
+<p>https://www.freeipa.org/page/Quick_Start_Guide#Web_User_Interface</p>
+<p>LDAP or freeipa will only be a source for account information: username, password, address, fax number, home directory location. Similar to a phone book. To get file "sync" you need a network home directory provided by something like NFS (or SMB if you want Windows support). Create a share on one machine, (for me this is /space/homedirs/$username), mount it on all of your other machines in the same place, and set your homedir in LDAP to be that new location.</p>
+<p>Combine this with autofs, which you can also manage in FreeIPA, it will mount your homedir from NFS only when required, and when logged off it unmounts the NFS share. I hate stuck NFS mounts. But don't use 'softmounts' This can introduce silent data corruption.</p>
+<p>This explains the difference between <a href="https://forums.centos.org/viewtopic.php?t=8787">hard and soft mounts</a></p>
+<h4 id="some-potential-firewall-fixes-in-case-there-are-probs">Some potential firewall fixes, in case there are probs:</h4>
+<p>https://kenmoini.com/post/2022/04/qnap-nfs-home-directories/</p>
+<pre><code class="language-bash">## Enable Firewalld
+systemctl enable --now firewalld
+
+## [Optional] Enable Cockpit
+systemctl enable --now cockpit.socket
+
+## Open the needed Firewall ports
+firewall-cmd --add-service=cockpit --permanent
+firewall-cmd --add-service=dns --permanent
+firewall-cmd --add-service=freeipa-ldap --permanent
+firewall-cmd --add-service=freeipa-ldaps --permanent
+firewall-cmd --add-service=http --permanent
+firewall-cmd --add-service=https --permanent
+firewall-cmd --add-service=ssh --permanent
+firewall-cmd --add-port=88/tcp --permanent
+firewall-cmd --add-port=88/udp --permanent
+firewall-cmd --add-port=464/tcp --permanent
+firewall-cmd --add-port=464/udp --permanent
+firewall-cmd --add-port=8080/tcp --permanent
+</code></pre>
+<h4 id="an-in-depth-look-at-ipanfs-home-directories">An in depth look at IPA/NFS home directories:</h4>
+<p>https://blog.khmersite.net/2020/09/automating-home-directory-with-ipa/</p>
+<h5 id="adding-clients-to-freeipa-domain">Adding clients to FreeIPA domain</h5>
+<p>https://fedoramagazine.org/join-fedora-linux-enterprise-domain/</p>
+<pre><code class="language-bash">sudo realm join asiclabwin001.physik.uni-bonn.de -v
+</code></pre>
+<p>authenticate as admin account.</p>
+<h3 id="backing-up-ldap-data">Backing up LDAP data</h3>
+<p>FreeIPA has commands for backup and restore of LDAP data:</p>
+<p>https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/backup-restore</p>
+<pre><code>sudo ipa-backup --data --online
+</code></pre>
+<p>Both flags are use, as they backup data only, and do that backup without restarting the server.</p>
+<p>Data is saved to <code>/var/lib/ipa/backup/</code></p>
+<h2 id="sssd-client-with-ldap-provider">SSSD Client with LDAP Provider</h2>
+<p>To ping a remote LDAP server and see the users it's providing from a Fedora Linux clientfirst install the ldapsearch tool on your Fedora client if it's not already installed. You can do this by running the following command:</p>
+<pre><code>sudo dnf install -y openldap-clients sssd sssd-ldap nss-pam-ldapd sssd-common
+</code></pre>
+<p>Also, you may need package <code>openssl</code></p>
+<p>Also, be sure to get the <code>sssctl</code> command. I can't recall what package providers it. Maybe sssctl-tools or something?</p>
+<p>Old command from Piotr</p>
+<pre><code>authconfig --enableldap --enableldapauth --ldapserver=noyce.physik.uni-bonn.de --ldapbasedn=dc=faust,dc=de --enablerfc2307bis --enableforcelegacy --update
+</code></pre>
+<p>New command:</p>
+<pre><code>authselect apply-changes
+sudo sssctl {config-check,domain-list,user-show,user-checks, debug-level 0x0070, cache-remove,}
+sudo authselect list
+sudo authselect select sssd
+sudo vim /etc/sssd/sssd.conf
+sudo vim /etc/openldap/ldap.conf    # but I think this doesn't apply to our client side?
+id kcaisley
+man {many differe docs!}
+</code></pre>
+<p>Create and fill out <code>/etc/sssd/sssd.conf</code> with:</p>
+<pre><code>[domain/default]
+id_provider = ldap
+auth_provider = ldap
+ldap_uri = ldap://noyce.physik.uni-bonn.de
+ldap_search_base = dc=faust,dc=de
+cache_credentials = True
+
+[sssd]
+services = nss, pam
+domains = default
+
+[nss]
+homedir_substring = /faust/user
+</code></pre>
+<p>Then <code>sudo vim /etc/openldap/ldap.conf</code></p>
+<p>My final config:</p>
+<pre><code>[domain/default]
+id_provider = ldap
+auth_provider = ldap
+ldap_uri = ldap://noyce.physik.uni-bonn.de
+ldap_search_base = dc=faust,dc=de
+ldap_group_search_base = ou=group,dc=faust,dc=de
+ldap_tls_reqcert = never
+ldap_schema = rfc2307bis
+ldap_default_bind_dn = cn=root,dc=faust,dc=de
+ldap_default_authtok_type = password
+ldap_default_authtok = %Silab246%
+cache_credentials = true
+
+[sssd]
+config_file_version = 2
+services = nss, pam
+domains = default
+
+[nss]
+homedir_substring = /faust/use
+</code></pre>
+<pre><code># See ldap.conf(5) for details
+# This file should be world readable but not world writable.
+
+BASE    dc=faust,dc=de
+URI     ldap://noyce.physik.uni-bonn.de
+
+#SIZELIMIT      12
+#TIMELIMIT      15
+#DEREF          never
+
+# When no CA certificates are specified the Shared System Certificates
+# are in use. In order to have these available along with the ones specified
+# by TLS_CACERTDIR one has to include them explicitly:
+#TLS_CACERT     /etc/pki/tls/cert.pem
+
+# System-wide Crypto Policies provide up to date cipher suite which should
+# be used unless one needs a finer grinded selection of ciphers. Hence, the
+# PROFILE=SYSTEM value represents the default behavior which is in place
+# when no explicit setting is used. (see openssl-ciphers(1) for more info)
+#TLS_CIPHER_SUITE PROFILE=SYSTEM
+
+# Turning this off breaks GSSAPI used with krb5 when rdns = false
+SASL_NOCANON    on
+</code></pre>
+<p>finally</p>
+<pre><code>sudo authselect apply-changes
+systemctl restart sssd
+systemctl enable sssd
+</code></pre>
+<p>to check contents of LDAP server:</p>
+<pre><code>ldapsearch -x -H ldap://noyce.physik.uni-bonn.de -b dc=faust,dc=de
+</code></pre>
+<p>misc commands:</p>
+<pre><code>sudo cat /var/log/sssd/sssd.log
+sudo cat /var/log/sssd/sssd_nss.log
+sudo cat /var/log/sssd/sssd_pam.log
+man sssd-ldap
+</code></pre>
+<pre><code>[nss] [cache_req_common_process_dp_reply] (0x3f7c0): [CID#265] CR #557: Could not get account info [1432158212]: SSSD is offline
+
+
+[asiclab@asiclab008 ~]$ sudo systemctl status sssd
+● sssd.service - System Security Services Daemon
+     Loaded: loaded (/usr/lib/systemd/system/sssd.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2023-03-28 16:26:27 CEST; 12min ago
+   Main PID: 868 (sssd)
+      Tasks: 4 (limit: 76850)
+     Memory: 56.6M
+        CPU: 338ms
+     CGroup: /system.slice/sssd.service
+             ├─868 /usr/sbin/sssd -i --logger=files
+             ├─922 /usr/libexec/sssd/sssd_be --domain default --uid 0 --gid 0 --logger=files
+             ├─939 /usr/libexec/sssd/sssd_nss --uid 0 --gid 0 --logger=files
+             └─940 /usr/libexec/sssd/sssd_pam --uid 0 --gid 0 --logger=files
+
+Mar 28 16:26:26 fedora systemd[1]: Starting sssd.service - System Security Services Daemon...
+Mar 28 16:26:26 fedora sssd[868]: Starting up
+Mar 28 16:26:26 fedora sssd_be[922]: Starting up
+Mar 28 16:26:27 fedora sssd_nss[939]: Starting up
+Mar 28 16:26:27 fedora sssd_pam[940]: Starting up
+Mar 28 16:26:27 fedora systemd[1]: Started sssd.service - System Security Services Daemon.
+Mar 28 16:26:51 asiclab008.physik.uni-bonn.de sssd_be[922]: Could not start TLS encryption. unknown error
+Mar 28 16:28:15 asiclab008.physik.uni-bonn.de sssd_be[922]: Backend is online
+
+
+SEE ALSO
+       sssd(8), sssd.conf(5), sssd-ldap(5), sssd-krb5(5), sssd-simple(5), sssd-ipa(5), sssd-ad(5), sssd-files(5), sssd-sudo(5), sssd-session-recording(5), sss_cache(8),
+       sss_debuglevel(8), sss_obfuscate(8), sss_seed(8), sssd_krb5_locator_plugin(8), sss_ssh_authorizedkeys(8), sss_ssh_knownhostsproxy(8), sssd-ifp(5), pam_sss(8).  sss_rpcidmapd(5)
+       sssd-systemtap(5)
+
+AUTHORS
+       The SSSD upstream - https://github.com/SSSD/sssd/
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

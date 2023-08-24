@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Motivation - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../admin/" class="nav-link">Admin</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_notes_delete_me/" class="nav-link">Bag 3 Install</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_old_notes_delete_me/" class="nav-link">BAG Analog Generator</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bash/" class="nav-link">Bash:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../boot_sequence/" class="nav-link">Boot sequence</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../checksum_notes/" class="nav-link">Checksum notes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../clonezilla/" class="nav-link">Clonezilla</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Motivation</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../file_server/" class="nav-link">Client NFS Mounting (For Fedora)</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../git/" class="nav-link">Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../license_server/" class="nav-link">FlexNet License Server Configuration</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../network_configuration/" class="nav-link">Hostname and IP Address References</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../package_management/" class="nav-link">DNF and RPM package management:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../printer_config/" class="nav-link">Printer config</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../remote_connection/" class="nav-link">Wireguard</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_pdk/" class="nav-link">Setup pdk</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_synopsys/" class="nav-link">SFTP Download Instructions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_xilinx/" class="nav-link">To make Vivado work:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../third_party/" class="nav-link">H.264 Support</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../user_management/" class="nav-link">Credentials</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../clonezilla/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../file_server/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#motivation" class="nav-link">Motivation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#containers" class="nav-link">Containers</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#intro-to-containers" class="nav-link">Intro to Containers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#why-apptainer-open-source-singularity-fork" class="nav-link">Why Apptainer? (open-source Singularity fork)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#starting-cadence-virtuoso-ic617-and-ic618-from-fedora-linux-client" class="nav-link">Starting Cadence Virtuoso (IC617 and IC618) from Fedora Linux Client</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#changing-shell" class="nav-link">Changing shell</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#which-package-provides-file-on-rhel-based-system" class="nav-link">Which package provides file on RHEL Based System</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#to-find-which-package-a-utility-is-provided-by-that-isnt-downloaded-yet" class="nav-link">To find which package a utility is provided by (that isn't downloaded yet)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#container-creation" class="nav-link">Container Creation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#for-centos7" class="nav-link">For Centos7:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#for-rockylinux-87" class="nav-link">For RockyLinux 8.7:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#for-rockylinux-91" class="nav-link">For RockyLinux 9.1:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#final-container-design-for-cadence-this-ist-he-def-file-used-to-generate-an-immutable-container" class="nav-link">Final Container Design for Cadence: (This ist he .def file, used to generate an immutable container)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#there-appears-to-be-some-permissions-issue-with-writing-sandbox-containers-directly-to-the-nfs-directories" class="nav-link">There appears to be some permissions issue with writing sandbox containers directly to the NFS directories</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#determining-dependencies-on-linux" class="nav-link">Determining dependencies on Linux:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="motivation">Motivation</h1>
+<p>Proprietary EDA tools like Cadence Virtuoso are typically only supported on <a href="https://www.cadence.com/content/dam/cadence-www/global/en_US/documents/support/2021-2024-cadence-compute-platform-roadmap-v1-public.pdf">a handful of operating systems</a>. As machines for ASIC design are typically dedicated for that purpose, this can therefore lead to </p>
+<h1 id="containers">Containers</h1>
+<p>Container provide for operating system virtualization,  in which the kernel allows the existence of multiple isolated user space instances.</p>
+<h2 id="intro-to-containers">Intro to Containers</h2>
+<p>OS-level virtualization is an operating system (OS) paradigm in which the kernel allows the existence of multiple isolated user space instances, called containers (LXC, Solaris containers, Docker, Podman), zones (Solaris containers), virtual private servers (OpenVZ), partitions, virtual environments (VEs), virtual kernels (DragonFly BSD), or jails (FreeBSD jail or chroot jail).[1] Such instances may look like real computers from the point of view of programs running in them. A computer program running on an ordinary operating system can see all resources (connected devices, files and folders, network shares, CPU power, quantifiable hardware capabilities) of that computer. However, programs running inside of a container can only see the container's contents and devices assigned to the container.</p>
+<p>A short list of tech to consider: Docker, Fedora CoreOS, Silverblue, Toolbx, Singularity/Apptainer, Podman, LXC, Flatpak</p>
+<p>In short, unlike a virtual machine, containers provide abstraction at the operating system level. This can be useful for running proprietary GUI-based applications like Cadence Virtuoso, which e</p>
+<p>We can use a CentOS7 image for setting up and running our cadence development.</p>
+<p>But how do we then access data?</p>
+<p>Docker is a single-purpose <em>application virtualization</em> and LXC is a multi-purpose <em>operating system</em> virtualization. If one looks for a portability and scalability of the application / micro-service, Docker and Kubernetes is a good choice. If one would like to have several (or even thousands of) portable systems on a single computer, LXC is a good choice.</p>
+<p>Docker was not designed out of the box for GUI apps, so you need to have a video server with X11 typically for that.</p>
+<p>Linux containers are all based on the virtualization, isolation, and resource management mechanisms provided by the <a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux kernel</a>, notably <a href="https://en.wikipedia.org/wiki/Linux_namespaces">Linux namespaces</a> and <a href="https://en.wikipedia.org/wiki/Cgroups">cgroups</a>.</p>
+<h4 id="os-level-virtualization-containers-and-application-virtualization-technologies">OS-Level Virtualization (Containers) and Application Virtualization Technologies:</h4>
+<p>With this tech, different distributions are fine, but other operating systems or kernels are not. Full application virtualization requires a virtualization layer.[<a href="https://en.wikipedia.org/wiki/Application_virtualization#cite_note-Husain-2">2]</a> Application virtualization layers replace part of the <a href="https://en.wikipedia.org/wiki/Runtime_environment">runtime environment</a> normally provided by the operating system. The layer intercepts all disk operations of virtualized applications and transparently redirects them to a virtualized location, often a single file.[<a href="https://en.wikipedia.org/wiki/Application_virtualization#cite_note-Gurr-3">3]</a> The application remains unaware that it accesses a virtual resource instead of a physical one. Since the application is now working with one file instead of many files spread throughout the system, it becomes easy to run the application on a different computer and previously incompatible applications can be run side by side. </p>
+<p>A container image is simply a file (or collection of files) saved on disk that stores everything you need to run a target application or applications:</p>
+<ul>
+<li>code</li>
+<li>runtime</li>
+<li>system tools</li>
+<li>libraries</li>
+<li>etc</li>
+</ul>
+<p>A container process is simply a standard (Linux) process running on top of the underlying host's operating system and kernel, but whose software environment is defined by the contents of the container image.</p>
+<blockquote>
+<p>How do I develop in a container, when I need to run a GUI as part of my workflow? What are the limits of containerization? </p>
+</blockquote>
+<h4 id="limitations-of-containers">Limitations of Containers</h4>
+<ol>
+<li>Architecture dependent; always limited by CPU architecture (x86 vs ARM) and binary format (ELF)</li>
+<li>Portability: Requires glibc and kernel compatibility between host and container; also requires any other kernel-user space API compatibility (e.g., OFED/IB, NVIDIA/GPUs)</li>
+<li>Like something built on Ubuntu 22.04 wouldn't work on CentOS 6</li>
+<li>Filesystem isolation: Filesystem paths are (mostly) different when viewed inside and outside container</li>
+<li>By default containers can't see the contents of the host file system. To access host filesystem from inside the file system requires a bit of extra work to 'bind' it. </li>
+</ol>
+<h4 id="most-common-use-cases">Most Common Use Cases</h4>
+<ul>
+<li>Building and running applications that require older/newer system libraries than are available on the host system</li>
+<li>Most modern tools, like PyTorch, assume the latest packages, and expect a debian-based environment like Ubuntu, which most HPC system aren't doing. Containers can solve these incompatibilities.</li>
+<li>Running commercial applications binaries that have specific OS requirements not met by the host system.</li>
+<li>Your license agreement may only give you a compiled binary, which you're  </li>
+<li>Oh! Wow this is exactly my use case. How do I build a repoducible environment when commercial binaries (maybe even with GUI?) are part of the workflow?</li>
+<li>Converting prexisting Docker containers, which won't work for HPC clusters, to Singularity containers</li>
+</ul>
+<h4 id="workflow">Workflow</h4>
+<ol>
+<li><strong>Build</strong> your Singularity containers on you local system where you have root or sudo access; e.g., a personal computer where you have installed Singularity</li>
+<li>You can't work on native MacOS, as you need to use a Virtual machine with a Ubuntu or Fedora-based OS. This is doubly true, if your Mac has an M1 ARM chipset.</li>
+<li><strong>Transfer</strong> your Singularity containers to the HPC system where you want to run them</li>
+<li><strong>Run</strong> your Singularity containers on that HPC system</li>
+</ol>
+<h2 id="why-apptainer-open-source-singularity-fork">Why Apptainer? (open-source Singularity fork)</h2>
+<h4 id="docker">Docker</h4>
+<p>Really designed for network centric services like web servers and databases, but not really meant for HPC systems where many users are sharing a space. Docker assumes you have trust for all users running on systems. Whereas in HPC, the admins don't even trust the users.</p>
+<p>Docker also wasn't designed to support batch-based workflows</p>
+<p>Docker not designed to support tightly-coupled, highly distributed parallel applications (MPI)</p>
+<h4 id="singularity">Singularity</h4>
+<ul>
+<li>Designed at Berkeley Lab as the equivalent for HPC.</li>
+<li>Each container is a single (read-only) image file (unlike the layered arch. in Docker). If you want to change it, you have to to rebuild it.</li>
+<li>No root owned daemon processes</li>
+<li>Support shared/multi-tenant resource environments</li>
+<li>Support HPC Hardware: Infiniband, GPUs</li>
+<li>Supports HPC applications: MPI</li>
+</ul>
+<h4 id="conclusion-use-apptainer">Conclusion: Use Apptainer</h4>
+<p>Overview of why not Docker, and the better options:</p>
+<p>https://blog.jwf.io/2019/08/hpc-workloads-containers/</p>
+<p>Using Singularity/Apptainer with GUI commercial applications:</p>
+<p>https://learningpatterns.me/posts/2018-01-30-abaqus-singularity/</p>
+<p>https://apptainer.org</p>
+<h2 id="starting-cadence-virtuoso-ic617-and-ic618-from-fedora-linux-client">Starting Cadence Virtuoso (IC617 and IC618) from Fedora Linux Client</h2>
+<p>Install apptainer</p>
+<pre><code>sudo dnf install apptainer
+</code></pre>
+<p>Create a <code>.def</code> file with the name <code>virtuoso_centos7.def</code>:</p>
+<pre><code>Bootstrap: docker
+From: centos:7
+
+%setup
+    #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
+    mkdir ${APPTAINER_ROOTFS}/users
+    mkdir ${APPTAINER_ROOTFS}/tools
+
+%environment
+    # IC617 doesn't recognize the OS environment properly, need to specify it manually
+    export OA_UNSUPPORTED_PLAT=linux_rhel50_gcc48x
+
+%post
+    #section to download and install packages before container is immutable
+
+    #CentOS 7 image on dockerhub isn't updated, so run this first
+    yum -y update &amp;&amp; yum clean all
+
+    #list of packages required by Cadence Virtusoso IC618
+    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+
+    #For IC617 and below, i686 package versions are required to support 32-bit binaries
+    yum install -y glibc.i686 elfutils-libelf.i686 mesa-libGL.i686 mesa-libGLU.i686 motif.i686 libXp.i686 libpng.i686 libjpeg-turbo.i686 expat.i686 glibc-devel.i686 redhat-lsb.i686  
+
+    # additional packages required by Cliosoft SOS
+    yum install -y libXpm
+
+    # additional package required for X11 forwarding
+    yum install -y xorg-x11-utils                           
+</code></pre>
+<p>Build the container, in an immutable mode:</p>
+<pre><code>apptainer build virtuoso_centos7.sif virtuoso_centos7.def
+</code></pre>
+<p>On the host machine, before running the startup script, we must start a <code>xhost +</code>, as discussed in this solution found <a href="https://rescale.com/documentation/main/rescale-advanced-features/running-your-custom-code-on-rescale/using-apptainer-singularity/">here</a>:</p>
+<pre><code>xhost +
+</code></pre>
+<p>Run the immutable container, and start a shell inside:</p>
+<pre><code>apptainer shell -B /tools,/users virtuoso_centos7.sif
+</code></pre>
+<p>Inside the container, check the system configuration with the Cadence provided tool <code>checkSysConf</code>:</p>
+<pre><code>Apptainer&gt; /cadence/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
+or
+Apptainer&gt; /tools/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
+</code></pre>
+<p>Finally, run the virtuoso start-up script, using the full path to <code>tcsh</code>. Make sure the start up script contains the line <code>virtuoso &amp;</code>. </p>
+<pre><code>Apptainer&gt; /bin/tcsh ./startup.sh
+</code></pre>
+<p>Else you need to source the script instead, and run the command <code>virtuoso &amp;</code> manually.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>If you are not able to start Cadence, ensure your environment has both <code>tcsh</code> and <code>ksh</code> installed.</li>
+<li>Check to make sure the cadence executable is known: <code>which virutoso</code></li>
+<li>To check the current shell interpreter:</li>
+</ul>
+<pre><code># Display your current shell name reliably. 
+ps -p $$
+
+# Print the shell for the current user but not necessarily the shell that is running at the movement. 
+echo &quot;$SHELL&quot;
+
+# Another reliable and simple method to get the current shell interpreter name on Linux or Unix-like systems.
+echo $0
+</code></pre>
+<h2 id="changing-shell">Changing shell</h2>
+<p>Need the <code>tcsh</code> and <code>chsh</code> commands to be </p>
+<p>To check which shell is active: </p>
+<p>cat /etc/passwd | grep <code>cd; pwd</code></p>
+<p>To change shell, by running this and then restarting termina:</p>
+<p>chsh -s /usr/bin/tcsh</p>
+<p>This works now, but I needed ksh installed.</p>
+<p>okay, still complaining that it's not a supported OS. Tried running the checkSysConf tool:</p>
+<pre><code>/cadence/cadence/IC618/tools.lnx86/bin/checkSysConf
+</code></pre>
+<p>Okay, I'm still having issues, and cadence isn't giving me any useful messages. I've ruled the issue with wayland and Xorg, and I've switched to Xorg. My next step is to figure out how to get more verbose information on why Virtuoso isn't starting. All it says right now is:</p>
+<pre><code>2022/11/30 13:13:40 System is not a supported distribution
+2022/11/30 13:13:40 An error occurred. We don't recognize OS 
+2022/11/30 13:13:40 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2022/11/30 13:13:40 For more info, please run CheckSysConf in &lt;cdsRoot/tools.lnx86/bin/checkSysConf &lt;productId&gt;
+</code></pre>
+<p>Before I start hacking away and changing packages like openssl-devel to be more inline with the CentOS7 system, perhaps I can figure out better exactly what may need to change. Let's look at the CheckSysConf script and try to figure out what the latest supported version of the packages is. What version of Ubuntu is supported? Maybe there is a log message being written somewhere, and the people <a href="https://www.edaboard.com/forums/linux-software.21/">here</a> might know where to find that log message.</p>
+<h2 id="which-package-provides-file-on-rhel-based-system">Which package provides file on RHEL Based System</h2>
+<p><code>dnf provides ./filename</code></p>
+<p>Then check why a package was explici</p>
+<p>The <code>run</code>, <code>exec</code>, and <code>shell</code> commands are the three primary ways in which to interact with a container image. The <code>run</code> command will start the container, run the scripts marked for execution inside the container (if any), and then exit. The <code>exec</code> commands allows a one time command to be run inside the shell, which then exits. The <code>shell</code> command allows an interactive shell to be spun up, which can be exited at will. The first option is good for image usage once it is finalized. The latter two are best for prototyping when building in sandbox mode.</p>
+<pre><code>WARNING: The sandbox contain files/dirs that cannot be removed with 'rm'.
+WARNING: Use 'chmod -R u+rwX' to set permissions that allow removal with 'rm -rf'
+WARNING: Use the '--fix-perms' option to 'apptainer build' to modify permissions at build time.
+</code></pre>
+<p>I need to install a couple packages within this container. The right process is <strong>not</strong> to enter a shell within the container and run sudo yum install.</p>
+<p>Tomorrow:</p>
+<p>bind mount the cadence folder
+install the lsb-release package
+run the cadence compatibility script, and manually specify all the packages to install, until this check is passed
+figure out how to start the gui of the container
+write define file to make the above reproducible</p>
+<p><a href="https://apptainer.org/docs/user/main/index.html">docs</a>
+<a href="https://learningpatterns.me/posts/2018-01-30-abaqus-singularity/">commerical GUI</a>
+<a href="https://hpc.nih.gov/apps/apptainer.html">NIH tutorail</a></p>
+<p>Starting the container with Cadence folder available:
+<code>apptainer shell -B /cadence:/cadence virtuoso_centos7.sif</code></p>
+<p>Okay, so I can't use the --writable option and have stuff automatically bind-mounted. Therefor in sandbox mode, I at least need to create the mountpoints manually.
+No the better</p>
+<pre><code>$ apptainer build virtuoso_centos7_immut.sif virtuoso_centos7.def
+$ xhost +
+$ apptainer shell -B /cadence:/cadence virtuoso_centos7_immut.sif
+
+Apptainer&gt; /cadence/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8
+Apptainer&gt; /bin/tcsh /faust/user/kcaisley/cadence/tsmc65/tsmc_crn65lp_1.7a
+</code></pre>
+<p>On the host machine, before running the startup script, we must start a <code>xhost +</code> 
+Solution found <a href="https://rescale.com/documentation/main/rescale-advanced-features/running-your-custom-code-on-rescale/using-apptainer-singularity/">here</a></p>
+<p>for the whole bash  vs tcsh problem:</p>
+<p>ps -p $$ – Display your current shell name reliably. </p>
+<p>echo "$SHELL" – Print the shell for the current user but not necessarily the shell that is running at the movement. </p>
+<p>echo $0 – Another reliable and simple method to get the current shell interpreter name on Linux or Unix-like systems.</p>
+<p>I may want to look at passing the <code>--nv</code> flag when trying to do heavy layout work flows.</p>
+<p>I think that the reason why <code>xdpyinfo</code> didn't work is because I hadn't made the xhost visible to the container.</p>
+<h2 id="to-find-which-package-a-utility-is-provided-by-that-isnt-downloaded-yet">To find which package a utility is provided by (that isn't downloaded yet)</h2>
+<pre><code>yum provides /usr/bin/xdpyinfo
+</code></pre>
+<p>If the package were downloaded, and if <code>which</code> were also on the system, we could do this instead:</p>
+<pre><code>yum provides `which free`
+</code></pre>
+<p>Anyways, we find the right package to install for it is <code>yum info xorg-x11-utils</code></p>
+<p>Yes, it does appear that the package is no longer missing. However, now there is no $DISPLAY env variable, so I can't test it. This is because I'm command line only for now.</p>
+<p>check where container is running</p>
+<p>Further more, some notes from stuff I did in BAG:</p>
+<h1 id="container-creation">Container Creation</h1>
+<p>sudo dnf install apptainer
+apptainer build --sandbox cbag_centos7.sif docker://centos:7
+apptainer shell --fakeroot --writable cbag_centos7.sif/</p>
+<h1 id="for-centos7">For Centos7:</h1>
+<p>yum -y update &amp;&amp; yum clean all
+yum install centos-release-scl
+yum install devtoolset-8
+yum install epel-release
+yum install which yaml-cpp yaml-cpp-devel fmt fmt-devel spdlog spdlog-devel cmake3 //note cmake3
+source /opt/rh/devtoolset-8/enable</p>
+<p>cd to folder and export CC and CXX
+tried to build, but didn't work as spdlog wasn't new enough to include .cmake files</p>
+<h1 id="for-rockylinux-87">For RockyLinux 8.7:</h1>
+<p>dnf -y update &amp;&amp; dnf clean all
+dnf install epel-release
+dnf install which yaml-cpp yaml-cpp-devel fmt fmt-devel spdlog spdlog-devel cmake gcc gcc-c++ boost boost-devel</p>
+<p>starts compiling after stting static boost to OFF, but then fails at compiling with boost...</p>
+<h1 id="for-rockylinux-91">For RockyLinux 9.1:</h1>
+<p>dnf -y update &amp;&amp; dnf clean all
+dnf -y install epel-release
+dnf -y install which yaml-cpp yaml-cpp-devel fmt fmt-devel spdlog spdlog-devel cmake gcc gcc-c++ boost boost-devel</p>
+<h1 id="final-container-design-for-cadence-this-ist-he-def-file-used-to-generate-an-immutable-container">Final Container Design for Cadence: (This ist he .def file, used to generate an immutable container)</h1>
+<pre><code>Bootstrap: docker
+From: centos:7
+
+
+%setup
+    #run on the host system, after the base container OS is installed. Filepaths are relative to host (fedora)
+    mkdir ${APPTAINER_ROOTFS}/cadence
+
+%post
+    #section to download and install packages before container is immutable
+
+    #CentOS 7 image on dockerhub isn't updated, so run this first
+    yum -y update &amp;&amp; yum clean all
+
+    #list of packages required by Cadence
+    yum install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi redhat-lsb libXScrnSaver apr apr-util compat-db47 xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+    yum install -y xorg-x11-utils
+</code></pre>
+<h2 id="there-appears-to-be-some-permissions-issue-with-writing-sandbox-containers-directly-to-the-nfs-directories">There appears to be some permissions issue with writing sandbox containers directly to the NFS directories</h2>
+<p>The fix is to just write on the host system. If I can't delete a file, just do this first:</p>
+<p><code>sudo chmod -R +rw cbag_centos7_sandbox.sif/</code></p>
+<p><code>rm -rf cbag_centos7_sandbox.sif/</code></p>
+<h1 id="determining-dependencies-on-linux">Determining dependencies on Linux:</h1>
+<p>show library dependencies (pretty simple, actually):
+<code>ldd "executable name"</code>
+including nested dependencies
+ <code>ldd -v  "executable name"</code></p>
+<p>One has to target the direct (and full) path to the binary:
+<code>/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso</code>Interestingly, the are a lot of libraries which are not found, even from within the apptainer:</p>
+<pre><code>Apptainer&gt; ldd  /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.22' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+/cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso)
+    linux-vdso.so.1 =&gt;  (0x00007ffd18935000)
+    libap_sh.so =&gt; not found
+    libapAssist_sh.so =&gt; not found
+    libapInfra_sh.so =&gt; not found
+    libpl_sh.so =&gt; not found
+    libplt_sh.so =&gt; not found
+    libadeStateXML_sh.so =&gt; not found
+    libeadSpectreEmir.so =&gt; not found
+    libvsacpp.so =&gt; not found
+    libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007fa524600000)
+    libpython3.6m.so.1.0 =&gt; not found
+    libvpsl.so =&gt; not found
+    libcthDRM.so =&gt; not found
+    libcrypt.so.1 =&gt; /lib64/libcrypt.so.1 (0x00007fa524200000)
+    libxerces-c-3.1.so =&gt; not found
+    libcrypto.so.10 =&gt; /lib64/libcrypto.so.10 (0x00007fa523c00000)
+    libPolyBool.so =&gt; not found
+    libprotobuf.so.3.12.2.0 =&gt; not found
+    libgrpc++.so.1 =&gt; not found
+    libgrpc.so.11 =&gt; not found
+    libaddress_sorting.so.11 =&gt; not found
+    libre2.so =&gt; not found
+    libupb.so.11 =&gt; not found
+    libz.so.1 =&gt; /lib64/libz.so.1 (0x00007fa523800000)
+.....
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,18 @@
+site_name: ASICLab Docs
+repo_url: https://github.com/SiLab-Bonn/asiclab-docs
+highlightjs: true
+hljs_languages:
+  - yaml
+  - rust
+nav: 
+  - Home: README.md
+  - Workstations:
+    - 
+    - User Management: user_management.md
+    - Development Tools: git.md
+    - ''
+  - Servers:
+    - License Server: license_server.md
+    - FreeIPA/LDAP Server: user_management.md
+theme:
+  name: readthedocs

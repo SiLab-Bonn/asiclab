@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>BAG Analog Generator - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../admin/" class="nav-link">Admin</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bag_notes_delete_me/" class="nav-link">Bag 3 Install</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">BAG Analog Generator</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../bash/" class="nav-link">Bash:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../boot_sequence/" class="nav-link">Boot sequence</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../checksum_notes/" class="nav-link">Checksum notes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../clonezilla/" class="nav-link">Clonezilla</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../containers/" class="nav-link">Motivation</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../file_server/" class="nav-link">Client NFS Mounting (For Fedora)</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../git/" class="nav-link">Fix for when a commit has been made in a detached head state, and you want to update the real branch to include this commit:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../license_server/" class="nav-link">FlexNet License Server Configuration</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../network_configuration/" class="nav-link">Hostname and IP Address References</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../package_management/" class="nav-link">DNF and RPM package management:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../printer_config/" class="nav-link">Printer config</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../remote_connection/" class="nav-link">Wireguard</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_pdk/" class="nav-link">Setup pdk</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_synopsys/" class="nav-link">SFTP Download Instructions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../setup_xilinx/" class="nav-link">To make Vivado work:</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../third_party/" class="nav-link">H.264 Support</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../user_management/" class="nav-link">Credentials</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../bag_notes_delete_me/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../bash/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#bag-analog-generator" class="nav-link">BAG Analog Generator</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#bag-install-notes" class="nav-link">BAG Install Notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#installing-bag-environment" class="nav-link">Installing BAG Environment</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#cadence-crashing-notes" class="nav-link">Cadence Crashing Notes:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#anaconda-install" class="nav-link">Anaconda Install:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#august-26" class="nav-link">August 26:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#thursday-june-23" class="nav-link">Thursday June 23 🍎🍎</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#monday-june-27_1" class="nav-link">Monday June 27 🍎🍎🍎🍎🍎</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#other-bag-thoughts" class="nav-link">Other BAG thoughts:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#august-27" class="nav-link">August 27:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#august-28" class="nav-link">August 28:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#workspace-setup-phase" class="nav-link">Workspace setup phase:</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#needed-changes" class="nav-link">Needed changes:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#chronological-origin-of-files-in-top-level-directory-during-installation" class="nav-link">Chronological origin of files in top level directory, during installation:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pythonpath-and-syspath-understanding" class="nav-link">PYTHONPATH and sys.path understanding:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#changes-to-accomodate" class="nav-link">Changes to accomodate:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#potential-outstanding-problems" class="nav-link">Potential outstanding problems:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#friday-sep-9" class="nav-link">Friday Sep 9</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#monday-sep-12" class="nav-link">Monday Sep 12</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tuesday-sep-13" class="nav-link">Tuesday Sep 13</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#wednesday-sep-14" class="nav-link">Wednesday Sep 14</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#thursday-15-september" class="nav-link">Thursday 15 September</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#friday-16-sep" class="nav-link">Friday 16 Sep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#after-installed-cmake-with-apt-wheel-with-pip-sudo-apt-install-libboost171-all-dev-but-still-got" class="nav-link">After, Installed CMake with apt, wheel with pip, sudo apt install libboost1.71-all-dev, but still got:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#some-quick-notes-on-setting-env-variables" class="nav-link">Some quick notes on setting ENV variables:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#to-get-libfmt" class="nav-link">To get libfmt:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lets-try-it-with-yrrapts-official-repo-just-making-sure-we-enable-oa" class="nav-link">Let's try it with yrrapt's official repo, just making sure we enable OA:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sat-17-sep" class="nav-link">Sat 17 Sep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sunday-18-sep" class="nav-link">Sunday 18 Sep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#monday-19-sep" class="nav-link">Monday 19 Sep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tuesday-20-sep" class="nav-link">Tuesday 20 Sep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#bag3-thoughts" class="nav-link">BAG3 Thoughts:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#to-do" class="nav-link">To Do</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#backlog" class="nav-link">Backlog</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#in-progress" class="nav-link">In Progress</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#completed" class="nav-link">Completed</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#notes" class="nav-link">Notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#openaccess-dependency-research" class="nav-link">OpenAccess Dependency Research</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#next-steps" class="nav-link">NEXT STEPS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#work-in-october" class="nav-link">Work in October</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#work-in-november" class="nav-link">Work in November</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#etc" class="nav-link">ETC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#building-pybag" class="nav-link">Building Pybag:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#running-setuppy-in-pybag-library" class="nav-link">Running setup.py in pybag library</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#trying-again-in-fedora" class="nav-link">Trying again in Fedora:</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#downgrading-packages-on-fedora" class="nav-link">Downgrading packages on Fedora:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#fmt-and-spdlog" class="nav-link">fmt and spdlog</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#putting-more-effor-into-understanding-bag" class="nav-link">putting more effor into understanding BAG:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#january-12-picking-back-up-work" class="nav-link">January 12: picking back up work</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#january-20-continuing-with-development" class="nav-link">January 20: continuing with development</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#fully-documented-build-problems" class="nav-link">Fully documented build problems:</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#problem-1" class="nav-link">Problem 1:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#problem-2" class="nav-link">Problem #2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#problem-3" class="nav-link">Problem #3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#problem-4" class="nav-link">Problem #4</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#problem-5" class="nav-link">Problem #5</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#problem-6" class="nav-link">Problem #6</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#container-creation" class="nav-link">Container Creation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#for-centos7" class="nav-link">For Centos7:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#for-rockylinux-87" class="nav-link">For RockyLinux 8.7:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#for-rockylinux-91" class="nav-link">For RockyLinux 9.1:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#email-to-ayan" class="nav-link">Email to Ayan:</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#22-march" class="nav-link">22 March</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#cmake-workflow" class="nav-link">CMake workflow:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#visual-studio-code-with-cmake-tools" class="nav-link">Visual Studio Code with CMake Tools</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#to-enable-versioning-when-running-vcpkg" class="nav-link">To enable versioning when running vcpkg</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#notes-about-building-cbag-with-vcpkg" class="nav-link">Notes about building cbag with vcpkg</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#building-on-april-10" class="nav-link">Building on April 10</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#multiple-defenitions-errors" class="nav-link">Multiple defenitions errors:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="bag-analog-generator">BAG Analog Generator</h1>
+<h3 id="crossely-iccad13">Crossely ICCAD'13</h3>
+<ul>
+<li>produce only <strong>sized</strong> schematic, the topology is up to the designer</li>
+<li>Good for:</li>
+<li>technology characterization</li>
+<li>schematic and testbench translation</li>
+<li>simulator interfacing</li>
+<li>physical verification and extraction</li>
+<li>parameterized layout creation for common <em>styles </em>of layout. </li>
+<li>BAG, in it's basic form belongs to the 'knowledge-based' design automation class, although specific sub-circuits area free to be optimized with some algorithm. This is especially useful with BAG, as we already have the ability to produce a high-quality subset of design to choose between.</li>
+<li>Knowledge-based design scripts are especially useful, as they self-document the design process. They also keep the designer 'in control' of the process.</li>
+<li>a completed BAG script helps with top level design, as you can specify the top level parameters, and then recursively instantiate the subblocks</li>
+</ul>
+<p>"In our approach to analog circuit automation, a designer’s deliverable is not a single instance of a sized schematic and clean layout for a particular circuit, but rather a generator for a desired class of circuits that can replicate, in an automated fashion, the design procedure that would have been used for a traditional, manual design."</p>
+<ul>
+<li>Each realized circuit Generator much implement the methods of the interface</li>
+<li>ReadSpecification()</li>
+<li>DesignSchematic()</li>
+<li>DesignLayout()</li>
+<li>VerifyArchitecture()</li>
+<li>WritePerformance()</li>
+<li>Because tasks are often the same between circuit generators though, there are abstract classes which provide connections to common actions in the design process, and to connect to tools.</li>
+<li>CodeStubGeneration()</li>
+<li>RunOptimizer()</li>
+<li>LaunchSimulations()</li>
+<li>RunDRCandLVS()</li>
+<li>IO_OpenAccess()</li>
+</ul>
+<h1 id="bag-install-notes">BAG Install Notes</h1>
+<p>BAG_prim is cadence library, with device used to build schematic template (called a schematic generator)
+Schematic generators are schematic templates are used as in input to design modules, which then produce new design instances as an output</p>
+<p>Drop in replacement for instances in a schematic generator </p>
+<h3 id="monday-june-27">Monday June 27</h3>
+<p>I'm at the point in the tutorial where I've installed the necessary python packages, and now it's instructing me on how to set up the 'configuration file. But I don't understand where the Configuration file is?</p>
+<p>Actually wait, it seems that I need to make these config files, and that they aren't BAG specific. I just need to 'point' to them from within the BAG database, so that BAG knows where they are?</p>
+<p>env_file, lvs_runset, rcx_runset, and cell_map all appear to be files that are used normally for Cadence work.</p>
+<p>Okay, so then the page with 'BAG Configuration File' listed must be listing items that I should interact with through the BAG interactive session?</p>
+<p>Okay, so do I need to import python, and then try to import the BAG library?</p>
+<p>I think I understand now; I need to load the bag2 code base from within python3, and use the <code>setup.py</code> and <code>__init__.py</code> file as my starting point for library import.</p>
+<p>To install this module, I really want to use pip, but as I have multiple python version on the remote, I should launch pip from the anaconda python environment:</p>
+<p>https://stackoverflow.com/questions/40392499/why-is-m-needed-for-python-m-pip-install</p>
+<p>https://stackoverflow.com/questions/25749621/whats-the-difference-between-pip-install-and-python-m-pip-install</p>
+<h1 id="installing-bag-environment">Installing BAG Environment</h1>
+<p>Start by getting the latest version of Anaconda, using this page:
+https://linuxize.com/post/how-to-install-anaconda-on-centos-7/</p>
+<p>This is the version of Anaconda I selected:
+Anaconda3-2022.05-Linux-x86_64.sh</p>
+<p>After anaconda was installed, I tried to setup the BAG3 code, but the source for the documentation didn't exist, so I also downloaded the BAG2 code, to try and generate the documentation. </p>
+<p>I got the following error trying to build the sphinx documentation:</p>
+<p><code>(base) bash-4.2$ make html</code>
+<code>sphinx-build -b html -d build/doctrees   source build/html</code>
+<code>Running Sphinx v4.4.0</code>
+<code>making output directory... done</code>
+<code>WARNING: sphinx_rtd_theme (&lt; 0.3.0) found. It will not be available since Sphinx-6.0</code>
+<code></code>
+<code>Theme error:</code>
+<code>no theme named 'sphinx_rtd_theme' found (missing theme.conf?)</code>
+<code>make: *** [html] Error 2</code>
+<code></code>
+I think I could try installing this with pip, but because I'm relying on Anaconda for this installation, I searched for a method using anaconda.</p>
+<p>https://anaconda.org/conda-forge/sphinx_rtd_theme</p>
+<p>To install this package with conda run one of the following:
+conda install -c conda-forge sphinx_rtd_theme </p>
+<p>Rerunning 'make html' I get the following: (It looks like it worked?</p>
+<p>Build finished. The HTML pages are in build/html.</p>
+<p>the documentation is working! It looks like I will be using a lot of Git, so I figured it would be best if I just updated my version of git:
+https://computingforgeeks.com/how-to-install-latest-version-of-git-git-2-x-on-centos-7/</p>
+<p>Getting ready:</p>
+<ul>
+<li>Update git version on asiclab008</li>
+<li>Configure easy ssh access with key authentication</li>
+<li>Building the documentation</li>
+<li>Mounting the remote drive as a SMB share, so that it's locally available on mac os (also considered StrongSync)</li>
+</ul>
+<h2 id="cadence-crashing-notes">Cadence Crashing Notes:</h2>
+<p>For Friday:</p>
+<p>x Figure out if Cadence is actually crashing  (yes, it is!)
+x test linux config, to find a way to not make it crash. (Just use IC618)</p>
+<p>The current version of my redhat/centOS distribution can be checked via:
+cat /etc/redhat-release</p>
+<p>To check Cadence config:</p>
+<p>/cadence/cadence/IC618/tools.lnx86/bin/checkSysConf IC6.1.8</p>
+<p>output of this indicated that the following packages are needed:
+sudo yum install </p>
+<pre><code>xorg-x11-fonts-ISO8859-1-75dpi
+redhat-lsb
+xorg-x11-server-Xvfb
+</code></pre>
+<p>Now everything is passing for IC618!</p>
+<p>Let's examine our two startup scripts:</p>
+<p>/faust/user/kcaisley/cadence/tsmc65/cdr/tsmc_crn65lp_1.7a_rd53b</p>
+<pre><code>-starts with /bin/csh -f
+-setenv CDSDIR /cadence/cadence/IC617
+-finishes with 'virtuoso'
+</code></pre>
+<p>the other script is, completely:
+    #!/bin/bash
+    export DMC_RUN_DIR=$(pwd)
+    export DMC_SOS_DIR=/faust/user/kcaisley/designs/dmc65
+    /cadence/local/bin/tsmc_crn65lp_1.7a_rd53 &amp;
+examining this other nested script tsmc_crn65lp_1.7a_rd53</p>
+<p>We want to create a new startup script for running with cadence, we will put it in our personal directories for now.</p>
+<p>Changing the following lines:</p>
+<p>setenv CDSDIR /cadence/cadence/IC617 -&gt; setenv CDSDIR /cadence/cadence/IC618
+virtuoso -&gt; vituoso &amp;</p>
+<p>This works now, as long as I start it as an executable './script_name'</p>
+<p>In hind sight, it looks like we might not have some support for IC617, including no ASSURA618 version.</p>
+<p>Therefore, I should probably just use the startup script tsmc_crn65lp_1.7a_rd53, and call it from piotrs script, as this adds additional DMC-specific variables.</p>
+<p>Nope, it just freezes when it starts, so I recopied the central script, made the two changes, and will work from there.</p>
+<h1 id="anaconda-install">Anaconda Install:</h1>
+<p>Cheatsheet for using Conda:
+https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf</p>
+<p>Conda Environments Guide:
+https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html</p>
+<p>open anaconda navigator:
+anaconda-navigator &amp;</p>
+<p>listing conda environments:
+conda env list</p>
+<p>changing between conda envs:
+conda active bag3</p>
+<p>create conda new env:
+conda create --name [myenv]</p>
+<h1 id="august-26">August 26:</h1>
+<p>to figure out current tty number
+w</p>
+<p>to show which tty are being used
+ps -e | grep tty</p>
+<p>to kill another tty
+pkill -9 -t tty1</p>
+<p>to show process numbers
+ps -f</p>
+<p>another tool which is useful for identifying and killing processes is top/htop.
+i think that top can do everything htop can, but more easily
+perhaps i should learn to play with top more in the future</p>
+<h1 id="thursday-june-23">Thursday June 23 🍎🍎</h1>
+<p><code>BAG_prim</code> is cadence library, with device used to build schematic template (called a schematic generator)</p>
+<p>Schematic generators are schematic templates are used as in input to design modules, which then produce new design instances as an output</p>
+<p>Drop in replacement for instances in a schematic generator </p>
+<h1 id="monday-june-27_1">Monday June 27 🍎🍎🍎🍎🍎</h1>
+<p>I'm at the point in the tutorial where I've installed the necessary python packages, and now it's instructing me on how to set up the 'configuration file. But I don't understand where the Configuration file is?</p>
+<p>Actually wait, it seems that I need to make these config files, and that they aren't BAG specific. I just need to 'point' to them from within the BAG database, so that BAG knows where they are?</p>
+<p><code>env_file</code>, <code>lvs_runset</code>, <code>rcx_runset</code>, and <code>cell_map</code> all appear to be files that are used normally for Cadence work.</p>
+<p>Okay, so then the page with 'BAG Configuration File' listed must be listing items that I should interact with through the BAG interactive session?</p>
+<p>Okay, so do I need to import python, and then try to import the BAG library?</p>
+<p>Found this online:</p>
+<blockquote>
+<p><em>Package</em> - A folder/directory that contains <code>__init__.py</code> file. <em>Module</em> - A valid python file with <code>.py</code> extension. <em>Distribution</em> - How one <em>package</em> relates to other <em>packages</em> and <em>modules</em>.</p>
+</blockquote>
+<p>I think I understand now; I need to load the BAG3 code base from within Python3, and use the <code>setup.py</code> and <code>__init__.py</code> file as my starting point for library import.</p>
+<p>To install this package, <a href="https://stackoverflow.com/questions/15724093/difference-between-python-setup-py-install-and-pip-install">I really want to use pip</a>, but as I have multiple python version on the remote, I should launch pip from the anaconda python environment:</p>
+<p>It still wasn't working, but it's because I had to target the directory explicitily, and not the <code>setup.py</code> file.</p>
+<p>The <a href="https://stackoverflow.com/questions/40392499/why-is-m-needed-for-python-m-pip-install">command</a> that appears to have finally worked for me is <code>python -m pip install /faust/user/kcaisley/bag3</code></p>
+<p>It's important to remember that a 'module' in Python is the name for any file ending in a .py extension.</p>
+<p>It <a href="https://stackoverflow.com/questions/1471994/what-is-setup-py">appears</a> that I could have actually just ran <code>pip install .</code> while inside the bag3 directory. Oh well 💁🏼‍♂️</p>
+<p>Mark helped me understand that it's better to use conda virtual environements. We built a python environement with</p>
+<p>​   <code>conda create -n bag3 python=3.9.12</code></p>
+<p>​   <code>conda activate bag3</code></p>
+<p>And then we reinstalled our BAG3 package in this virtual environement with the following command, run in our <code>/faust/user/kcaisley/bag3</code> directory:</p>
+<ul>
+<li><code>python setup.py develop</code></li>
+</ul>
+<p>My next task is to figure out how to edit the configuration options of BAG, and how to start using it in an environement like JupyterNotebooks.</p>
+<p>It's obvious that the BAG environment is running as a sqlite database, and that we need to initialize that database to interact with it.</p>
+<h1 id="other-bag-thoughts">Other BAG thoughts:</h1>
+<p>Make sure all packages are installed as listed in the BAG_framework documentation. The two needed, sqlitedict and openmdao are installed via pip, not anaconda, as they aren't on the conda repo (but are on Pypi repo)</p>
+<p>lauch the setup.py file with "pip install .", while inside the folder. As stated online, it's better to avoid directly calling the setup.py file.</p>
+<p>Create conda environment:
+conda create --name bag</p>
+<p>conda activate bag</p>
+<p>Install in current env:
+conda install .....</p>
+<p>conda info</p>
+<p>Getting the repository:
+<code>git clone -b develop https://github.com/ucb-art/bag.git --recurse-submodules</code></p>
+<p>Figuring out what changes I've made to local:
+git status
+git log
+git info</p>
+<p>git fetch --dry-run
+git fetch --dry-run --all
+git remote update
+git show-branch *develop</p>
+<p>git config --global user.name "Kennedy Caisley"
+git config --global user.email kcaisley@uni-bonn.de
+git config --global core.editor vim</p>
+<p>To copy down submodule, if forgot to do during cloning:
+git submodule update --init --recursive --remote</p>
+<p>ERROR:
+Cloning into 'pybag'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.</p>
+<p>Please make sure you have the correct access rights
+and the repository exists.
+Clone of 'git@github.com:ucb-art/pybag.git' into submodule path 'pybag' failed</p>
+<p>To reset all unstaged/uncommitted change:
+git checkout .</p>
+<p>git pull = git fetch + git merge</p>
+<p>https://github.com/ucb-art/pybag.git</p>
+<h1 id="august-27">August 27:</h1>
+<p>List of packages:</p>
+<p>apipkg appdirs attrs backcall cycler decorator distlib execnet filelock h5py importlib-metadata ipython ipython-genutils jedi Jinja2 kiwisolver MarkupSafe matplotlib more-itertools networkx numpy packaging pandocfilters parso pexpect pickleshare pluggy prompt-toolkit ptyprocess py Pygments pyparsing PyQt5 PyQt5-sip pytest pytest-forked pytest-xdist python-dateutil pyzmq ruamel.yaml ruamel.yaml.clib scipy six sortedcontainers traitlets virtualenv wcwidth zipp zmq</p>
+<h1 id="august-28">August 28:</h1>
+<p>I need to make sure that I use BAG_framework as my directory name, and not just BAG.</p>
+<p>Delete the /designs/demo_ffmpt/ file and start over, by remaking a new empty one.</p>
+<p>First, start a new project repo with these steps:
+https://github.com/ucb-art/cds_ff_mpt-bag3</p>
+<p>Then start up cadence and jupyter notebook with steps at the end of:
+https://github.com/ucb-art/BAG2_cds_ff_mpt/</p>
+<p>(This may not be 100% accurate.)</p>
+<h1 id="workspace-setup-phase">Workspace setup phase:</h1>
+<p>Several differnt things need to be modified:</p>
+<ul>
+<li>Consult the bag2 ffmpt library to look at the configuration for Jupyter that is read in, before starting</li>
+<li><code>ipython_config.py</code> is stored inside the <code>.ipython\profile_default</code> directory. The bag3 ffmpt library was only the primitives directory on the lower level, but it does contain this file at <code>../../cds_ff_mpt/workspace_setup/ipython_config.py</code>. But the bag3 ffmpt library didn't have the xbase </li>
+<li>
+<p>the <code>ipython_config.py</code> file call</p>
+</li>
+<li>
+<p><code>bag_config.yaml</code></p>
+</li>
+<li><code>bag_submodules.yaml</code></li>
+<li><code>ipython_config.py</code></li>
+<li><code>leBindKeys</code></li>
+</ul>
+<h2 id="needed-changes">Needed changes:</h2>
+<p>In <code>./cds_ff_mpt/workspace_setup/ipython_config.py</code>, needed to a</p>
+<pre><code>## List of files to run at IPython startup.
+c.InteractiveShellApp.exec_files = [
+    os.path.join(os.environ['BAG_WORK_DIR'], 'bag_startup.py'),
+]
+</code></pre>
+<p>This then calls <code>./bag_startup.py</code>, which I had to create, as is design specific to let Jupyter Notebook/Python know where to look. It's contents was:</p>
+<pre><code># -*- coding: utf-8 -*-
+import os
+import sys
+
+sys.path.append(os.environ['BAG_FRAMEWORK'])
+sys.path.append(os.environ['BAG_TECH_CONFIG_DIR'])
+sys.path.append(os.path.join(os.environ['BAG_WORK_DIR'], 'BAG2_TEMPLATES_EC'))
+sys.path.append(os.path.join(os.environ['BAG_WORK_DIR'], 'BAG_XBase_demo'))
+sys.path.append(os.path.join(os.environ['BAG_WORK_DIR'], 'bag_advanced_examples'))
+sys.path.append(os.path.join(os.environ['BAG_WORK_DIR'], 'bag_testbenches'))
+</code></pre>
+<p>This, of course, then leads me to consider if I have all the necessary project files mentioned above put in place.
+[x] BAG_FRAMEWORK (bag code base)
+[x] BAG_TECH_CONFIG_DIR (BAG PDK primitives folder, containing PDK softlink, among other things)
+[X] BAG2_TEMPLATES_EC ... had to grab this online, added via simple git clone: https://github.com/ucb-art/BAG2_TEMPLATES_EC.git
+[X] BAG_XBase_demo.... https://github.com/ucb-art/BAG_XBase_demo/tree/master
+[X] bag_advanced_examples... same, had to clone from https://github.com/ucb-art/bag_advanced_examples.git
+[X] bag_testbenches... yep, got from https://github.com/ucb-art/bag_testbenches.git</p>
+<p>This completed now, but I still have unanswered questions about several other files. Explaining everything below:</p>
+<h2 id="chronological-origin-of-files-in-top-level-directory-during-installation">Chronological origin of files in top level directory, during installation:</h2>
+<p>Following steps from: https://github.com/ucb-art/cds_ff_mpt-bag3</p>
+<h4 id="manually-making-new-git-repo-and-adding-git-modules-and-updating-them">Manually making new git repo, and adding git modules, and updating them</h4>
+<p>BAG_framework           manually git moduled from my local copy</p>
+<p>cds_ff_mpt-bag3         manually git moduled from local copy (this is primitives tech repo)</p>
+<p>.gitmodules</p>
+<p>.git</p>
+<h4 id="running-installsh-in-workspace-directory-many-of-these-files-had-to-be-prepared">Running install.sh in workspace directory (many of these files had to be prepared)</h4>
+<p><code>bag_submodules.yaml</code> copied from worksapce setup, via install.sh</p>
+<p><code>.cdsenv.personal</code> copied from worksapce setup, via install.sh</p>
+<p><code>.cdsinit.personal</code> copied from worksapce setup, via install.sh</p>
+<p><code>bag_config.yaml</code> link from workspace setup, via install.sh, multipurpose config file, used by <code>setup_submodules.py</code> during installation, and during BAG runtime.</p>
+<p><code>.bashrc</code> link from workspace setup, via install.sh</p>
+<p><code>.bashrc_bag</code> link from workspace setup, via install.sh</p>
+<p><code>.cdsenv</code> link from workspace setup, via install.sh</p>
+<p><code>.cdsinit</code> link from workspace setup, via install.sh</p>
+<p><code>cds.lib.core</code> link from workspace setup, via install.sh, included by <code>cds.lib</code> on startup</p>
+<p><code>.cshrc</code> link from workspace setup, via install.sh, unused</p>
+<p><code>.cshrc_bag</code> link from workspace setup, via install.sh, unused</p>
+<p><code>display.drf</code> link from workspace setup, via install.sh</p>
+<p><code>.gitignore</code> link from workspace setup, via install.sh</p>
+<p><code>models</code> link from workspace setup, via install.sh (is a directory)</p>
+<p><code>pvtech.lib</code> link from workspace setup, via install.sh</p>
+<p><code>leBindKeys.il</code> link from workspace setup, via install.sh</p>
+<p><code>start_tutorial.sh</code> link from workspace setup, via install.sh</p>
+<p><code>tutorial_files</code> link from workspace setup, via install.sh</p>
+<p><code>.ipython</code> created by install.sh (is a diretory, which contains ipython_config.py, which in turn is a link from workspace setup, via install.sh)</p>
+<p><code>gen_libs</code> created by install.sh</p>
+<p><code>cds.lib</code> created by install.sh (just points to cds.lib.core, which in turn points to )</p>
+<p><code>run_bag.sh</code> link from BAG framework, via install.sh, core script which actually runs BAG, called from core BAG scripts.</p>
+<p><code>setup_submodules.py</code> link from BAG framework, via install.sh, executed in the next step to actually </p>
+<p><code>start_bag.il</code> link from BAG framework, via install.sh, written in SKILL, seems to call <code>virt_server.sh</code>, which in turn starts stuff in framework.</p>
+<p>start_bag.sh link from BAG framework, via install.sh, very similar to <code>run_bag.sh</code> but appears unused</p>
+<p><code>virt_server.sh</code> link from BAG framework, via install.sh, called by <code>start_bag.il</code>, contains 1-line command to start server in BAG framework.</p>
+<h4 id="running-setup_submodulespy-which-references-bag_modulesyaml-both-copiedlink-in-the-step-above">Running setup_submodules.py, which references bag_modules.yaml, both copied/link in the step above.</h4>
+<p>bag3_analog             automatic git module added by setup_submodules.py, from bag_modules.yaml</p>
+<p>bag3_digital            automatic git module added by setup_submodules.py, from bag_modules.yaml</p>
+<p>xbase                   automatic git module added by setup_submodules.py, from bag_modules.yaml</p>
+<p>.bashrc_pypath          created by <code>setup_submodules.py</code>; contains <code>PYTHONPATH</code> env var python copies to sys.path on startup. Later exported by <code>run_bag.sh</code> and <code>start_bag.sh</code>.</p>
+<p>bag_libs.def            created by <code>setup_submodules.py</code> with plaintext list of OA BAG libraries.</p>
+<p>cds.lib.bag             created by <code>setup_submodules.py</code>, and included by cds.lib.core, which in turn is included by cds.lib.core</p>
+<h4 id="this-finishes-all-the-general-bag3-workspace-setup-but-for-the-tutorial-more-was-needed">This finishes all the general BAG3 workspace setup, but for the tutorial, more was needed:</h4>
+<p>Following steps at at https://github.com/ucb-art/BAG2_cds_ff_mpt/</p>
+<p><code>BAG2_TEMPLATES_EC</code> manually git cloned from Github</p>
+<p><code>bag_advanced_examples</code> manually git cloned from Github</p>
+<p><code>bag_testbenches</code> manually git cloned from Github</p>
+<p><code>BAG_XBase_demo</code> manually git cloned from Github</p>
+<p><code>bag_startup.py</code> manually created, and made ipython_config.py call it, based on BAG2 example, adding libraries to pythonpath</p>
+<h4 id="finally-starting-up-virtuso">Finally, starting up Virtuso</h4>
+<ol>
+<li>conda activate bag</li>
+<li>source .bashrc</li>
+<li>virtuoso &amp;</li>
+<li>./start_tutorial.sh     this starts up iPython/Jupyter, which in turn calls the <code>.ipython/ipython_config</code> file, which then calls bag_startup.py</li>
+</ol>
+<p>libManager.log          Log file created by Cadence Virtuoso on each startup.</p>
+<h2 id="pythonpath-and-syspath-understanding">PYTHONPATH and sys.path understanding:</h2>
+<p>https://www.devdungeon.com/content/python-import-syspath-and-pythonpath-tutorial</p>
+<h2 id="changes-to-accomodate">Changes to accomodate:</h2>
+<ul>
+<li>renamed ~/eda/ to ~/packages/. Best to check for issues</li>
+<li>moved demo_ffmpt folder to ~/cadence/ folder, rather than /designs/. Check for issues.</li>
+<li>moved cds_ff_mpt-bag3 to ~/packages/ from ~/cadence/</li>
+<li>moved cds_ff_mpt_v_1.1 to ~/packages/ from ~/cadence/         so had to update PDK symlink.</li>
+</ul>
+<h2 id="potential-outstanding-problems">Potential outstanding problems:</h2>
+<ul>
+<li>My reference to the cds_ff_mpd-bag module is broken in git, as it's still looking for an origin master in ~/cadence/. See above, as it's moved to ~/packages/</li>
+<li>As a solution for now, I've just deleted the remote reference. It shouldn't really matter, as this is the only project I'll need which will use this cds_ff_mpt PDK</li>
+<li>Is anything calling <code>.bashrc_pypath</code>? I know <code>run_bag.sh</code> exports it; but I don't see the latter running anytime?</li>
+<li>Will the Jupyter notebook embedded in VScode read my <code>.ipython/profile_default/ipython_config.py</code> file on startup, like a standard Jupyter notebook would?</li>
+</ul>
+<p>I may just delete all references to git, and move on with my life in this set of modules.</p>
+<h2 id="friday-sep-9">Friday Sep 9</h2>
+<p>I need Jupyter to know where all my files are. Opening a Jupyter notebook in vscode will allow me to select a Anaconda environment, but it doesn't easily let me run the .ipython file, which calls the <code>bag_startup.py</code> to append to my</p>
+<p>Once my Jupyter notebook in started in vscode, I can't simply call bash scripts to modify the environment variables. Plus, the sys.path has already been initialized by the integrated ipykernel upon startup, and no more interaction with the environement variable ipython</p>
+<p>Jupyter comes with various components. The notebook server is language agnostic, and servers as the front end. iPython is a terminal only front end, which isn't used if I'm using the GUI jupyter notebook. The kernel is used by both, but is language specific.</p>
+<p>I need to understand the difference between the notebook server and the jupyter kernel. It seems the kernel is what needs to be associated with my anaconda env, and not the notebook server?? These are shown in two different places, Kernel in the top left, and server in the bottom right.</p>
+<p>I want to server to be started in a way that it is concious of all the environement variables I export when also starting cadence.</p>
+<p>I think part of the problem I was facing before was that the local jupyter server was starting with it's home following the jupyter notebook symlink. And so this causes problems, becuase I </p>
+<p>To start jupyter in a certain environment, simple follow basic method here, before he introduces his package: http://stuartmumford.uk/blog/jupyter-notebook-and-conda.html</p>
+<p>(as I don't need to switch my env dynamically)</p>
+<h2 id="monday-sep-12">Monday Sep 12</h2>
+<p>Figure out why does pybag.core not exist? There is a core.pyi file and core.cpp file. Maybe it's pointing at a C function!
+Seach 'How to import C function in </p>
+<p>An amazing note on relative imports:
+https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time</p>
+<h2 id="tuesday-sep-13">Tuesday Sep 13</h2>
+<p>My virtual env setup is really confusing the hell out of me. I decided to strip out Anaconda and just use Python -m venv.
+This can can't cross versions though, and so I need to install the latest version of python on my machine, 3.10, as i only have 3.6 as the system python....
+Actually, I tried following this tutorial: https://linuxstans.com/how-to-install-python-centos/    but it didn't work</p>
+<p>A method that seemed to work istead was to create a local install of python:
+https://codeghar.wordpress.com/2013/09/26/install-python-3-locally-under-home-directory-in-centos-6-4/</p>
+<p>This works. <code>which python3.10</code> points in my PATH.</p>
+<p>Except now, the version of OpenSSL that I have doesn't work with Python3.10, and so I need to instead install python 3.9.14 with this method.</p>
+<p>Creating a venv: https://docs.python.org/3/library/venv.html
+python3 -m venv /path/to/new/virtual/environment</p>
+<p>activating a venv: source venv/bin/activate</p>
+<p>installing packages: pip install -r ./requirements.txt</p>
+<p>for some reason, numpy, scipy, matplotlib, and m5py needed to be installed manually, as they were needing compiling and crashing if included in the above file.</p>
+<p>This all works now though, in my new venv.</p>
+<h2 id="wednesday-sep-14">Wednesday Sep 14</h2>
+<p>No I'm going to copy over the bag version, and see if I can get this sorted out, with the pybag.core problem.</p>
+<p>I tried installing the packages pybind11, into pybind_generics, into pybag into bag, in that order, but I started hitting compile errors about Cmake. My Cmake version is okay, but apparently GCC was also outdated:</p>
+<p>https://stackoverflow.com/questions/47238577/target-requires-the-language-dialect-cxx17-with-compiler-extensions-but-cma</p>
+<p>However, at the bottom of this document, it points out that Centos has a package called devtoolset-7. By checking the command 'scl -l' I found that I already have this package. Running 'scl enable devtoolset-7 bash' was enough to get the gcc version updated! I think it just applies to the current terminal though. This is explained here:</p>
+<p>https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/</p>
+<h2 id="thursday-15-september">Thursday 15 September</h2>
+<p>How can I deal with installing Pybag? Is it a wheel package?</p>
+<h2 id="friday-16-sep">Friday 16 Sep</h2>
+<p>I inspected the logs from running <code>pip install -e .</code> and found complaints about the packages <code>fmt</code> and <code>spdlog</code> being missing. I installed the two of these from yum, and tried to proceed. CMake has stopped complaining about fmt, but still is asking for spdlog to be located.</p>
+<p>A useful command for searching all files for some text: <code>grep -rnw '/path/to/somewhere/' -e 'pattern'</code> ... For example: <code>grep -rnw '.' -e 'CMAKE_PREFIX_PATH'</code></p>
+<p>Cleaned out my venv folder once again, and tried to follow the instructions <a href="https://github.com/yrrapt/bag/tree/develop">from yrrapt</a></p>
+<p>I've recloned the bag3 develop branch on two separate machines, one with CentOS 7.9 and the other with Ubuntu 20.04. On each, I built a fresh python venv, and tried compiling the bag and pybag modules. In each case, the bag modules built properly, but the sub-module pybag is problematic. I've tried to read the CMakeLists.txt and follow the error build.log, to find clues about what packages might be missing or variables not configured, but no luck so far. My machines have the following:</p>
+<ul>
+<li>CentOS 7.9</li>
+<li>Python 3.9.14 (built from source)</li>
+<li>CMake 3.17.5</li>
+<li>fmt 8.22</li>
+<li>Boost 1.53.0</li>
+<li>
+<p>gcc 7.3.1</p>
+</li>
+<li>
+<p>Ubuntu 20.04</p>
+</li>
+<li>Python 3.8.10</li>
+<li>CMake 3.16.3</li>
+<li>fmt 8.30</li>
+<li>Boost 1.71.0</li>
+<li>gcc 9.4.0</li>
+</ul>
+<p>Running <code>python -m pip install .</code> , I'm seeing build logs that contain the error below.</p>
+<h2 id="after-installed-cmake-with-apt-wheel-with-pip-sudo-apt-install-libboost171-all-dev-but-still-got">After, Installed CMake with apt, wheel with pip, sudo apt install libboost1.71-all-dev, but still got:</h2>
+<pre><code>  ERROR: Command errored out with exit status 1:
+   command: /home/silab/delete_me_please/bag/venv/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '&quot;'&quot;'/tmp/pip-req-build-allzw648/setup.py'&quot;'&quot;'; __file__='&quot;'&quot;'/tmp/pip-req-build-allzw648/setup.py'&quot;'&quot;';f=getattr(tokenize, '&quot;'&quot;'open'&quot;'&quot;', open)(__file__);code=f.read().replace('&quot;'&quot;'\r\n'&quot;'&quot;', '&quot;'&quot;'\n'&quot;'&quot;');f.close();exec(compile(code, __file__, '&quot;'&quot;'exec'&quot;'&quot;'))' bdist_wheel -d /tmp/pip-wheel-2t7f35c2
+       cwd: /tmp/pip-req-build-allzw648/
+    CMake Error at cbag/CMakeLists.txt:94 (find_package):
+      Could not find a package configuration file provided by &quot;fmt&quot; with any of
+      the following names:
+
+        fmtConfig.cmake
+        fmt-config.cmake
+
+      Add the installation prefix of &quot;fmt&quot; to CMAKE_PREFIX_PATH or set &quot;fmt_DIR&quot;
+      to a directory containing one of the above files.  If &quot;fmt&quot; provides a
+      separate development package or SDK, be sure it has been installed.
+</code></pre>
+<p>I think I need to point CMake toward my fmt and spdlog installs. Will investigate further.</p>
+<h2 id="some-quick-notes-on-setting-env-variables">Some quick notes on setting ENV variables:</h2>
+<p>To set variable only for current shell:
+<code>VARNAME="my value"</code></p>
+<p>To set it for current shell and all processes started from current shell:
+<code>export VARNAME="my value"</code>      # shorter, less portable version</p>
+<p>To set it permanently for all future bash sessions add such line above to your .bashrc file in your $HOME directory.</p>
+<p><a href="https://askubuntu.com/questions/58814/how-do-i-add-environment-variables">Can be found here</a></p>
+<p>To add something to the beginning of a path variable:
+<code>export CMAKE_PREFIX_PATH=____:${CMAKE_PREFIX_PATH}</code> where ___ is the thing you want to add</p>
+<h2 id="to-get-libfmt">To get libfmt:</h2>
+<p>find_package did not find the CMake package of fmt. It comes with the -dev variant of fmt's Ubuntu package. If you check the CI code, it installs libfmt-dev via apt:</p>
+<p><code>sudo apt install libfmt-dev</code></p>
+<p>Now it's pretty clear that I need the .cmake file from this package, and to figure out where it is I can use:</p>
+<p><code>dpkg -L libfmt-dev</code></p>
+<p>Yes! Now I can just get this file:</p>
+<p><code>/usr/lib/x86_64-linux-gnu/cmake/fmt/fmt-config.cmake</code></p>
+<p>I'm not sure what 'depth' I have to point it at, but I will try all the way to /fmt. (I was right)</p>
+<p>Looks like I will also be missing spdlog, so I will installed the development flavor with:</p>
+<p><code>sudo apt install libspdlog-dev</code>
+<code>dpkg -L libspdlog-dev</code> which gives: <code>/usr/lib/x86_64-linux-gnu/cmake/spdlog/spdlogConfig.cmake</code></p>
+<p>Will point at this below</p>
+<h2 id="lets-try-it-with-yrrapts-official-repo-just-making-sure-we-enable-oa">Let's try it with yrrapt's official repo, just making sure we enable OA:</h2>
+<ul>
+<li><code>git clone -b develop https://github.com/yrrapt/bag.git --recurse-submodules</code></li>
+<li>From inside <code>bag</code> dir <code>python3.9 -m venv ~/designs/bag3_pll_verfication/venv</code></li>
+<li><code>source venv/bin/activate</code></li>
+<li><code>vim pybag/setup.cfg</code> and deleted line <code>openaccess-disable = True</code> so that it could build with open access</li>
+<li><code>export PYBAG_PYTHON=$HOME/temp/bag/venv/bin/python</code></li>
+<li><code>python -m pip install wheel</code> to install wheel packages</li>
+<li><code>python -m pip install .</code> to build bag package</li>
+<li><code>export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt:${CMAKE_PREFIX_PATH}</code></li>
+<li><code>export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/spdlog:${CMAKE_PREFIX_PATH}</code></li>
+<li><code>export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp:${CMAKE_PREFIX_PATH}</code></li>
+<li>cd inside pybag dir, and <code>python -m pip install .</code> again to build pybag package</li>
+</ul>
+<p>Nope, still errors:</p>
+<pre><code>WARNING: building without OpenAccess support.
+  -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version &quot;1.71.0&quot;) found components: serialization
+  CMake Error at pybind11_generics/CMakeLists.txt:46:
+    Parse error.  Expected a command name, got unquoted argument with text
+    &quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;.
+</code></pre>
+<p>Checking this file, we find that in fact, that should probably be deleted haha.</p>
+<p>grep -rnw '.' -e 'CMAKE_PREFIX_PATH'</p>
+<pre><code>  CMake Error at pybind11_generics/pybind11/tools/pybind11Tools.cmake:17 (find_package):
+    By not providing &quot;FindPythonLibsNew.cmake&quot; in CMAKE_MODULE_PATH this
+    project has asked CMake to find a package configuration file provided by
+    &quot;PythonLibsNew&quot;, but CMake did not find one.
+
+    Could not find a package configuration file provided by &quot;PythonLibsNew&quot;
+    with any of the following names:
+
+      PythonLibsNewConfig.cmake
+      pythonlibsnew-config.cmake
+
+    Add the installation prefix of &quot;PythonLibsNew&quot; to CMAKE_PREFIX_PATH or set
+    &quot;PythonLibsNew_DIR&quot; to a directory containing one of the above files.  If
+    &quot;PythonLibsNew&quot; provides a separate development package or SDK, be sure it
+    has been installed.
+  Call Stack (most recent call first):
+    pybind11_generics/pybind11/tools/pybind11Common.cmake:201 (include)
+    pybind11_generics/pybind11/CMakeLists.txt:169 (include)
+</code></pre>
+<p>Now it's asking me to find a .cmake file for PythonLibsNewConfig, but apt list doesn't reveal anything to install.</p>
+<p>But this already lives at ..... <code>./pybag/pybind11_generics/pybind11/tools/FindPythonLibsNew.cmake</code></p>
+<p>Can I try to hack it?
+<code>export CMAKE_PREFIX_PATH=/home/silab/temp/bag/pybag/pybind11_generics/pybind11/tools:${CMAKE_PREFIX_PATH}</code></p>
+<p>Okay... that's enough for today.</p>
+<p>Compacting the lines from fefore: * <code>export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt:/usr/lib/x86_64-linux-gnu/cmake/spdlog:CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp:${CMAKE_PREFIX_PATH}</code></p>
+<h2 id="sat-17-sep">Sat 17 Sep</h2>
+<p>Perfect. Building your modified repostory I was able to avoid the CMake issues, after I installed libspdlog-dev , fmt-config, and libyaml-cpp-dev to provide the necessary .cmake files) </p>
+<p>Simpler than manually adding them to the CMake path via, as I was doing before:
+export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt:/usr/lib/x86_64-linux-gnu/cmake/spdlog:/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp:${CMAKE_PREFIX_PATH}</p>
+<ul>
+<li>Case study to be <a href="https://ieeexplore.ieee.org/document/9576866">shared</a></li>
+<li>In above case sutdy did they get this working? Maybe check with Mirjana/Abassi first? Did they get the Open Access stuff?</li>
+<li>Ask yrrapt about "&lt;&lt;&lt;&lt;&lt;&lt;" HEAD" bug, and also about the FindPythonLibsNew.cmake bug.</li>
+<li>Ask yrrap how I can contribute, and if I should move discussions into the Git log tracker.</li>
+</ul>
+<h2 id="sunday-18-sep">Sunday 18 Sep</h2>
+<ul>
+<li>I really want to apply for this competition: https://github.com/sscs-ose/sscs-ose-code-a-chip.github.io</li>
+<li>Its submission deadline is November 21, which would give me a perfect outlet for completing a functioning Jupyter notebook in a reasonable amount of time. I've already been here for 133 days, and I feel as though I haven't accomplished anything. For now though, don't tell Hans about this conference.</li>
+<li>I want to learn how to use BAG, because OpenFASOC isn't really meant to work with analog chip design. The issue is that BAG3 doesn't support open source tools, and that access for the necessary OpenAccess library is apparently very difficult to get anyways.</li>
+<li>I want to use BAG3, as BAG2 is not going to be further developed. My main question then is what are the major differences between the two? I'm meeting with Thomas tomorrow, and he seems to understand the better the status of BAG.</li>
+<li>So what if I did the following.... built a generator which is able to produce a functioning VCO layout.. or even PLL, and do it in a way that uses the toolchain of BAG3? If I accomplished this, I would be the first person to successfully use BAG3 outside of Berkeley. Other papers, few of which exist, have used BAG2 only.</li>
+<li>The issue now, is that I'm not sure if I can really build a functioning tool chain with BAG3. It doesn't support open source tools yet, and getting it to even work with Cadence seems nigh impossible for those outside Berkeley/BlueCheetah. I should confirm this by reading papers, tomorrow, of course. I think I can get through a lot of material by the time I meet with Thomas Parry at 3pm.</li>
+<li>One thing I'm realizing though is that a lot of the design process doesn't really require me to have a function BAG installation. XBase seems like it is very tied to BAG, but I think LayGO2 is less BAG-centric? I should really check with JD Han to figure out how I'm expected to produce a layout in 65nm if I don't have this special Cadence OpenAccess library. Perhaps I can w</li>
+<li>Mirjana is a member of the committee which decides the winners of the code-a-chip competition, and so if I were to develop a notebook with her guidance, then there is a <em>very</em> good chance of being accepted.</li>
+<li>Another note, I should consider giving a group presentation on Sep 29th, because I told Hans that I would. Maybe I should break this promise though. I should explain to Hans that understanding the status of all this open source code has taken significantly more time than I anticipated. Explain that I've made connections with two important people though!</li>
+<li>If I don't use BAG, then how do I work with the schematics needed to compare against LayGO layouts during LVS?</li>
+<li>If I want to design a process portable generator, do I target the layout constraints of a small-fill factor 28nm design, and then expect it to scale to a 65nm, or even 130nm process? I think this makes more sense, as there are less degrees of freedom in 28nm.</li>
+<li>Can this tool (LayGO2) be used in isolation, without BAG?  I think it can!</li>
+<li>One thing that is amazing about this, is that Laygo is written entirely in Python, and so I shouldn't have any huge problems getting it to run. No compilation required, etc. It's a 1-way path for generation.</li>
+<li>Also, much of the design work 'back of the envelope work' can be done in Python scripts, without any circuit simulation at all. But, then, once I get to circuit simulation, I wonder if I am able to run parasitic extraction with Magic on open source Tools on 65nm? If think seems to work well, then I think I can trust it enough to do large cell design without re-running a DRC/LVS ruleset in Calibrew. To be double sure, I can simply run a final Parasitic extraction and DRC and LVS test against Cadence.</li>
+<li>There's also no reason why my schematics would necessarily need to be be designed in cadence source tools, right? If I am looking for process portability though, I think that I need to use something like BAG, where I am am able to make schematic and test bench generators.</li>
+<li>So one question is: If I'm not using BAG... how do I achieve process portability in my schematics, such that I can quickly compare them against laygo? I think that the basic Laygo workflow uses hand-crafted primitives, which aren't process agnostic. On the other hand, I think that Lay</li>
+<li>I can slowly replace every part of the 65nm workflow in Cadence, with equivalents in 65nm technology.</li>
+</ul>
+<h2 id="monday-19-sep">Monday 19 Sep</h2>
+<ul>
+<li>I think the functionality is primarily good for the Analog Chip Bottom, where the SAR ADC, the Bandgap references, the Analog Multiplexer, and monitor ADCs, the Calibration Injection Voltages, the Serdes, and the CDR and TX/RX Circuits live. This is where documentation, reusability, comprehension, and testability are much, much more important that cutting edge performance.</li>
+<li>Generators are also best suited for instances where you will need to do many different iterations, in possilbly different</li>
+<li>BAG3 is a major upgrade, as it reworks the way layouts are generated in the tool. There is no AnalogBase/DigitalBase constructs anymore, just MOSBase.</li>
+<li>As long as devices share the same 'row' information, you can tile NMOs, PMOS, and TAPs right next to each other.</li>
+<li>Don't specify the width of each wire, have 'wire classes' which have preset widths.</li>
+<li>MOSBase just places the drawn transistors, and isn't necessarily DRC clean. MOSBase Wrapper then comes back and fill in the dummy devices, extension regions, and boundaries.</li>
+<li>In the YAML file, we have to define the properties of each row. It's more complicated in BAG3.</li>
+<li>The layouts may only have one type of tile, or you may have a more complicated multi-tile type layout.</li>
+<li>In BAG2 AnalogBase, you only have access to M3 and 4, (maybe more in Digital Base). But in BAG3</li>
+<li>Zhaokai Liu showed a BAG3 repository example on Github, but it's a private repo right now, and we can't see it.</li>
+<li>Bulk contacts are completed with TAP devices in BAG3.</li>
+<li>Different length devices are implemented with stacking devices, to increase effective channel length.</li>
+<li>To place transistors, you first specify the tile you are placing in, and then use XY coordinate (e.g.) within the tile. It defaults to position 0 for X and Y.</li>
+<li>BAG2 only supports ADEXL. BAG3 doesn't support any ADE package, Assembler, XL, or otherwise. Design variables are returned, but Stimuli and Data post processing must be done in Python, as we are just directly  calling Spectre.</li>
+<li>Notice how all the BAG developers are also using BAG to build real circuits, meaning they have real design cases.</li>
+<li>BAG3 includes BAG2 </li>
+<li>Behavioral models of base circuits are completed manually, but then the hierarchical arrangement of them is done automatically, tracking whatever is done at in the real schematic implementation.</li>
+</ul>
+<h4 id="meeting-with-thomas-parry">Meeting with Thomas Parry</h4>
+<ul>
+<li>Marco in Finland</li>
+<li>Marjana is moving to Infineon</li>
+<li>Infineon guys also putting money into</li>
+<li>Matthias is from Klayout, and he was able to implement a lot of the functions for BAG2 compatibility very quickly.</li>
+</ul>
+<h2 id="tuesday-20-sep">Tuesday 20 Sep</h2>
+<h4 id="continued-with-ayan-biswas">continued with Ayan Biswas:</h4>
+<ul>
+<li>Manually create leaf behavioural cells, and then allow BAg to generate the heirarchy. </li>
+<li>One thing is that schematic and modeling hierarchy should be identical, but layout heirarchy my be different, as for example, a large chain of CS amplifiers would generated all the resistors in one heirarchy.</li>
+<li></li>
+</ul>
+<h4 id="recap">Recap:</h4>
+<p>To be honest I have not produce much at all, but it hasn't been for lack of trying or time invested. It turns out that this is way harder than I thought.
+I've worked on:
+* BAG project repository organization and setup
+* Python package management
+* Review of OOP programming in Python (To understand BAG codebase)
+* Jupyter Notebook Usage and Server Setup
+* CMake, Make, and other build related tooling (for building Python, BAG, PyBAG, XBase, etc)
+* Tools are 'complete' but not distributed in a complete form, so they have to be built</p>
+<p>One thing that is a bit annoying is that I have several different places where I could develop my code. I think to submit to CAC23 I need to have a GitHub repo.
+My personal Github account (kottenforst, or kennedycaisley, or kcaisley?)</p>
+<p>Things to understand from Hans:
+Can the models of TSMC65 be using in ngSPICE?</p>
+<p>Can LayGO2 be used without BAG? </p>
+<p>I think that the goal of the MOSAIC group is to modify the BAG3 codebase such that it can be used with open source tools like Xschem/Magic/Klayout. This is different from the goals of my group.</p>
+<p>My goal of my meeting with Mirjana is to figure out where my design work can overlap with the interests of MOSAIC. I don't have the time and the energy and </p>
+<p>You can use BAG3 for Measurements, without needing to have the openaccess library tooling. I think that I should maybe start here, and build a BAG3 test bench for my PLL is 65 nm.</p>
+<p>Skill is signifigantly slower than OA, but Mario Weiss also pointed out that GDS based generation is available in BAG2/BAG3. Some flows work without Virtuoso, but some functions require OA layout.</p>
+<h4 id="meeting-with-marjana">Meeting with Marjana:</h4>
+<p>Programatic IC design is necessary
+Talk to Chris Mayberry, BAG3, as he may be interested in helping
+Watch his 'Cascode Labs Presentation'
+UC Berkeley prof Vladamir S. it coming to Europe, Marjana may be able to talk with him</p>
+<h4 id="meeting-with-hans">Meeting with Hans:</h4>
+<ul>
+<li>Recap what I've been working on, and what I've learned:<ul>
+<li>Discovered a whole bunch of disorganized project folder for BAG2, BAG3, Xbase, Laygo, Laygo2</li>
+<li>BAG project repository organization and setup (built my own repository)</li>
+<li>Python package management (built my own environment)</li>
+<li>Jupyter Notebook Usage and Server Setup</li>
+<li>OOP programming in Python (To understand BAG codebase)</li>
+<li>CMake, Make, and other build related tooling (for building Python, BAG, PyBAG, XBase, etc as Tools are not distributed built)</li>
+<li>Got very stuck 2 weeks ago, as I had spent many weeks now reading the code base, and trying to debug. I understand how the tool worked alot better, but I couldn't actually 'run' it full on anything.</li>
+<li>Went online (open source silicon slack channel), started connecting with people, and finding resources. I understand the lay of the land a lot better now, and the uses/limits of the tools, but I haven't made much progress on actual work (only basic prototyping of PLL specifications in Python).</li>
+<li>What I need help with is technology evaluation, and where to focus my efforts? I'm am very serious about this programmatic IC design, but it's early days. We for some of the features, we would be the first externel adopters (not Laygo1/2 or Bag2 though, but for BAG3 yes.)</li>
+</ul>
+</li>
+</ul>
+<p>State of the art:</p>
+<p>BAG2
+Workflow: Schematic in Cadence with generic primitives, connects with Cadence over SKILL API. Allows use of Laygo or Xbase.
+Status: Stable but slower, and no longer developed by UC berkeley. It does however has </p>
+<p>BAG3
+Workflow: Allows use of up
+Status: Streamlined, actively developed, several features improved, and many aspects of the workflow have bee </p>
+<p>People:</p>
+<p>Chris Mayberry
+Marjana
+Thomas Parry</p>
+<p>In git, what is main, origin, HEAD, </p>
+<p>origin is the default name given to the remote repository that a local repository is tied to. One can change this name, and can also add two different remotes to pull changes from. This is why we need aliases for remote repositories, so that we can distinguish between two remote codebases that are often nearly identical.</p>
+<h1 id="bag3-thoughts">BAG3 Thoughts:</h1>
+<p>I think the functionality is primarily good for the Analog Chip Bottom, where the SAR ADC, the Bandgap references, the Analog Multiplexer, and monitor ADCs, the Calibration Injection Voltages, the Serdes, and the CDR and TX/RX Circuits live. This is where documentation, reusability, comprehension, and testability are much, much more important that cutting edge performance.</p>
+<p>BAG3 is a major upgrade, as it reworks the way layouts are generated in the tool. There is no AnalogBase/DigitalBase constructs anymore, just MOSBase.</p>
+<p>As long as devices share the same 'row' information, you can tile NMOs, PMOS, and TAPs right next to each other.</p>
+<p>Don't specify the width of each wire, have 'wire classes' which have preset widths.</p>
+<p>MOSBase just places the drawn transistors, and isn't necessarily DRC clean. MOSBase Wrapper then comes back and fill in the dummy devices, extension regions, and boundaries.</p>
+<p>In the YAML file, we have to define the properties of each row. It's more complicated in BAG3.</p>
+<p>The layouts may only have one type of tile, or you may have a more complicated multi-tile type layout.</p>
+<p>In BAG2 AnalogBase, you only have access to M3 and 4, (maybe more in Digital Base). But in BAG3
+Zhaokai Liu showed a BAG3 repository example on Github, but it's a private repo right now, and we can't see it.</p>
+<p>Hi Thomas and Mirjana,</p>
+<p>After discussing with my co-workers + advisor, we've decided we want to identify and try acquiring, through official channels, the OpenAccess library used by BAG3 to interact with Virtuoso schematic and layout cellviews. If we succeed, we will document the steps we took to acquire the package, and share that knowledge with other groups. For those lacking the time or connections to acquire the dependency themselves, we would also be willing to take on the mantle of regularly compiling and distributing BAG3 with pybag/cbag binaries built against the OpenAccess component. Assuming it's legally allowed, I wonder if this would be useful for the subset of people primarily interested in just being users of BAG3 with Cadence.
+As the above step could take considerable time with NDAs, in parallel, I want to figure out if the component of BAG3 responsible for launching SPECTRE/SPICE simulations and returning the results is able to be used without the OpenAccess component. If so, I will compile a version of BAG with this reduced-functionality. Assuming I manage to make this work, I want to then use this for a project:</p>
+<p>My group invested significant time (4 revisions) designing this ^ 65nm clock-data recovery circuit for high radiation environments (total ionizing dose &gt;1 Grad). The original design was done with a traditional industry workflow (Cadence Virtuoso, Calibre DRC/LVS/PEX, ADE XL testbenches, Spectre Simulation). Now that we have a silicon-verified design, though, we'd like to record that design knowledge in a BAG3 script for better documentation, modifications, and porting. Assuming BAG3's simulation component can be used as-in, I am going to start by re-implementing our verification framework for the PLL with the BAG3 API, and open source it.</p>
+<h1 id="to-do">To Do</h1>
+<h2 id="backlog">Backlog</h2>
+<ul>
+<li>[ ] Generate pre and post-extracted netlist of 65nm VCO</li>
+<li>[ ] Create a basic simulation of inverter, using tradition GUI Virtuoso Schematic/Layout -&gt; PEX Extraction -&gt; ADE XL -&gt; Spectre -&gt; ADE XL viewer.</li>
+<li>[ ] Reproduce basic INV simulation with SPICE netlist -&gt; SPECTRE Command Line -&gt; Flat File Output</li>
+<li>[ ] Reproduce basic INV simulation with: SPICE netlist -&gt; Jupyter Notebook -&gt; BAG3 -&gt; SPECTRE -&gt; BAG3 -&gt; Jupyter Notebook.</li>
+<li>[ ] Start assembling list of tests to run on VCO.</li>
+</ul>
+<h2 id="in-progress">In Progress</h2>
+<ul>
+<li>[ ] Identify what OpenAccess library is needed to properly compile and operate BAG3 (make issue of this)</li>
+<li>[ ] Move my venv over from my other venv, or just re-setup</li>
+<li>[ ] Figure out the ask to Ayan Biswas, Thomas Parry, or Marjana, to try and figure out exactly 'what' OpenAccess library is missing.</li>
+</ul>
+<h2 id="completed">Completed</h2>
+<h1 id="notes">Notes</h1>
+<p>Should only have a vscode and firefox window open. Nothing more.
+No readme file until done.
+No figures or equations until done (just look in Razavi)</p>
+<p>A decorator '@' is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure. Decorators are usually called before the definition of a function you want to decorate. They support operations such as being passed as an argument, returned from a function, modified, and assigned to a variable. This is a fundamental concept to understand before we delve into creating Python decorators.
+This tutorial explains it best: https://www.datacamp.com/tutorial/decorators-python</p>
+<p>The class <code>SimProcessManager</code> an implementation of :class:<code>SimAccess</code> using :class:<code>SubProcessManager</code>
+I'm not really even sure what this means.
+<code>SubProcessManager</code> looks like it batches calls in an concurrent/asyncrhonous mannager, using the asyncio Python standard lib</p>
+<p>But it looks like we would never call these latter two components, as they are lower level. Inside of the Spectre.py function, the </p>
+<h1 id="openaccess-dependency-research">OpenAccess Dependency Research</h1>
+<p>A static library format for OA would require the rest of BAG be built with the the same version of build tools as it. Build tools are availabe from the CentOS software collections, in particular the devtoolset-7 through devltoolset-11 packages. These can be installed from yum, and examined with:</p>
+<p><code>sudo yum list devtoolset\*</code></p>
+<p>As each component is also available as it's own package, we can examine package contents via:</p>
+<p><code>sudo yum list devtoolset-8\*</code></p>
+<p>You can get started in three easy steps:</p>
+<ol>
+<li>Install a package with repository for your system:
+On CentOS, install package centos-release-scl available in CentOS repository:
+$ sudo yum install centos-release-scl</li>
+</ol>
+<p>On RHEL, enable RHSCL repository for you system:
+$ sudo yum-config-manager --enable rhel-server-rhscl-7-rpms</p>
+<ol>
+<li>
+<p>Install the collection:
+$ sudo yum install devtoolset-8</p>
+</li>
+<li>
+<p>Start using software collections:
+$ scl enable devtoolset-8 bash</p>
+</li>
+</ol>
+<p>At this point you should be able to use gcc and other tools just as a normal application. See examples below:</p>
+<p>$ gcc hello.c
+$ sudo yum install devtoolset-8-valgrind
+$ valgrind ./a.out
+$ gdb ./a.out</p>
+<p>As Ayan points out, his .bashrc points to the locations of the various libraries. I notice that the version of OA is 22.60, which appears to be built against GCC 8.3, which is contained in devtoolset-8.</p>
+<p>It looks like OA 22.60 is maybe the most recent version? https://si2.org/tag/oa-22-60/. In either case, it's obvious that the version matters.</p>
+<h2 id="next-steps">NEXT STEPS</h2>
+<p>Contact Thomas first thing, share what I learned from Ayan, including imports in .bashrc, and what version of GCC is necessary, and version of OA.
+Next read the 6-7 tabs I have open about building from C++...</p>
+<p><a href="https://gist.github.com/gubatron/32f82053596c24b6bec6">link</a>
+<a href="https://www.reddit.com/r/cpp_questions/comments/qmd5hf/whats_the_difference_between_include_directory/">link</a>
+<a href="https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/">link</a>
+<a href="https://www.learncpp.com/cpp-tutorial/header-files/">link</a></p>
+<h2 id="work-in-october">Work in October</h2>
+<p>oa_v22.60.063</p>
+<p>Line 37 in this file: https://github.com/ucb-art/cds_ff_mpt-bag3/blob/master/workspace_setup/.bashrc</p>
+<h3 id="executables-libaries-etc">Executables, Libaries, etc</h3>
+<p>Both libraries and executables are compiled non-human readable binaries, but the difference is that an executable will be intended to be used by itself and have a defined starting point, whereas code compiled as a library will have multiple extry points, and will be intended to be used as part of a larger project.</p>
+<p>When linking in a library, whether or not is static vs dynamic matters. In either case though, code described as 'libraries' are not executible on their own.<img alt="img" src="https://miro.medium.com/max/537/1*QI-LJC2bVLwDMT9VTpnjtg.png" /></p>
+<p>A static library .a (or .lib on windows) is combined with compiled .c or .cpp machine .o in a process called linking (ld program), to produce an executible file with an .out (or .exe, on windows) extension.</p>
+<p>Static libraries increase the size of the code in your binary. They're always loaded and whatever version of the code you compiled with is the version of the code that will run.</p>
+<p>Dynamic libraries, with a .so (or .dll extension on Windows) are stored and versioned separately. It's possible for a version of the dynamic library to be loaded that wasn't the original one that shipped with your code <strong>if</strong> the update is considered binary compatible with the original version.</p>
+<p>Additionally dynamic libraries aren't necessarily loaded -- they're usually loaded when first called -- and can be shared among components that use the same library (multiple data loads, one code load).</p>
+<p>Dynamic libraries were considered to be the better approach most of the time, but originally they had a major flaw (google DLL hell), which has all but been eliminated by more recent Windows OSes (Windows XP in particular)</p>
+<h2 id="work-in-november">Work in November</h2>
+<p>The OA binary libraries (.so) we have are for OA versions as recent as 22.60. In some instances we have their matching header (.h) files. But they have been compiled with GCC 4.4.x or older (probably corresponding to RHEL6).</p>
+<p>Our use case for these libraries is to link to them in from some C++17 source code. </p>
+<p>Here is a link which talks about if it's possible to link in libraries that were built with a different version of GCC/ C++</p>
+<p>https://stackoverflow.com/questions/46746878/is-it-safe-to-link-c17-c14-and-c11-objects</p>
+<h3 id="response-from-ayan">Response from Ayan:</h3>
+<p>Hello Kennedy,</p>
+<p>The oa_v22.60.s007 is available in the Cadence Virtuoso library (IC618 or ICADVM181 or ICADVM201), as you mentioned. But BAG3 also requires the OA C++ libraries compiled for the OS (RHEL7) and C++ compiler (gcc 8) as you can see on lines 34-36 of the .bashrc that you linked. We were hoping to get the updated version of those libraries (raw or compiled). But it looks like you hit the same problems as us while trying to work out the deal with Si2.</p>
+<p>Some researchers in our group are trying to figure out ways to remove the OA dependence, or understand it a bit better by reading the available code base, in an effort to make BAG3 truly "open source" and accessible by people outside BWRC. I will let you know if those attempts converge to an acceptable solution. </p>
+<h3 id="message-from-me">Message from me:</h3>
+<p>This does match the stance on Si2's website, which says only "a license-keyed binary version is available for research and teaching purposes."</p>
+<p>What new version of the OA C++ libraries are you trying to acquire? I see a reference to oa_v22.60.s007 in your workspace setup .bashrc file, and my understanding is OpenAccess 22.60 (DM6) is the latest release.</p>
+<p>As an aside, do you know if the OA API dynamic library .so files included in the standard Cadence Virtuoso install (at ../IC618/tools.lnx86/lib/64bit/  and ../IC618/oa_v22.60.063/lib/linux_rhel60_64/opt) are essentially what we'd have by building C++ source or getting the binary library from Si2? The directories don't include associated header files or exact compiler toolchain, but the file names do match the target link library references in BAG3's CBAG CMakeLists.txt file.</p>
+<h3 id="message-from-hans">Message from Hans:</h3>
+<pre><code>/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.43p006/include/oa/
+/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001/include/oa/
+/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/2.2.6/include/oa/
+/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.41.004/include/oa/
+/cadence/mentor/ixl_cal_2016.1_14.11/shared/pkgs/icv_oa/22.43p006/include/oa/
+/cadence/mentor/ixl_cal_2016.1_14.11/shared/pkgs/icv_oa/22.50p001/include/oa/
+/cadence/mentor/ixl_cal_2016.1_14.11/shared/pkgs/icv_oa/2.2.6/include/oa/
+/cadence/mentor/ixl_cal_2016.1_14.11/shared/pkgs/icv_oa/22.41.004/include/oa/
+/cadence/mentor/ixl_cal_2012.4_25.21/shared/pkgs/icv_oa/2.2.6/include/oa/
+/cadence/mentor/ixl_cal_2012.4_25.21/shared/pkgs/icv_oa/latest/include/oa/
+</code></pre>
+<p>I think the header files from the different versions (except the 2.x) are very similar. I just briefly checked a few and they only differ in adding an overloaded function here and there or changes to the include list. They might work for a wide range of lib versions.</p>
+<h2 id="etc">ETC</h2>
+<p>setup.cfg is a config file, which is read in by setup.py and contains infor that setup.py otherwise could. (Setup.py is a replacement for setuptools, as it is being deprecated)
+config files like these oftentime also have the .ini file type or the the .conf file type.</p>
+<h2 id="building-pybag">Building Pybag:</h2>
+<p>OA_LINK_DIR</p>
+<p>To run CMake (make sure venv is active first)
+<code>python -m pip install .</code></p>
+<h3 id="reading-setuppy-and-both-cmakeliststxt-files">Reading setup.py and both CMakeLists.txt files</h3>
+<ol>
+<li>at bottom of setup.py, setup() function starts process, ext_modules and cmdclass looks to be important</li>
+</ol>
+<p>setup.py is a older and more featured setup script, and setup.cfg and pyproject.toml are newer versions that are simpler and recommended unless you need the features of the older project.
+Setuptools can build C/C++ extension modules. The keyword argument ext_modules of setup() should be a list of instances of the setuptools.Extension class.</p>
+<p>So set the <code>ext_modules</code> keyword and inherit this class from the setuptools.Extension class, where we set a </p>
+<pre><code>class CMakePyBind11Extension(Extension):
+    def __init__(self, name, sourcedir=''):
+        Extension.__init__(self, name, sources=[])
+        self.sourcedir = str(Path(sourcedir).resolve())
+
+setup(
+  package_dir{'': 'src'},     // fed to the ext_modules command below, as a base direcotory for extensions
+  ext_modules=[CMakePyBind11Extension('all')],     // this lists the specifics of extensions what is to be built
+  cmdclass={'build_ext': CMakePyBind11Build},   // this actually runs the build extension operation
+
+)
+</code></pre>
+<p>Inside the CmakePyBind11Build object, there is a method called <code>build_extension</code>, which:</p>
+<ol>
+<li>calculates output directory for the build</li>
+<li>init cmake command w/: build source dir, temp build dir, output dir, build type, optional compiler launcher settings</li>
+<li>build cmake command</li>
+<li>run ./gen_stubs.sh</li>
+</ol>
+<h2 id="running-setuppy-in-pybag-library">Running setup.py in pybag library</h2>
+<p>"pip install ."</p>
+<p>But build.sh appears to not follow this logic</p>
+<p>Instead, run build.sh:</p>
+<pre><code># this script builds the C++ extension
+
+if [ -z ${OA_LINK_DIR+x} ]
+then
+    echo &quot;OA_LINK_DIR is unset&quot;
+    exit 1
+fi
+
+if [ -z ${PYBAG_PYTHON+x} ]
+then
+    echo &quot;PYBAG_PYTHON is unset&quot;
+    exit 1
+fi
+
+${PYBAG_PYTHON} setup.py build
+</code></pre>
+<p>The <code>if [ -z ${VAR} ]</code> command evaluates to true if VAR is null, which is what the -z does.</p>
+<p>as [ ] is short for the <code>test</code> command in bash</p>
+<p>the <code>${...}</code> construct is parameter expansion</p>
+<p>Ah shit, it looks like this <code>+x</code> nonsense was deprecated as of Bash v4.3, which is why this isn't working. Let's just run <code>setup.py build</code> directly.</p>
+<p>Therefore, it's obvious that we need <code>OA_LINK_DIR</code> and <code>PYBAG_PYTHON</code></p>
+<pre><code>export PYBAG_PYTHON=.... /bin/python3
+
+CMAKE_PREFIX_PATH used by CMake, and is set to fmt,Boost,yamp-cpp, spdlog directories. It normally set at a high level by the output tool in .bashrc files of BAG project.
+
+OA_INCLUDE_DIR  used in cbag CMakeLists.txt, set in .bashrc
+OA_LINK_DIR     used in cbag CMakeLists.txt, set in .bashrc
+
+export OA_LINK_DIR=${OA_SRC_ROOT}/lib/linux_rhel70_gcc83x_64/opt
+
+`sudo dnf install cmake`
+
+`sudo dnf install fmt-devel boost-devel spdlog-devel yaml-cpp-devel`
+
+</code></pre>
+<p>to get the packages I want:</p>
+<pre><code>sudo yum install fmt-devel boost-devel spdlog-devel yaml-cpp-devel
+</code></pre>
+<p>You must do the setup in this order:</p>
+<p><code>python -m venv ~/designs/dmc65v2/.venv/</code></p>
+<p><code>source /env/bin/activate</code> then <code>scl enable devtoolset-8 bash</code> otherwise, the venv will clear the scl env.
+<code>export PYBAG_PYTHON=/faust/user/kcaisley/designs/dmc65v2/.venv/bin/python</code>
+<code>export OA_SRC_ROOT=/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001</code>
+<code>export OA_LINK_DIR=${OA_SRC_ROOT}/lib/linux_rhel50_gcc44x_64/opt</code>                        #notice these are build for rhel5, with gcc4
+<code>export OA_INCLUDE_DIR=${OA_SRC_ROOT}/include</code></p>
+<p><code>export CMAKE_PREFIX_PATH=/faust/user/kcaisley/packages/spdlog-1.x/cmake:${CMAKE_PREFIX_PATH}</code>
+<code>export CMAKE_PREFIX_PATH=/faust/user/kcaisley/packages/yaml-cpp-yaml-cpp-0.7.0:${CMAKE_PREFIX_PATH}</code></p>
+<p>Fist we will need to following libraries:
+* Boost
+* fmt
+* spdlog  &gt; 1.x
+* yaml-cpp</p>
+<p>To make them accessible to the CMake tool, we first need to make sure they are on our system (and of the devel variety), and then add something to the beginning of the CMake path variable:
+<code>export CMAKE_PREFIX_PATH=____:${CMAKE_PREFIX_PATH}</code> where ___ is the thing you want to add</p>
+<p>We are looking for the files of type:
+<code>/usr/lib/x86_64-linux-gnu/cmake/fmt/fmt-config.cmake</code></p>
+<p>In this case, we would target the parent directory:
+<code>export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt:${CMAKE_PREFIX_PATH}</code></p>
+<p>Okay, so this strategy of trying to use a bunch of manual downloads in not going to work...</p>
+<p>Let's move to Fedora. Both the spdlog-devel and fmt-devel have their XXXConfig.cmake files right there.</p>
+<h1 id="trying-again-in-fedora">Trying again in Fedora:</h1>
+<p>inside /pybag, make sure you delete the <code>_build</code> folder, as it contains a cache of settings</p>
+<p>NO, IT'S FINE, I JUST DIDN'T HAVE THE ENV VAR PROPERLY SET. <code>build.sh</code> run script is uses deprecated commands, so we will need to launch <code>setup.py</code> manually</p>
+<p>You must do the setup in this order:</p>
+<p><code>sudo dnf install cmake</code></p>
+<p><code>sudo dnf install fmt-devel boost-devel spdlog-devel yaml-cpp-devel</code></p>
+<p><code>sudo dnf install gcc_c++</code></p>
+<p><code>sudo dnf install python3.10</code>       as h5py doesn't work on python 3.11 yet</p>
+<p><code>python3.10 -m venv ~/designs/dmc65v2/.venv</code>   as h5py doesn't work on python 3.11 yet</p>
+<p><code>python -m pip install wheel</code></p>
+<p><code>source .venv/bin/activate</code>  to activate environment</p>
+<p><code>export PYBAG_PYTHON=/faust/user/kcaisley/designs/dmc65v2/.venv/bin/python</code></p>
+<p><code>export OA_SRC_ROOT=/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001</code></p>
+<p><code>export OA_LINK_DIR=${OA_SRC_ROOT}/lib/linux_rhel50_gcc44x_64/opt</code>          #notice these are build for rhel5, with gcc4</p>
+<p><code>export OA_INCLUDE_DIR=${OA_SRC_ROOT}/include</code></p>
+<p><code>export CXX=g++</code>      from <a href="https://stackoverflow.com/questions/17275348/how-to-specify-new-gcc-path-for-cmake">here</a></p>
+<h3 id="bag">BAG</h3>
+<p>To install the top level BAG python lib simply navigate to this directory and execute:</p>
+<p><code>python -m pip install .</code></p>
+<h3 id="pybag-cbag-pybind11">PyBAG + CBAG + pybind11</h3>
+<p>To install the lower level pybag package tools navigate to the pybag directory and execute:</p>
+<p><code>python -m pip install . --log build.log</code></p>
+<h3 id="diff-of-stuff-changed-in-cbag">Diff of stuff changed in cbag</h3>
+<pre><code>diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6ea5233..67896a4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -202,7 +202,7 @@ set(SRC_FILES_LIB_CBAG_OA
+   ${CMAKE_CURRENT_SOURCE_DIR}/src/cbag/oa/write.cpp
+   )
+
+-
++  
+ if(DEFINED ENV{OA_LINK_DIR})
+ message(&quot;OA include directory: &quot; $ENV{OA_INCLUDE_DIR})
+ message(&quot;OA link directory: &quot; $ENV{OA_LINK_DIR})
+@@ -226,6 +226,7 @@ target_link_libraries(cbag
+   oaCommon
+   oaPlugIn
+   PRIVATE
++  spdlog::spdlog               #https://bugzilla.redhat.com/show_bug.cgi?id=1851497
+   stdc++fs
+   ${Boost_LIBRARIES}
+   yaml-cpp
+diff --git a/include/cbag/common/typedefs.h b/include/cbag/common/typedefs.h
+index 7ce06b1..86dbba1 100644
+--- a/include/cbag/common/typedefs.h
++++ b/include/cbag/common/typedefs.h
+@@ -49,6 +49,9 @@ limitations under the License.
+
+ #include &lt;cstdint&gt;
+ #include &lt;tuple&gt;
++#include &lt;limits&gt;               //https://stackoverflow.com/questions/71296302/numeric-limits-is-not-a-member-of-std
++#include &lt;optional&gt;             //based on above comment
++#include &lt;boost/geometry.hpp&gt;   //https://github.com/pgRouting/pgrouting/issues/1825
+
+ namespace cbag {
+
+diff --git a/src/cbag/layout/path_util.cpp b/src/cbag/layout/path_util.cpp
+index b9a0802..def66aa 100644
+--- a/src/cbag/layout/path_util.cpp
++++ b/src/cbag/layout/path_util.cpp
+@@ -46,6 +46,7 @@ limitations under the License.
+
+ #include &lt;fmt/core.h&gt;
+ #include &lt;fmt/ostream.h&gt;
++#include &lt;fmt/format.h&gt;     // trying to add this code
+
+ #include &lt;cbag/layout/path_util.h&gt;
+</code></pre>
+<p>you make use <code>git clean -dfx</code>, that will remove all files not under source control. Be careful with this though, as it can delete newly created files if they haven't been added to source control yet.</p>
+<p>this assumes an in-source build, of course, which is a bad habit</p>
+<h2 id="downgrading-packages-on-fedora">Downgrading packages on Fedora:</h2>
+<h3 id="error-with-fmt-package-during-build">Error with {fmt} package during build</h3>
+<pre><code>/usr/include/fmt/core.h:1757:7: error: static assertion failed: Cannot format an argument. To make type T formattable provide a formatter&lt;T&gt; specialization: https://fmt.dev/latest/api.html#udt
+</code></pre>
+<p>Solution: It looks like other people have have <a href="https://gitlab.com/mbunkus/mkvtoolnix/-/issues/3366">problems with fmt</a></p>
+<p>To downgrade to fmt 8.1, we can use the koji build system: https://koji.fedoraproject.org/koji/buildinfo?buildID=1927503</p>
+<p>looks like the newest version of spdlog (1.11) supports fmt 9.1, and so we need to downgrade to spdlog 1.10 to support fmt 8.1.1.</p>
+<p>here's the fmt/fmt-devel packages: https://koji.fedoraproject.org/koji/buildinfo?buildID=1927503
+here's the spdlog/spdlog-devel packages: </p>
+<p>If a package is still in the repos, here's how you find and target it:
+https://unix.stackexchange.com/questions/266888/can-i-force-dnf-to-install-an-old-version-of-a-package</p>
+<p><code>dnf --showduplicates list &lt;package&gt;</code></p>
+<p>List packages that depend on the package of choice:
+<code>dnf repoquery --installed --whatrequires qemu-kvm</code></p>
+<p>manually downgrade to a different package version downloaded from <a href="https://koji.fedoraproject.org">this link</a>
+<code>sudo dnf downgrade ~/Downloads/fmt-8.1.1-5.fc37.x86_64.rpm</code></p>
+<p>Had to remove gnome boxes, as it depends on fmt lib: <code>sudo dnf remove gnome-boxes</code></p>
+<p><code>sudo dnf remove fmt fmt-devel spdlog spdlog-devel</code>  (march 02)</p>
+<p>I knew I needed older version of spdlog to be compatible with my older fmt, based on <a href="https://github.com/gabime/spdlog/releases">this</a></p>
+<pre><code>wget https://kojipkgs.fedoraproject.org//packages/fmt/8.1.1/4.fc37/x86_64/fmt-8.1.1-4.fc37.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/fmt/8.1.1/4.fc37/x86_64/fmt-devel-8.1.1-4.fc37.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/spdlog/1.10.0/1.fc37/x86_64/spdlog-1.10.0-1.fc37.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/spdlog/1.10.0/1.fc37/x86_64/spdlog-devel-1.10.0-1.fc37.x86_64.rpm -P ~/Downloads/
+</code></pre>
+<p>then simply manually install all of these rpms, assuming nothing else is in the download path
+<code>sudo dnf install ~/Downloads/*.rpm</code></p>
+<h3 id="error-with-boost-packages-during-build">Error with Boost packages during build</h3>
+<pre><code>/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/spirit/range.cpp:53:1:   required from here
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp:144:25: error: static assertion failed: Size of the passed attribute is bigger than expected.
+  144 |             actual_size &lt;= expected_size
+      |             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+</code></pre>
+<p>Let's try downgrading Boost and Boost devel:</p>
+<pre><code>&gt; sudo dnf remove boost boost-devel
+
+&gt; wget https://kojipkgs.fedoraproject.org//packages/boost/1.76.0/10.fc37/x86_64/boost-1.76.0-10.fc37.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/boost/1.76.0/10.fc37/x86_64/boost-devel-1.76.0-10.fc37.x86_64.rpm -P ~/Downloads/
+</code></pre>
+<p>Now I can't just manually install these now, because a couple core system components, namely <code>gnome-shell</code> require other boost libraries, like <code>boost-system</code> which an older version of <code>boost</code> wouldn't be compatible with.</p>
+<h1 id="fmt-and-spdlog">fmt and spdlog</h1>
+<p>fmt is a formatting library which provides a standardized, safe, fast way to construct strings. This is useful for output messages and dynamically generating filepaths in C++ code.</p>
+<p>spdlog, pronounced 'speed log', is a library built on top of {fmt} which allows for the </p>
+<h1 id="putting-more-effor-into-understanding-bag">putting more effor into understanding BAG:</h1>
+<p>the implementation of cbag is as a header only library. It uses </p>
+<h1 id="january-12-picking-back-up-work">January 12: picking back up work</h1>
+<p>My current status ilss that I need to compile and install pybag, which depends on a bunch of different packages. Building the cbag subrepo though requires <code>fmt</code>, <code>spdlog</code>, and a collection of <code>boost</code> libs. The specific versions needed can't be accessed easily via the Fedora fedora dnf repos, and so I fear I'll just need to manually download and build the projects from source.</p>
+<p>First, let's examine what we currently have installed, and specify exactly what we need to download.</p>
+<h1 id="january-20-continuing-with-development">January 20: continuing with development</h1>
+<p>I think looking at how <code>cbag</code> and <code>cbag_polygon</code> are built first might be helpful in this case.</p>
+<p>One must understand that CMake is a build system, in that it simple generates build files which are then compiles with a system's native build environment.</p>
+<p>Running just the CMake build command gives me several clues:</p>
+<p>In the CMakeLists.txt file, I see a control flow statement for:
+<code>if(DEFINED ENV{OA_LINK_DIR})</code></p>
+<p>I've check it, and it's not evaluating, the else() statment below is instead.</p>
+<h4 id="workflow">Workflow:</h4>
+<pre><code>[kcaisley@asiclab008 ~]$ cd designs/dmc65v2/
+[kcaisley@asiclab008 dmc65v2]$ source setup.sh        
+(.venv) [kcaisley@asiclab008 dmc65v2]$ cd bag/pybag/cbag/
+(.venv) [kcaisley@asiclab008 cbag]$ rm -r _build
+(.venv) [kcaisley@asiclab008 cbag]$ export BUILD_TYPE=${1:-Debug}
+(.venv) [kcaisley@asiclab008 cbag]$ cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+</code></pre>
+<p>Where
+<code>-H</code> This internal option is not documented but widely used by community and Has been replaced in 3.13 with the official source directory flag of -S.
+    there is no space place after for the directory, so the . is the local location
+<code>-B</code> Starting with CMake 3.13, -B is an officially supported flag, can handle spaces correctly and can be used independently of the -S or -H options.
+    again, there should be nospace, so <code>_build</code> is the build directory name</p>
+<p><code>-D</code> -D <var>:<type>=<value>
+       Create a cmake cache entry.</p>
+<pre><code>   When cmake is first run in an empty build tree, it creates a CMakeCache.txt file and populates  it
+   with  customizable  settings  for  the project.  This option may be used to specify a setting that
+   takes priority over the project's default value.  The option may be repeated  for  as  many  cache
+   entries as desired.
+ Again, no space! There are hundreds of options in this file, but this comman above is specifically setting:
+ CMAKE_BUILD_TYPE which is being set to 'Debug'
+ CMAKE_CXX_COMPILER_LAUNCHER which passes the 'ccache' option to the makefiles generator, no idea relaly that this does
+</code></pre>
+<p><code>|| exit</code> suffix should be removed, as this is being run on the command line, and this will cause the terminal to exit if the command fails</p>
+<p>Now I just need to understand why the WARNING: building without OpenAccess support. path is running.....</p>
+<p>I think the issue is that there is some complexity to CMake variable/environment variable scope system.</p>
+<p>Yes, this is the issues. Those unix bash environment variables are not visible inside the CMake scope. Let's figure out how this can be set.</p>
+<p>It's not being passed down from higher level CMake script, so it must be in the way that the command to build is called.</p>
+<p>cmake -H. -B_build -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DOA_LINK_DIR=/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001/lib/linux_rhel50_gcc44x_64/opt</p>
+<p>The CMakeCache.txt File</p>
+<p>After the first configuration of a project, CMake persists variable information in a text file called CMakeCache.txt. Caches are used to improve. When CMake is re-run on a project the cache is read before starting so that some re-parsing time can be saved on CMakeLists.txt. Here is where passing parameters to CMake befuddles a beginner. If a variable is passed via the command line that variable is stored in the cache. Accessing that variable on future runs of CMake will always get the value stored inside the cache and new value passed through the command line are ignored. To make CMake take the new value passed through the command line the first value have to be explicitly undefined. Like so:</p>
+<p><code>cmake -U &lt;previously defined variable&gt; -D &lt;previously defined variable&gt;[=new value]</code></p>
+<p>(A better approach is to use CMake internal variables. For more information refer the CMake manual here.)</p>
+<p>The syntax <code>if(DEFINED &lt;name&gt;|CACHE{&lt;name&gt;}|ENV{&lt;name&gt;})</code> is true if a variable, cache variable or environment variable with given <name> is defined. The value of the variable does not matter.</p>
+<p>Environment Variables are like ordinary Variables, with the following differences:
+* Environment variables have global scope in a CMake process. They are never cached.
+* Variable References have the form $ENV{<variable>}, using the ENV operator.
+* Initial values of the CMake environment variables are those of the calling process. Values can be changed using the set() and unset() commands. These commands only affect the running CMake process, not the system environment at large. Changed values are not written back to the calling process, and they are not seen by subsequent build or test processes.
+* See the cmake -E env command-line tool to run a command in a modified environment.
+* Source: https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#cmake-language-environment-variables</p>
+<p>This isn't working because I'm setting regular variables, but the check is for an environment variable.</p>
+<p>Ohhhhh. If you set an vairable, just by writing it, it will only be valid in that shell. It's called a variable. If you write 'export' first though, it's now and 'environment variable' and will be active in all child processes.</p>
+<p>Now, if it's inside a script (which is run as a child process), and if you want to access it inside another child process, you need to make sure that first you 'source' the script, so that the contents of the script re available in the parent bash session, but then you also need to add the 'export' command, if you want it to be available in a child pocess like CMake.
+So in short the 'source' command makes bash script which would otherwise be child process, instead run in the parent bash session.
+And 'export' makes all variables defined in the parent process also defined in the child processes.</p>
+<h1 id="fully-documented-build-problems">Fully documented build problems:</h1>
+<pre><code>[kcaisley@asiclab008 ~]$ cd designs/dmc65v2/
+[kcaisley@asiclab008 dmc65v2]$ source setup.sh        
+(.venv) [kcaisley@asiclab008 dmc65v2]$ cd bag/pybag/cbag/
+(.venv) [kcaisley@asiclab008 cbag]$ mkdir build
+(.venv) [kcaisley@asiclab008 cbag]$ rm -r build/*
+(.venv) [kcaisley@asiclab008 cbag]$ cd build
+(.venv) [kcaisley@asiclab008 cbag]$ cmake ../
+(.venv) [kcaisley@asiclab008 cbag]$ cd ..
+(.venv) [kcaisley@asiclab008 cbag]$ cmake --build build
+</code></pre>
+<h2 id="problem-1">Problem 1:</h2>
+<pre><code>(.venv) [kcaisley@asiclab008 build]$ cmake --build .
+[  1%] Building CXX object CMakeFiles/cbag.dir/src/cbag/common/box_collection.cpp.o
+In file included from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/common/box_t.h:50,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/common/box_array.h:50,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/common/box_collection.h:23,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/common/box_collection.cpp:18:
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/common/typedefs.h:73:33: error: ‘numeric_limits’ is not a member of ‘std’
+   73 | constexpr auto COORD_MIN = std::numeric_limits&lt;coord_t&gt;::min();
+      |                                 ^~~~~~~~~~~~~~
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/common/typedefs.h:73:55: error: expected primary-expression before ‘&gt;’ token
+   73 | constexpr auto COORD_MIN = std::numeric_limits&lt;coord_t&gt;::min();
+      |                                                       ^
+compilation terminated due to -fmax-errors=2.
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:76: CMakeFiles/cbag.dir/src/cbag/common/box_collection.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+</code></pre>
+<p>When including files, if it's just a simple world like <code>#include &lt;tuple&gt;</code>, then this is probably a C++ standard lib component. If it is formatted like <code>#include &lt;boost/geometry.hpp&gt;</code>, then this is a good clue that the library isn't standard due to the .hpp suffix, and also that the libary is written in C++. If you have one like <code>#include &lt;limits.h&gt;</code>, we know this is written in C, and there is a good chance this is actually part of the C standard library, which is included in the C++ std lib but is deprecated and not advisable to use.</p>
+<p>The fix was including the <code>&lt;limits&gt;</code> standard library header in the offending file, so that <code>std::numeric_limits</code> is defined. One thing I learned from the above error log is that we can see the trace of imports that lead to the offending file. We tried to compile <code>src/cbag/common/box_collection.cpp</code> but the error was in <code>cbag/include/cbag/common/typedefs.h</code>. We we read the "build line first", then the "In file included from" bottom to top", then finally the lowest section with the "error" to find our problem. In this case, our solution was adding a single line:</p>
+<pre><code>kcaisley@asiclab008 cbag]$ git diff include/cbag/common/typedefs.h
+diff --git a/include/cbag/common/typedefs.h b/include/cbag/common/typedefs.h
+index 7ce06b1..ed526cb 100644
+--- a/include/cbag/common/typedefs.h
++++ b/include/cbag/common/typedefs.h
+@@ -49,6 +49,7 @@ limitations under the License.
+
+ #include &lt;cstdint&gt;
+ #include &lt;tuple&gt;
++#include &lt;limits&gt;   //needed for std::numeric_limits
+
+</code></pre>
+<p>NOTE: I believe that <code>&lt;cstdint&gt;</code> defines primitive types like <code>int32_t</code>. Like the other std lib headers, <code>gcc</code> stores them at <code>/usr/include/c++/12</code></p>
+<h2 id="problem-2">Problem #2</h2>
+<pre><code>(.venv) [kcaisley@asiclab008 cbag]$ cmake --build build
+[  1%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/main.cpp.o
+In file included from /usr/include/spdlog/common.h:45,
+                 from /usr/include/spdlog/spdlog.h:12,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/logging/spdlog.h:53,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/logging/logging.h:55,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/gdsii/read.h:58,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/gdsii/main.cpp:25:
+/usr/include/spdlog/fmt/fmt.h:27:14: fatal error: spdlog/fmt/bundled/core.h: No such file or directory
+   27 | #    include &lt;spdlog/fmt/bundled/core.h&gt;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:104: CMakeFiles/cbag.dir/src/cbag/gdsii/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2
+</code></pre>
+<p>As mentioned at <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1851497">this link</a> this error crops up if the CMakeLists.txt for a project doesn't correct set all the flags for spdlog and fmt. In this case, <code>spdlog</code> was erroneously omitted from the <code>target_link_libraries</code> section. A simple fix:</p>
+<pre><code>diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6ea5233..e8f1408 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -201,8 +201,7 @@ set(SRC_FILES_LIB_CBAG_OA
+   ${CMAKE_CURRENT_SOURCE_DIR}/src/cbag/oa/util.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/src/cbag/oa/write.cpp
+   )
+-
+-
++  
+ if(DEFINED ENV{OA_LINK_DIR})
+ message(&quot;OA include directory: &quot; $ENV{OA_INCLUDE_DIR})
+ message(&quot;OA link directory: &quot; $ENV{OA_LINK_DIR})
+@@ -226,6 +225,7 @@ target_link_libraries(cbag
+   oaCommon
+   oaPlugIn
+   PRIVATE
++  spdlog::spdlog               #https://bugzilla.redhat.com/show_bug.cgi?id=1851497
+   stdc++fs
+   ${Boost_LIBRARIES}
+</code></pre>
+<h2 id="problem-3">Problem #3</h2>
+<pre><code>(.venv) [kcaisley@asiclab008 cbag]$ cmake --build build
+Interprocedural optimization disabled
+-- Found Boost: /usr/lib64/cmake/Boost-1.78.0/BoostConfig.cmake (found version &quot;1.78.0&quot;)  
+Interprocedural optimization disabled
+install prefix: /usr/local
+install rpath: 
+OA include directory: /cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001/include
+OA link directory: /cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001/lib/linux_rhel50_gcc44x_64/opt
+-- Found Boost: /usr/lib64/cmake/Boost-1.78.0/BoostConfig.cmake (found version &quot;1.78.0&quot;) found components: serialization 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/build
+[  1%] Building CXX object CMakeFiles/cbag.dir/src/cbag/common/box_collection.cpp.o
+[  2%] Building CXX object CMakeFiles/cbag.dir/src/cbag/common/transformation_util.cpp.o
+[  3%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/main.cpp.o
+[  4%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/math.cpp.o
+[  5%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/parse_map.cpp.o
+[  7%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/read.cpp.o
+[  8%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/read_util.cpp.o
+[  9%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/write.cpp.o
+[ 10%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/write_util.cpp.o
+[ 11%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/blockage.cpp.o
+[ 12%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/boundary.cpp.o
+[ 14%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview.cpp.o
+In file included from /usr/include/boost/geometry/index/rtree.hpp:30,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/cbag_polygon/include/cbag/polygon/geo_index.h:54,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/layout/cellview_fwd.h:59,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/layout/cellview.h:52,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/layout/cellview.cpp:55:
+/usr/include/boost/geometry/strategies/relate/services.hpp: In instantiation of ‘struct boost::geometry::strategies::relate::services::default_strategy&lt;boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;, cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::cartesian_tag, boost::geometry::cartesian_tag&gt;’:
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp:92:21:   required from ‘static bool boost::geometry::resolve_strategy::disjoint&lt;boost::geometry::default_strategy, false&gt;::apply(const Geometry1&amp;, const Geometry2&amp;, boost::geometry::default_strategy) [with Geometry1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;]’
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp:129:21:   required from ‘static bool boost::geometry::resolve_dynamic::disjoint&lt;Geometry1, Geometry2, IsDynamic, IsCollection&gt;::apply(const Geometry1&amp;, const Geometry2&amp;, const Strategy&amp;) [with Strategy = boost::geometry::default_strategy; Geometry1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;; bool IsDynamic = false; bool IsCollection = false]’
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp:231:21:   required from ‘bool boost::geometry::disjoint(const Geometry1&amp;, const Geometry2&amp;) [with Geometry1 = model::box&lt;model::point&lt;int, 2, cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;]’
+/usr/include/boost/geometry/algorithms/detail/intersects/interface.hpp:108:32:   required from ‘bool boost::geometry::intersects(const Geometry1&amp;, const Geometry2&amp;) [with Geometry1 = model::box&lt;model::point&lt;int, 2, cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;]’
+/usr/include/boost/geometry/index/detail/predicates.hpp:218:36:   required from ‘static bool boost::geometry::index::detail::spatial_predicate_intersects&lt;G1, G2, Tag1, Tag2&gt;::apply(const G1&amp;, const G2&amp;, const S&amp;) [with S = boost::geometry::default_strategy; G1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; G2 = cbag::polygon::rectangle_data&lt;int&gt;; Tag1 = boost::geometry::box_tag; Tag2 = boost::geometry::box_tag]’
+/usr/include/boost/geometry/index/detail/predicates.hpp:243:59:   [ skipping 5 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
+/usr/include/boost/geometry/index/detail/rtree/visitors/spatial_query.hpp:87:21:   required from ‘boost::geometry::index::detail::rtree::visitors::spatial_query&lt;MembersHolder, Predicates, OutIter&gt;::size_type boost::geometry::index::detail::rtree::visitors::spatial_query&lt;MembersHolder, Predicates, OutIter&gt;::apply(const MembersHolder&amp;) [with MembersHolder = boost::geometry::index::rtree&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt;, boost::geometry::index::quadratic&lt;32, 16&gt;, boost::geometry::index::indexable&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;, boost::geometry::index::equal_to&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;, boost::container::new_allocator&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt; &gt;::members_holder; Predicates = boost::geometry::index::detail::predicates::spatial_predicate&lt;cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::index::detail::predicates::intersects_tag, false&gt;; OutIter = cbag::util::lambda_output_iterator&lt;cbag::polygon::index::geo_index&lt;int&gt;::get_intersect&lt;cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt; &gt;(cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;int&gt;&amp;) const::&lt;lambda(const cbag::polygon::index::geo_index&lt;int&gt;::tree_value_type&amp;)&gt; &gt;; size_type = long unsigned int]’
+/usr/include/boost/geometry/index/rtree.hpp:1861:27:   required from ‘boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::size_type boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::query_dispatch(const Predicates&amp;, OutIter) const [with Predicates = boost::geometry::index::detail::predicates::spatial_predicate&lt;cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::index::detail::predicates::intersects_tag, false&gt;; OutIter = cbag::util::lambda_output_iterator&lt;cbag::polygon::index::geo_index&lt;int&gt;::get_intersect&lt;cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt; &gt;(cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;int&gt;&amp;) const::&lt;lambda(const cbag::polygon::index::geo_index&lt;int&gt;::tree_value_type&amp;)&gt; &gt;; typename std::enable_if&lt;(boost::geometry::index::detail::predicates_count_distance&lt;Predicates&gt;::value == 0), int&gt;::type &lt;anonymous&gt; = 0; Value = std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt;; Parameters = boost::geometry::index::quadratic&lt;32, 16&gt;; IndexableGetter = boost::geometry::index::indexable&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; EqualTo = boost::geometry::index::equal_to&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; Allocator = boost::container::new_allocator&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; size_type = long unsigned int]’
+/usr/include/boost/geometry/index/rtree.hpp:1083:30:   required from ‘boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::size_type boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::query(const Predicates&amp;, OutIter) const [with Predicates = boost::geometry::index::detail::predicates::spatial_predicate&lt;cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::index::detail::predicates::intersects_tag, false&gt;; OutIter = cbag::util::lambda_output_iterator&lt;cbag::polygon::index::geo_index&lt;int&gt;::get_intersect&lt;cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt; &gt;(cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;int&gt;&amp;) const::&lt;lambda(const cbag::polygon::index::geo_index&lt;int&gt;::tree_value_type&amp;)&gt; &gt;; Value = std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt;; Parameters = boost::geometry::index::quadratic&lt;32, 16&gt;; IndexableGetter = boost::geometry::index::indexable&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; EqualTo = boost::geometry::index::equal_to&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; Allocator = boost::container::new_allocator&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; size_type = long unsigned int]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/cbag_polygon/include/cbag/polygon/geo_index.h:212:21:   required from ‘void cbag::polygon::index::geo_index&lt;T&gt;::get_intersect(OutIter, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;T&gt;&amp;) const [with OutIter = cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;; T = int; box_type = cbag::polygon::rectangle_data&lt;int&gt;; coordinate_type = int]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/cbag_polygon/include/cbag/polygon/geo_index.h:244:22:   required from ‘void cbag::polygon::index::apply_intersect(const geo_index&lt;T&gt;&amp;, Fun, const typename geo_index&lt;T&gt;::box_type&amp;, T, T, bool, const cbag::polygon::transformation&lt;T&gt;&amp;) [with T = int; Fun = cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt;; typename geo_index&lt;T&gt;::box_type = cbag::polygon::rectangle_data&lt;int&gt;]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/layout/cellview.cpp:137:24:   required from here
+/usr/include/boost/geometry/strategies/relate/services.hpp:36:5: error: static assertion failed: Not implemented for this Geometry's coordinate system.
+   36 |     BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/boost/geometry/strategies/relate/services.hpp:36:5: note: ‘std::integral_constant&lt;bool, false&gt;::value’ evaluates to false
+In file included from /usr/include/boost/geometry/index/rtree.hpp:34:
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp: In instantiation of ‘static bool boost::geometry::resolve_strategy::disjoint&lt;boost::geometry::default_strategy, false&gt;::apply(const Geometry1&amp;, const Geometry2&amp;, boost::geometry::default_strategy) [with Geometry1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;]’:
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp:129:21:   required from ‘static bool boost::geometry::resolve_dynamic::disjoint&lt;Geometry1, Geometry2, IsDynamic, IsCollection&gt;::apply(const Geometry1&amp;, const Geometry2&amp;, const Strategy&amp;) [with Strategy = boost::geometry::default_strategy; Geometry1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;; bool IsDynamic = false; bool IsCollection = false]’
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp:231:21:   required from ‘bool boost::geometry::disjoint(const Geometry1&amp;, const Geometry2&amp;) [with Geometry1 = model::box&lt;model::point&lt;int, 2, cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;]’
+/usr/include/boost/geometry/algorithms/detail/intersects/interface.hpp:108:32:   required from ‘bool boost::geometry::intersects(const Geometry1&amp;, const Geometry2&amp;) [with Geometry1 = model::box&lt;model::point&lt;int, 2, cs::cartesian&gt; &gt;; Geometry2 = cbag::polygon::rectangle_data&lt;int&gt;]’
+/usr/include/boost/geometry/index/detail/predicates.hpp:218:36:   required from ‘static bool boost::geometry::index::detail::spatial_predicate_intersects&lt;G1, G2, Tag1, Tag2&gt;::apply(const G1&amp;, const G2&amp;, const S&amp;) [with S = boost::geometry::default_strategy; G1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; G2 = cbag::polygon::rectangle_data&lt;int&gt;; Tag1 = boost::geometry::box_tag; Tag2 = boost::geometry::box_tag]’
+/usr/include/boost/geometry/index/detail/predicates.hpp:243:59:   required from ‘static bool boost::geometry::index::detail::spatial_predicate_call&lt;boost::geometry::index::detail::predicates::intersects_tag&gt;::apply(const G1&amp;, const G2&amp;, const S&amp;) [with G1 = boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;; G2 = cbag::polygon::rectangle_data&lt;int&gt;; S = boost::geometry::default_strategy]’
+/usr/include/boost/geometry/index/detail/predicates.hpp:364:73:   [ skipping 4 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
+/usr/include/boost/geometry/index/detail/rtree/visitors/spatial_query.hpp:87:21:   required from ‘boost::geometry::index::detail::rtree::visitors::spatial_query&lt;MembersHolder, Predicates, OutIter&gt;::size_type boost::geometry::index::detail::rtree::visitors::spatial_query&lt;MembersHolder, Predicates, OutIter&gt;::apply(const MembersHolder&amp;) [with MembersHolder = boost::geometry::index::rtree&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt;, boost::geometry::index::quadratic&lt;32, 16&gt;, boost::geometry::index::indexable&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;, boost::geometry::index::equal_to&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;, boost::container::new_allocator&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt; &gt;::members_holder; Predicates = boost::geometry::index::detail::predicates::spatial_predicate&lt;cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::index::detail::predicates::intersects_tag, false&gt;; OutIter = cbag::util::lambda_output_iterator&lt;cbag::polygon::index::geo_index&lt;int&gt;::get_intersect&lt;cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt; &gt;(cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;int&gt;&amp;) const::&lt;lambda(const cbag::polygon::index::geo_index&lt;int&gt;::tree_value_type&amp;)&gt; &gt;; size_type = long unsigned int]’
+/usr/include/boost/geometry/index/rtree.hpp:1861:27:   required from ‘boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::size_type boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::query_dispatch(const Predicates&amp;, OutIter) const [with Predicates = boost::geometry::index::detail::predicates::spatial_predicate&lt;cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::index::detail::predicates::intersects_tag, false&gt;; OutIter = cbag::util::lambda_output_iterator&lt;cbag::polygon::index::geo_index&lt;int&gt;::get_intersect&lt;cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt; &gt;(cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;int&gt;&amp;) const::&lt;lambda(const cbag::polygon::index::geo_index&lt;int&gt;::tree_value_type&amp;)&gt; &gt;; typename std::enable_if&lt;(boost::geometry::index::detail::predicates_count_distance&lt;Predicates&gt;::value == 0), int&gt;::type &lt;anonymous&gt; = 0; Value = std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt;; Parameters = boost::geometry::index::quadratic&lt;32, 16&gt;; IndexableGetter = boost::geometry::index::indexable&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; EqualTo = boost::geometry::index::equal_to&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; Allocator = boost::container::new_allocator&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; size_type = long unsigned int]’
+/usr/include/boost/geometry/index/rtree.hpp:1083:30:   required from ‘boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::size_type boost::geometry::index::rtree&lt;Value, Options, IndexableGetter, EqualTo, Allocator&gt;::query(const Predicates&amp;, OutIter) const [with Predicates = boost::geometry::index::detail::predicates::spatial_predicate&lt;cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::index::detail::predicates::intersects_tag, false&gt;; OutIter = cbag::util::lambda_output_iterator&lt;cbag::polygon::index::geo_index&lt;int&gt;::get_intersect&lt;cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt; &gt;(cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;int&gt;&amp;) const::&lt;lambda(const cbag::polygon::index::geo_index&lt;int&gt;::tree_value_type&amp;)&gt; &gt;; Value = std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt;; Parameters = boost::geometry::index::quadratic&lt;32, 16&gt;; IndexableGetter = boost::geometry::index::indexable&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; EqualTo = boost::geometry::index::equal_to&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; Allocator = boost::container::new_allocator&lt;std::pair&lt;cbag::polygon::rectangle_data&lt;int&gt;, long unsigned int&gt; &gt;; size_type = long unsigned int]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/cbag_polygon/include/cbag/polygon/geo_index.h:212:21:   required from ‘void cbag::polygon::index::geo_index&lt;T&gt;::get_intersect(OutIter, const box_type&amp;, coordinate_type, coordinate_type, bool, const cbag::polygon::transformation&lt;T&gt;&amp;) const [with OutIter = cbag::util::lambda_output_iterator&lt;cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt; &gt;; T = int; box_type = cbag::polygon::rectangle_data&lt;int&gt;; coordinate_type = int]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/cbag_polygon/include/cbag/polygon/geo_index.h:244:22:   required from ‘void cbag::polygon::index::apply_intersect(const geo_index&lt;T&gt;&amp;, Fun, const typename geo_index&lt;T&gt;::box_type&amp;, T, T, bool, const cbag::polygon::transformation&lt;T&gt;&amp;) [with T = int; Fun = cbag::layout::cellview::helper::get_ip_fill_intvs(const cbag::layout::geo_index_t&amp;, const cbag::box_t&amp;, cbag::coord_t, cbag::coord_t, int, cbag::offset_t)::&lt;lambda(const auto:80&amp;)&gt;; typename geo_index&lt;T&gt;::box_type = cbag::polygon::rectangle_data&lt;int&gt;]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/layout/cellview.cpp:137:24:   required from here
+/usr/include/boost/geometry/algorithms/detail/disjoint/interface.hpp:92:21: error: no type named ‘type’ in ‘struct boost::geometry::strategies::relate::services::default_strategy&lt;boost::geometry::model::box&lt;boost::geometry::model::point&lt;int, 2, boost::geometry::cs::cartesian&gt; &gt;, cbag::polygon::rectangle_data&lt;int&gt;, boost::geometry::cartesian_tag, boost::geometry::cartesian_tag&gt;’
+   92 |             &gt;::type strategy_type;
+      |                     ^~~~~~~~~~~~~
+compilation terminated due to -fmax-errors=2.
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:230: CMakeFiles/cbag.dir/src/cbag/layout/cellview.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2
+</code></pre>
+<p>Solution was to include <boost/geometry.hpp>, as discussed in <a href="https://github.com/pgRouting/pgrouting/issues/1825">this issues</a></p>
+<pre><code>[kcaisley@asiclab008 cbag]$ git diff include/cbag/common/typedefs.h
+diff --git a/include/cbag/common/typedefs.h b/include/cbag/common/typedefs.h
+index 7ce06b1..86dbba1 100644
+--- a/include/cbag/common/typedefs.h
++++ b/include/cbag/common/typedefs.h
+@@ -49,6 +49,9 @@ limitations under the License.
+
+ #include &lt;cstdint&gt;
+ #include &lt;tuple&gt;
++#include &lt;limits&gt;               //https://stackoverflow.com/questions/71296302/numeric-limits-is-not-a-member-of-std
++#include &lt;boost/geometry.hpp&gt;   //https://github.com/pgRouting/pgrouting/issues/1825
+</code></pre>
+<p>NOTE: As you can see above, this is the second line we've had to add to this file.</p>
+<h2 id="problem-4">Problem #4</h2>
+<pre><code>(.venv) [kcaisley@asiclab008 cbag]$ cmake --build build
+[  1%] Building CXX object CMakeFiles/cbag.dir/src/cbag/common/box_collection.cpp.o
+[  2%] Building CXX object CMakeFiles/cbag.dir/src/cbag/common/transformation_util.cpp.o
+[  3%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/main.cpp.o
+[  4%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/parse_map.cpp.o
+[  5%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/read.cpp.o
+[  7%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/read_util.cpp.o
+[  8%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/write.cpp.o
+[  9%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/write_util.cpp.o
+[ 10%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/blockage.cpp.o
+[ 11%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/boundary.cpp.o
+[ 12%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview.cpp.o
+[ 14%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview_poly.cpp.o
+[ 15%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview_util.cpp.o
+[ 16%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/grid_object.cpp.o
+[ 17%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/instance.cpp.o
+[ 18%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/label.cpp.o
+[ 20%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/len_info.cpp.o
+[ 21%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/lp_lookup.cpp.o
+In file included from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/layout/lp_lookup.cpp:51:
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/layout/lp_lookup.h:85:10: error: ‘optional’ in namespace ‘std’ does not name a template type
+   85 |     std::optional&lt;lay_t&gt; get_layer_id(const std::string &amp;layer) const;
+      |          ^~~~~~~~
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/layout/lp_lookup.h:53:1: note: ‘std::optional’ is defined in header ‘&lt;optional&gt;’; did you forget to ‘#include &lt;optional&gt;’?
+   52 | #include &lt;cbag/common/typedefs.h&gt;
+  +++ |+#include &lt;optional&gt;
+   53 | 
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/layout/lp_lookup.h:87:10: error: ‘optional’ in namespace ‘std’ does not name a template type
+   87 |     std::optional&lt;purp_t&gt; get_purpose_id(const std::string &amp;purpose) const;
+      |          ^~~~~~~~
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/layout/lp_lookup.h:87:5: note: ‘std::optional’ is defined in header ‘&lt;optional&gt;’; did you forget to ‘#include &lt;optional&gt;’?
+   87 |     std::optional&lt;purp_t&gt; get_purpose_id(const std::string &amp;purpose) const;
+      |     ^~~
+compilation terminated due to -fmax-errors=2.
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:328: CMakeFiles/cbag.dir/src/cbag/layout/lp_lookup.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2
+
+</code></pre>
+<p>The solution is described right there in the message, we forgot <code>std::optional</code> is defined in header <code>&lt;optional&gt;</code>; yep we forget to <code>#include &lt;optional&gt;</code> in <code>cbag/include/cbag/layout/lp_lookup.h</code>.</p>
+<pre><code>(.venv) [kcaisley@asiclab008 cbag]$ git diff include/cbag/layout/lp_lookup.h
+diff --git a/include/cbag/layout/lp_lookup.h b/include/cbag/layout/lp_lookup.h
+index 3f21bb9..cd6771d 100644
+--- a/include/cbag/layout/lp_lookup.h
++++ b/include/cbag/layout/lp_lookup.h
+@@ -48,7 +48,7 @@ limitations under the License.
+ #define CBAG_COMMON_LP_LOOKUP_H
+
+ #include &lt;unordered_map&gt;
+-
++#include &lt;optional&gt;
+ #include &lt;cbag/common/typedefs.h&gt;
+</code></pre>
+<h2 id="problem-5">Problem #5</h2>
+<pre><code class="language-shell">(.venv) [kcaisley@asiclab008 cbag]$ cmake --build build
+[  1%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/main.cpp.o
+[  2%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/parse_map.cpp.o
+[  3%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/read.cpp.o
+[  4%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/read_util.cpp.o
+[  5%] Building CXX object CMakeFiles/cbag.dir/src/cbag/gdsii/write.cpp.o
+[  7%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview.cpp.o
+[  8%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview_poly.cpp.o
+[  9%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/cellview_util.cpp.o
+[ 10%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/grid_object.cpp.o
+[ 11%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/instance.cpp.o
+[ 12%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/lp_lookup.cpp.o
+[ 14%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/path.cpp.o
+[ 15%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/path_util.cpp.o
+In file included from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/layout/path_util.cpp:47:
+/usr/include/fmt/core.h: In instantiation of ‘constexpr fmt::v9::detail::value&lt;Context&gt; fmt::v9::detail::make_value(T&amp;&amp;) [with Context = fmt::v9::basic_format_context&lt;fmt::v9::appender, char&gt;; T = cbag::layout::vector45&amp;]’:
+/usr/include/fmt/core.h:1777:29:   required from ‘constexpr fmt::v9::detail::value&lt;Context&gt; fmt::v9::detail::make_arg(T&amp;&amp;) [with bool IS_PACKED = true; Context = fmt::v9::basic_format_context&lt;fmt::v9::appender, char&gt;; type &lt;anonymous&gt; = fmt::v9::detail::type::custom_type; T = cbag::layout::vector45&amp;; typename std::enable_if&lt;IS_PACKED, int&gt;::type &lt;anonymous&gt; = 0]’
+/usr/include/fmt/core.h:1901:77:   required from ‘constexpr fmt::v9::format_arg_store&lt;Context, Args&gt;::format_arg_store(T&amp;&amp; ...) [with T = {cbag::layout::vector45&amp;}; Context = fmt::v9::basic_format_context&lt;fmt::v9::appender, char&gt;; Args = {cbag::layout::vector45}]’
+/usr/include/fmt/core.h:1918:31:   required from ‘constexpr fmt::v9::format_arg_store&lt;Context, typename std::remove_cv&lt;typename std::remove_reference&lt;Args&gt;::type&gt;::type ...&gt; fmt::v9::make_format_args(Args&amp;&amp; ...) [with Context = basic_format_context&lt;appender, char&gt;; Args = {cbag::layout::vector45&amp;}]’
+/usr/include/fmt/core.h:3206:44:   required from ‘std::string fmt::v9::format(format_string&lt;T ...&gt;, T&amp;&amp; ...) [with T = {cbag::layout::vector45&amp;}; std::string = std::__cxx11::basic_string&lt;char&gt;; format_string&lt;T ...&gt; = basic_format_string&lt;char, cbag::layout::vector45&amp;&gt;]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/layout/path_util.cpp:123:48:   required from here
+/usr/include/fmt/core.h:1757:7: error: static assertion failed: Cannot format an argument. To make type T formattable provide a formatter&lt;T&gt; specialization: https://fmt.dev/latest/api.html#udt
+ 1757 |       formattable,
+      |       ^~~~~~~~~~~
+/usr/include/fmt/core.h:1757:7: note: ‘formattable’ evaluates to false
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:356: CMakeFiles/cbag.dir/src/cbag/layout/path_util.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+</code></pre>
+<p>I think a similar problem is seen here: https://github.com/fmtlib/fmt/issues/3034</p>
+<p>Seems I need to made a change to the function call, to meet this latest issue: https://fmt.dev/latest/api.html#udt</p>
+<p>I simply commented out the line:
+<code>throw std::invalid_argument(fmt::format("path segment vector {} not valid", p_norm));</code></p>
+<p>And it proceeded until 52% compilation</p>
+<p>and finally an unused fix.....</p>
+<pre><code>diff --git a/src/cbag/layout/path_util.cpp b/src/cbag/layout/path_util.cpp
+index b9a0802..3c62df2 100644
+--- a/src/cbag/layout/path_util.cpp
++++ b/src/cbag/layout/path_util.cpp
+@@ -46,6 +46,7 @@ limitations under the License.
+
+ #include &lt;fmt/core.h&gt;
+ #include &lt;fmt/ostream.h&gt;
++//#include &lt;fmt/format.h&gt;     // trying to add this code
+
+ #include &lt;cbag/layout/path_util.h&gt;
+</code></pre>
+<h2 id="problem-6">Problem #6</h2>
+<pre><code class="language-shell">(.venv) [kcaisley@asiclab008 cbag]$ cmake --build build
+[  1%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/path_util.cpp.o
+[  2%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/pin.cpp.o
+[  3%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/routing_grid.cpp.o
+[  4%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/routing_grid_util.cpp.o
+[  5%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/tech.cpp.o
+[  7%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/tech_util.cpp.o
+[  8%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/track_coloring.cpp.o
+[  9%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/track_info.cpp.o
+[ 10%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/track_info_util.cpp.o
+[ 11%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/vector45.cpp.o
+[ 12%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via.cpp.o
+[ 14%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via_info.cpp.o
+[ 15%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via_lookup.cpp.o
+[ 16%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via_param.cpp.o
+[ 17%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via_param_util.cpp.o
+[ 18%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via_util.cpp.o
+[ 20%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/via_wrapper.cpp.o
+[ 21%] Building CXX object CMakeFiles/cbag.dir/src/cbag/layout/wire_width.cpp.o
+[ 22%] Building CXX object CMakeFiles/cbag.dir/src/cbag/logging/logging.cpp.o
+[ 23%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/cdl.cpp.o
+[ 24%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/core.cpp.o
+[ 25%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/lstream.cpp.o
+[ 27%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/netlist.cpp.o
+[ 28%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/nstream_output.cpp.o
+[ 29%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/spectre.cpp.o
+[ 30%] Building CXX object CMakeFiles/cbag.dir/src/cbag/netlist/verilog.cpp.o
+[ 31%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/arc.cpp.o
+[ 32%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/cellview.cpp.o
+[ 34%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/cellview_info.cpp.o
+[ 35%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/donut.cpp.o
+[ 36%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/ellipse.cpp.o
+[ 37%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/eval_text.cpp.o
+[ 38%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/instance.cpp.o
+[ 40%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/line.cpp.o
+[ 41%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/path.cpp.o
+[ 42%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/pin_figure.cpp.o
+[ 43%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/pin_object.cpp.o
+[ 44%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/polygon.cpp.o
+[ 45%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/rectangle.cpp.o
+[ 47%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/shape_base.cpp.o
+[ 48%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/term_attr.cpp.o
+[ 49%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/text_base.cpp.o
+[ 50%] Building CXX object CMakeFiles/cbag.dir/src/cbag/schematic/text_t.cpp.o
+[ 51%] Building CXX object CMakeFiles/cbag.dir/src/cbag/spirit/ast.cpp.o
+[ 52%] Building CXX object CMakeFiles/cbag.dir/src/cbag/spirit/name.cpp.o
+In file included from /usr/include/boost/spirit/home/x3/operator/sequence.hpp:12,
+                 from /usr/include/boost/spirit/home/x3/operator.hpp:10,
+                 from /usr/include/boost/spirit/home/x3.hpp:19,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/spirit/config.h:50,
+                 from /faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/spirit/name.cpp:47:
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp: In instantiation of ‘struct boost::spirit::x3::detail::partition_attribute&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:133&amp;)&gt; &gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;, cbag::spirit::ast::range, boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;, void&gt;’:
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp:243:15:   required from ‘bool boost::spirit::x3::detail::parse_sequence(const Parser&amp;, Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, Attribute&amp;, AttributeCategory) [with Parser = boost::spirit::x3::sequence&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:133&amp;)&gt; &gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;; Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::range; Attribute = cbag::spirit::ast::range; AttributeCategory = boost::spirit::x3::traits::tuple_attribute]’
+/usr/include/boost/spirit/home/x3/operator/sequence.hpp:46:42:   required from ‘bool boost::spirit::x3::sequence&lt;Left, Right&gt;::parse(Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, Attribute&amp;) const [with Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::range; Attribute = cbag::spirit::ast::range; Left = boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:133&amp;)&gt; &gt;; Right = boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;]’
+/usr/include/boost/spirit/home/x3/directive/expect.hpp:54:41:   required from ‘bool boost::spirit::x3::expect_directive&lt;Subject&gt;::parse(Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, Attribute&amp;) const [with Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::range; Attribute = cbag::spirit::ast::range; Subject = boost::spirit::x3::sequence&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:133&amp;)&gt; &gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;]’
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp:253:34:   required from ‘bool boost::spirit::x3::detail::parse_sequence(const Parser&amp;, Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, Attribute&amp;, AttributeCategory) [with Parser = boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:133&amp;)&gt; &gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;; Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::range; Attribute = cbag::spirit::ast::range; AttributeCategory = boost::spirit::x3::traits::tuple_attribute]’
+/usr/include/boost/spirit/home/x3/operator/sequence.hpp:46:42:   required from ‘bool boost::spirit::x3::sequence&lt;Left, Right&gt;::parse(Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, Attribute&amp;) const [with Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::range; Attribute = cbag::spirit::ast::range; Left = boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;; Right = boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:133&amp;)&gt; &gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;]’
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp:252:30:   [ skipping 44 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
+/usr/include/boost/spirit/home/x3/nonterminal/detail/rule.hpp:240:42:   required from ‘static bool boost::spirit::x3::detail::rule_parser&lt;Attribute, ID, skip_definition_injection&gt;::parse_rhs_main(const RHS&amp;, Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, ActualAttribute&amp;, mpl_::true_) [with RHS = boost::spirit::x3::rule_definition&lt;cbag::spirit::parser::name_rep_class, boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt;, boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_class, cbag::spirit::ast::name, true&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt; &gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt; &gt; &gt; &gt;, cbag::spirit::ast::name_rep, true, true&gt;; Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::name_rep; ActualAttribute = cbag::spirit::ast::name_rep; Attribute = cbag::spirit::ast::name_rep; ID = cbag::spirit::parser::name_rep_class; bool skip_definition_injection = true; mpl_::true_ = mpl_::bool_&lt;true&gt;]’
+/usr/include/boost/spirit/home/x3/nonterminal/detail/rule.hpp:267:34:   required from ‘static bool boost::spirit::x3::detail::rule_parser&lt;Attribute, ID, skip_definition_injection&gt;::parse_rhs_main(const RHS&amp;, Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, ActualAttribute&amp;) [with RHS = boost::spirit::x3::rule_definition&lt;cbag::spirit::parser::name_rep_class, boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt;, boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_class, cbag::spirit::ast::name, true&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt; &gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt; &gt; &gt; &gt;, cbag::spirit::ast::name_rep, true, true&gt;; Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::name_rep; ActualAttribute = cbag::spirit::ast::name_rep; Attribute = cbag::spirit::ast::name_rep; ID = cbag::spirit::parser::name_rep_class; bool skip_definition_injection = true]’
+/usr/include/boost/spirit/home/x3/nonterminal/detail/rule.hpp:281:34:   required from ‘static bool boost::spirit::x3::detail::rule_parser&lt;Attribute, ID, skip_definition_injection&gt;::parse_rhs(const RHS&amp;, Iterator&amp;, const Iterator&amp;, const Context&amp;, RContext&amp;, ActualAttribute&amp;, mpl_::false_) [with RHS = boost::spirit::x3::rule_definition&lt;cbag::spirit::parser::name_rep_class, boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt;, boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_class, cbag::spirit::ast::name, true&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt; &gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt; &gt; &gt; &gt;, cbag::spirit::ast::name_rep, true, true&gt;; Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; RContext = cbag::spirit::ast::name_rep; ActualAttribute = cbag::spirit::ast::name_rep; Attribute = cbag::spirit::ast::name_rep; ID = cbag::spirit::parser::name_rep_class; bool skip_definition_injection = true; mpl_::false_ = mpl_::bool_&lt;false&gt;]’
+/usr/include/boost/spirit/home/x3/nonterminal/detail/rule.hpp:330:37:   required from ‘static bool boost::spirit::x3::detail::rule_parser&lt;Attribute, ID, skip_definition_injection&gt;::call_rule_definition(const RHS&amp;, const char*, Iterator&amp;, const Iterator&amp;, const Context&amp;, ActualAttribute&amp;, ExplicitAttrPropagation) [with RHS = boost::spirit::x3::rule_definition&lt;cbag::spirit::parser::name_rep_class, boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::alternative&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt;, boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_class, cbag::spirit::ast::name, true&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt; &gt; &gt; &gt;, boost::spirit::x3::sequence&lt;boost::spirit::x3::optional&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::sequence&lt;boost::spirit::x3::literal_string&lt;const char*, boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::action&lt;boost::spirit::x3::uint_parser&lt;unsigned int&gt;, cbag::spirit::parser::&lt;lambda(auto:134&amp;)&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::literal_char&lt;boost::spirit::char_encoding::standard, boost::spirit::x3::unused_type&gt; &gt; &gt; &gt;, boost::spirit::x3::expect_directive&lt;boost::spirit::x3::rule&lt;cbag::spirit::parser::name_unit_class, cbag::spirit::ast::name_unit, true&gt; &gt; &gt; &gt;, cbag::spirit::ast::name_rep, true, true&gt;; Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; ActualAttribute = cbag::spirit::ast::name_rep; ExplicitAttrPropagation = mpl_::bool_&lt;true&gt;; Attribute = cbag::spirit::ast::name_rep; ID = cbag::spirit::parser::name_rep_class; bool skip_definition_injection = true]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/include/cbag/spirit/name_def.h:112:1:   required from ‘bool cbag::spirit::parser::parse_rule(boost::spirit::x3::detail::rule_id&lt;name_rep_class&gt;, Iterator&amp;, const Iterator&amp;, const Context&amp;, boost::spirit::x3::rule&lt;name_rep_class, cbag::spirit::ast::name_rep, true&gt;::attribute_type&amp;) [with Iterator = __gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt;; Context = boost::spirit::x3::context&lt;boost::spirit::x3::error_handler_tag, const std::reference_wrapper&lt;boost::spirit::x3::error_handler&lt;__gnu_cxx::__normal_iterator&lt;const char*, std::__cxx11::basic_string&lt;char&gt; &gt; &gt; &gt;, boost::spirit::x3::unused_type&gt;; boost::spirit::x3::rule&lt;name_rep_class, cbag::spirit::ast::name_rep, true&gt;::attribute_type = cbag::spirit::ast::name_rep]’
+/faust/user/kcaisley/designs/dmc65v2/bag/pybag/cbag/src/cbag/spirit/name.cpp:53:1:   required from here
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp:144:25: error: static assertion failed: Size of the passed attribute is bigger than expected.
+  144 |             actual_size &lt;= expected_size
+      |             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/usr/include/boost/spirit/home/x3/operator/detail/sequence.hpp:144:25: note: the comparison reduces to ‘(3 &lt;= 2)’
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:972: CMakeFiles/cbag.dir/src/cbag/spirit/name.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2
+
+</code></pre>
+<p>How I bulit containers to test the other versions of EL:</p>
+<h1 id="container-creation">Container Creation</h1>
+<p>sudo dnf install apptainer
+apptainer build --sandbox cbag_centos7.sif docker://centos:7
+apptainer shell --fakeroot --writable cbag_centos7.sif/</p>
+<h1 id="for-centos7">For Centos7:</h1>
+<p>yum -y update &amp;&amp; yum clean all
+yum install centos-release-scl
+yum install devtoolset-8
+yum install epel-release
+yum install which yaml-cpp yaml-cpp-devel fmt fmt-devel spdlog spdlog-devel cmake3 //note cmake3
+source /opt/rh/devtoolset-8/enable</p>
+<p>cd to folder and export CC and CXX
+tried to build, but didn't work as spdlog wasn't new enough to include .cmake files</p>
+<h1 id="for-rockylinux-87">For RockyLinux 8.7:</h1>
+<p>dnf -y update &amp;&amp; dnf clean all
+dnf install epel-release
+dnf install which yaml-cpp yaml-cpp-devel fmt fmt-devel spdlog spdlog-devel cmake gcc gcc-c++ boost boost-devel</p>
+<p>starts compiling after stting static boost to OFF, but then fails at compiling with boost...</p>
+<h1 id="for-rockylinux-91">For RockyLinux 9.1:</h1>
+<p>dnf -y update &amp;&amp; dnf clean all
+dnf -y install epel-release
+dnf -y install which yaml-cpp yaml-cpp-devel fmt fmt-devel spdlog spdlog-devel cmake gcc gcc-c++ boost boost-devel</p>
+<p>same errors as fedora 37</p>
+<h1 id="email-to-ayan">Email to Ayan:</h1>
+<p>If you have a moment, would it be possible for you to check what versions of gcc
+and CMake are used to compile your copy of the CBAG submodule, and what versions
+of the Boost, fmt, spdlog, and yaml-cpp libraries it is built against?</p>
+<p>I have tried the following combinations of packages versions across various
+distributions:</p>
+<p>Distro      gcc/g++ CMake   Boost   fmt     spdlog  yaml-cpp
+CentOS      7.9     8.3.1   3.17.0  1.53    6.2.1   0.10.0 0.5.1  (devtoolset-8)
+RHEL        8.7     8.5.0   3.20.2  1.66    6.3.1   1.5.0 0.6.2
+RHEL        9.1     11.3.1  3.20.2  1.75    8.1.1   1.10.0 0.6.3
+Fedora 37   12.2.1  3.25.2  1.78    9.1.0   1.10.0  0.6.3
+Fedora 37   12.2.1  3.25.2  1.81    9.1.0   1.11.0  0.6.3</p>
+<p>In each case I have linked my copies of the OA binaies, have worked through
+successfully generating make/build files with CMake, and compilation begins. But
+in each case there are numerous compilation errors, primarily in the form of
+static assertion failures originating from the fmt and Boost libraries. I've
+made the most progress in the latter Fedora 37 configuration by editing the CBAG
+source to be compatible with fmt &gt;9.0, but am still stuck on a couple of the
+more cryptic errors.</p>
+<p>fmt     spdlog      yaml-cpp
+8.1.1   1.10.0      0.6.3</p>
+<p>export OA_SRC_ROOT=/cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa/22.50p001
+export OA_LINK_DIR=${OA_SRC_ROOT}/lib/linux_rhel50_gcc44x_64/opt           <br />
+export OA_INCLUDE_DIR=${OA_SRC_ROOT}/include</p>
+<p>I faced one last bug, which was simple to fix like Problem #1 above:</p>
+<p>[ 87%] Building CXX object CMakeFiles/cbag.dir/src/cbag/oa/read_lib.cpp.o
+In file included from /faust/user/kcaisley/packages/cbag/include/cbag/util/sorted_map.h:52,
+                 from /faust/user/kcaisley/packages/cbag/include/cbag/schematic/cellview_fwd.h:53,
+                 from /faust/user/kcaisley/packages/cbag/include/cbag/schematic/cellview.h:50,
+                 from /faust/user/kcaisley/packages/cbag/src/cbag/oa/read_lib.cpp:47:
+/faust/user/kcaisley/packages/cbag/include/cbag/util/sorted_vector.h: In member function ‘const cbag::util::sorted_vector<T, Compare>::value_type&amp; cbag::util::sorted_vector<T, Compare>::at_front() const’:
+/faust/user/kcaisley/packages/cbag/include/cbag/util/sorted_vector.h:107:24: error: ‘out_of_range’ is not a member of ‘std’
+  107 |             throw std::out_of_range("Cannot get front of empty vector.");
+      |                        ^~~~~~~~~~~~
+/faust/user/kcaisley/packages/cbag/include/cbag/util/sorted_vector.h: In member function ‘const cbag::util::sorted_vector<T, Compare>::value_type&amp; cbag::util::sorted_vector<T, Compare>::at_back() const’:
+/faust/user/kcaisley/packages/cbag/include/cbag/util/sorted_vector.h:112:24: error: ‘out_of_range’ is not a member of ‘std’
+  112 |             throw std::out_of_range("Cannot get back of empty vector.");
+      |                        ^~~~~~~~~~~~
+compilation terminated due to -fmax-errors=2.
+gmake[2]: *** [CMakeFiles/cbag.dir/build.make:1210: CMakeFiles/cbag.dir/src/cbag/oa/read_lib.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/cbag.dir/all] Error 2</p>
+<p>So I think I'll just:</p>
+<p>To use the std::out_of_range function in C++ code, you need to include the <stdexcept> header file in your code.</p>
+<p><code>#include &lt;stdexcept&gt;</code> in include/cbag/util/sorted_vector.h</p>
+<p>cmake -H. -B_build -DHUNTER_STATUS_DEBUG=ON -DCMAKE_BUILD_TYPE=Release</p>
+<p>cmake --build _build</p>
+<p>Make sure, when installing from python top level build.sh, you need to have 'sudo dnf install python3.10 python3.10-devel`</p>
+<h2 id="22-march">22 March</h2>
+<p>I'd like to understand a number of concepts related to my Python/Pybind/CMake/C++ environment:</p>
+<p>Duck typing
+generics
+    in C++ but not Python, due to it's typing
+    in C++ done with templates
+    avoids the need for function overloading</p>
+<p>other C++ features that were added later:
+garbage collector
+shared pointer
+metaprogramming
+detailing</p>
+<p>Searching for Pybind references:</p>
+<p>[kcaisley@asiclab008 pybag]$ grep -r --exclude-dir={pybind11,<em>build} "PYBIND11</em>" 
+src/pybag/core.cpp:PYBIND11_MODULE(core, m) {
+src/pybag/tech.cpp:        PYBIND11_OVERLOAD_PURE(cbag::em_specs_t, cbag::layout::tech, get_metal_em_specs, layer,
+src/pybag/tech.cpp:        PYBIND11_OVERLOAD_PURE(cbag::em_specs_t, cbag::layout::tech, get_via_em_specs, layer_dir,
+src/pybag/enum_conv.h:    PYBIND11_OBJECT_DEFAULT(PyOrient2D, obj_base, true_check);
+src/pybag/enum_conv.h:    PYBIND11_OBJECT_DEFAULT(PyOrient, obj_base, true_check);
+src/pybag/enum_conv.h:    PYBIND11_OBJECT_DEFAULT(PyLogLevel, obj_base, true_check);
+src/pybag/enum_conv.h:    PYBIND11_OBJECT_DEFAULT(PySigType, obj_base, true_check);
+src/pybag/enum_conv.h:    PYBIND11_OBJECT_DEFAULT(PyDesignOutput, obj_base, true_check);
+pybind11_generics/src/main.cpp:PYBIND11_MODULE(pyg_test, m) {
+pybind11_generics/src/test_list.cpp:        PYBIND11_OVERLOAD_PURE(std::string, /<em> Return type </em>/
+pybind11_generics/include/pybind11_generics/dict.h:#ifndef PYBIND11_GENERICS_DICT_H
+pybind11_generics/include/pybind11_generics/dict.h:#define PYBIND11_GENERICS_DICT_H
+pybind11_generics/include/pybind11_generics/tuple.h:#ifndef PYBIND11_GENERICS_TUPLE_H
+pybind11_generics/include/pybind11_generics/tuple.h:#define PYBIND11_GENERICS_TUPLE_H
+pybind11_generics/include/pybind11_generics/list.h:#ifndef PYBIND11_GENERICS_LIST_H
+pybind11_generics/include/pybind11_generics/list.h:#define PYBIND11_GENERICS_LIST_H
+pybind11_generics/include/pybind11_generics/any.h:#ifndef PYBIND11_GENERICS_ANY_H
+pybind11_generics/include/pybind11_generics/any.h:#define PYBIND11_GENERICS_ANY_H
+pybind11_generics/include/pybind11_generics/any.h:    PYBIND11_OBJECT_DEFAULT(Any, any_base, true_check);
+pybind11_generics/include/pybind11_generics/type_name.h:#ifndef PYBIND11_GENERICS_TYPE_NAME_H
+pybind11_generics/include/pybind11_generics/type_name.h:#define PYBIND11_GENERICS_TYPE_NAME_H
+pybind11_generics/include/pybind11_generics/optional.h:#ifndef PYBIND11_GENERICS_OPTIONAL_H
+pybind11_generics/include/pybind11_generics/optional.h:#define PYBIND11_GENERICS_OPTIONAL_H
+pybind11_generics/include/pybind11_generics/optional.h:    PYBIND11_OBJECT_DEFAULT(Optional, optional_base, optional_check);
+pybind11_generics/include/pybind11_generics/custom.h:#ifndef PYBIND11_GENERICS_CUSTOM_H
+pybind11_generics/include/pybind11_generics/custom.h:#define PYBIND11_GENERICS_CUSTOM_H
+pybind11_generics/include/pybind11_generics/custom.h:    PYBIND11_OBJECT_DEFAULT(Custom, custom_base, true_check);
+pybind11_generics/include/pybind11_generics/cast_input_iterator.h:#ifndef PYBIND11_GENERICS_CAST_INPUT_ITERATOR_H
+pybind11_generics/include/pybind11_generics/cast_input_iterator.h:#define PYBIND11_GENERICS_CAST_INPUT_ITERATOR_H
+pybind11_generics/include/pybind11_generics/iterator.h:#ifndef PYBIND11_GENERICS_ITERATOR_H
+pybind11_generics/include/pybind11_generics/iterator.h:#define PYBIND11_GENERICS_ITERATOR_H
+pybind11_generics/include/pybind11_generics/iterator.h:    PYBIND11_OBJECT_DEFAULT(PyIterator, iterator_base, PyIter_Check);
+pybind11_generics/include/pybind11_generics/iterable.h:#ifndef PYBIND11_GENERICS_ITERABLE_H
+pybind11_generics/include/pybind11_generics/iterable.h:#define PYBIND11_GENERICS_ITERABLE_H
+pybind11_generics/include/pybind11_generics/iterable.h:    PYBIND11_OBJECT_DEFAULT(Iterable, iterable_base, iterable_check)
+pybind11_generics/include/pybind11_generics/union.h:#ifndef PYBIND11_GENERICS_UNION_H
+pybind11_generics/include/pybind11_generics/union.h:#define PYBIND11_GENERICS_UNION_H
+pybind11_generics/include/pybind11_generics/cast.h:#ifndef PYBIND11_GENERICS_CAST_H
+pybind11_generics/include/pybind11_generics/cast.h:#define PYBIND11_GENERICS_CAST_H
+pybind11_generics/CMakeLists.txt:set(PYBIND11_GENERICS_MASTER_PROJECT OFF)
+pybind11_generics/CMakeLists.txt:  set(PYBIND11_GENERICS_MASTER_PROJECT ON)
+pybind11_generics/CMakeLists.txt:option(PYBIND11_GENERICS_TEST "Build pybind11_generics test suite?"
+pybind11_generics/CMakeLists.txt:  ${PYBIND11_GENERICS_MASTER_PROJECT})
+pybind11_generics/CMakeLists.txt:set(PYBIND11_CPP_STANDARD --std=c++1z)
+pybind11_generics/CMakeLists.txt:if (PYBIND11_GENERICS_TEST)</p>
+<p>Using CMake with external projects:</p>
+<p>http://www.saoe.net/blog/using-cmake-with-external-projects/</p>
+<p>https://www.scivision.dev/cmake-fetchcontent-vs-external-project/</p>
+<p>git hashes: b6f4ceaed0a0a24ccf575fab6c56dd50ccf6f1a9 deps/fmt (8.1.1)
+76fb40d95455f249bd70824ecfcae7a8f0930fa3 deps/spdlog (v1.2.1-2055-g76fb40d9)</p>
+<h1 id="cmake-workflow">CMake workflow:</h1>
+<p>First, download and bootstrap vcpkg itself; it can be installed anywhere, but generally we recommend using vcpkg as a submodule for CMake projects.</p>
+<p>$ git clone https://github.com/microsoft/vcpkg
+$ ./vcpkg/bootstrap-vcpkg.sh</p>
+<p>To install the libraries for your project, run:</p>
+<p>$ ./vcpkg/vcpkg install [packages to install]</p>
+<p>You can also search for the libraries you need with the search subcommand:</p>
+<p>$ ./vcpkg/vcpkg search [search term]</p>
+<p>In order to use vcpkg with CMake, you can use the toolchain file:</p>
+<p>$ cmake -B [build directory] -S . "-DCMAKE_TOOLCHAIN_FILE=[path to vcpkg]/scripts/buildsystems/vcpkg.cmake"
+$ cmake --build [build directory]</p>
+<h1 id="visual-studio-code-with-cmake-tools">Visual Studio Code with CMake Tools</h1>
+<p>Adding the following to your workspace settings.json will make CMake Tools automatically use vcpkg for libraries:</p>
+<p>{
+  "cmake.configureSettings": {
+    "CMAKE_TOOLCHAIN_FILE": "[vcpkg root]/scripts/buildsystems/vcpkg.cmake"
+  }
+}</p>
+<h1 id="to-enable-versioning-when-running-vcpkg">To enable versioning when running vcpkg</h1>
+<p>./vcpkg/vcpkg --feature-flags="versions" install</p>
+<p>I should test this from just the cbag directory:</p>
+<pre><code>cmake -B_build -S. -DCMAKE_TOOLCHAIN_FILE=/home/kcaisley/packages/vcpkg/scripts/buildsystems/vcpkg.cmake
+</code></pre>
+<p>Step 1: Clone the vcpkg repo</p>
+<pre><code>git clone https://github.com/Microsoft/vcpkg.git
+</code></pre>
+<p>Make sure you are in the directory you want the tool installed to before doing this.</p>
+<p>Step 2: Run the bootstrap script to build vcpkg</p>
+<pre><code>./vcpkg/bootstrap-vcpkg.sh
+</code></pre>
+<h2 id="notes-about-building-cbag-with-vcpkg">Notes about building cbag with vcpkg</h2>
+<p>the errors with not finding compilers and make program only happen when running</p>
+<p>fatal: path 'versions/baseline.json' exists on disk, but not in '664f8bb619b752430368d0f30a8289b761f5caba'</p>
+<p>You can use the current commit as a baseline, which is:
+        "builtin-baseline": "c9f906558f9bb12ee9811d6edc98ec9255c6cda5"</p>
+<p>Adding the following before <code>project(cbag)</code></p>
+<pre><code>set(CMAKE_MAKE_PROGRAM /usr/bin/make)
+set(CMAKE_C_COMPILER /usr/bin/gcc)
+set(CMAKE_CXX_COMPILER /usr/bin/g++)
+</code></pre>
+<p>Okay, that fixed it. Now the only error I'm seeing is:</p>
+<pre><code>error: Cannot resolve a minimum constraint for dependency boost-disjoint-sets from boost:x64-linux.
+The dependency was not found in the baseline, indicating that the package did not exist at that time. This may be fixed by providing an explicit override version via the &quot;overrides&quot; field or by updating the baseline.
+See `vcpkg help versioning` for more information.
+</code></pre>
+<p>These are the 
+<a href="https://devblogs.microsoft.com/cppblog/take-control-of-your-vcpkg-dependencies-with-versioning-support/">two</a>
+<a href="https://learn.microsoft.com/en-us/vcpkg/users/versioning.concepts">links</a>
+needed for me to proceed in solving this error. Also, see <code>../../vcpkg/vcpkg help versioning</code></p>
+<p>This is how a manifest file should work:</p>
+<p>{
+    "name": "example",
+    "version": "1.0",
+    "builtin-baseline": "a14a6bcb27287e3ec138dba1b948a0cdbc337a3a",
+    "dependencies": [
+        { "name": "zlib", "version&gt;=": "1.2.11#8" },
+        "rapidjson"
+    ],
+    "overrides": [
+        { "name": "rapidjson", "version": "2020-09-14" }
+    ]
+}</p>
+<p>The boost components I probably need are:</p>
+<p>container
+container-hash
+fusion
+units
+mpl
+tokenizer
+units
+spirit</p>
+<p>serialization (compiled, contains container_hash, and archive libraries)</p>
+<p>spirit (header-only)
+fusion
+units
+mpl
+tokenizer</p>
+<p>I give up for now. I can't install Boost with vcpkg. It's too frustrating. Boost 1.75 is the oldest I can install with a built-in baseline, and for some reason manually specifying the baseline with overrides requires me to write out each of the packages in Boost.</p>
+<h2 id="building-on-april-10">Building on April 10</h2>
+<p>cp -r /cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa.aoi/22.50p001/ .</p>
+<pre><code>find . -type d -name &quot;*example*&quot;
+</code></pre>
+<p>This is the location of the binaries I want:
+/mnt/md127/tools/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa.aoi/22.50p001</p>
+<p>So, assuming it is mounted on my machine at <code>/cadence</code>, I can do:</p>
+<pre><code>cp -r /cadence/mentor/aoi_cal_2016.4_38.25/shared/pkgs/icv_oa.aoi/22.50p001/* .
+</code></pre>
+<h2 id="multiple-defenitions-errors">Multiple defenitions errors:</h2>
+<p>I'm finding some possible recommendations about how to figure out this multiple definitions issue:</p>
+<p>https://stackoverflow.com/questions/69326932/multiple-definition-errors-during-gcc-linking-in-linux
+https://stackoverflow.com/questions/37525922/how-to-handle-gcc-link-optionslike-whole-archive-allow-multiple-definition</p>
+<p>The idea to hack it with <code>--allow-multiple-definition</code> in <code>target_link_libraries</code> doesn't work as <code>g++</code> doesn't support it.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
