@@ -1,0 +1,2 @@
+- Understand/fix why key-based auth not working for LDAP/SSSD accounts
+- Understand how to make wheel/root access work reliably for LDAP/SSSD accounts

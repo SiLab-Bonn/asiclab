@@ -32,3 +32,14 @@ Dnf undo history item:
 ```
 sudo dnf history undo/rollback #
 ```
+
+If a package is still in the repos, here's how you find and target it:
+https://unix.stackexchange.com/questions/266888/can-i-force-dnf-to-install-an-old-version-of-a-package
+
+`dnf --showduplicates list <package>`
+
+List packages that depend on the package of choice:
+`dnf repoquery --installed --whatrequires qemu-kvm`
+
+manually downgrade to a different package version downloaded from [this link](https://koji.fedoraproject.org)
+`sudo dnf downgrade ~/Downloads/fmt-8.1.1-5.fc37.x86_64.rpm`

@@ -23,7 +23,9 @@ Instructions: https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-verbo
 https://askubuntu.com/questions/974718/how-do-i-get-the-list-of-the-active-login-sessions
 
 to show the active users and process number
+
 `who -u `
 
 to kill active session
+
 `sudo kill -9 <session-process-number>`

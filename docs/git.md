@@ -51,8 +51,6 @@ https://stackoverflow.com/questions/10228760/how-do-i-fix-a-git-detached-head
 
 The latter page includes info about `git pop` and `git stash`
 
-
-
 # Github Contribution Workflow
 
 This explains why you should Fork a project you plan to contribute to, if you're not already a contributor in the direct project:
