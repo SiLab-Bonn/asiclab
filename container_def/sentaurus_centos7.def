@@ -1,6 +1,9 @@
 Bootstrap: docker
 From: centos:7
 
+# Extracted via: `apptainer inspect --deffile /mnt/md127/tools/synopsys/container/snps_container/1.6/data/centos7.simg > /tools/asiclab/container_def/sentarus_centos7_snps.def`
+# The make changes:
+
 %files
 
     # run commands on the host that won't work inside the container
