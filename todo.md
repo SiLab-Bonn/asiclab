@@ -1,3 +1,0 @@
-- Understand/fix why key-based auth not working for LDAP/SSSD accounts ... do I need to use ssh-add to ssh-agent? It looks like it does defautly?
-- Understand how to make wheel/root access work reliably for LDAP/SSSD accounts
-- Understand how to modify, in settings, if machine will sleep or not.

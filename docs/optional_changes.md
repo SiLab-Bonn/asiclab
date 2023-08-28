@@ -1,0 +1,2 @@
+- Go to https://extensions.gnome.org/local/ and enable 'Launch new ...'
+    - is there a way to do this from command line?

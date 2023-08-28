@@ -1,45 +1,7 @@
-# ASICLab
+Documentation for ASIC design, FGPA, and TCAD servers, workstations, and tools 
 
-## Introduction
+- `/startup_scripts` Startups scripts for ASIC, FPAGa, and TCAD tools
 
-The room, the machines, the software, the projects, the 
+- `/container_def` Apptainer define files for building containers for running EDA tools
 
-In `/startup_scripts`
-
-In `/container_def`
-
-
-## Workstations
-
-`asiclab000` - `asiclab011`
-
-- Workstation setup checklist
-- New user checklist
-
-- Starting Cadence tools
-- Starting Synopys
-- Starting FPGA design tools
-
-- Remote access
-
-## Servers
-
-- Updating firmware
-- Installing 
-- 
-
-## Micellaneous
-
-- [git](./docs/git.md)
-
-
-
-## Startup Script
-
-
-## Containers
-
-- [SSH](/docs/ssh.md#ssh)
-    - [Enabling host server](/docs/ssh.md#enabling-host-server)
-    - [Connecting from client](/docs/ssh.md#connecting-from-client)
-
+- `/docs` Checklists and troubleshooting for workstations `asiclab000` - `asiclab011` and servers

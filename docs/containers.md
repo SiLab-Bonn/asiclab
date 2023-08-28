@@ -445,3 +445,5 @@ Apptainer> ldd  /cadence/cadence/IC618/tools.lnx86/dfII/bin/64bit/virtuoso
 	libz.so.1 => /lib64/libz.so.1 (0x00007fa523800000)
 .....
 ```
+
+To get the .def file used to build a .sif, use `apptainer inspect --deffile [mycontainer.sif]`
