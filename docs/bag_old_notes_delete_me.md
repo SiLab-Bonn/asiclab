@@ -900,22 +900,6 @@ My group invested significant time (4 revisions) designing this ^ 65nm clock-dat
 
 
 
-
-# To Do
-
-## Backlog
-
-- [ ] Generate pre and post-extracted netlist of 65nm VCO
-- [ ] Create a basic simulation of inverter, using tradition GUI Virtuoso Schematic/Layout -> PEX Extraction -> ADE XL -> Spectre -> ADE XL viewer.
-- [ ] Reproduce basic INV simulation with SPICE netlist -> SPECTRE Command Line -> Flat File Output
-- [ ] Reproduce basic INV simulation with: SPICE netlist -> Jupyter Notebook -> BAG3 -> SPECTRE -> BAG3 -> Jupyter Notebook.
-- [ ] Start assembling list of tests to run on VCO.
-
-## In Progress
-- [ ] Identify what OpenAccess library is needed to properly compile and operate BAG3 (make issue of this)
-- [ ] Move my venv over from my other venv, or just re-setup
-- [ ] Figure out the ask to Ayan Biswas, Thomas Parry, or Marjana, to try and figure out exactly 'what' OpenAccess library is missing.
-
 ## Completed
 
 
