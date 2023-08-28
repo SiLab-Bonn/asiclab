@@ -149,8 +149,8 @@ cat
 less
 locate
 updatedb
-grok
-alias cp to cp -iv
+alias cp to `cp -iv`  (prompt before, and be verbose)
 ldd
 
-nohup (prevents shell exit from 'hang up' the processes aka killing the processes it started)
+
+nohup (prevents shell exit from 'hang up' the processes aka killing the processes it started
