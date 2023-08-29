@@ -72,3 +72,7 @@ Then afterwards, to update the package cache
 ```
 dnf check-update
 ```
+
+Repos are stored at:
+
+`/etc/yum.repos.d/`
