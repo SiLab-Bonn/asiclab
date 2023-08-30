@@ -13,6 +13,16 @@ __vte_prompt_command() { true; }
 
 
 
+# for the whole bash  vs tcsh problem:
+
+ps -p $$ – Display your current shell name reliably. 
+
+echo "$SHELL" – Print the shell for the current user but not necessarily the shell that is running at the movement. 
+
+echo $0 – Another reliable and simple method to get the current shell interpreter name on Linux or Unix-like systems.
+
+
+
 # Bash:
 
 You can set env variables in a bash script by just writing X='text', where X is the env variable name. You don't have to export.
