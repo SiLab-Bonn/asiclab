@@ -32,7 +32,7 @@ export CDS_IC="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/IC_6.1.8.320"
 export CDSDIR=$CDS_IC
 # When using ADE set netlisting mode to analog ("dfIIconfig.pdf"), p16. Alternative is 'digital'
 export CDS_Netlisting_Mode=Analog
-# Required for tutorial material and cadence libraries (eg analogLib)
+# Required for tutorial material and cadence libraries (eg analogLib). Not used to set path
 export CDSHOME=$CDS_IC
 export CDS_USE_PALETTE
 # provides commands `virtuoso` 
@@ -52,7 +52,7 @@ export PATH="${PATH}:${CDS_SPECTRE}/tools/plot/bin"
 # Create alias to easily start help
 alias help_cds_spectre='$CDS_SPECTRE/tools/cdnshelp/bin/cdnshelp &'
 
-### Cadence PVS: a replacement for Assura, PVE, EXT, etc below 45nm
+### Cadence PVS: a replacement for the DRC/LVS/PERC portions of Assura, PVE, EXT, etc below 45nm
 export CDS_PVS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/PVS_21.12.000"
 # provides commands `pvs` and `k2_viewer`
 export PATH="${PATH}:${CDS_PVS}/bin"
@@ -60,6 +60,16 @@ export PATH="${PATH}:${CDS_PVS}/tools/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CDS_PVS}/tools/lib"    # not sure if necessary?
 # Create alias to easily start help
 alias help_cds_pvs='$CDS_PVS/tools/cdnshelp/bin/cdnshelp &'
+
+### Cadence Quantus: a replacement for the PEX aka QRC components of Assura, PVE, EXT, etc below 45nm
+export CDS_QUANTUS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/QUANTUS_21.11.000"
+# non-path ENV var, used by cadence
+export QRC_HOME=$CDS_QUANTUS
+# provides commands qrc
+export PATH="${PATH}:${CDS_QUANTUS}/bin"
+#export PATH="${PATH}:${CDS_QUANTUS}/tools/bin"  # commented out in the example scripts
+# Create alias to easily start help
+alias help_cds_qrc='$CDS_QUANTUS/tools/cdnshelp/bin/cdnshelp=&'
 
 ### Cadence Xcelium: digital simulation replacement for Incisive, ncsim, AMSHOME etc
 export CDS_XCELIUM="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/XCELIUM_22.03.005"
