@@ -1,3 +1,18 @@
+# Bash set -e option, will cause shell to crash:
+
+```
+printf '%s\n' "$PROMPT_COMMAND"
+__vte_prompt_command
+```
+
+```
+__vte_prompt_command() { true; }
+```
+
+. "$HOME/.cargo/env"
+
+
+
 # Bash:
 
 You can set env variables in a bash script by just writing X='text', where X is the env variable name. You don't have to export.

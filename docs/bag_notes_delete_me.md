@@ -351,6 +351,7 @@ clearing and issue with: (not an issue if you don't have conda init put stuff in
 ```
 __vte_prompt_command() { true; }
 ```
+. "$HOME/.cargo/env"
 
 To activate this environment, use (not necessary, as it's added to path in bashrc script)
 

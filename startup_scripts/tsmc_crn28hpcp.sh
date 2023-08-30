@@ -7,9 +7,13 @@
 
 # Cadence tools should be started from a PDK specific working dir, e.g. `~/cadence/tsmc28`
 if [ "$HOME" == "$PWD" ]; then
-   echo "You shouldn't start cadence tools from your HOME directory"
+   echo "You shouldn't start cadence tools from your HOME directory."
+   echo "It will create a bunch of Virtuoso-specific stuff you don't want in there."
    echo "Instead use a PDK-specific working dir, e.g: ~/cadence/tsmc28"
-   exit 1
+   # having just an exit will cause sourcing the script to crash the terminal
+   # having just a `return` will casues execution of this script to fail
+   # therefore, we do both:
+   return 2> /dev/null; exit  # learned from https://www.baeldung.com/linux/safely-exit-scripts#the-return-command
 fi
 
 ### FlexLM: License manager server
@@ -119,6 +123,7 @@ chmod 775 ./cdsLibMgr.il
 
 directories=("DRC" "LVS" "SIM" "XRC")
 
+# Fancy loop which repeats the same process for the four locations listed above
 for dir in "${directories[@]}"; do
     if [ ! -d /tmp/"$USER"/"$dir" ]; then
         mkdir -p /tmp/"$USER"/"$dir"
@@ -131,4 +136,5 @@ for dir in "${directories[@]}"; do
     fi
 done
 
-exit 0
+# see lines 12-14 above for explanation of this exit command
+return 2> /dev/null; exit

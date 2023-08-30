@@ -1,16 +1,16 @@
 Bootstrap: docker
 From: centos:7
 
-# To compile, on penelope:
-# sudo apptainer build --force /mnt/md127/tools/containers/virtuoso_centos7.sif /mnt/md127/tools/asiclab-docs/container_def/virtuoso_centos7.def
+# To compile, as `asiclab` user on penelope:
+# sudo apptainer build --force /mnt/md127/tools/containers/virtuoso_centos7.sif /mnt/md127/tools/asiclab/container_def/virtuoso_centos7.def
 
 # Then to run, on asiclab workstation:
 # apptainer shell -B /tools,/users /tools/containers/virtuoso_centos7.sif
     
 %setup
     # Run on the host system, after the base container OS is installed. Filepaths are relative to host (Fedora)
-    mkdir ${APPTAINER_ROOTFS}/tools
-    mkdir ${APPTAINER_ROOTFS}/users
+    # mkdir ${APPTAINER_ROOTFS}/tools
+    # mkdir ${APPTAINER_ROOTFS}/users
     
 %environment
     # Place for adding environment variables here, if needed
