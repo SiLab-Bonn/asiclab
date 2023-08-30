@@ -14,6 +14,12 @@ To compile, as `asiclab` user on penelope:
 sudo apptainer build --force /mnt/md127/tools/containers/virtuoso_centos7.sif /mnt/md127/tools/asiclab/container_def/virtuoso_centos7.def
 ```
 
+Make it executable by others:
+
+```
+sudo chgrp 200 /mnt/md127/tools/containers/virtuoso_centos7.sif
+```
+
 Then to run, on a workstation:
 
 ```

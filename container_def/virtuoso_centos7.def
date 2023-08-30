@@ -8,9 +8,11 @@ From: centos:7
 # apptainer shell -B /tools,/users /tools/containers/virtuoso_centos7.sif
     
 %setup
-    # Run on the host system, after the base container OS is installed. Filepaths are relative to host (Fedora)
+    # This section is run on the host system, after the base container OS is installed. Filepaths are relative to host (Fedora)
+    # For example:
     # mkdir ${APPTAINER_ROOTFS}/tools
     # mkdir ${APPTAINER_ROOTFS}/users
+    # But these aren't actually needed, as the external mount will auto connect them in
     
 %environment
     # Place for adding environment variables here, if needed
