@@ -26,4 +26,3 @@
 - check before restoring
 - choose end action
 - after check is done confirm overwrite for all drives
-- 

@@ -8,7 +8,7 @@ The binaries and license files live on penelope in `/cadence/other/lmadmin` and 
 The FlexNet binary (`/cadence/other/lmadmin/lmadmin`) manages all licenses and provides the web interface. After a reboot, this binary has to be started manually.
 
 ## Licenses and vendor deamons
-Licenses are separated by vendor. Each license file (and the matching vendor daemon binary) is stored in a separate folder in `/cadence/other/lmadmin/license`.
+Licenses are separated by vendor. Each license file (and the matching vendor daemon binary) is stored in a separate folder in `/cadence/other/lmadmin/licenses`.
 
 # Client Configuration
 To access the licenses from a client, add the server address to your environment: `export LM_LICENSE_FILE=8000@faust02.physik.uni-bonn.de`. Add this line to your ~/.bashrc or application-specific startup script if needed.

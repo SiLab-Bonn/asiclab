@@ -65,24 +65,13 @@ ngspice wol xclock xpdf pandoc inkscape evolution code seahorse texlive iperf ap
 # Zoom
 Simplest way is just to download the official Fedora.rpm from https:/zoom.us. Then just double click on downloaded file in Files GUI. Will figure out Zoom install via command line later.
 
-https://eu02web.zoom.us/support/down4j
-
-
-
 
 # Python venvs
 
 If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new-ish feature in Python, and will make your life better.
 
 
-
-# Thunderbird Email
-
-```
-sudo dnf install thunderbird
-```
-
-Uni-Bonn email setup described [here](https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichten+von+E-Mail+Clients#expand-AccountSetUp) is summarized below:
+# Email
 
 ### Incoming Server Settings:
 

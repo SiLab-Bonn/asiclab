@@ -22,7 +22,7 @@ Once you have a library to contain the standard cells, you can proceed to import
 
 The symbol cellview files are located two levels-deep inside the `cdslib` directory corresponding to each library. The folder hierarchy differs slightly for normal RVT/HVT libraries vs flip-well SLVT/LVT libraries. The flip-well libraries have two directories, 'BE' and 'FE', which I believe corresponds to 'back-end' and 'front-end'. Ignore the 'FE' directory, as it is missing many of the files we need, and use the 'BE' directory throughout this import process. This difference in directory structure can be seen in the example below for the four flavors of BASE 12T 20nm cells:
 
-![](../images/fdsoi_1.png)
+![](./images/fdsoi_1.png)
 
 Be sure to copy cover only the cell contents of the `cdslib` directory (which are two levels down) and not the whole directory itself. For example, if you were wanting the cells for the BASE 12T 20nm RVT library you would copy the **contents** of:
 
@@ -55,11 +55,11 @@ CIW -> File -> Import -> Spice...
 
 On the Input page, target your modified copy of the Netlist file, change the Netlist language to `CDL`, set the Reference Library List to `cmos22fdsoi analogLib`, check the boxes for Trigger CDF parameters callback and Device Mapping File, and change the Simulation Information section to `auCdl`. It should look something like this:
 
-![](../images/fdsoi_2.png)
+![](./images/fdsoi_2.png)
 
 On the Output page, set the log file to where you want it to go, target the Output Library that you created in Step 0, and Save Device Simulation Information in CDF for `spectre`. It should look something like this:
 
-![](../images/fdsoi_3.png)
+![](./images/fdsoi_3.png)
 
 I would recommend changing the default log file directory, as it will generate a individual file for every single cell. By default it will put all of these in your Cadence launch directory, which will create a mess.
 
@@ -67,12 +67,12 @@ Finally, we must configure the Device Map for our import options. This is critic
 
 Examine the .CDL netlist file to figure out which devices are used. For example, if we were importing the 12T HPK ULVT library `GF22FDX_SC12T_104CPP_HPK_CSSL`, we see the .CDL netlist uses SLVT nfet and pfet devices:
 
-![](../images/fdsoi_4.png)
+![](./images/fdsoi_4.png)
 
 In this example case, we would simply configure the Device map to use cmos22fdsoi `slvtnfet` and `slvtpfet` devices wherever they appear in the .CDL netlist. The configuration would look like this:
 
 
-![](../images/fdsoi_5.png)
+![](./images/fdsoi_5.png)
 
 If one were importing a library with LVT or HVT devices, a similar process would be followed, with the respective device names. After setting the device map, you can click the "Ok" button to begin generating .OA schematics from the .CDL netlist. This process will take about 20 minutes.
 
@@ -88,7 +88,7 @@ The final step is to import the layouts which are contained in the respective `g
 
 To make this layer map file work for your specific case, you'll need to delete the existing entries for the `RVTN` and `RVTP` layers, and replace it with the layers for SLVT/LVT devices. Here is an example from the 12T HPK RVT device library.
 
-![](../images/fdsoi_6.png)
+![](./images/fdsoi_6.png)
 
 We will need to delete the two lines reading:
 
@@ -106,7 +106,7 @@ SLVTP		   drawing	    212  53
 
 I have yet to discover the correct layers for LVT devices. In the 12T HPK SLVT example from above, the correct layer map file would look like so:
 
-![](../images/fdsoi_7.png)
+![](./images/fdsoi_7.png)
 
 **NOTE:** Be sure to add the lines into the file in the correct numerical location, based on the Stream Layer number. You can't add them anywhere in the file.
 
@@ -120,7 +120,7 @@ CIW -> File -> Import -> Stream...
 
 For Stream File, target the provided .GDS in the respective Invecas directory. Set Library to the library created in Step 0, set `cmos22fdsoi` for Attach Tech Library, and for Layer Map target the modified .layermap file you saved to your local used directory. Start the stream import process, which should only take a couple of seconds. The configuration should look something like this:
 
-![](../images/fdsoi_8.png)
+![](./images/fdsoi_8.png)
 
 Refresh the Library Manager for a final time, and confirm that all the cell entries have an associated layout cellview.
 
