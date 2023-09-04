@@ -17,8 +17,10 @@ Then to run, on local workstation:
 
 ```
 xhost +
-apptainer shell -B /tools,/users /path/to/built/container/virtuoso_centos7.sif
+apptainer shell -B /dir1,/dir2 /path/to/built/container/virtuoso_centos7.sif
 ```
+
+Where `dir1` and `dir2` are external directories to make available inside the container. The users `$HOME` directory is available by default, but you'll need to include, for example, the `/tools` or `/eda` directory that often houses the EDA tool binaries.
 
 To check the container works, after starting it:
 
