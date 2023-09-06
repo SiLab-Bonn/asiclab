@@ -1,6 +1,11 @@
 # Installing CDS tools
 
-Download the packages using sftp
+Download the packages using ftp:
+
+```
+wget -rv ftp://user:password@download.msc.rl.ac.uk/Synopsys/2022-23_eda/TCAD
+```
+
 Create a dummy symlink, from /eda -> /tools (as Europractice installer expects it)
 Run the install script
 Make sure all files are owned by group `base` (currently 200)

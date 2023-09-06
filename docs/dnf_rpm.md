@@ -76,3 +76,6 @@ dnf check-update
 Repos are stored at:
 
 `/etc/yum.repos.d/`
+
+To inspect the dependencies of an rpm package: `rpm -qpR name.rpm`
+

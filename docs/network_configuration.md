@@ -164,3 +164,8 @@ systemd-resolved is a systemd service that provides network name resolution to l
 
 
 https://wiki.archlinux.org/title/Dnsmasq#DNS_server
+
+
+`dig` is a DNS lookup utility, which works as an 'in memory' DNS analyzer
+
+`systemd-analyze cat-config systemd/resolved.conf`

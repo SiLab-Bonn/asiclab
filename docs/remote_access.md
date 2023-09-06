@@ -102,4 +102,9 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
 
-Wait, there is a file ``
+## Systemd Sleep settings:
+https://www.freedesktop.org/software/systemd/man/systemd-sleep.conf.html
+
+`/etc/systemd/sleep.conf`
+
+Question: What is the difference between the settings in Gnome, and the settings in systemctl, and the settings in this conf file? Do they interact or supercede each other?
