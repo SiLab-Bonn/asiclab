@@ -150,3 +150,17 @@ shows address of all the network interfaces in the machine
 the above is primarily for the physical layer
 more advice for the data link layer and networking layer can be found here:
 https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux
+
+
+# DNS
+
+The most basic DNS manual method is to just use the `/etc/hosts` and `/etc/resolv.conf` files.
+
+Beyond that, there are two common DNS caching servers: `systemd-resolved` and `dnsmasq`, depending on whether you're on Fedora or CentOS, respectively.
+
+https://www.linuxuprising.com/2019/07/how-to-flush-dns-cache-on-linux-for.html
+
+systemd-resolved is a systemd service that provides network name resolution to local applications via a D-Bus interface, the resolve NSS service (nss-resolve(8)), and a local DNS stub listener on 127.0.0.53. See systemd-resolved(8) for the usage.
+
+
+https://wiki.archlinux.org/title/Dnsmasq#DNS_server
