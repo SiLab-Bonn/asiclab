@@ -1,19 +1,19 @@
 Bootstrap: docker
 From: centos:7
 
-# Extracted via: `apptainer inspect --deffile /mnt/md127/tools/synopsys/container/snps_container/1.6/data/centos7.simg > /tools/asiclab/container_def/sentarus_centos7_snps.def`
+# Extracted via: `apptainer inspect --deffile /tools/synopsys/container/snps_container/1.6/data/centos7.simg > /tools/asiclab/container_def/sentarus_centos7.def`
 # The make changes:
 
 %files
 
     # run commands on the host that won't work inside the container
-    onhost /usr/bin
+    # onhost /usr/bin
 
     # call "rr record" with recommended options
-    rr-record /usr/bin
+    # rr-record /usr/bin
 
     # https://cgdb.github.io/
-    cgdb-0.7.1-1.el7.x86_64.rpm /
+    cgdb-0.6.8-1.el7.x86_64.rpm /
 
 %post
 
@@ -35,7 +35,8 @@ From: centos:7
     # debugging
     yum -y install \
 	strace \
-	valgrind
+	valgrind \
+	gdb
 
     # https://rr-project.org/
     rpm -i https://github.com/mozilla/rr/releases/download/5.3.0/rr-5.3.0-Linux-x86_64.rpm
@@ -51,8 +52,8 @@ From: centos:7
 	chmod 755 $wrapper; \
     done
 
-    rpm -i /cgdb-0.7.1-1.el7.x86_64.rpm
-    rm /cgdb-0.7.1-1.el7.x86_64.rpm
+    rpm -i /cgdb-0.6.8-1.el7.x86_64.rpm
+    rm /cgdb-0.6.8-1.el7.x86_64.rpm
 
     # vcs script calls /usr/bin/dc
     yum -y install \
