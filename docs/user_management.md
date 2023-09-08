@@ -1,12 +1,5 @@
 # User Management
 
-## Credentials
-
-asiclabwin001.physik.uni-bonn.de:
-admin
-%nobody<3cds%
-
-
 ## TL;DR Short-Term Approach for Setting up New Fedora Machine
 
 ```

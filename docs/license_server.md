@@ -12,3 +12,24 @@ Licenses are separated by vendor. Each license file (and the matching vendor dae
 
 # Client Configuration
 To access the licenses from a client, add the server address to your environment: `export LM_LICENSE_FILE=8000@faust02.physik.uni-bonn.de`. Add this line to your ~/.bashrc or application-specific startup script if needed.
+
+# EP Instructions:
+Before you start the license server you will need to edit the license file. Edit the SERVER line to specify the server
+name and edit the VENDOR line to specify the path to the snpslmd vendor daemon (including executable name).
+The key file example below shows the fields that you need, where `server_name` and `vendor_daemon_path` are to be edited:
+
+```
+SERVER server_name 123456789012 27020
+VENDOR snpslmd vendor_daemon_path
+USE_SERVER
+INCREMENT SSS snpslmd 1.0 31-Dec-2022 1 0E75D6C8DFSDFSSFDE933A \
+VENDOR_STRING="2ba5a b9253 3611c 47b02 bcc52 3f2bf a54d3 d32de e85f3 fcb11 \
+```
+
+Under windows the license server is setup and configured using the LMTOOL utility. This enables you to add the
+license server as a Windows service. The documentation included with SCL provides further details of this.
+Under Linux, the license server is started manually using the lmgrd executable. For example,
+
+```
+% lmgrd –c key –l log
+```
