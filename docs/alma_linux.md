@@ -151,8 +151,13 @@ sudo ln -s /lib64/libdl.so.2 /lib64/libdl.so
 sudo yum install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
 
 
-# 
+## Continuing on Alma Linux 9:
 
+sudo dnf install tmux htop pandoc curl wget git gcc cmake g++
+
+
+# power tools repo, also called CRB
+sudo dnf config-manager --set-enabled crb
 
 
 

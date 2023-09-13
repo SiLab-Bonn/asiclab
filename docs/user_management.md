@@ -1,6 +1,43 @@
 # User Management
 
-## TL;DR Short-Term Approach for Setting up New Fedora Machine
+## New client setup
+
+### Adding clients to FreeIPA domain
+
+https://fedoramagazine.org/join-fedora-linux-enterprise-domain/
+
+```bash
+sudo realm join asiclabwin001.physik.uni-bonn.de -v
+```
+
+authenticate as admin account.
+
+
+### Adding local user to `wheel` group (frontend for sudoers)
+
+Tutorial: [Adding a user to sudoers and wheel group](https://docs.fedoraproject.org/en-US/quick-docs/adding_user_to_sudoers_file/)
+
+I haven't had success adding a user to the wheel group on the LDAP sever. Instead, I've needed to add users locally to the wheel group.
+
+```
+sudo usermod -aG wheel username
+```
+
+Then edit the sudoers file, to make sure this group has permissions. There is a subtle difference between the default `%wheel ALL=(ALL) ALL` and the below:
+
+```
+$ sudo visudo
+
+%wheel ALL=(ALL:ALL) ALL
+```
+
+Then logout and back in again.
+
+---
+
+## Unorganized notes:
+
+### TL;DR Short-Term Approach for Setting up New Fedora Machine
 
 ```
 # create groups
@@ -89,7 +126,7 @@ sudo usermod -u 2002 kcaisley
 sudo groupmod -g 1001 icdesign
 ```
 
-### To create a group in linux
+### To add a user to a group (secondary)
 
 ```
 sudo usermod -a -G groupname username
@@ -130,24 +167,6 @@ When running `ls -l`, the second column is the number of hardlinks (which is equ
 ```
 sudo chmod -R 775 .
 ```
-
-
-### To enable Wheel Group (replacement for sudoers)
-
-Tutorial: [Adding a user to sudoers and wheel group](https://docs.fedoraproject.org/en-US/quick-docs/adding_user_to_sudoers_file/)
-
-On Fedora, it is the wheel group the user has to be added to, as this group has full admin privileges. Add a user to the group using the following command:
-sudo usermod -aG wheel username
-
-If adding the user to the group does not work immediately, you may have to edit the /etc/sudoers file to uncomment the line with the group name:
-```
-$ sudo visudo
-...
-%wheel ALL=(ALL) ALL
-...
-```
-
-Then logout and back in again.
 
 
 ### To set the default permissions for new files
@@ -248,17 +267,6 @@ firewall-cmd --add-port=8080/tcp --permanent
 
 https://blog.khmersite.net/2020/09/automating-home-directory-with-ipa/
 
-
-
-##### Adding clients to FreeIPA domain
-
-https://fedoramagazine.org/join-fedora-linux-enterprise-domain/
-
-```bash
-sudo realm join asiclabwin001.physik.uni-bonn.de -v
-```
-
-authenticate as admin account.
 
 ### Backing up LDAP data
 
