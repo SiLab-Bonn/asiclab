@@ -1,5 +1,5 @@
 # Server certificates
-The HRZ offers SSL certificates which can be used to authenticate a server. They can be requested here: [[1\]](https://www.hrz.uni-bonn.de/en/all-services/administrator-tools/certificates?set_language=en) and are vaild for 12 months.
+The HRZ offers SSL certificates which can be used to authenticate a server. They can be requested [here [1]](https://www.hrz.uni-bonn.de/en/all-services/administrator-tools/certificates?set_language=en). These certificates are vaild for 12 months and you will receive a notification email a few weeks before they expire.
 
 General procedure:
 - Generate a private/public key pair
@@ -8,7 +8,7 @@ General procedure:
 - Copy the certificates to the server and add them to the httpd and ssl config files
 
 # Create a key pair
-Suggested method taken from [[1\]](https://www.hrz.uni-bonn.de/en/all-services/administrator-tools/certificates?set_language=en). Replace the servername and email fields with the server hostname and the admin email address.
+Suggested method taken from [[1]](https://www.hrz.uni-bonn.de/en/all-services/administrator-tools/certificates?set_language=en). Replace the servername and email fields with the server hostname and the admin email address.
 ```
 openssl req -nodes -newkey rsa:4096 -keyout server.key -keyform PEM \
 -out server.req -outform PEM -sha256 -subj \
