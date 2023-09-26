@@ -78,7 +78,7 @@ If you're normally used to only Anaconda, stop, and take a deep breath. Weigh th
 ```
 Protocol: IMAP
 Hostname: mail.uni-bonn.de
-Port: 933
+Port: 993
 Connection Security: SSL/TLS
 Authentication Method: Normal Password
 Username: kcaisley@uni-bonn.de
