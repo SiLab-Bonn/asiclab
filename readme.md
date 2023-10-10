@@ -42,9 +42,18 @@ sudo sh -c 'cat ./AlmaLinux-9.2-x86_64-dvd.iso > /dev/sdb; sync'
 
 ## BIOS Settings:
 
-Reset BIOS settings to default, disable Legacy ROM boot, and make sure there are no other boot options other than the bootable USB in the boot order list.
+Pres Fn + F2 to reach BIOS settings
 
-Change the Wake on LAN setting to "Enabled with PXE", and change the system setting time to at least the correct hour. Also, be sure that the boost disk mode is set to "AHCI" rather than "Raid on".
+Reset BIOS settings to default.
+- General > Boot Sequence > Clear Full List, leaving only thumb drive
+- General > Advanced Boot Options > Enable Legacy Options ROMs > Disabled
+- System Configuration > SATA Operation > AHCI
+- Power Management > Deep Sleep Control > Disabled
+- Power Management > Wake on LAN/WLAN > LAN Only (
+      - Only form states S4 = Hibernate and S5 = Power Off; standby and sleep on are lighter and constrolled at the OS level
+      - More info on these states can be found [here](https://en.wikipedia.org/wiki/ACPI#Global_states)
+
+Apply, exit, reboot. Then press Fn + F12 to Reach "One Time Boot Menu". Select UEFI -> USB Drive.
 
 ## Anaconda Install Menu
 
