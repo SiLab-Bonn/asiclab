@@ -80,14 +80,17 @@ Apply, exit, reboot. Then press Fn + F12 to Reach "One Time Boot Menu". Select U
 
 ## Post Install
 
-1. fwupdmgr enable-remote lvfs
-2. fwupdmgr refresh
-3. fwupdmgr get-updates
+1. Update firmware, in four commands
+   ```
+   sudo fwupdmgr enable-remote lvfs
+   sudo fwupdmgr refresh
+   sudo fwupdmgr get-updates
+   sudo fwupdmgr update
+   ```
+   
+2. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
 
-
-1. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
-
-1. Check for and install any packages updates with `sudo dnf update` and `sudo dnf clean packages`.
+1. Check for and install any packages updates with `sudo dnf update` and `sudo dnf clean all`.
 
    Especially important are security updates and firmware upgrades.
 
