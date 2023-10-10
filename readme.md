@@ -58,7 +58,7 @@ Apply, exit, reboot. Then press Fn + F12 to Reach "One Time Boot Menu". Select U
 ## Anaconda Install Menu
 
 1. Set keyboard to English (US), add German as a secondary option.
-2. 4. *Root Password* should be "Disabled"
+2. *Root Password* should be "Disabled"
 3. Create user `asiclab` with `uid = 1000` and `gid = 1000`. Make user an administrator.
 4. *Installation source* is local media.
 5. *Software Selection* should be "Server with GUI"
