@@ -48,24 +48,26 @@ Change the Wake on LAN setting to "Enabled with PXE", and change the system sett
 
 ## Anaconda Install Menu
 
-Set keyboard to English (US). Add German as a secondary option. Create user `asiclab` with `uid = 1000` and `gid = 1000`. Make sure ethernet is connected. 
-
-Use traditional partitioning (no LVM) and configure the disks like below.. Use `ext4` for the filesystems on the `/tmp` and `/` partitions. The swap is swap, and the efi is a EFI boot partition.
+1. Set keyboard to English (US), add German as a secondary option.
+2. 4. *Root Password* should be "Disabled"
+3. Create user `asiclab` with `uid = 1000` and `gid = 1000`. Make user an administrator.
+4. *Installation source* is local media.
+5. *Software Selection* should be "Server with GUI"
+6. For the installation destination, select both the NVME and HDD and select 'custome' for the storage configuration. Use traditional partitioning (no LVM) and configure the disks like below. Use `ext4` for the filesystems on the `/tmp` and `/` partitions. The swap is swap, and the efi is a EFI boot partition.
 
     ```
     NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-    sda           8:0    0   1.8T  0 disk 
-    └─sda1        8:1    0   1.8T  0 part /tmp
     nvme0n1     259:0    0 238.5G  0 disk 
     ├─nvme0n1p1 259:1    0   600M  0 part /boot/efi
-    ├─nvme0n1p2 259:2    0     1G  0 part /boot
+    ├─nvme0n1p2 259:2    0  1024M  0 part /boot
     ├─nvme0n1p3 259:3    0   200G  0 part /
     └─nvme0n1p4 259:4    0    32G  0 part [SWAP]
+    sda           8:0    0  1.82T  0 disk 
+    └─sda1        8:1    0  1.82T  0 part /tmp
     ```
 
-*Software Selection* should be "Server with GUI"
+7. Make sure ethernet is connected. 
 
-*Root Password* should be "Disabled"
 
 ## Post Install
 
