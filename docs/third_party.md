@@ -139,3 +139,8 @@ Username: kcaisley
 CalDAV: https://mail.uni-bonn.de/CalDAV/Work/
 ```
 
+# Gnome extensions
+
+Go to https://extensions.gnome.org/local/ and enable 'Launch new ...'
+
+- is there a way to do this from command line?
