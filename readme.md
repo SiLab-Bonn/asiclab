@@ -64,77 +64,248 @@ Apply, exit, reboot. Then press Fn + F12 to Reach "One Time Boot Menu". Select U
 5. *Software Selection* should be "Server with GUI"
 6. For the installation destination, select both the NVME and HDD and select 'custome' for the storage configuration. Use traditional partitioning (no LVM) and configure the disks like below. Use `ext4` for the filesystems on the `/tmp` and `/` partitions. The swap is swap, and the efi is a EFI boot partition.
 
-    ```
-    NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-    nvme0n1     259:0    0 238.5G  0 disk 
-    ├─nvme0n1p1 259:1    0   600M  0 part /boot/efi
-    ├─nvme0n1p2 259:2    0  1024M  0 part /boot
-    ├─nvme0n1p3 259:3    0   200G  0 part /
-    └─nvme0n1p4 259:4    0    32G  0 part [SWAP]
-    sda           8:0    0  1.82T  0 disk 
-    └─sda1        8:1    0  1.82T  0 part /tmp
-    ```
+```
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 238.5G  0 disk 
+├─nvme0n1p1 259:1    0   600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0  1024M  0 part /boot
+├─nvme0n1p3 259:3    0   200G  0 part /
+└─nvme0n1p4 259:4    0    32G  0 part [SWAP]
+sda           8:0    0  1.82T  0 disk 
+└─sda1        8:1    0  1.82T  0 part /tmp
+```
 
 7. Make sure ethernet is connected. 
 
 
-## Post Install
+## Basic
+
+Once booting into Alma Linux, follow the basic steps below to update firmware, update core packages, and connect to NFS, LDAP/FreeIPA, and printers.
 
 1. Update firmware, in four commands
-   ```
-   sudo fwupdmgr enable-remote lvfs
-   sudo fwupdmgr refresh
-   sudo fwupdmgr get-updates
-   sudo fwupdmgr update
-   ```
-   
-2. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
 
-1. Check for and install any packages updates with `sudo dnf update` and `sudo dnf clean all`.
+    ```
+    sudo fwupdmgr enable-remote lvfs
+    sudo fwupdmgr refresh
+    sudo fwupdmgr get-updates
+    sudo fwupdmgr update
+    ```
 
-   Especially important are security updates and firmware upgrades.
+1. Initial check for and install any core packages updates:
+
+    ```
+    sudo dnf clean all
+    sudo dnf update
+    ```
 
 1. [Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
 
-   ```
-   $ cd /
-   $ sudo mkdir users
-   $ sudo mkdir tools
-   
-   $ sudo vim /etc/fstab
-   penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0
-   penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
-   
-   $ sudo mount -a
-   ```
+Create mount points
+```
+sudo mkdir /users
+sudo mkdir /tools
+```
+ 
+Append mount instructions to the end of `/etc/fstab`, using these hand commands:
+
+```
+echo 'penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0' | sudo tee --append /etc/fstab
+echo 'penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0' | sudo tee --append /etc/fstab
+```
+
+Check the commands are there, only once:
+```
+sudo cat /etc/fstab
+```
+
+Make sure that the machine can mount NFS4 shares:
+
+```
+ls -l /sbin/mount*
+```
+
+If not, then install:
+
+```
+sudo dnf groupinstall "Network File System Client"
+```
+
+Report status of current NFS4 mounts on client:
+
+`mount -l -t nfs4`
+
+Ping remote host from client, to see connection options:
+
+`showmount -e penelope.physik.uni-bonn.de`
+
+Mount remote NFS shares
+```
+sudo systemctl daemon-reload
+sudo mount -a
+```
 
 1. [Connect to the FreeIPA integrated LDAP directory server](user_management.md) to read user accounts and group settings. 
 
-   ```bash
-   sudo realm join asiclabwin001.physik.uni-bonn.de -v
-   ```
+```
+sudo realm join asiclabwin001.physik.uni-bonn.de -v
+```
 
-   In this process, authenticate as `admin` account. This will create remote LDAP+NFS users, plus a local LDAP only lab user, with /home/ director
+In this process, authenticate as `admin` account. This will create remote LDAP+NFS users. Check it worked, by pinging one of the user accounts:
 
-1. To configure a machine's CUPS client to connect to the PI printer server (`cups.physik.uni-bonn.de`), you should create a `/etc/cups/client.conf` file:
+```
+id kcaisley
+```
 
-   ```
-   touch /etc/cups/client.conf
-   ```
+1. To configure a machine's CUPS client to connect to the PI printer server (`cups.physik.uni-bonn.de`), check for and edit `/etc/cups/client.conf` file:
 
-   And then edit the empty file, so that is contains the line:
+```
+cat /etc/cups/client.conf
+```
 
-   ```
-   ServerName cups.physik.uni-bonn.de
-   ```
+If not found:
+```
+sudo touch /etc/cups/client.conf
+```
 
-   All printers on the FTD network should now be available. To check, you can view a summary of available network printers with the following command:
+And then append the server name to the file, so that is contains the line. Be sure to check with `cat`:
 
-   ```
-   lpstat -t
-   ```
+```
+echo 'ServerName cups.physik.uni-bonn.de' | sudo tee --append /etc/cups/client.conf
+```
 
-   
+All printers on the FTD network should now be available. To check, you can view a summary of available network printers with the following command:
+
+```
+lpstat -t
+```
+
+## EDA Tool specific setup
+
+sudo dnf install epel-release
+sudo dnf install elrepo-release
+sudo dnf update
+sudo dnf install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb libXScrnSaver xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi apr apr-util xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+
+yum provides '*/libnsl.so.1'
+Last metadata expiration check: 0:11:02 ago on Sat 09 Sep 2023 02:23:52 PM CEST.
+libnsl-2.34-60.el9.i686 : Legacy support library for NIS
+Repo        : baseos
+Matched from:
+Filename    : /lib/libnsl.so.1
+
+libnsl-2.34-60.el9.x86_64 : Legacy support library for NIS
+Repo        : baseos
+Matched from:
+Filename    : /lib64/libnsl.so.1
+
+sudo dnf install libnsl-2.34-60.el9.x86_64
+
+
+When trying to get this same compat-db47 from above:
+
+```
+Repository 'epel-9-x86_64' does not exist in project 'mlampe/compat-db47'.
+Available repositories: 'epel-8-x86_64'
+
+If you want to enable a non-default repository, use the following command:
+  'dnf copr enable mlampe/compat-db47 <repository>'
+But note that the installed repo file will likely need a manual modification.
+[asiclab@asiclab003 kcaisley]$ sudo dnf copr enable mlampe/compat-db47 epel-8-x86_64
+```
+
+
+lsb_release doesn't seem to exist on RHEL9: https://www.reddit.com/r/RockyLinux/comments/wjlh0s/need_to_install_redhatlsbcore_on_rocky_linux_9/. Except, at the bottom someone says it's now in the AlmaLinux Devel repo:
+
+https://almalinux.pkgs.org/9/almalinux-devel-x86_64/redhat-lsb-core-4.1-56.el9.x86_64.rpm.html
+
+`sudo dnf config-manager --add-repo https://repo.almalinux.org/almalinux/9/devel/almalinux-devel.repo`
+
+dnf --enablerepo=devel install redhat-lsb-core
+
+Then make sure that devel is disabled with `sudo dnf config-manager --set-disabled devel`
+and then `dnf repolist`, shouldn't show devel
+
+
+libcrypto.so.10 doesn't also exist. Manually downloaded and installed the version from EL8: https://almalinux.pkgs.org/8/almalinux-appstream-x86_64/compat-openssl10-1.0.2o-4.el8_6.x86_64.rpm.html
+
+```
+yum provides '*/libnsl.so.1'
+Last metadata expiration check: 0:11:02 ago on Sat 09 Sep 2023 02:23:52 PM CEST.
+libnsl-2.34-60.el9.i686 : Legacy support library for NIS
+Repo        : baseos
+Matched from:
+Filename    : /lib/libnsl.so.1
+
+libnsl-2.34-60.el9.x86_64 : Legacy support library for NIS
+Repo        : baseos
+Matched from:
+Filename    : /lib64/libnsl.so.1
+
+sudo dnf install libnsl-2.34-60.el9.x86_64
+```
+
+
+Based on this link, learned I have /lib64/libdl.so.2 but Virtuoso is looking for /lib64/libdl.so. So just created a symlink:
+
+sudo ln -s /lib64/libdl.so.2 /lib64/libdl.so
+
+## now the thinned list for TCAD:
+
+sudo yum install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
+
+
+## Continuing on Alma Linux 9:
+
+sudo dnf install tmux htop pandoc curl wget git gcc cmake g++
+sudo dnf install python3-devel
+sudo dnf install libreoffice-impress libreoffice-calc libreoffice-writer libreoffice-calc inkscape
+
+# power tools repo, also called CRB
+sudo dnf config-manager --set-enabled crb
+
+
+Snapshot of the repos:
+```
+$ sudo ls /etc/yum.repos.d/
+almalinux-appstream.repo  almalinux-highavailability.repo  almalinux-saphana.repo                                   epel.repo
+almalinux-baseos.repo     almalinux-nfv.repo               almalinux-sap.repo                                       epel-testing.repo
+almalinux-crb.repo        almalinux-plus.repo              _copr:copr.fedorainfracloud.org:mlampe:compat-db47.repo  vscode.repo
+almalinux-devel.repo      almalinux-resilientstorage.repo  elrepo.repo
+almalinux-extras.repo     almalinux-rt.repo                epel-cisco-openh264.repo
+```
+
+```
+$ sudo dnf repolist
+repo id                                                       repo name
+appstream                                                     AlmaLinux 9 - AppStream
+baseos                                                        AlmaLinux 9 - BaseOS
+code                                                          Visual Studio Code
+copr:copr.fedorainfracloud.org:mlampe:compat-db47             Copr repo for compat-db47 owned by mlampe
+crb                                                           AlmaLinux 9 - CRB
+elrepo                                                        ELRepo.org Community Enterprise Linux Repository - el9
+epel                                                          Extra Packages for Enterprise Linux 9 - x86_64
+epel-cisco-openh264                                           Extra Packages for Enterprise Linux 9 openh264 (From Cisco) - x86_64
+extras                                                        AlmaLinux 9 - Extras
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -268,113 +439,5 @@ sudo yum install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-
 
 
 
-# --------------------- EL9 ----------------------
-
-sudo dnf install epel-release
-sudo dnf install elrepo-release
-sudo dnf update
-sudo dnf install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb libXScrnSaver xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi apr apr-util xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
-
-yum provides '*/libnsl.so.1'
-Last metadata expiration check: 0:11:02 ago on Sat 09 Sep 2023 02:23:52 PM CEST.
-libnsl-2.34-60.el9.i686 : Legacy support library for NIS
-Repo        : baseos
-Matched from:
-Filename    : /lib/libnsl.so.1
-
-libnsl-2.34-60.el9.x86_64 : Legacy support library for NIS
-Repo        : baseos
-Matched from:
-Filename    : /lib64/libnsl.so.1
-
-sudo dnf install libnsl-2.34-60.el9.x86_64
-
-
-When trying to get this same compat-db47 from above:
-
-```
-Repository 'epel-9-x86_64' does not exist in project 'mlampe/compat-db47'.
-Available repositories: 'epel-8-x86_64'
-
-If you want to enable a non-default repository, use the following command:
-  'dnf copr enable mlampe/compat-db47 <repository>'
-But note that the installed repo file will likely need a manual modification.
-[asiclab@asiclab003 kcaisley]$ sudo dnf copr enable mlampe/compat-db47 epel-8-x86_64
-```
-
-
-lsb_release doesn't seem to exist on RHEL9: https://www.reddit.com/r/RockyLinux/comments/wjlh0s/need_to_install_redhatlsbcore_on_rocky_linux_9/. Except, at the bottom someone says it's now in the AlmaLinux Devel repo:
-
-https://almalinux.pkgs.org/9/almalinux-devel-x86_64/redhat-lsb-core-4.1-56.el9.x86_64.rpm.html
-
-`sudo dnf config-manager --add-repo https://repo.almalinux.org/almalinux/9/devel/almalinux-devel.repo`
-
-dnf --enablerepo=devel install redhat-lsb-core
-
-Then make sure that devel is disabled with `sudo dnf config-manager --set-disabled devel`
-and then `dnf repolist`, shouldn't show devel
-
-
-libcrypto.so.10 doesn't also exist. Manually downloaded and installed the version from EL8: https://almalinux.pkgs.org/8/almalinux-appstream-x86_64/compat-openssl10-1.0.2o-4.el8_6.x86_64.rpm.html
-
-```
-yum provides '*/libnsl.so.1'
-Last metadata expiration check: 0:11:02 ago on Sat 09 Sep 2023 02:23:52 PM CEST.
-libnsl-2.34-60.el9.i686 : Legacy support library for NIS
-Repo        : baseos
-Matched from:
-Filename    : /lib/libnsl.so.1
-
-libnsl-2.34-60.el9.x86_64 : Legacy support library for NIS
-Repo        : baseos
-Matched from:
-Filename    : /lib64/libnsl.so.1
-
-sudo dnf install libnsl-2.34-60.el9.x86_64
-```
-
-
-Based on this link, learned I have /lib64/libdl.so.2 but Virtuoso is looking for /lib64/libdl.so. So just created a symlink:
-
-sudo ln -s /lib64/libdl.so.2 /lib64/libdl.so
-
-## now the thinned list for TCAD:
-
-sudo yum install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
-
-
-## Continuing on Alma Linux 9:
-
-sudo dnf install tmux htop pandoc curl wget git gcc cmake g++
-sudo dnf install python3-devel
-sudo dnf install libreoffice-impress libreoffice-calc libreoffice-writer libreoffice-calc inkscape
-
-# power tools repo, also called CRB
-sudo dnf config-manager --set-enabled crb
-
-
-Snapshot of the repos:
-```
-$ sudo ls /etc/yum.repos.d/
-almalinux-appstream.repo  almalinux-highavailability.repo  almalinux-saphana.repo                                   epel.repo
-almalinux-baseos.repo     almalinux-nfv.repo               almalinux-sap.repo                                       epel-testing.repo
-almalinux-crb.repo        almalinux-plus.repo              _copr:copr.fedorainfracloud.org:mlampe:compat-db47.repo  vscode.repo
-almalinux-devel.repo      almalinux-resilientstorage.repo  elrepo.repo
-almalinux-extras.repo     almalinux-rt.repo                epel-cisco-openh264.repo
-```
-
-```
-$ sudo dnf repolist
-repo id                                                       repo name
-appstream                                                     AlmaLinux 9 - AppStream
-baseos                                                        AlmaLinux 9 - BaseOS
-code                                                          Visual Studio Code
-copr:copr.fedorainfracloud.org:mlampe:compat-db47             Copr repo for compat-db47 owned by mlampe
-crb                                                           AlmaLinux 9 - CRB
-elrepo                                                        ELRepo.org Community Enterprise Linux Repository - el9
-epel                                                          Extra Packages for Enterprise Linux 9 - x86_64
-epel-cisco-openh264                                           Extra Packages for Enterprise Linux 9 openh264 (From Cisco) - x86_64
-extras                                                        AlmaLinux 9 - Extras
-```
 
 
