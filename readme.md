@@ -80,6 +80,10 @@ Apply, exit, reboot. Then press Fn + F12 to Reach "One Time Boot Menu". Select U
 
 ## Post Install
 
+1. fwupdmgr enable-remote lvfs
+2. fwupdmgr refresh
+3. fwupdmgr get-updates
+
 
 1. [Verify network settings](network_configuration.md), including IP address and hostname, have been properly adopted from the department DNS server. `ping www.google.com` to make sure you have internet! Then turn on SSH in settings via  `Settings > Sharing > Enable Sharing > Enable Remote Login`.
 
