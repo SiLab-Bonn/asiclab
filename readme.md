@@ -84,19 +84,21 @@ Once booting into Alma Linux, follow the basic steps below to update firmware, u
 
 1. Update firmware, in four commands
 
-    ```
-    sudo fwupdmgr enable-remote lvfs
-    sudo fwupdmgr refresh
-    sudo fwupdmgr get-updates
-    sudo fwupdmgr update
-    ```
+```
+sudo fwupdmgr enable-remote lvfs
+sudo fwupdmgr refresh
+sudo fwupdmgr get-updates
+sudo fwupdmgr update
+```
 
-1. Initial check for and install any core packages updates:
+Afterwards, you can check firmware version with `hostnamectl`.
 
-    ```
-    sudo dnf clean all
-    sudo dnf update
-    ```
+1. Initial check for/install core packages updates:
+
+```
+sudo dnf clean all
+sudo dnf update
+```
 
 1. [Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
 
@@ -179,13 +181,64 @@ All printers on the FTD network should now be available. To check, you can view 
 lpstat -t
 ```
 
-## EDA Tool specific setup
+1. Report GPU info
 
+```
+sudo lshw -C display
+```
+
+
+
+## Network config
+
+Perhaps consider copying static hostname file to machines?
+
+
+## System tools, dev tools, and extra repos:
+
+Perhaps consider: 
+
+Providing: nmap tmux zsh tigervnc, etc.... hmm no I don't want tigervnc or zsh
+```
+sudo dnf groupinstall "System Tools"
+```
+
+Providing: gcc gcc-c++ make cmake git, and many rpm tools
+```
+sudo dnf groupinstall --with-optional "Development Tools"
+```
+
+For python and venv:
+
+```
+sudo dnf install python3-devel python3-pip
+```
+
+Install the extra repos, including 'power tools repo', also called CRB
+
+```
 sudo dnf install epel-release
 sudo dnf install elrepo-release
-sudo dnf update
-sudo dnf install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb libXScrnSaver xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi apr apr-util xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+sudo dnf config-manager --set-enabled crb
 
+sudo dnf clean all
+sudo dnf update
+```
+
+
+## EDA Tool specific setup
+
+```
+sudo dnf install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU motif libXp libpng libjpeg-turbo expat glibc-devel gdb libXScrnSaver xorg-x11-fonts-misc xorg-x11-fonts-ISO8859-1-75dpi apr apr-util xorg-x11-server-Xvfb mesa-dri-drivers openssl-devel
+```
+
+For IC617 and before, you need 32 bit package versions:
+
+```
+sudo dnf install -y glibc.i686 elfutils-libelf.i686 mesa-libGL.i686 mesa-libGLU.i686 motif.i686 libXp.i686 libpng.i686 libjpeg-turbo.i686 expat.i686 glibc-devel.i686 redhat-lsb.i686  
+```
+
+```
 yum provides '*/libnsl.so.1'
 Last metadata expiration check: 0:11:02 ago on Sat 09 Sep 2023 02:23:52 PM CEST.
 libnsl-2.34-60.el9.i686 : Legacy support library for NIS
@@ -199,7 +252,7 @@ Matched from:
 Filename    : /lib64/libnsl.so.1
 
 sudo dnf install libnsl-2.34-60.el9.x86_64
-
+```
 
 When trying to get this same compat-db47 from above:
 
@@ -214,13 +267,14 @@ But note that the installed repo file will likely need a manual modification.
 ```
 
 
-lsb_release doesn't seem to exist on RHEL9: https://www.reddit.com/r/RockyLinux/comments/wjlh0s/need_to_install_redhatlsbcore_on_rocky_linux_9/. Except, at the bottom someone says it's now in the AlmaLinux Devel repo:
+`lsb_release` doesn't seem to exist on RHEL9: https://www.reddit.com/r/RockyLinux/comments/wjlh0s/need_to_install_redhatlsbcore_on_rocky_linux_9/. Except, at the bottom someone says it's now in the AlmaLinux Devel repo:
 
 https://almalinux.pkgs.org/9/almalinux-devel-x86_64/redhat-lsb-core-4.1-56.el9.x86_64.rpm.html
 
 `sudo dnf config-manager --add-repo https://repo.almalinux.org/almalinux/9/devel/almalinux-devel.repo`
 
-dnf --enablerepo=devel install redhat-lsb-core
+`sudo dnf --enablerepo=devel install redhat-lsb-core`
+`udo dnf config-manager --set-disabled copr:copr.fedorainfracloud.org:mlampe:compat-db47`
 
 Then make sure that devel is disabled with `sudo dnf config-manager --set-disabled devel`
 and then `dnf repolist`, shouldn't show devel
@@ -228,70 +282,82 @@ and then `dnf repolist`, shouldn't show devel
 
 libcrypto.so.10 doesn't also exist. Manually downloaded and installed the version from EL8: https://almalinux.pkgs.org/8/almalinux-appstream-x86_64/compat-openssl10-1.0.2o-4.el8_6.x86_64.rpm.html
 
-```
-yum provides '*/libnsl.so.1'
-Last metadata expiration check: 0:11:02 ago on Sat 09 Sep 2023 02:23:52 PM CEST.
-libnsl-2.34-60.el9.i686 : Legacy support library for NIS
-Repo        : baseos
-Matched from:
-Filename    : /lib/libnsl.so.1
+`wget https://repo.almalinux.org/almalinux/8/AppStream/x86_64/os/Packages/compat-openssl10-1.0.2o-4.el8_6.x86_64.rpm`
 
-libnsl-2.34-60.el9.x86_64 : Legacy support library for NIS
-Repo        : baseos
-Matched from:
-Filename    : /lib64/libnsl.so.1
-
-sudo dnf install libnsl-2.34-60.el9.x86_64
-```
+Then just `rpm -i package-name`
 
 
 Based on this link, learned I have /lib64/libdl.so.2 but Virtuoso is looking for /lib64/libdl.so. So just created a symlink:
 
+```
 sudo ln -s /lib64/libdl.so.2 /lib64/libdl.so
+```
 
-## now the thinned list for TCAD:
+Lastly, for virtuoso, we can see this symlink:
 
-sudo yum install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
+```
+ls -la /etc/redhat-release 
+lrwxrwxrwx. 1 root root 17 May 16 15:34 redhat-release -> almalinux-release
+```
 
+Remove the link, and recreate it as a files, and put the following text inside:
+```
+sudo rm /etc/redhat-release
+sudo touch /etc/redhat-release
+echo 'Red Hat Enterprise Linux Server release 7.9 (Maipo)' | sudo tee --append /etc/redhat-release
+```
+
+*Virtusos now works!*
 
 ## Continuing on Alma Linux 9:
 
-sudo dnf install tmux htop pandoc curl wget git gcc cmake g++
-sudo dnf install python3-devel
+sudo dnf install tmux htop pandoc curl wget git gcc cmake g++ python3-devel python3-pip
 sudo dnf install libreoffice-impress libreoffice-calc libreoffice-writer libreoffice-calc inkscape
 
-# power tools repo, also called CRB
-sudo dnf config-manager --set-enabled crb
 
 
-Snapshot of the repos:
-```
-$ sudo ls /etc/yum.repos.d/
-almalinux-appstream.repo  almalinux-highavailability.repo  almalinux-saphana.repo                                   epel.repo
-almalinux-baseos.repo     almalinux-nfv.repo               almalinux-sap.repo                                       epel-testing.repo
-almalinux-crb.repo        almalinux-plus.repo              _copr:copr.fedorainfracloud.org:mlampe:compat-db47.repo  vscode.repo
-almalinux-devel.repo      almalinux-resilientstorage.repo  elrepo.repo
-almalinux-extras.repo     almalinux-rt.repo                epel-cisco-openh264.repo
-```
+
+
+
+
+
+# Installing Vivado:
+Needed libtinfo.5, but had libtinfo.6, so just installed a comptability package to provide the older version in addition:
 
 ```
-$ sudo dnf repolist
-repo id                                                       repo name
-appstream                                                     AlmaLinux 9 - AppStream
-baseos                                                        AlmaLinux 9 - BaseOS
-code                                                          Visual Studio Code
-copr:copr.fedorainfracloud.org:mlampe:compat-db47             Copr repo for compat-db47 owned by mlampe
-crb                                                           AlmaLinux 9 - CRB
-elrepo                                                        ELRepo.org Community Enterprise Linux Repository - el9
-epel                                                          Extra Packages for Enterprise Linux 9 - x86_64
-epel-cisco-openh264                                           Extra Packages for Enterprise Linux 9 openh264 (From Cisco) - x86_64
-extras                                                        AlmaLinux 9 - Extras
+sudo dnf install ncurses-compat-libs
 ```
 
+```
+sudo dnf install fxload libusb1 libusb1-devel libusb
+sudo udevadm control --reload-rules
+```
 
+# Setting up TCAD
 
+```
+sudo dnf install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
+```
 
+Jedit is needed for editing scripts, read about it here:
+http://www.jedit.org/index.php?page=download&platform=windows
 
+Java Runtime version 1.8 (aka Java 8) or later is required for jEdit 5.4 and later.
+Java Runtime version 11 (aka Java 11) or later is required for jEdit 5.6 and later.
+Sentarus provides jedit5.6, Java has to be version 11, and AlmaLinux 9 has version 8.
+
+To fix this, install and enable Java 11:
+
+```
+sudo dnf install java-11-openjdk
+sudo alternatives --config java
+```
+
+Then lastly 
+
+```
+sudo java -jar jedit5.6.0install.jar
+```
 
 
 
@@ -432,12 +498,4 @@ Matched from:
 Filename    : /lib64/libnsl.so.1
 
 *Virtuoso works now!*
-
-# now the thinned list for TCAD:
-
-sudo yum install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
-
-
-
-
 

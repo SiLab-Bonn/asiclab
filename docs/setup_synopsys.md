@@ -2,8 +2,8 @@
 
 Use the command-line sftp utility to connect to the Synopsys Electronic File Transfer (EFT) system using the SFTP protocol:
 
-sftp <SolvNetPlus_username>@eft.synopsys.com  
-(For example: sftp johndoe@eft.synopsys.com)  
+sftp <SolvNetPlus_username>@eft.synopsys.com
+(For example: sftp johndoe@eft.synopsys.com)
 Enter your SolvNetPlus password
 
 At the **sftp**> prompt, enter the following commands to download the Synopsys tools:

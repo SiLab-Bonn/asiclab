@@ -21,7 +21,7 @@ sudo make
 
 # On client
 
-The one-time initial setup is as follows
+The one-time initial setup is as follows, for JAT devices:
 
 ## Digilent JTAG adapter
 ```
