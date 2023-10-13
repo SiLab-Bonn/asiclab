@@ -1,3 +1,31 @@
+```
+# Display your current shell name reliably.
+ps -p $$
+
+# Print the shell for the current user but not necessarily the shell that is running at the          
+movement.
+echo "$SHELL"
+
+# Another reliable and simple method to get the current shell interpreter name on Linux or Unix-     
+like systems.
+echo $0
+```
+
+
+
+
+## Changing shell
+
+Need the `tcsh` and `chsh` commands to be
+
+To check which shell is active:
+
+cat /etc/passwd | grep `cd; pwd`
+
+To change shell, by running this and then restarting termina:
+
+chsh -s /usr/bin/tcsh
+
 # Bash set -e option, will cause shell to crash:
 
 ```

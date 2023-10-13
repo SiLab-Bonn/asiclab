@@ -1,16 +1,4 @@
-Documentation for ASIC design, FGPA, and TCAD servers, workstations, and tools 
-
 - `/startup_scripts`: Startups scripts for ASIC, FPAGa, and TCAD tools
-
-- `/container_def`: Apptainer define files for building containers for running EDA tools
-
-- `/docs`: Checklists and troubleshooting for workstations `asiclab000` - `asiclab011` and servers
-
-# Workstation Setup for AlmaLinux 9:
-
-This document is a checklist for setting up a Cadence Virtuoso development e
-
-
 
 ## Create bootable ISO
 
@@ -19,6 +7,8 @@ Download ISO file:
 ```
 curl -O https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.1-x86_64-dvd.iso
 ```
+
+
 
 Insert your target USB and locate it. There are different ways to do it, but here are some of them:
 

@@ -57,3 +57,21 @@ Host asiclab001.physik.uni-bonn.de
     PubkeyAcceptedAlgorithms +ssh-rsa
     HostkeyAlgorithms +ssh-rsa
 ```
+
+## Troubleshooting
+
+### Changed identify
+
+When the identify of a machine in the lab is changed, for example when it's OS in re-installed, any computers that have previously connected to it will be storing the key it's associated `~/.ssh/known_hosts` file. When trying to subsequently connect, the difference in identity will be noticed and the SSH client may reject the connection with an error message like so:
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+```
+
+To fix this, the associated lines in the `~/.ssh/known_hosts` file must be removed. [The best way][https://superuser.com/questions/30087/remove-key-from-known-hosts] to do this is to use `ssh-keygen`:
+
+```
+ssh-keygen -R [Full Hostname]
+```
