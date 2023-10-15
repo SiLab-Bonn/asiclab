@@ -1,5 +1,29 @@
 # User Management
 
+## New user creation
+
+Visit `asiclabwin001.physik.uni-bon.de` and make sure you're logged in as user `admin`.
+
+Make sure the following fields are set:
+
+- First name
+- Last Name
+- Username: first initial + last name, all lowercase
+- Password: If set here, will be temporary, and will prompt user to replace on subsequent login
+- UID: should be in range 2000-2100
+- GID: should be 200
+- Login shell: `/bin/bash`
+- User authentication type: Password
+- Home directory: `/users/username`, where username is equal to the one above
+- Email address: should be cleared, so none
+
+Then, before user can log in, you may need to ssh penelope as `asiclab@penelope.physik.uni-bonn.de` and created a home directory `/mnt/md127/users/username`, where username is again the matching user created above.
+
+Make sure it has permissions `drwxr-xr-x.` and is owned by the users UID and GID=200.
+
+Now the user should be able to log into managed machines.
+
+
 ## New client setup
 
 ### Adding clients to FreeIPA domain
