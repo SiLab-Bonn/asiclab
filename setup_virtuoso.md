@@ -1,4 +1,4 @@
-# Installing CDS tools
+# Installing Cadence tools
 
 Download the packages using ftp:
 
@@ -10,7 +10,7 @@ Create a dummy symlink, from /eda -> /tools (as Europractice installer expects i
 Run the install script
 Make sure all files are owned by group `base` (currently 200)
 
-# Building the container
+## Building the container
 
 First you need a `.def file`. Ones have been created, relative to this doc page, at `../container_def/`
 

@@ -1,33 +1,3 @@
-# BAG Analog Generator
-
-### Crossely ICCAD'13
-
-* produce only **sized** schematic, the topology is up to the designer
-* Good for:
-  * technology characterization
-  * schematic and testbench translation
-  * simulator interfacing
-  * physical verification and extraction
-  * parameterized layout creation for common *styles *of layout. 
-* BAG, in it's basic form belongs to the 'knowledge-based' design automation class, although specific sub-circuits area free to be optimized with some algorithm. This is especially useful with BAG, as we already have the ability to produce a high-quality subset of design to choose between.
-* Knowledge-based design scripts are especially useful, as they self-document the design process. They also keep the designer 'in control' of the process.
-* a completed BAG script helps with top level design, as you can specify the top level parameters, and then recursively instantiate the subblocks
-
-"In our approach to analog circuit automation, a designer’s deliverable is not a single instance of a sized schematic and clean layout for a particular circuit, but rather a generator for a desired class of circuits that can replicate, in an automated fashion, the design procedure that would have been used for a traditional, manual design."
-
-* Each realized circuit Generator much implement the methods of the interface
-  * ReadSpecification()
-  * DesignSchematic()
-  * DesignLayout()
-  * VerifyArchitecture()
-  * WritePerformance()
-* Because tasks are often the same between circuit generators though, there are abstract classes which provide connections to common actions in the design process, and to connect to tools.
-  * CodeStubGeneration()
-  * RunOptimizer()
-  * LaunchSimulations()
-  * RunDRCandLVS()
-  * IO_OpenAccess()
-
 # BAG Install Notes
 
 BAG_prim is cadence library, with device used to build schematic template (called a schematic generator)

@@ -1,4 +1,4 @@
-# Additional Desktop 
+# Installing GUI apps from zip
 
 Installing Typora, Thunderbird, or any other plain zip program. [Instructions](https://support.mozilla.org/en-US/kb/installing-thunderbird-linux)
 
@@ -33,10 +33,6 @@ Installing Typora, Thunderbird, or any other plain zip program. [Instructions](h
     wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/installing-thunderbird-linux/thunderbird.desktop -P /usr/local/share/applications 
     ```
 
-
-
-
-
 # H.264 Support
 
 As of Fedora 37+, H.264 decoders were removed from the based distribution due to legal reasons (alongside H.265). To install alternative H.264 decoders, you can follow the instructions found [here:](https://fedoraproject.org/wiki/OpenH264)
@@ -55,7 +51,7 @@ Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable Op
 
 You can do a simple test whether your H.264 works in RTC on [this page](https://mozilla.github.io/webrtc-landing/pc_test.html) (check Require H.264 video). 
 
-# how to install and uninstall standalone rpm packages
+# Install and uninstall standalone rpm packages
 
 To install, just click it. To uninstall.
 
@@ -92,11 +88,6 @@ and install the package using dnf (Fedora 22 and above):
 ```
 sudo dnf install code
 ```
-
-
-# Additional packages:
-
-ngspice wol xclock xpdf pandoc inkscape evolution code seahorse texlive iperf apptainer
 
 
 # Zoom

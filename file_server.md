@@ -1,4 +1,4 @@
-# Client NFS Mounting (For Fedora)
+# Client NFS Mounting
 
 ```
 $ cd /
@@ -13,8 +13,6 @@ penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0
 sudo systemctl daemon-reload
 sudo mount -a
 ```
-
-
 
 # Base Drive Configurtion
 

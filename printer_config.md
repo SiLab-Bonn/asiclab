@@ -20,4 +20,3 @@ All printers on the FTD network should now be available. To check, you can view 
 ```
 lpstat -t
 ```
-
