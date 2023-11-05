@@ -169,3 +169,52 @@ https://wiki.archlinux.org/title/Dnsmasq#DNS_server
 `dig` is a DNS lookup utility, which works as an 'in memory' DNS analyzer
 
 `systemd-analyze cat-config systemd/resolved.conf`
+
+
+
+
+# Debugging ethernet and wireguard connections:
+sudo ethtool enp0s25
+	Link detected: yes
+	Transciever: internal
+
+inxi -Fxx
+	vendor: Lenovo Thinkpad T20
+	v: kernel
+	port: 6080
+	bus-ID: 00:19.0
+	state: up
+
+
+Created network profile, "Wired connection 1". Auto IPv4/6 but nothing assigned
+
+checking dhpc? Manual connection, perhaps?
+
+nmcli monitor
+	enp0s25: connecting (prepare)
+	Network manager is now in the 'connecting' state
+	enp0s25: connecting (configuring)
+	enp0s25: connecting (getting IP configuration)
+	Connectivity is now limited
+	enp0s25: connection failed
+
+
+sudo dhclient -v enp0s25
+
+	grep: /etc/sysconfig/network-scripts/ifcfg-* No such file or directory
+	Listening on enp0s25
+	DHCPDISCOVER on ....
+	no DHCPOFFERS received
+	no working leaves in persistent database - sleeping.
+
+dmesg | grep -iE 'dhclient|forcedeth|eth|network'
+	shows activity on dmesg bus
+	everything looks normal compared to other machines
+	
+	
+/etc/NetworkManager/system-connections/
+	stores connection profiles, must be `sudo chmod 600` to work.
+	
+	
+	
+creating a static IP, gateway, and DNS is what did the trick.
