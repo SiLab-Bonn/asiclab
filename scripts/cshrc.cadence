@@ -1,0 +1,86 @@
+#!/bin/tcsh
+
+echo "Loading of the Cadence enviroment..."
+
+## Cadence common settings
+setenv CDS_AUTO_64BIT ALL
+setenv CDS_LOG_VERSION pid
+setenv CDS_Netlisting_Mode Analog
+setenv CDS_EXEC qsub-byes-cwd-Vicfb
+
+setenv CLS_CDSD_COMPATIBILITY_LOCKING NO
+
+setenv DD_DONT_DO_OS_LOCKS set
+setenv DD_USE_LIBDEFS no
+setenv EDITOR /usr/bin/nedit
+
+# Variables to just avoid repetition & easily change to new release
+setenv CDS_TOOLS_PREFIX "/tools/cadence"
+setenv RELEASE_YEAR="2022-23"
+
+## [Virtuoso]
+setenv CDSHOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/IC_6.1.8.320"
+
+#setenv AMSHOME <tool install path>/cadence/xcelium1909
+#setenv IUSHOME $AMSHOME
+#setenv INCISIVE_HOME $AMSHOME
+
+## [PVS]
+setenv PVSHOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/PVS_21.12.000"
+
+## [CALIBRE]
+setenv MGC_HOME "/tools/mentor/aoi_cal_2019.4_28.13"
+
+##[assura]
+setenv ASSURAHOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/ASSURA_04.16.113_618"
+setenv ASSURA_AUTO_64BIT ALL
+
+## [QRC]
+setenv EXTHOME <tool install path>/cadence/ext1913
+setenv QRC_HOME <tool install path>/cadence/quantus2012
+setenv QRC_ENABLE_EXTRACTION t
+
+## [SPECTRE]
+setenv MMSIMHOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/SPECTRE_21.10.751"
+
+## [SOC]
+#setenv ENCOUNTER  <tool install path>/cadence/soc913
+
+## [SONNET]
+#setenv SONNET_DIR <tool install path>/sonnet/sonnet/18.52
+
+## [INNOVUS]
+#setenv INNOVUSHOME <tool install path>/cadence/innovus2111
+
+## [Enable EMX]
+#setenv EMXHOME <tool install path>/cadence/emx/integrand/61.00
+#setenv PARAVIEWHOME $EMXHOME/ParaView-5.7.0-MPI-Linux-Python3.7-64bit
+
+# [Photonics]
+#setenv Virtuoso_Photonics_Platform
+
+## [License]
+setenv LM_LICENSE_FILE "8000@faust02.physik.uni-bonn.de"
+
+setenv PATH "${PATH}:$CDSHOME/tools/dfII/bin:$CDSHOME/tools/bin"
+setenv PATH "${PATH}:$ASSURAHOME/tools/bin:$ASSURAHOME/tools/dfII/bin:$ASSURAHOME/tools/assura/bin"
+setenv PATH "${PATH}:$MMSIMHOME/tools/bin:$MMSIMHOME/tools/dfII/bin"
+setenv PATH "${PATH}:$QRC_HOME/tools/bin"
+setenv PATH "${PATH}:$IUSHOME/tools/bin"
+setenv PATH "${PATH}:$ENCOUNTER/bin:$ENCOUNTER/fe/bin"
+setenv PATH "${PATH}:$PVSHOME/bin:$PVSHOME/tools/bin:$PVSHOME/tools/pvs/bin:$PATH"
+setenv PATH "${PATH}:${MGC_HOME}/bin"
+setenv PATH "${PATH}:$INNOVUSHOME/bin"
+setenv PATH "${PATH}:$EMXHOME/bin"
+setenv PATH "${PATH}:$PARAVIEWHOME/bin"
+
+## [register to the system]
+setenv LD_LIBRARY_PATH "$CDSHOME/tools/inca/lib"
+setenv LD_LIBRARY_PATH ${MGC_HOME}/lib:${LD_LIBRARY_PATH}
+setenv LD_LIBRARY_PATH "$CDSHOME/tools/inca/lib"
+
+echo "Loading of the Cadence enviroment - end."
+
+## [Project settings]
+setenv IHP_TECH "/tools/kits/IHP/IHP-SG13G2/SG13G2_618_rev1.2.10"
+setenv PROJECT "${HOME}/cadence/ihp-sg13g2"
