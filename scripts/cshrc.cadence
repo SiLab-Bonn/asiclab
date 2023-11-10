@@ -16,7 +16,7 @@ setenv EDITOR /usr/bin/nedit
 
 # Variables to just avoid repetition & easily change to new release
 setenv CDS_TOOLS_PREFIX "/tools/cadence"
-setenv RELEASE_YEAR="2022-23"
+setenv RELEASE_YEAR "2022-23"
 
 ## [Virtuoso]
 setenv CDSHOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/IC_6.1.8.320"
@@ -36,8 +36,8 @@ setenv ASSURAHOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/ASSURA_04.16.113_
 setenv ASSURA_AUTO_64BIT ALL
 
 ## [QRC]
-setenv EXTHOME <tool install path>/cadence/ext1913
-setenv QRC_HOME <tool install path>/cadence/quantus2012
+setenv EXTHOME "/tools/cadence/2018-19/RHELx86/EXT_18.12.000/"
+setenv QRC_HOME "${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/QUANTUS_21.11.000"
 setenv QRC_ENABLE_EXTRACTION t
 
 ## [SPECTRE]
@@ -66,13 +66,13 @@ setenv PATH "${PATH}:$CDSHOME/tools/dfII/bin:$CDSHOME/tools/bin"
 setenv PATH "${PATH}:$ASSURAHOME/tools/bin:$ASSURAHOME/tools/dfII/bin:$ASSURAHOME/tools/assura/bin"
 setenv PATH "${PATH}:$MMSIMHOME/tools/bin:$MMSIMHOME/tools/dfII/bin"
 setenv PATH "${PATH}:$QRC_HOME/tools/bin"
-setenv PATH "${PATH}:$IUSHOME/tools/bin"
-setenv PATH "${PATH}:$ENCOUNTER/bin:$ENCOUNTER/fe/bin"
+#setenv PATH "${PATH}:$IUSHOME/tools/bin"
+#setenv PATH "${PATH}:$ENCOUNTER/bin:$ENCOUNTER/fe/bin"
 setenv PATH "${PATH}:$PVSHOME/bin:$PVSHOME/tools/bin:$PVSHOME/tools/pvs/bin:$PATH"
 setenv PATH "${PATH}:${MGC_HOME}/bin"
-setenv PATH "${PATH}:$INNOVUSHOME/bin"
-setenv PATH "${PATH}:$EMXHOME/bin"
-setenv PATH "${PATH}:$PARAVIEWHOME/bin"
+#setenv PATH "${PATH}:$INNOVUSHOME/bin"
+#setenv PATH "${PATH}:$EMXHOME/bin"
+#setenv PATH "${PATH}:$PARAVIEWHOME/bin"
 
 ## [register to the system]
 setenv LD_LIBRARY_PATH "$CDSHOME/tools/inca/lib"
