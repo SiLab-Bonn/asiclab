@@ -29,7 +29,79 @@ PersistentKeepalive = 25
 
 ---
 
-## RDP
+## VNC via Gnome Remote Desktop (If server is AlmaLinux 9)
+
+As of Gnome 42, there is a `grdctl` command and a built-in freerdp implementation. But EL9 only has Gnome 40.
+
+freerdp		Used by gnome it implement screen sharing, 
+xrdp		tightly coupled to X11, accepts connections from rdesktop, FreeRDP, and Windows
+remmina		Is a client
+rdesktop	Is a client, In need of maintenance
+
+[This link explains how to enable it.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/getting_started_with_the_gnome_desktop_environment/how-to-authenticate-with-enterprise-credentials-in-gnome_getting-started-with-the-gnome-desktop-environment)
+
+[History of feature development](https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/issues/26)
+
+You can remotely connect to the desktop as a single user on a EL9 server using graphical GNOME applications. Only a single user can connect to the desktop on the server at a given time.
+
+This procedure configures a RHEL server to enable a remote desktop connection from a single client.
+
+Prerequisites
+
+The GNOME Remote Desktop service is installed:
+    
+```
+# dnf install gnome-remote-desktop
+```
+
+Procedure
+
+Configure a firewall rule to enable VNC access to the server:
+
+```
+# firewall-cmd --permanent --add-service=vnc-server
+success
+```
+
+Reload firewall rules:
+
+```
+# firewall-cmd --reload
+success
+```
+
+Open Settings in GNOME.
+
+Navigate to the Sharing menu:
+
+screen sharing 0
+
+Click Screen Sharing.
+
+The screen sharing configuration opens:
+
+screen sharing 1 off
+
+Click the switch button in the window header to enable screen sharing:
+
+screen sharing 2 on highlight
+Select the Allow connections to control the screen check box.
+Under Access Options, select the Require a password option.
+
+Set a password in the Password field.
+
+Remote clients must enter this password when connecting to the desktop on the server.
+
+screen sharing 4 password 
+
+Then, to connect from another device, user the IP:5900 as the address
+
+
+
+
+
+
+## RDP (If server is Fedora)
 
 For graphical access, RDP has the best performance, with minimal setup. By default, Fedora includes a RDP server via the built-in `gnome-remote-desktop` package. One limitation is that it only allows for accessing an already existing display session.
 
