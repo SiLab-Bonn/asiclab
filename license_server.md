@@ -10,6 +10,11 @@ The FlexNet binary (`/cadence/other/lmadmin/lmadmin`) manages all licenses and p
 ## Licenses and vendor deamons
 Licenses are separated by vendor. Each license file (and the matching vendor daemon binary) is stored in a separate folder in `/cadence/other/lmadmin/licenses`.
 
+## Updating a license
+New license files (usually received via email) are moved to the vendor-specific folder e.g. via scp. Old license files can be deleted or renamed. In some license files, a few adjustments in the header must be made. The Mentor Graphics file must include the host name (also make sure to remove the server port from the header) and the server daemon path.
+
+The vendor-specific server has to be restarted via the management page (section `Vendor Daemon Configuration`) for the new license to become active.
+
 # Client Configuration
 To access the licenses from a client, add the server address to your environment: `export LM_LICENSE_FILE=8000@faust02.physik.uni-bonn.de`. Add this line to your ~/.bashrc or application-specific startup script if needed.
 
