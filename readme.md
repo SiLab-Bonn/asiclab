@@ -206,6 +206,9 @@ Append mount instructions to the end of `/etc/fstab`, using these hand commands:
 
 ```
 echo 'penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0' | sudo tee --append /etc/fstab
+```
+
+```
 echo 'penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0' | sudo tee --append /etc/fstab
 ```
 
