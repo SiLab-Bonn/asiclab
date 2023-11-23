@@ -1,10 +1,3 @@
-# Hdl21
-
-# Laygo2
-clone repo
-sudo dnf install python3-devel g++ gcc
-pip install gdspy matplotlib cairosvg
-
 # Conda environment
 A conda environment is useful to have everything linked against a specific python interpreter. It can also help with managing sourcing everything when activating the environment.
 
