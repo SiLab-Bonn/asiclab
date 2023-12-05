@@ -255,7 +255,64 @@ sudo mount -a
 sudo realm join asiclabwin001.physik.uni-bonn.de -v
 ```
 
-In this process, authenticate as `admin` account. This will create remote LDAP+NFS users. Check it worked, by pinging one of the user accounts:
+In this process, authenticate as `admin` account. This will create remote LDAP+NFS users. The changes made are summarized in the script output:
+
+```
+ * Resolving: _ldap._tcp.asiclabwin001.physik.uni-bonn.de
+ * Resolving: asiclabwin001.physik.uni-bonn.de
+ * Performing LDAP DSE lookup on: 131.220.164.69
+ * Successfully discovered: physik.uni-bonn.de
+Password for admin: 
+ * Couldn't find file: /usr/sbin/ipa-client-install
+ * Required files: /usr/sbin/ipa-client-install, /usr/sbin/oddjobd, /usr/libexec/oddjob/mkhomedir, /usr/sbin/sssd
+ * Resolving required packages
+ * Installing necessary packages: ipa-client oddjob oddjob-mkhomedir
+ * LANG=C /usr/sbin/ipa-client-install --domain physik.uni-bonn.de --realm PHYSIK.UNI-BONN.DE --mkhomedir --enable-dns-updates --unattended --force-join --server asiclabwin001.physik.uni-bonn.de --fixed-primary --principal admin -W --force-ntpd
+Option --force-ntpd has been deprecated and will be removed in a future release.
+Client hostname: juno.physik.uni-bonn.de
+Realm: PHYSIK.UNI-BONN.DE
+DNS Domain: physik.uni-bonn.de
+IPA Server: asiclabwin001.physik.uni-bonn.de
+BaseDN: dc=physik,dc=uni-bonn,dc=de
+Synchronizing time
+No SRV records of NTP servers found and no NTP server or pool address was provided.
+Attempting to sync time with chronyc.
+Time synchronization was successful.
+Successfully retrieved CA cert
+    Subject:     CN=Certificate Authority,O=PHYSIK.UNI-BONN.DE
+    Issuer:      CN=Certificate Authority,O=PHYSIK.UNI-BONN.DE
+    Valid From:  2023-04-26 15:13:16
+    Valid Until: 2043-04-26 15:13:16
+
+Enrolled in IPA realm PHYSIK.UNI-BONN.DE
+Created /etc/ipa/default.conf
+Configured /etc/sssd/sssd.conf
+Systemwide CA database updated.
+Failed to update DNS records.
+Adding SSH public key from /etc/ssh/ssh_host_ed25519_key.pub
+Adding SSH public key from /etc/ssh/ssh_host_rsa_key.pub
+Adding SSH public key from /etc/ssh/ssh_host_ecdsa_key.pub
+Could not update DNS SSHFP records.
+SSSD enabled
+Configured /etc/openldap/ldap.conf
+Configured /etc/ssh/ssh_config
+Configured /etc/ssh/sshd_config.d/04-ipa.conf
+Configuring physik.uni-bonn.de as NIS domain.
+Configured /etc/krb5.conf for IPA realm PHYSIK.UNI-BONN.DE
+Client configuration complete.
+The ipa-client-install command was successful
+This program will set up IPA client.
+Version 4.10.2
+
+
+Using default chrony configuration.
+ * /usr/bin/systemctl enable sssd.service
+ * /usr/bin/systemctl restart sssd.service
+ * Successfully enrolled machine in realm
+```
+
+
+Check it worked, by pinging one of the user accounts:
 
 ```
 id kcaisley
