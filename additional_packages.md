@@ -44,16 +44,17 @@ sudo dnf config-manager --set-enabled fedora-cisco-openh264
 and then install the plugins:
 
 ```
-sudo dnf install gstreamer1-plugin-openh264 mozilla-openh264
+sudo dnf install openh264 gstreamer1-plugin-openh264 mozilla-openh264
 ```
 
 Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable OpenH264 plugin.
 
-You can do a simple test whether your H.264 works in RTC on [this page](https://mozilla.github.io/webrtc-landing/pc_test.html) (check Require H.264 video). 
+You can do a simple test whether your H.264 works in RTC on [this page](https://mozilla.github.io/webrtc-landing/pc_test.html) (check Require H.264 video).
+
 
 # Install and uninstall standalone rpm packages
 
-To install, just click it. To uninstall.
+To install a 
 
 Execute the following command to discover the name of the installed package:
 
@@ -64,14 +65,26 @@ Execute the following command to uninstall the product:
 
 ```rpm -e PackageName```
 
-# How to install vscode
+
+# Additional programs:
+
+- mc
+- hwinfo
+- htop
+- thunderbird
+- libreoffice-calc, libreoffice-impress, libreoffice-writer
+- chromium
+- gnome-tweaks
+- groupinstall "Workstation"
+
+# VS Code
 VS Code is currently only shipped in a yum repository, so first add the repository:
 
 ```
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 ```
 
-Then install install the key
+Then add the package repo to `/etc/yum.repos.d`, via:
 
 ```
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
@@ -89,9 +102,24 @@ and install the package using dnf (Fedora 22 and above):
 sudo dnf install code
 ```
 
-
 # Zoom
-Simplest way is just to download the official Fedora.rpm from https:/zoom.us. Then just double click on downloaded file in Files GUI. Will figure out Zoom install via command line later.
+
+Check the link for the latest rpm package from the `download` website. Then download it via `wget`, for example :
+
+```bash
+wget https://zoom.us/client/5.16.10.668/zoom_x86_64.rpm
+```
+
+Get the latest public key like so:
+
+```
+# This is currently not working, due to RHEL9 deprecating SHA1:
+
+"warning: Signature not supported. Hash algorithm SHA1 not available."
+
+wget https://zoom.us/linux/download/pubkey
+sudo rpm --import pubkey
+```
 
 
 # Python venvs

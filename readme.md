@@ -27,11 +27,6 @@
   - bash
   - pandoc
 
-
-
-
-
-
 ## Overview
 
 The documentation covers ASICLab software, servers, workstations, and other infrastructure. The scope of this document is information that a user with basic familiarity with Linux systems would need to fix problems with existing systems or add new systems to the network. Therefore, extensive documentation of general Linux knowledge should be avoided to avoid diluting the usefulness of information.
@@ -206,10 +201,14 @@ Append mount instructions to the end of `/etc/fstab`, using these hand commands:
 
 ```
 echo 'penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0' | sudo tee --append /etc/fstab
+```
+
+```
 echo 'penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0' | sudo tee --append /etc/fstab
 ```
 
-Check the commands are there, only once:
+Check the commands are there only once:
+
 ```
 sudo cat /etc/fstab
 ```
@@ -223,16 +222,26 @@ ls -l /sbin/mount*
 If not, then install:
 
 ```
+sudo dnf install nfsv4-client-utils
+```
+
+And for useful commands like `showmount`:
+
+```
 sudo dnf groupinstall "Network File System Client"
 ```
 
 Report status of current NFS4 mounts on client:
 
-`mount -l -t nfs4`
+```
+mount -l -t nfs4
+```
 
 Ping remote host from client, to see connection options:
 
-`showmount -e penelope.physik.uni-bonn.de`
+```
+showmount -e penelope.physik.uni-bonn.de
+```
 
 Mount remote NFS shares
 ```
@@ -240,7 +249,7 @@ sudo systemctl daemon-reload
 sudo mount -a
 ```
 
-1. [Connect to the FreeIPA integrated LDAP directory server](user_management.md) to read user accounts and group settings. 
+[Connect to the FreeIPA integrated LDAP directory server](user_management.md) to read user accounts and group settings. 
 
 ```
 sudo realm join asiclabwin001.physik.uni-bonn.de -v
@@ -252,7 +261,7 @@ In this process, authenticate as `admin` account. This will create remote LDAP+N
 id kcaisley
 ```
 
-1. To configure a machine's CUPS client to connect to the PI printer server (`cups.physik.uni-bonn.de`), check for and edit `/etc/cups/client.conf` file:
+To configure a machine's CUPS client to connect to the PI printer server (`cups.physik.uni-bonn.de`), check for and edit `/etc/cups/client.conf` file:
 
 ```
 cat /etc/cups/client.conf
