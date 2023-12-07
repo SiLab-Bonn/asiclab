@@ -54,7 +54,11 @@ You can do a simple test whether your H.264 works in RTC on [this page](https://
 
 # Install and uninstall standalone rpm packages
 
-To install a 
+To manuall installl an rpm package:
+
+```
+sudo rpm --import [package.rpm]
+```
 
 Execute the following command to discover the name of the installed package:
 
@@ -76,6 +80,7 @@ Execute the following command to uninstall the product:
 - chromium
 - gnome-tweaks
 - groupinstall "Workstation"
+- inkscape
 
 # VS Code
 VS Code is currently only shipped in a yum repository, so first add the repository:
@@ -121,6 +126,11 @@ wget https://zoom.us/linux/download/pubkey
 sudo rpm --import pubkey
 ```
 
+Finally, you may need to set SELinux to 'permissive' mode, to prevent it from blocking Zoom usage:
+
+```
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/changing-selinux-states-and-modes_using-selinux#changing-to-permissive-mode_changing-selinux-states-and-modes
+```
 
 # Python venvs
 
