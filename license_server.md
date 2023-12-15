@@ -19,8 +19,8 @@ The vendor-specific server has to be restarted via the management page (section 
 To access the licenses from a client, add the server address to your environment: `export LM_LICENSE_FILE=8000@faust02.physik.uni-bonn.de`. Add this line to your ~/.bashrc or application-specific startup script if needed.
 
 # EP Instructions:
-Before you start the license server you will need to edit the license file. Edit the SERVER line to specify the server
-name and edit the VENDOR line to specify the path to the snpslmd vendor daemon (including executable name).
+Before you start the license server you will need to edit the license file. Edit the SERVER line to specify the server name (faust02) and edit the VENDOR line to specify the path to the snpslmd vendor daemon (including executable name).
+It also might me required to either remove the port number from the first line or match it to the actual port the daemon is using on.
 The key file example below shows the fields that you need, where `server_name` and `vendor_daemon_path` are to be edited:
 
 ```
