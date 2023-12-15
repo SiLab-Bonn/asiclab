@@ -30,22 +30,27 @@ From arch wiki:
 udev rules written by the administrator go in /etc/udev/rules.d/, their file name has to end with .rules. The udev rules shipped with various packages are found in /usr/lib/udev/rules.d/. If there are two files by the same name under /usr/lib and /etc, the ones in /etc take precedence.
 
 unplug 1:
+```
 KERNEL[920.660497] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
 UDEV  [920.666026] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
+```
 
 replug 1:
+
+```
 KERNEL[924.803333] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
 UDEV  [924.807285] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
+```
 
 unplug 1+2:
+
+```
 KERNEL[955.564511] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
 UDEV  [955.568427] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
 KERNEL[957.001857] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
 UDEV  [957.003971] change   /devices/pci0000:00/0000:00:02.0/drm/card1 (drm)
+```
 
 replug 1+2:
 
-nothing!
-
-
-But on Fedora, I get something!
+Nothing on Alma, but on Fedora, I get the same replug events!
