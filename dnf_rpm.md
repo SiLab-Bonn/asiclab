@@ -1,5 +1,7 @@
 # DNF and RPM package management:
 
+DNF can directly install RPMs from URLs.
+
 Check current version of an installed RPM
 `rpm -q <packagename>`
 

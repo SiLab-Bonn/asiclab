@@ -449,58 +449,59 @@ Then just `rpm -i package-name`
 
 Based on this link, learned I have /lib64/libdl.so.2 but Virtuoso is looking for /lib64/libdl.so. So just created a symlink:
 
-```
+```shell
 sudo ln -s /lib64/libdl.so.2 /lib64/libdl.so
 ```
 
 Lastly, for virtuoso, we can see this symlink:
 
-```
+```shell
 ls -la /etc/redhat-release 
 lrwxrwxrwx. 1 root root 17 May 16 15:34 redhat-release -> almalinux-release
 ```
 
 Remove the link, and recreate it as a files, and put the following text inside:
-```
+
+```shell
 sudo rm /etc/redhat-release
 sudo touch /etc/redhat-release
 echo 'Red Hat Enterprise Linux Server release 7.9 (Maipo)' | sudo tee --append /etc/redhat-release
 ```
 
-*Virtusos now works!*
+*Virtuoso now works!*
 
 ## Continuing on Alma Linux 9:
 
 sudo dnf install tmux htop pandoc curl wget git gcc cmake g++ python3-devel python3-pip
 sudo dnf install libreoffice-impress libreoffice-calc libreoffice-writer libreoffice-calc inkscape
 
+# Installing klayout
 
+```shell
+sudo dnf install https://www.klayout.org/downloads/RockyLinux_9/klayout-0.28.15-0.x86_64.rpm
+```
 
-
-
-
-
+Will also install dependencies `http-parser qt5-qtmultimedia qt5-qtsvg qt5-qttools qt5-qttools-dev ruby`
 
 # Installing Vivado:
 Needed libtinfo.5, but had libtinfo.6, so just installed a comptability package to provide the older version in addition:
 
-```
+```shell
 sudo dnf install ncurses-compat-libs
 ```
 
-```
+```shell
 sudo dnf install fxload libusb1 libusb1-devel libusb
 sudo udevadm control --reload-rules
 ```
 
 # Setting up TCAD
 
-```
+```shell
 sudo dnf install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
 ```
 
-Jedit is needed for editing scripts, read about it here:
-http://www.jedit.org/index.php?page=download&platform=windows
+Jedit is needed for editing scripts, read about it [here](http://www.jedit.org/index.php?page=download&platform=windows)
 
 Java Runtime version 1.8 (aka Java 8) or later is required for jEdit 5.4 and later.
 Java Runtime version 11 (aka Java 11) or later is required for jEdit 5.6 and later.
@@ -508,14 +509,14 @@ Sentarus provides jedit5.6, Java has to be version 11, and AlmaLinux 9 has versi
 
 To fix this, install and enable Java 11:
 
-```
+```shell
 sudo dnf install java-11-openjdk
 sudo alternatives --config java
 ```
 
 Then lastly, while logged in graphically on the machines, do the following: 
 
-```
+```shell
 sudo java -jar jedit5.6.0install.jar
 ```
 
