@@ -146,22 +146,22 @@ Apply, exit, reboot. Then press Fn + F12 to Reach "One Time Boot Menu". Select U
 
 ## Anaconda Install Menu
 
-1. Set keyboard to English (US), add German as a secondary option.
+1. Set keyboard to English (US).
 2. *Root Password* should be "Disabled"
 3. Create user `asiclab` with `uid = 1000` and `gid = 1000`. Make user an administrator.
 4. *Installation source* is local media.
-5. *Software Selection* should be "Server with GUI"
-6. For the installation destination, select both the NVME and HDD and select 'custome' for the storage configuration. Use traditional partitioning (no LVM) and configure the disks like below. Use `ext4` for the filesystems on the `/tmp` and `/` partitions. The swap is swap, and the efi is a EFI boot partition.
+5. *Software Selection* should be "Minimal"
+6. For the installation destination, select both the NVME and HDD and select 'custom' for the storage configuration. Use traditional `standard partitioning` (no LVM) and configure the disks like below. Use `ext4` for the filesystems on the `boot`, `/tmp` and `/` partitions. The swap is `swap`, and the `/boot/efi` is an EFI boot partition.
 
 ```
-NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-nvme0n1     259:0    0 238.5G  0 disk 
-├─nvme0n1p1 259:1    0   600M  0 part /boot/efi
-├─nvme0n1p2 259:2    0  1024M  0 part /boot
-├─nvme0n1p3 259:3    0   200G  0 part /
-└─nvme0n1p4 259:4    0    32G  0 part [SWAP]
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS FILESYSTEM
+nvme0n1     259:0    0 238.5G  0 disk             
+├─nvme0n1p1 259:1    0   600M  0 part /boot/efi   efi
+├─nvme0n1p2 259:2    0  1024M  0 part /boot       ext4
+├─nvme0n1p3 259:3    0   200G  0 part /           ext4
+└─nvme0n1p4 259:4    0    32G  0 part [SWAP]      swap
 sda           8:0    0  1.82T  0 disk 
-└─sda1        8:1    0  1.82T  0 part /tmp
+└─sda1        8:1    0  1.82T  0 part /tmp        ext4
 ```
 
 7. Make sure ethernet is connected. 
@@ -171,7 +171,28 @@ sda           8:0    0  1.82T  0 disk
 
 Once booting into Alma Linux, follow the basic steps below to update firmware, update core packages, and connect to NFS, LDAP/FreeIPA, and printers.
 
-1. Update firmware, in four commands
+1. Initial check for/install core packages updates:
+
+```
+sudo dnf clean all
+sudo dnf update
+```
+
+1. Install the Workstation profile
+
+```
+sudo dnf group install Workstation
+```
+
+1. Swich to the graphical target
+
+```
+sudo systemctl set-default graphical.target
+sudo systemctl get-default
+sudo systemctl isolate graphical.target
+```
+
+2. Update firmware, in four commands
 
 ```
 sudo fwupdmgr enable-remote lvfs
@@ -182,13 +203,6 @@ sudo fwupdmgr update
 
 Afterwards, you can check firmware version with `hostnamectl`.
 
-1. Initial check for/install core packages updates:
-
-```
-sudo dnf clean all
-sudo dnf update
-```
-
 1. [Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
 
 Create mount points
@@ -197,7 +211,7 @@ sudo mkdir /users
 sudo mkdir /tools
 ```
 
-Append mount instructions to the end of `/etc/fstab`, using these hand commands:
+1. Append mount instructions to the end of `/etc/fstab`, using these hand commands:
 
 ```
 echo 'penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0' | sudo tee --append /etc/fstab
@@ -249,7 +263,7 @@ sudo systemctl daemon-reload
 sudo mount -a
 ```
 
-[Connect to the FreeIPA integrated LDAP directory server](user_management.md) to read user accounts and group settings. 
+1. [Connect to the FreeIPA integrated LDAP directory server](user_management.md) to read user accounts and group settings. 
 
 ```
 sudo realm join asiclabwin001.physik.uni-bonn.de -v
@@ -318,7 +332,7 @@ Check it worked, by pinging one of the user accounts:
 id kcaisley
 ```
 
-To configure a machine's CUPS client to connect to the PI printer server (`cups.physik.uni-bonn.de`), check for and edit `/etc/cups/client.conf` file:
+1. To configure a machine's CUPS client to connect to the PI printer server (`cups.physik.uni-bonn.de`), check for and edit `/etc/cups/client.conf` file:
 
 ```
 cat /etc/cups/client.conf
