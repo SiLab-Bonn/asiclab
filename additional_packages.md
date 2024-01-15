@@ -35,10 +35,18 @@ Installing Typora, Thunderbird, or any other plain zip program. [Instructions](h
 
 # H.264 Support
 
-As of Fedora 37+, H.264 decoders were removed from the based distribution due to legal reasons (alongside H.265). To install alternative H.264 decoders, you can follow the instructions found [here:](https://fedoraproject.org/wiki/OpenH264)
+<!-- As of Fedora 37+, H.264 decoders were removed from the based distribution due to legal reasons (alongside H.265). To install alternative H.264 decoders, you can follow the instructions found [here:](https://fedoraproject.org/wiki/OpenH264) -->
+
+<!-- ```
+sudo dnf config-manager --set-enabled fedora-cisco-openh264
+``` -->
+
+
+RHEL or compatible like CentOS, to enable the necessary repos (RPM Fusion free and non-free):
 
 ```
-sudo dnf config-manager --set-enabled fedora-cisco-openh264
+sudo dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+sudo dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 ```
 
 and then install the plugins:
