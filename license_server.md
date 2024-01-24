@@ -15,6 +15,16 @@ New license files (usually received via email) are moved to the vendor-specific 
 
 The vendor-specific server has to be restarted via the management page (section `Vendor Daemon Configuration`) for the new license to become active.
 
+## Updating a vendor daemon
+Licenses may require a minimum vendor dameon version. You might be able to start the daemon after replacing the license, but won't be able to use the license and you will find error messages in the log files.
+
+Synopsys:
+- Download the "Installer" and the "Synopsys Common Licensing" (SCL) files via (S)FTP or their website https://www.synopsys.com/support/licensing-installation-computeplatforms/licensing.html.
+- Following the readme, run the installer and point it to the downloaded SCL files. Enter the site number, which can be found in the license file, when prompted.
+- The installation script copies a bunch of files to the given target directory (/usr/synopsys by default) but only of them seems to be needed for our purpose: `[target dir]/scl/2023.09/linux64/bin/snpslmd`.
+  Copy this file to `/cadence/other/lmadmin/licenses/snpslmd/`. Feel free to rename the file, but keep is consistent with the vendor daemon configuration of FlexNet.
+- In the web interface, stop and start the daemon and check the daemon log file.
+
 # Client Configuration
 To access the licenses from a client, add the server address to your environment: `export LM_LICENSE_FILE=8000@faust02.physik.uni-bonn.de`. Add this line to your ~/.bashrc or application-specific startup script if needed.
 
