@@ -119,26 +119,32 @@ Email notifications will be sent to the contacts after each scheduled activity.
 The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM SP) is described on the HRZ Confluence page: https://confluence.team.uni-bonn.de/display/HRZDOK/Einrichtung#. Here's a short summary:
 
 1. Download latest TSM client from http://www-01.ibm.com/support/docview.wss?rs=663&uid=swg21239415 or  
-   `wget ftp://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/`
+   ```bash
+   wget ftp://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/
+   ```
 
-2. Unpack installation archive  
-   `tar -xvf [filename.tar]`
+3. Unpack installation archive  
+   ```bash
+   tar -xvf [filename.tar]
+   ```
 
-3. Installation (in this order)  
-   `rpm -ivh gskcrypt*`  
-   `rpm -ivh gskssl64*`  
-   `yum localinstall TIVsm-API64.x86_64.rpm`  
-   `rpm -ivh TIVsm-BA.x86_64.rpm`  
-   `rpm -ivh TIVsm-APIcit.x86_64.rpm`  
-   `rpm -ivh TIVsm-BAcit.x86_64.rpm`  
+5. Installation (in this order) #todo: Change to dnf
+   ```bash
+      rpm -ivh gskcrypt*
+      rpm -ivh gskssl64*
+      yum localinstall TIVsm-API64.x86_64.rpm 
+      rpm -ivh TIVsm-BA.x86_64.rpm
+      rpm -ivh TIVsm-APIcit.x86_64.rpm 
+      rpm -ivh TIVsm-BAcit.x86_64.rpm
+   ```
 
 
 ## Configuration
 1. Navigation in installation directory  
-    `cd /opt/tivoli/tsm/client/ba/bin`
+    ```cd /opt/tivoli/tsm/client/ba/bin```
 
 2. Create the file "dsm.opt" and add the configurations  
-   `sudo vi dsm.opt`
+   ```sudo vi dsm.opt```
   
     Insert the following lines (Ctrl + Shift + V)  
     ```
@@ -148,7 +154,7 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
     ```
 
 3. Create the file "dsm.sys" and insert the following configuration  
-    `sudo vi dsm.sys`
+    ```sudo vi dsm.sys```
    
     Insert the following lines (Str + Shift + V) but replace *[nodename]* with the name assigned by HRZ 
      ```
@@ -169,13 +175,13 @@ The setup procedure for the IBM Tivoli Sorage Manager software (old name for IBM
     managedservices schedule
      ```
 4. Create Include/Exclude file (leave empty, or read more here)  
-   `sudo touch /opt/tivoli/tsm/client/ba/bin/dsm.excl_incl`
+   ```sudo touch /opt/tivoli/tsm/client/ba/bin/dsm.excl_incl```
 
 5. Running the command line programme  
-   `sudo dsmc`
+   ```sudo dsmc```
 
 6. Change password  
-    `sudo dsmc set passsword [old passwort] [new passwort]`
+    ```sudo dsmc set passsword [old passwort] [new passwort]```
 
 
 ## Include/exclude list
@@ -198,15 +204,15 @@ Example: If we want to backup the /home directory but exclude the asiclab user, 
 
 
 ## Commands for data store and restore
-Start by ´$ sudo dsmc´. Enter in command line after prompt Protect>. This is only a subset. Partitions can also be saved and restored, but this seems to be less relevant for us.
+Start by ```sudo dsmc```. Enter in command line after prompt Protect>. This is only a subset. Partitions can also be saved and restored, but this seems to be less relevant for us.
 
 
 ### Data backup
 1. Save the whole folder   
-   ```bash incr /[path]/* ```
+   ```incr /[path]/* ```
 
 2. Back up individual files   
-   ```bash incr /[path]/[file] ```
+   ```incr /[path]/[file] ```
 
 
 Example of a backup procedure:
