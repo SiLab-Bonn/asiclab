@@ -599,7 +599,7 @@ This page has lots of things tried: https://serverfault.com/questions/682000/nfs
 
 the below text was moved from 'remote connection'
 
-# SiRUSH SMB Server
+# Sirrush SMB Server
 
 Sirrush is shared via smb. You can simply use a file manager and go to smb://sirrush.physik.uni-bonn.de and log in with silab/pidub12. One can only access the `/silab` directory with this login. If you also want
 to access project folder, an account has to be made for you.
