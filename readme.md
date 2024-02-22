@@ -72,7 +72,8 @@ switch---asiclabwinXXX
 - [ ] finish migrating remaining machines to AlmaLinux 9
 - [ ] check licenses are up to date
 - [ ] understand all the SELinux alerts
-- [ ] synopsys 2023-24 tools
+- [ ] update to synopsys 2023-24 tools
 - [ ] update TSMC 28nm Design rule manual & DRC deck 2.1 -> 2.2. [See](https://asic-support-28.web.cern.ch/tech-docs/drc-decks/)
-- [ ] Port bonding on servers `penelope`, etc?
+- [ ] port bonding on servers `penelope`, etc?
 - [ ] test penelope NFS backups
+- [ ] update siemens questa to 2023-24 release?
