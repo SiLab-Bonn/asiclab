@@ -65,7 +65,6 @@ switch---asiclabwinXXX
 `asiclab##`: Retired user workstations, still good for less demanding work. Easily configured for Linux or Windows.
 
 # Tasks
-
 - [ ] sosmgr/sosadmin server re-setup
 - [ ] test fscache + NFS setup to see if it offers read speed benefits
 - [ ] migrate FreeIPA LDAP server to penelope
@@ -75,5 +74,7 @@ switch---asiclabwinXXX
 - [ ] update to synopsys 2023-24 tools
 - [ ] update TSMC 28nm Design rule manual & DRC deck 2.1 -> 2.2. [See](https://asic-support-28.web.cern.ch/tech-docs/drc-decks/)
 - [ ] port bonding on servers `penelope`, etc?
-- [ ] test penelope NFS backups
+- [ ] test penelope NFS backups IBM Tivoli Spectrum
 - [ ] update siemens questa to 2023-24 release?
+- [x] What is `amslmd`. Delete please.
+- [ ]  
