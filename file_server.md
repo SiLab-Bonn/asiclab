@@ -1,3 +1,20 @@
+# NFS mount performance
+
+[Instructions for tuning](https://www.admin-magazine.com/HPC/Articles/Useful-NFS-Options-for-Tuning-and-Management)
+
+cachefilesd
+
+> FS-Cache cannot arbitrarily cache any file system, whether through the network or otherwise: the shared file system’s driver must be altered to allow interaction with FS-Cache, data storage/retrieval, and metadata setup and validation. FS-Cache needs indexing keys and coherency data from the cached file system to support persistence: indexing keys to match file system objects to cache objects, and coherency data to determine whether the cache objects are still valid.
+
+[text](https://docs.kernel.org/filesystems/caching/fscache.html)
+
+[text](https://web.archive.org/web/20230910130712/https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_file_systems/getting-started-with-fs-cache_managing-file-systems)
+
+[text](https://en.wikipedia.org/wiki/CacheFS)
+
+[text](https://www.admin-magazine.com/HPC/Articles/Caching-with-CacheFS)
+
+
 # Client NFS Mounting
 
 ```

@@ -107,7 +107,11 @@ Download ISO file:
 curl -O https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.1-x86_64-dvd.iso
 ```
 
+or
 
+```
+wget https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-minimal.iso
+```
 
 Insert your target USB and locate it. There are different ways to do it, but here are some of them:
 

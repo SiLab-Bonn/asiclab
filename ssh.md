@@ -75,3 +75,10 @@ To fix this, the associated lines in the `~/.ssh/known_hosts` file must be remov
 ```
 ssh-keygen -R [Full Hostname]
 ```
+
+If this still isn't working, the reason is probably that the known hosts are actually being fetched from the IPA server. This is described in detail [here.](https://superuser.com/questions/1071204/still-getting-ssh-failure-offending-rsa-key-in-var-lib-sss-pubconf-known-host). The solution is to manage the entry for the target host on the IPA server, either via GUI or via `ipa host-mod`.
+
+
+### SSH still asking for password, after creating ssh keys:
+
+This might help? https://unix.stackexchange.com/questions/36540/why-am-i-still-getting-a-password-prompt-with-ssh-with-public-key-authentication

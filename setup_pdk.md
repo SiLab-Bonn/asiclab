@@ -1,4 +1,6 @@
+# General notes
 
+In general, you want to seperate design data from the startup working directory of cadence. The files in this startup area should mostly be copied from the reference implementation given by the PDK. This is sometimes called a 'skel', for skeleton.
 
 ## Europratice Kits
 
