@@ -161,7 +161,7 @@ Username: kcaisley@uni-bonn.de
 ### Outgoing Server Settings:
 
 ```
-Protocol: IMAP
+Protocol: SMTP
 Server Name: mail.uni-bonn.de
 Port: 587
 Connection Security: STARTTLS
@@ -176,8 +176,13 @@ Username: kcaisley
 CalDAV: https://mail.uni-bonn.de/CalDAV/Work/
 ```
 
+# Contacts
+Network address book is integrated via CardDAV
+The address book provided with each Uni ID on the e-mail server is called "Contacts"
+the URL is: https://mail.uni-bonn.de/CardDAV/Contacts
+user name is the Uni ID with the corresponding password
+Note upper and lower case!!!
+
 # Gnome extensions
 
 Go to https://extensions.gnome.org/local/ and enable 'Launch new ...'
-
-- is there a way to do this from command line?

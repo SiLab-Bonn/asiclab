@@ -352,4 +352,17 @@ https://www.reddit.com/r/ManjaroLinux/comments/e682d6/fixing_lenovos_error_code_
 https://superuser.com/questions/913779/how-can-i-know-which-partition-is-efi-system-partition
 
 
-make sure I can still ping asiclab010, as this is yannik's machine?
+
+# Workstation USB drive benchmarks
+
+## kingston datatraveler
+read: 35 or 140 MB/s .... average 72	rsync read 27 MB/s
+write 7 MB/s				rsync write 2.4 MB/s
+
+## sandisk cruzer fit (small boi)
+read 23.1 MB/s
+write 10 MB/s		rsync write 1.5 MB/s
+
+## sandisk ultra
+read 120 MB/s		rsync read 75 MB/s		backport 155 MB/s
+write 30 Mb/s							 30 MB/s
