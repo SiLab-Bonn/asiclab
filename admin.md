@@ -213,7 +213,11 @@ Alrighty, so looking at my files, I should just figure out where the 15GB are be
 ```
 [asiclab@penelope ~]$ sudo du -sh bag3++_centos7.sif
 3.7G	bag3++_centos7.sif
+```
 
+# File system is full:
+
+```
 [asiclab@penelope ~]$ sudo du -shc /var/*
 0	/var/account
 0	/var/adm
@@ -366,3 +370,24 @@ write 10 MB/s		rsync write 1.5 MB/s
 ## sandisk ultra
 read 120 MB/s		rsync read 75 MB/s		backport 155 MB/s
 write 30 Mb/s							 30 MB/s
+
+
+# Root directory `/` gets full issues
+
+On 28 Feb 2024, we see the root file system filled up
+
+```
+[asiclab@penelope ~]$ df -hT
+Filesystem                       Type      Size  Used Avail Use% Mounted on
+devtmpfs                         devtmpfs  4.0M     0  4.0M   0% /dev
+tmpfs                            tmpfs      32G     0   32G   0% /dev/shm
+tmpfs                            tmpfs      13G   20M   13G   1% /run
+/dev/mapper/fedora_penelope-root xfs        15G   15G   16K 100% /
+/dev/sda2                        xfs       960M  328M  633M  35% /boot
+tmpfs                            tmpfs      32G     0   32G   0% /tmp
+/dev/md127                       ext4       44T   12T   31T  27% /mnt/md127
+tmpfs                            tmpfs     6.3G  4.0K  6.3G   1% /run/user/1000
+tmpfs                            tmpfs     6.3G     0  6.3G   0% /run/user/0
+```
+
+In the link above, we could see again that the root directory got full.

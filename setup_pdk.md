@@ -72,6 +72,9 @@ HEP_DesignKit_TSMC28_HPCplusRF_v1.0/pdk/1P9M_5X1Y1Z1U_UT_AlRDL/cdsPDK/pdkInstall
 
 ## 65nm PDK notes
 
+3 Metal stacks
+(1p6 ,1p7, 1p9)
+
 PDK Install Directory Structure
 
 ```
@@ -94,6 +97,47 @@ techfile             : Virtuoso tech file
 mapfile              : layout editor mapfile
 tsmcN65/             : PDK library
 ```
+
+
+### options that were selected for TSMC65 pdk at install time (back in 2012)
+*Available process types are: 
+   1 - LO
+   2 - MM
+   3 - RF
+Please enter your choice: (1,2...)
+*Available voltages are: 
+   1 - 1.2V / 2.5V / 2.5V under-drive 1.8V / 2.5V over-drive 3.3V
+   2 - 1.2V / 3.3V
+Please enter your choice: (1,2)
+*Available types of MiM cap are: 
+   1 -  MIM_1.0fF                     
+   2 -  MIM_1.5fF                     
+   3 -  MIM_2.0fF                     
+Please enter your choice: (1,2...)
+*Available metal options are: 
+   1 - 1p9m_6X2Z0U_ALRDL 
+   2 - 1p9m_6X1Z1U_ALRDL *ind_1z1u  *Star_RC  *Cal_RC  *QRC
+   3 - 1p8m_6X1Z0U_ALRDL *ind_1z
+   4 - 1p8m_6X0Z1U_ALRDL *ind_1u 
+   5 - 1p8m_5X2Z0U_ALRDL 
+   6 - 1p8m_5X1Z1U_ALRDL *ind_1z1u
+   7 - 1p7m_5X1Z0U_ALRDL *ind_1z
+   8 - 1p7m_5X0Z1U_ALRDL *ind_1u 
+   9 - 1p7m_4X2Z0U_ALRDL            *Star_RC  *Cal_RC  *QRC 
+   10 - 1p7m_4X1Z1U_ALRDL *ind_1z1u
+   11 - 1p6m_4X1Z0U_ALRDL *ind_1z   *Star_RC  *Cal_RC  *QRC
+   12 - 1p6m_4X0Z1U_ALRDL *ind_1u 
+   13 - 1p6m_3X2Z0U_ALRDL 
+   14 - 1p6m_3X1Z1U_ALRDL *ind_1z1u
+   15 - 1p5m_3X1Z0U_ALRDL *ind_1z
+
+
+*** Select process : RF
+*** Select voltage : 1.2V / 2.5V / 2.5V under-drive 1.8V / 2.5V over-drive 3.3V
+*** Select MiM cap  :  MIM_2.0fF                     
+*** Select metal option : 1p9m_6X1Z1U_ALRDL *ind_1z1u  *Star_RC  *Cal_RC  *QRC
+
+
 
 #### SPICE Models
 
@@ -130,6 +174,10 @@ tsmcN65/             : PDK library
 
 ## 28nm Install
 
+HPC+
+
+should also use BSIM 4.5. Only has one metal stack choice of 1p9, but CERN is evaluating 1p8. Replaced standard HPC.
+
 https://asic-support-28.web.cern.ch/documents/cern_tsmc28HPCplus_pdk_final.pdf
 
 https://asic-support-28.web.cern.ch/tech-docs/pdk_install/
@@ -154,3 +202,9 @@ setenv PDK_RELEASE HEP_DesignKit_TSMC28_HPCplusRF_v1.0
 setenv PDK_OPTION 1P9M_5X1Y1Z1U_UT_AlRDL
 ```
 
+## IHP 130
+There is a /skel directory which has an example `cshrc.cadence` file.
+
+
+## SKY 130
+There i

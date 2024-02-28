@@ -666,3 +666,7 @@ NetBIOS over TCP/IP client used to lookup NetBIOS names, part of samba suite.
 
 List info about machines that respond to SMB name queries on a subnet. Uses nmblookup and smbclient as backend.
 `findsmb`
+
+
+## Updating Fedora
+[Link to official docs](https://docs.fedoraproject.org/en-US/quick-docs/upgrading-fedora-offline/)

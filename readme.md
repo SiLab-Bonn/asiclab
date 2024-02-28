@@ -77,4 +77,8 @@ switch---asiclabwinXXX
 - [ ] test penelope NFS backups IBM Tivoli Spectrum
 - [ ] update siemens questa to 2023-24 release?
 - [x] What is `amslmd`. Delete please.
-- [ ]  
+
+
+# Tools
+ 
+Cliosoft version 7.20 recommended April 24
