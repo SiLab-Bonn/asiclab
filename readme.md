@@ -79,6 +79,31 @@ switch---asiclabwinXXX
 - [x] What is `amslmd`. Delete please.
 
 
-# Tools
+# Changelog
  
 Cliosoft version 7.20 recommended April 24
+
+
+- Installed version 1.0 of 28nm CERN PDK
+- 
+
+
+
+- Installed version V1.7A_1 65nm PDK into fresh `/tools/kits/TSMC/65LP/
+
+```
+TSMC65_CERN_V1.7A_1_pre8.0_2017_PDKs_1p6_1p7_1p9.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital_IO.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital9t.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital7t.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital12t.tar.gz
+```
+
+
+Jul 2023 28nm PDK version 1.1
+
+Jan 2024 28nm DRC version 2.2
+
+Feb 2024 Synopsys 2024-24
+
+Feb 2024 65nm DRC version 2.6_2a

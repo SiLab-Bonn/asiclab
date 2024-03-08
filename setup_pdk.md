@@ -60,16 +60,6 @@ pv HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz | tar -xz
 ```
 
 
-
-To run the installPdk.pl file, a perl module is needed? No we don't need this, as we are using the CERN standard PDK install.
-
-```
-sudo dnf install perl-FileHandle
-HEP_DesignKit_TSMC28_HPCplusRF_v1.0/pdk/1P9M_5X1Y1Z1U_UT_AlRDL/cdsPDK/pdkInstall.pl
-```
-
-
-
 ## 65nm PDK notes
 
 3 Metal stacks
@@ -165,8 +155,8 @@ Please enter your choice: (1,2...)
        *Spectre           sub-version  7.2.0.477.isr16 	cadence	
        *Hspice            2008.03-SP1			sysnopsys
        *ELDO              2009.2			mentor
-       *Calibre           v2009.3_15.12			cadence
-       *Assura            AV4.1_USR2_HF9-615		mentor
+       *Calibre           v2009.3_15.12			mentor
+       *Assura            AV4.1_USR2_HF9-615		cadence
        *QRC               EXT101_2_HF3			mentor (for resistance specifically)
        *StarRC            E-2010.12-SP2			synopsys
        *Perl              v5.12.2
@@ -178,9 +168,7 @@ HPC+
 
 should also use BSIM 4.5. Only has one metal stack choice of 1p9, but CERN is evaluating 1p8. Replaced standard HPC.
 
-https://asic-support-28.web.cern.ch/documents/cern_tsmc28HPCplus_pdk_final.pdf
-
-https://asic-support-28.web.cern.ch/tech-docs/pdk_install/
+https://asic-support-28.web.cern.ch/tech-docs/pdk-install/
 
 We can just follow the basic untar and copy procedure. Everthing is already setup with:
 
@@ -205,6 +193,3 @@ setenv PDK_OPTION 1P9M_5X1Y1Z1U_UT_AlRDL
 ## IHP 130
 There is a /skel directory which has an example `cshrc.cadence` file.
 
-
-## SKY 130
-There i

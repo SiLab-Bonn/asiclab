@@ -27,7 +27,7 @@ export CDS_AUTO_64BIT=ALL
 # Variables to just avoid repetition & easily change to new release
 export CDS_TOOLS_PREFIX="/tools/cadence"
 export RELEASE_YEAR="2023-24"
-
+7
 ####################### Tool Specific Settings ########################
 
 ### Cadence Virtuoso: Full custom analog design
@@ -95,8 +95,8 @@ export SOS_CDS_EXIT=yes
 
 # See https://asic-support-28.web.cern.ch/tech-docs/pdk-install/
 
-export PDK_PATH="/tools/kits/TSMC/CRN28HPC+"              # HPC plus PDK introduce in 2021, replacing old HPC standard.
-export PDK_RELEASE="HEP_DesignKit_TSMC28_HPCplusRF_v1.0"  # Version 1.0, which is the first and only release so far.
+export PDK_PATH="/tools/kits/TSMC/28HPC+"              # HPC plus PDK introduce in 2021, replacing old HPC standard.
+export PDK_RELEASE="2022_v1.0"  # Version 1.0, which is the first and only release so far.
 export PDK_OPTION="1P9M_5X1Y1Z1U_UT_AlRDL"          # Metal stackup. Currently only one choice supported.
 export TSMC_PDK="${PDK_PATH}/${PDK_RELEASE}/"       # Is this actually used by tool? It is in 65nm I think, but not in 28 I 
 
