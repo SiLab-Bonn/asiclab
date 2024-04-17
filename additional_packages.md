@@ -171,9 +171,17 @@ Username: kcaisley@uni-bonn.de
 
 # Calendar:
 
+
+For Thunderbird:
 ```
 Username: kcaisley
 CalDAV: https://mail.uni-bonn.de/CalDAV/Work/
+```
+
+For Evolution:
+```
+Servername:
+https://posteo.de:8443/calendars/kcaisley/default/
 ```
 
 # Contacts

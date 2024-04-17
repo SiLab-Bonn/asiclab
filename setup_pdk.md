@@ -1,13 +1,18 @@
-# General notes
+# TSMC 28nm
+
+should also use BSIM 4.5. Only has one metal stack choice of 1p9, but CERN is evaluating 1p8. HPC+ replaced standard HPC.
 
 In general, you want to seperate design data from the startup working directory of cadence. The files in this startup area should mostly be copied from the reference implementation given by the PDK. This is sometimes called a 'skel', for skeleton.
 
-## Europratice Kits
+## 28nm Change log:
+
+## 06.2022 -> Installed V1.0 of 28nm CERN PDK
+
+Start first by fetching from Europractice Kits
 
 To download files larger than 100 MB you have to use the Querio FTP server instead. You can login to the FTP server using the same user name and password used to login to Querio.
 
 To access the files on the FTP server,
-
 
 For security reasons, the FTP server will only accept encrypted connections. Therefore you have to configure your FTP client to use implicit SSL/TLS encryption.
 
@@ -44,23 +49,93 @@ As seen above, the easiest method to recursively download an entire directory is
 
 Also note that `set ssl:verify-certificate no` is unsecure, as it could allow for man in the middle attacks, but the better method [shown here](https://stackoverflow.com/questions/23900071/how-do-i-get-lftp-to-use-ssl-tls-security-mechanism-from-the-command-line#44095714) didn't work, and I'm not paid enough to figure out why.
 
-### Joining the split .gz files:
+Joining the split .gz files:
+
+https://asic-support-28.web.cern.ch/tech-docs/pdk-install/
+
+
+From here, we can just follow the basic untar and copy procedure. Everthing is already setup with:
 
 
 ```bash
 cat HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz.part_* > HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz
 ```
 
-
-
-### To untar the files, with progress bar:
+To untar the files, with progress bar:
 
 ```
 pv HEP_DesignKit_TSMC28_HPCplusRF_v1.0.tar.gz | tar -xz
 ```
 
+Placed in `/tools/kits/TSMC/28HPC+/2022_v1.0`
 
-## 65nm PDK notes
+
+```bash
+# In cds.lib
+
+# DO NOT MODIFY LINES BELOW
+# base Cadence Virtuoso and PDK libraries (including MSOA)
+INCLUDE $PDK_PATH/$PDK_RELEASE/pdk/$PDK_OPTION/cdsPDK_MSOA/cds.lib
+
+# PDK Digital libraries
+INCLUDE $PDK_PATH/$PDK_RELEASE/TSMCHOME/digital/Back_End/cdk/cds.lib.$PDK_OPTION
+```
+
+```bash
+# In start.sh
+setenv PDK_PATH <folder where you want to install the PDK>
+setenv PDK_RELEASE HEP_DesignKit_TSMC28_HPCplusRF_v1.0
+setenv PDK_OPTION 1P9M_5X1Y1Z1U_UT_AlRDL
+```
+
+## 07.2023 28nm PDK version 1.1 released -> installed 04.2024
+Downloaded to `/tools/kits/TSMC/28HPC+/downloads`
+
+Files include:
+
+```
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_12T_30L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_12T_35L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_12T_40L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_7T_30L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_7T_35L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_7T_40L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_9T_30L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_9T_35L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__dig_9T_40L.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__iopads.tar.gz
+HEP_PDK_TSMC28_HPCplusRF_v1.1__pdk-main.tar.gz
+```
+
+Which unpack to one dir called `HEP_DesignKit_TSMC28_HPCplusRF_v1.1`.
+Then I simply copied it to the new directory via `cp -r HEP_DesignKit_TSMC28_HPCplusRF_v1.1/* /tools/kits/TSMC/28HPC+/2023_v1.1/`
+
+
+
+## 01.2024 28nm DRC v2.2 released -> installed 04.2024
+[See link here for download link.](https://asic-support-28.web.cern.ch/tech-docs/drc-decks/)
+Downloaded to `tools/kits/TSMC/28HPC+/downloads`
+
+File is called `2024.02__tsmc28_calibre_decks_v2.2a.zip`
+
+Git based installed instructions from `README.me` were:
+
+```
+Clone the repository in the PDK installation path as follows:
+cd $PDK_PATH/$PDK_RELEASE/pdk/$PDK_OPTION
+git clone https://gitlab.cern.ch/asic-design-support/hep28/calibre-decks.git ./Calibre
+```
+
+But we don't have git access, so we did the following instead.
+
+
+
+
+
+# TSMC 65nm
+
+
+## 65nm Stackup
 
 3 Metal stacks
 (1p6 ,1p7, 1p9)
@@ -89,7 +164,7 @@ tsmcN65/             : PDK library
 ```
 
 
-### options that were selected for TSMC65 pdk at install time (back in 2012)
+## 65nm options that were selected for TSMC65 pdk at install time (back in 2012)
 *Available process types are: 
    1 - LO
    2 - MM
@@ -127,9 +202,7 @@ Please enter your choice: (1,2...)
 *** Select MiM cap  :  MIM_2.0fF                     
 *** Select metal option : 1p9m_6X1Z1U_ALRDL *ind_1z1u  *Star_RC  *Cal_RC  *QRC
 
-
-
-#### SPICE Models
+## 65nm SPICE Models
 
     PROCESS  : 65nm Mixed Signal RF SALICIDE Low-K IMD (1.2/2.5/over-drive 3.3V)(CRN65LP)
     MODEL    : BSIM4 ( V4.5 )
@@ -162,34 +235,37 @@ Please enter your choice: (1,2...)
        *Perl              v5.12.2
        *ncsim             08.20-s003			for digital sim, from cadence
 
-## 28nm Install
 
-HPC+
+## 65nm Changelog
 
-should also use BSIM 4.5. Only has one metal stack choice of 1p9, but CERN is evaluating 1p8. Replaced standard HPC.
+### 02.2024 65nm DRC version 2.6_2a -> Installed 03.2024
 
-https://asic-support-28.web.cern.ch/tech-docs/pdk-install/
+[New update was made available](https://asic-support-65.web.cern.ch/tech-docs/drc-decks/)
 
-We can just follow the basic untar and copy procedure. Everthing is already setup with:
+Dowloaded three ZIPs:
 
-```bash
-# In cds.lib
-
-# DO NOT MODIFY LINES BELOW
-# base Cadence Virtuoso and PDK libraries (including MSOA)
-INCLUDE $PDK_PATH/$PDK_RELEASE/pdk/$PDK_OPTION/cdsPDK_MSOA/cds.lib
-
-# PDK Digital libraries
-INCLUDE $PDK_PATH/$PDK_RELEASE/TSMCHOME/digital/Back_End/cdk/cds.lib.$PDK_OPTION
+```
+65nm-calibre-decks-1p6m3x1z1u.zip
+65nm-calibre-decks-1p7m4x1z1u.zip
+65nm-calibre-decks-1p9m6x1z1u.zip
 ```
 
-```bash
-# In start.sh
-setenv PDK_PATH <folder where you want to install the PDK>
-setenv PDK_RELEASE HEP_DesignKit_TSMC28_HPCplusRF_v1.0
-setenv PDK_OPTION 1P9M_5X1Y1Z1U_UT_AlRDL
+Extracted each, with an eponymous name.
+
+Just to be sure, we have the 
+
+Came in files
+
+```
+TSMC65_CERN_V1.7A_1_pre8.0_2017_PDKs_1p6_1p7_1p9.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital_IO.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital9t.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital7t.tar.gz
+TSMC65_CERN_V1.7A_1_pre8.0_2017_digital12t.tar.gz
 ```
 
-## IHP 130
+- Installed this version V1.7A_1 65nm PDK into fresh `/tools/kits/TSMC/65LP/2024`
+
+
+# IHP 130nm
 There is a /skel directory which has an example `cshrc.cadence` file.
-

@@ -46,7 +46,7 @@ switch---asiclabXX
 switch---asiclabwinXXX
 ```
 
-## Machine purposes
+# Machine purposes
 
 `asiclab###`: User Workstations
 
@@ -64,6 +64,7 @@ switch---asiclabwinXXX
 
 `asiclab##`: Retired user workstations, still good for less demanding work. Easily configured for Linux or Windows.
 
+
 # Tasks
 - [ ] sosmgr/sosadmin server re-setup
 - [ ] test fscache + NFS setup to see if it offers read speed benefits
@@ -72,38 +73,7 @@ switch---asiclabwinXXX
 - [ ] check licenses are up to date
 - [ ] understand all the SELinux alerts
 - [ ] update to synopsys 2023-24 tools
-- [ ] update TSMC 28nm Design rule manual & DRC deck 2.1 -> 2.2. [See](https://asic-support-28.web.cern.ch/tech-docs/drc-decks/)
+- [ ] Cliosoft version 7.20 recommended April 24
 - [ ] port bonding on servers `penelope`, etc?
 - [ ] test penelope NFS backups IBM Tivoli Spectrum
 - [ ] update siemens questa to 2023-24 release?
-- [x] What is `amslmd`. Delete please.
-
-
-# Changelog
- 
-Cliosoft version 7.20 recommended April 24
-
-
-- Installed version 1.0 of 28nm CERN PDK
-- 
-
-
-
-- Installed version V1.7A_1 65nm PDK into fresh `/tools/kits/TSMC/65LP/
-
-```
-TSMC65_CERN_V1.7A_1_pre8.0_2017_PDKs_1p6_1p7_1p9.tar.gz
-TSMC65_CERN_V1.7A_1_pre8.0_2017_digital_IO.tar.gz
-TSMC65_CERN_V1.7A_1_pre8.0_2017_digital9t.tar.gz
-TSMC65_CERN_V1.7A_1_pre8.0_2017_digital7t.tar.gz
-TSMC65_CERN_V1.7A_1_pre8.0_2017_digital12t.tar.gz
-```
-
-
-Jul 2023 28nm PDK version 1.1
-
-Jan 2024 28nm DRC version 2.2
-
-Feb 2024 Synopsys 2024-24
-
-Feb 2024 65nm DRC version 2.6_2a
