@@ -4,7 +4,7 @@ sudo dnf groupinstall -y Workstation
 sudo dnf groupinstall -y "Network File System Client"
 sudo dnf groupinstall -y --with-optional "Development Tools"
 sudo dnf groupinstall -y --with-optional "System Tools"
-sudo dnf install -y nfsv4-client-utils 
+sudo dnf install -y nfsv4-client-utils cachefilesd
 sudo dnf install -y python3-devel python3-pip
 sudo dnf install -y epel-release
 sudo dnf install -y elrepo-release
@@ -14,7 +14,12 @@ sudo dnf install -y chromium thunderbird
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf install -y code
+
+#extra packages found to be passibley installed from desktop usage
 sudo dnf install -y openh264 gstreamer1-plugin-openh264 mozilla-openh264
+sudo dnf install -y glibc-minimal-langpack hunspell-en-GB hunspell-en langpacks-core-en langpacks-en
+sudo dnf install -y grub2-tools-efi grub2-tools-extra
+sudo dnf install -y libcap-ng-python3 python-unversioned-command rpm-plugin-systemd-inhibit rsyslog-logrotate
 sudo dnf autoremove -y
 
 # slow repeating installs

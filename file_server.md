@@ -2,7 +2,17 @@
 
 [Instructions for tuning](https://www.admin-magazine.com/HPC/Articles/Useful-NFS-Options-for-Tuning-and-Management)
 
-cachefilesd
+# cachefilesd
+
+To enable, make sure cachefilesd is installed, then start with systemctl:
+
+```
+sudo systemctl enable cachfilesd
+sudo systemctl start cachfilesd
+sudo systemctl status cachfilesd
+```
+
+The default cache locaiton is `/var/cache/fscache`, which should be fine?
 
 > FS-Cache cannot arbitrarily cache any file system, whether through the network or otherwise: the shared file system’s driver must be altered to allow interaction with FS-Cache, data storage/retrieval, and metadata setup and validation. FS-Cache needs indexing keys and coherency data from the cached file system to support persistence: indexing keys to match file system objects to cache objects, and coherency data to determine whether the cache objects are still valid.
 
