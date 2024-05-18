@@ -432,7 +432,7 @@ sudo udevadm control --reload-rules
 sudo dnf install ksh perl perl-core tcsh strace valgrind gdb bc xorg-x11-server-Xvfb gcc glibc-devel bzip2 ncompress
 ```
 
-Jedit is needed for editing scripts, read about it [here](http://www.jedit.org/index.php?page=download&platform=windows)
+Jedit is needed for editing scripts, read about it [here](http://www.jedit.org/index.php?page=download)
 
 Java Runtime version 1.8 (aka Java 8) or later is required for jEdit 5.4 and later.
 Java Runtime version 11 (aka Java 11) or later is required for jEdit 5.6 and later.
@@ -443,6 +443,12 @@ To fix this, install and enable Java 11:
 ```shell
 sudo dnf install java-11-openjdk
 sudo alternatives --config java
+```
+
+You can download the jedit editor here:
+
+```
+wget https://sourceforge.net/projects/jedit/files/jedit/5.6.0/jedit5.6.0install.jar
 ```
 
 Then lastly, while logged in graphically on the machines, do the following: 
@@ -666,3 +672,30 @@ Note upper and lower case!!!
 # Gnome extensions
 
 Go to https://extensions.gnome.org/local/ and enable 'Launch new ...'
+
+
+# non-package managed changes
+to stop cockpit messages in terminal
+ln -sfn /dev/null /etc/motd.d/cockpit
+
+# Still to do:
+Install jedit and sentaurus plugin for jedit, graphically
+
+# install ngspice
+
+```shell
+wget https://sourceforge.net/projects/ngspice/files/ng-spice-rework/42/ngspice-42.tar.gz
+tar -xzf ngspice-42.tar.gz
+cd ngspice-42
+mkdir release
+cd release
+../configure
+make
+sudo make install
+```
+
+you can remove with
+
+```
+sudo make uninstall
+```
