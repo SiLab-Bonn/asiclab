@@ -5,7 +5,7 @@
 # * `source ./tsmc_crn28hpcp.sh`
 # * `virtuoso &`
 
-# Cadence tools should be started from a PDK specific working dir, e.g. `~/cadence/tsmc28`
+# Cadence tools should be started from a PDK specific working dir, e.g. `~/cadence/tsmc65`
 if [ "$HOME" == "$PWD" ]; then
    echo "You shouldn't start cadence tools from your HOME directory."
    echo "It will create a bunch of Virtuoso-specific stuff you don't want in there."
@@ -95,7 +95,7 @@ export SOS_CDS_EXIT=yes
 
 # See https://asic-support-65.web.cern.ch/tech-docs/pdk-install/
 # These ENV vars are used by the cds.lib, pvtech.lib, etc files for library locations
-export PDK_PATH="/tools/kits/TSMC/CRN65LP/Base_PDK_2017"    # Folder where digital and V1.7A_1 are located (dir .. contains older non-CERN pdks)
+export PDK_PATH="/tools/kits/TSMC/65LP/2024"    # Folder where digital and V1.7A_1 are located (dir .. contains older non-CERN pdks)
 export PDK_RELEASE="V1.7A_1"
 export OPTION="1p9m6x1z1u"                                  # Metal options: 1p6m3x1z1u, 1p7m4x1z1u, 1p9m6x1z1u
 export TSMC_PDK="${PDK_PATH}/${PDK_RELEASE}/${OPTION}"       # Should point to V1.7A_1/<metal stack> where metal stack is one of the subfolder 1p6m3x1z1u/ 1p7m4x1z1u/ 1p9m6x1z1u/
@@ -115,21 +115,29 @@ export AMSHOME="${CDS_XCELIUM}" # Alias for cds.lib as Xcelium is replacement fo
 # I should wait
 
 # Create the copy default 28nm Virtuoso files locally, if not already present
+
+# /2017/setup/ has
+# cdsinit  cds.lib  cdsLibMgr.il  init.il  pvtech.lib  setup.csh
+# 2024 has these somewhere as well?
+
 if [ ! -f ./cds.lib ]; then
-    echo "Copying default config files (cds.lib, .cdsinit, cdsLibMgr.il) from PDK to local dir..."
-    cp $PDK_PATH/setup/cdsinit .
-    cp $PDK_PATH/setup/ .
-    cp $PDK_PATH/setup/cds.lib .
-    cp $PDK_PATH/setup/cds.lib .
-    cp $PDK_PATH/setup/cds.lib .
-    cp $PDK_PATH/setup/cds.lib .
-    echo "Copying done!"
+    # Create the content
+    content="INCLUDE \$PDK_PATH/\$PDK_RELEASE/\$OPTION/cds.lib"
+
+    # Write content to file
+    echo "$content" > cds.lib
+
+    echo "File 'cds.lib' created with content:"
+    echo "$content"
+    
+    #cp $PDK_PATH/setup/cdsinit .
+    #echo "Copying done!"
 fi
 
 # Make sure Virtuoso config files are executable
 chmod 775 ./cds.lib
-chmod 775 ./.cdsinit
-chmod 775 ./cdsLibMgr.il
+#chmod 775 ./.cdsinit
+#chmod 775 ./cdsLibMgr.il
 
 ############### Create Temp Directories ################
 

@@ -1,0 +1,202 @@
+[asiclab@faust02 sos_7.20.p1_linux64]$ ./cliosoft.install 
+----------------------------------------------------------------------
+** Starting ClioSoft-SOS installation...
+     Release:  7.20.p1
+     Platform: linux64
+
+** Installation owner : asiclab
+     It is good practice (though not required) to install SOS
+     using a pseudo account created for tool administration,
+     such as 'toolman', that is NOT 'root' or a real user account.
+
+** Current directory  : /cadence/clio/sos_7.20.p1_linux64
+----------------------------------------------------------------------
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+** IMPORTANT NOTE: sosadmin has been replaced by SOS Manager (sosmgr)
+   SOS Manager is an enterprise-class replacement for sosadmin.
+   It provides a web-based interface to manage and monitor
+   SOS services at all sites irrespective of which release of SOS
+   is being used for each service.
+
+   This has a few implications:
+     -  A web server will run and listen to an admin specified port
+     -  The installation path cannot be moved once completed
+     -  The SOS Manager web server & SOS service daemons will all be run
+        using one cad administrator login account
+     -  Users can access SOS Manager using the URL:port for the server
+        User authentication is done using the Linux PAM module
+
+----------------------------------------------------------------------
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+** Select the root directory for the ClioSoft installation.
+   Note: The installation of different releases/platforms will
+         be done in sub-directories of this root directory.
+
+   Example: <ROOT_INSTALL_DIR>/sos_7.10_linux64
+
+** Current directory  : /cadence/clio/sos_7.20.p1_linux64
+----------------------------------------------------------------------
+Root installation dir (<enter> = /cadence/clio): 
+----------------------------------------------------------------------
+** Please select type of installation:
+   1 - Full installation (default)
+   2 - Visual Design Diff (VDD) installation only
+----------------------------------------------------------------------
+Select installation type [1|2] (<enter> = 1)? 1
+----------------------------------------------------------------------
+** Select the directory where the server definitions are maintained.
+   Note: If this is the first time you are installing SOS,
+         the SERVERS directory will be created.
+
+** Current directory     : /cadence/clio/sos_7.20.p1_linux64
+   Root installation dir : /cadence/clio
+----------------------------------------------------------------------
+Server definition dir (<enter> = /cadence/clio/SERVERS7): 
+----------------------------------------------------------------------
+** Specify a name for a SUB-directory where the release for this 
+   platform should be installed. The sub-directory will be created
+   in the root directory for the ClioSoft installation.
+
+** Current directory     : /cadence/clio
+   Root installation dir : /cadence/clio
+   Server definition dir : /cadence/clio/SERVERS7
+
+** Release               : 7.20.p1
+   Platform              : linux64
+----------------------------------------------------------------------
+SUB-directory name to install release (<enter> = sos_7.20.p1_linux64): 
+----------------------------------------------------------------------
+** Confirm installation settings.
+
+** Release               : 7.20.p1
+   Platform              : linux64
+
+** Installation dir      : /cadence/clio/sos_7.20.p1_linux64
+   Server definition dir : /cadence/clio/SERVERS7
+----------------------------------------------------------------------
+Continue [y/n] (<enter> = y)? 
+** Decompressing the file '/cadence/clio/sos_7.20.p1_linux64/cliosoft.tar.gz'
+** Extracting files from the tarfile '/cadence/clio/sos_7.20.p1_linux64/cliosoft.tar'
+Checking of shared lib dependency for 'sos'    success
+Checking of shared lib dependency for 'soscmd'    success
+Checking of shared lib dependency for 'sosadmin'    success
+Checking of shared lib dependency for 'sostclsh'    success
+Checking of shared lib dependency for 'sospack'    success
+Checking of shared lib dependency for 'sosd'    success
+Checking of shared lib dependency for 'soscd'    success
+Checking of shared lib dependency for 'soslaunch'    success
+----------------------------------------------------------------------
+
+** Starting SOS Manager installation...
+     Decompressing...done
+     Setting up the environment...done
+----------------------------------------------------------------------
+** ClioSoft installation complete.
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+** To know more about sosmgr you can open the documentation by typing: sosmgr_docs
+
+----------------------------------------------------------------------
+Open the documentation [y/n] (enter = y)?y
+Opening SOS Manager documentation...
+[1] 10442
+
+
+----------------------------------------------------------------------
+** Configure SOS Manager web server.
+   SOS Manager web based interface requires a web server.
+   This requires information such as:
+       - Host to run the web server daemon
+       - Port the web server will listen to
+       - Symbolic name to identify this design center
+
+   You can configure the web server now or do it later by invoking:
+     sosmgr site setup
+
+   Note: The web server is not required if you only plan to use
+   the command line interface.
+----------------------------------------------------------------------
+Continue [y/n] (<enter> = y)? y
+WARNING 2024-05-15 00:34:41,062 json_actionable 10644 140058380478272 ERROR: Exception 'Invalid URL 'None/': No schema supplied. Perhaps you meant http://None/?' in <function Site.ping at 0x7f61cd037f70>
+ERROR: 'result'
+----------------------------------------------------------------------
+** The following screens will provide information about setting up
+** the user environment and also display the release notes.
+----------------------------------------------------------------------
+
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+** User setup
+----------------------------------------------------------------------
+All users must set the environment variable CLIOSOFT_DIR and
+and add $CLIOSOFT_DIR/bin to their search path.
+
+  If using C shell then add the following to the .cshrc file:
+    setenv CLIOSOFT_DIR /cadence/clio/sos_7.20.p1_linux64
+    set path = ($path $CLIOSOFT_DIR/bin)
+
+  If using Bourne shell then add the following to the .profile file:
+    export CLIOSOFT_DIR=/cadence/clio/sos_7.20.p1_linux64
+    PATH=$PATH:$CLIOSOFT_DIR/bin
+
+  NOTE: Please remove automounter artifacts like
+          /tmp_mnt
+        from the pathname.
+----------------------------------------------------------------------
+
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+** Cadence DFII setup
+----------------------------------------------------------------------
+To use SOS viaDFII with Cadence release 5.0 and higher you need to set your
+shared library search path env variable to include $CLIOSOFT_DIR/lib.
+----------------------------------------------------------------------
+  If using C shell then add the following to the .cshrc file:
+    setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${CLIOSOFT_DIR}/lib
+    setenv GDM_USE_SHLIB_ENVVAR 1
+
+  If using Bourne shell then add the following to the .profile file:
+    export GDM_USE_SHLIB_ENVVAR=1
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CLIOSOFT_DIR/lib
+----------------------------------------------------------------------
+
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+** Getting a license key.
+----------------------------------------------------------------------
+To run the programs you need to get a license key which requires you
+to email us the hostname and hostid of the machine on which you plan
+to run the license server.
+
+To get the hostname and hostid of the license server host:
+  rlogin to the host machine
+  Get the hostname by running: hostname
+  Get the hostid by running:   $CLIOSOFT_DIR/license/lmhostid
+
+If you plan to run the license server on THIS machine then:
+  Host name = faust02.physik.uni-bonn.de
+  Host id   = "0cc47aabed4f 000f1f664259"
+
+To request a license email the following information:
+  Host name
+  Host id
+  Products you are interested in
+  Your contact information including phone number to:
+    support@cliosoft.com
+----------------------------------------------------------------------
+
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+Display release notes and documentation
+----------------------------------------------------------------------
+
+Continue [y/n] (<enter> = y)? y
+----------------------------------------------------------------------
+** Invoking release notes and documentation in web browser.
+----------------------------------------------------------------------
+** Invoking xdg-open to open: /cadence/clio/sos_7.20.p1_linux64/docs/doc_index.html
+[1] 26260

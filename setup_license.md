@@ -48,3 +48,8 @@ Under Linux, the license server is started manually using the lmgrd executable. 
 ```
 % lmgrd –c key –l log
 ```
+
+# me?
+
+export CLIOSOFT_DIR=/cadence/clio/sos_7.20.p1_linux64
+export PATH="${CLIOSOFT_DIR}/bin:${PATH}"

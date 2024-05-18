@@ -110,6 +110,14 @@ HEP_PDK_TSMC28_HPCplusRF_v1.1__pdk-main.tar.gz
 Which unpack to one dir called `HEP_DesignKit_TSMC28_HPCplusRF_v1.1`.
 Then I simply copied it to the new directory via `cp -r HEP_DesignKit_TSMC28_HPCplusRF_v1.1/* /tools/kits/TSMC/28HPC+/2023_v1.1/`
 
+Run rsync to make sure directories are equal, then change permissions recursively:
+
+```
+cd /mnt/md127/tools/kits/TSMC/28HPC+
+rsync -av downloads/HEP_DesignKit_TSMC28_HPCplusRF_v1.1/ 2023_v1.1/
+sudo chown -R asiclab:tsmc28 /path/to/your/directory
+```
+
 
 
 ## 01.2024 28nm DRC v2.2 released -> installed 04.2024
@@ -128,8 +136,104 @@ git clone https://gitlab.cern.ch/asic-design-support/hep28/calibre-decks.git ./C
 
 But we don't have git access, so we did the following instead.
 
+```
+rsync -av /mnt/md127/tools/kits/TSMC/28HPC+/downloads/2024.02__tsmc28_calibre_decks_v2.2a/ /mnt/md127/tools/kits/TSMC/28HPC+/2023_v1.1/pdk/1P9M_5X1Y1Z1U_UT_AlRDL/Calibre/
+sudo chown -R asiclab:tsmc28 /mnt/md127/tools/kits/TSMC/28HPC+
+```
+
+## Spice models heirarchy
+
+In 28nm, toplevel.scs -> crn28ull_1d8_elk_v1d8_2p2_shrink0d9_embedded_usage.scs (.LIB TTMacro_MOS_MOSCAP) -> cln28ull_1d8_elk_v1d8_3.scs (TT_MOS_CAP)
 
 
+## 28nm forum notes (Nov 30th, 2023)
+
+Marco Andorono, CERN:
+- CERN IP blocks plus a distributed list of different institution shared IP designs
+- analog IP, digital soft IP (software like, rtl code, verified), hard digital IP (output of flow: layouts, good for highly optimized floor plan)
+- after 3-way NDA, and EDA tool sharing (one per IP) and CERN design sharing letter (one per institute)
+- IP block datasheet template
+- IP block design doesn't stop with layout, it need documentation and files for using in digital-on-top flow (LIB, abstract)
+- Abstract generation for analog block will haver a user guide soon
+- Lib file has timing arcs, power, etc. Liberate AMS generator can automate this.
+- OD/PO dummy fill should be done at block level, there is a script for this
+- Latch up violations should be avoided using guard rings
+- Triple guard rings are recommended for blocks, and between power domains. Using LVS logical boundary
+
+Frank Bandi, CERN:
+- Analog blocks: Bandgap, 8bit ADC, SLVS TX/RX, TID monitoring, Radhard ESD and CMOS IO pads (from Sofics)
+- Integrated DC-DC converters, LDOs, shunt LDOs
+- 14b Sigma delta ADC, Fin 20kHz, for monitoring
+- Fast and slow rail-to-rail
+
+Adam Klekotko and Stefan Biereigel, KU Leuven/CERN:
+- DART28 25.6 Gbps per lane, NRZ, four lanes.
+- High Speed Transmitter macro block:
+	- 12.8 Ghz all digital PLL w/ LC oscillator
+	- TMR high-speed serializer (20:1): uses (True single phase clocking) TSPC logic dynamic circuits, storing data in node capacitance. Faster than static circuits.
+	- pre-emphasis
+	- Dual-use driver (DUDE) for silicon photonics ring modulator or 100ohm differential transmission line
+- Clock coming from PLL needed duty-cycle correct, and balancing of even-odd jitter (EOJ)
+- Single lane operation, 120mW per channel. Driver > Serializer > All other blocks
+- HST block has RTL (divider and low speed serializer) and Full custom (high-speed serlizer and output) part
+- Liberate AMS only captures interfaces timing, long run time,
+- Mixed signal simulation takes a long time to run
+- STA flow is best! Load OA schematic/layout into innovus, each block and heirachy is characterized with .lib, and then in innovus you can simulate
+
+
+## Review of PDK Docs:
+
+Some earlier discussion of 28nm:
+
+[](https://agenda.infn.it/event/12813/contributions/16317/attachments/11832/13318/PLL.pdf)
+
+[](https://agenda.infn.it/event/12813/contributions/16303/attachments/11836/13322/FullCustom.pdf)
+
+full custom layout, digital pll, 
+
+>   The “very essential” rules for design in 28 nm are:
+    Design Rule #1: Use only transistors for your design
+    Design Rule #2: If you need passive components, then go back to Rule #1
+
+
+All document are found in prefix: `/tools/kits/TSMC/CRN28HPC+/HEP_DesignKit_TSMC28_HPCplusRF_v1.0/pdk/1P9M_5X1Y1Z1U_UT_AlRDL/cdsPDK/PDK_doc/TSMC_DOC_WM/`
+
+- `PDK/Application_note_for_customized_cells.pdf`: instructions on adding 3rd party IP into TSMC PDK, by streaming in layouts, assigning pins
+- `PDK/N28_APP_of_MonteCarlo_statistical_simulation.pdf`: MonteCarlo is done by changing `top_tt` library for `top_globalmc_localmc` model cards of transistors. Is this do-able with Spectre natively, or do we need 'ADE XL' as a front end?
+- `PDK/parasitic_rc_UserGuide.pdf`: Raphael 2D and 3D parasitic models for PEX. (Actually in pdk, under do-not-use) See: ![](https://cseweb.ucsd.edu/classes/fa12/cse291-c/slides/L5extract.pdf)
+- `PDK/tsmcN28MSOAEnablement.pdf`: summarizes metal stack up, MSOA (mixed signal open access) explanation
+- `PDK/tsmc_PDK_usage_guide.pdf`: I see that I need to copy `display.drf` and `ln -s` link in `models` and `steam` to my `tsmc28` init directory.
+- `model/2d5 (or 1d8) /cln28ull_v1d0_2_usage_guide.pdf`: And finally, the master document for transitor models. Version 2d5 vs 1d8 folder doesn't matter
+  - primitive MOSFET models have been replaced with macro model (compiled TMI shared library)
+  - core transistor is BSIM6 version BSIMBULK binary model, surrounding layout effect are macro
+  - diodes use standard spice model
+  - resistors, mom varactors, and fmom use TSMC proprietary models
+  - You should see a `** TMI Share Library Version XXXXXX` in the sim log, if not there may be problem
+  - SPICE netlist difference
+    ```
+    For primitive model:
+    M1 d g s b nch l=30n w=0.6u
+    .print dc I1(M1)
+    
+    For macro model:
+    X1 d g s b nch_mac l=30n w=0.6u
+    .print dc I1(X1.main)
+    ```
+  - Layout effects are modeled in either SPICE model or macro surroundings
+  - OD rouding, poly rounding, contact placement, and edge finger LOD are in macro
+  - LOD, WPE, PSE (poly space effect), OSE (OD to OD space effect), MBE (metal boundary effect), RDR
+  - In BSIM6 there are Instance Parameters which are set and passed in the netlist, and there are model parameters which are part of the compiled model binary, and don't change from device to device.
+  - How are parameters passed to the macro model? Perhaps it relies on the same input instance parameters that the core BSIM model uses?
+  - RDR = restrictive design rules. Should double check these devices, if the length is under 100nm.
+  - There is a 0.9 shrinkage in the "model usage files", so don't add it in netlists. It comes from the 'geoshrink' or in Spectre called the `.param scalefactor`. Therefore don't 
+  - There are four modes for variation simulation: trad. total corner, global corner, local monte carlo, global+local monte carlo
+  - Variation models are selected with high-level `.lib` statements, check slides 36-40 for instructions
+  - Full MC (Case 4) give most silicon accuracy, but is expensive. Instead use global corner (Case 2) for digital long path circuit, as global var dominates.
+  - And for analog design, mismatch matters, so do Case 2+MC or just Case 3 which includes MC by default
+  - you can run mismatch only for key devices, if designer
+  - `soa_warn=yes` will give warnings for over voltage
+  - `.lib 'usage.l' noise_mc` and related command will enable flicker noise models, which are independant of device corner
+  
 
 
 # TSMC 65nm
@@ -265,6 +369,22 @@ TSMC65_CERN_V1.7A_1_pre8.0_2017_digital12t.tar.gz
 ```
 
 - Installed this version V1.7A_1 65nm PDK into fresh `/tools/kits/TSMC/65LP/2024`
+
+
+## 65nm core and TOX devices
+
+* For TSMC 65: 1.2V was core, IO voltages 1.8, 2.5, 3.3 V
+* Core devices have a thinner oxide, which is good for TID hardness
+    * we don't want to use IO devices, due to thicker oxide
+    * oxide thickness is a property of geometry, and uses a seperate mask
+* On the other hand, transistor thresholds flavors are not geometry determined but instead by doping profiles.
+    * you are limited by 
+* check CERN PDK, to understand which flavors of thresholda are compatible -> every additional threshold costs money
+- Requesting runs for Cern needs to be done 4 months in advance. Today is ~Aug 1.
+    - 4 months from Aug 1 is Nov 30 MPW
+    - 4.5 months from Aug 1 is Dec 15 MPW
+    - 6 months from Aug 1 is Feb 2 mini@sic
+    - If I want any of these next two runs, I should send my email application to CERN tomorrow.
 
 
 # IHP 130nm

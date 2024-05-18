@@ -391,3 +391,8 @@ tmpfs                            tmpfs     6.3G     0  6.3G   0% /run/user/0
 ```
 
 In the link above, we could see again that the root directory got full.
+
+
+
+
+ssh -L 20022:micdmsrv07:20022 <user>@lxplus.cern.ch

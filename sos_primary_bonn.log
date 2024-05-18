@@ -1,0 +1,1427 @@
+Starting SOS Primary Server...
+  note: ** Starting primary server 'BONN' (7.05.p6) Build Number '1663' from '/cadence/clio/sos_7.05.p6_linux64' on host 'faust02.physik.uni-bonn.de' with process id '17225'
+  note: ** Hosting projects:
+  CDR53B: /cadence/clio/SERVERS7/LOCAL/BONN.rep/CDR53B
+  CoRDIA: /cadence/clio/SERVERS7/LOCAL/BONN.rep/CoRDIA
+  DHPT12B: /cadence/clio/SERVERS7/LOCAL/BONN.rep/DHPT12B
+  DMC65: /cadence/clio/SERVERS7/LOCAL/BONN.rep/DMC65
+  EPC: /cadence/clio/SERVERS7/LOCAL/BONN.rep/EPC
+  LF: /cadence/clio/SERVERS7/LOCAL/BONN.rep/LF
+  LFB01: /cadence/clio/SERVERS7/LOCAL/BONN.rep/LFB01
+  LFCPIX: /cadence/clio/SERVERS7/LOCAL/BONN.rep/LFCPIX
+  LFpassive: /cadence/clio/SERVERS7/LOCAL/BONN.rep/LFpassive
+  TJMONOPIX: /cadence/clio/SERVERS7/LOCAL/BONN.rep/TJMONOPIX
+  TSMC65LP: /cadence/clio/SERVERS7/LOCAL/BONN.rep/TSMC65LP
+  note: ** Permission of pg_data directory is 700
+
+  note: ** -----------------------------------------------------------------------
+  note: ** Disk info:/cadence/clio/SERVERS7/LOCAL/BONN.rep
+  note: ** Disk available: 26523.7 GB
+  note: ** -----------------------------------------------------------------------
+  note: ** Min disk size:100 GB, Warn disk size:200 GB, Critical disk size:10 GB, Disk check timer:10 mins
+  info: ** Updating DB schema for project: TJMONOPIX, this may take a while....
+  info: ** Updating DB TJMONOPIX........... 1%
+  info: ** Updating DB TJMONOPIX........... 2%
+  info: ** Updating DB TJMONOPIX........... 3%
+  info: ** Updating DB TJMONOPIX........... 4%
+  info: ** Updating DB TJMONOPIX........... 5%
+  info: ** Updating DB TJMONOPIX........... 6%
+  info: ** Updating DB TJMONOPIX........... 7%
+  info: ** Updating DB TJMONOPIX........... 8%
+  info: ** Updating DB TJMONOPIX........... 9%
+  info: ** Updating DB TJMONOPIX........... 10%
+  info: ** Updating DB TJMONOPIX........... 11%
+  info: ** Updating DB TJMONOPIX........... 12%
+  info: ** Updating DB TJMONOPIX........... 13%
+  info: ** Updating DB TJMONOPIX........... 13%
+  info: ** Updating DB TJMONOPIX........... 14%
+  info: ** Updating DB TJMONOPIX........... 15%
+  info: ** Updating DB schema for project: LFCPIX, this may take a while....
+  info: ** Updating DB TJMONOPIX........... 16%
+  info: ** Updating DB TJMONOPIX........... 17%
+  info: ** Updating DB TJMONOPIX........... 18%
+  info: ** Updating DB LFCPIX.............. 1%
+  info: ** Updating DB LFCPIX.............. 2%
+  info: ** Updating DB LFCPIX.............. 3%
+  info: ** Updating DB LFCPIX.............. 4%
+  info: ** Updating DB LFCPIX.............. 5%
+  info: ** Updating DB LFCPIX.............. 6%
+  info: ** Updating DB LFCPIX.............. 7%
+  info: ** Updating DB LFCPIX.............. 8%
+  info: ** Updating DB LFCPIX.............. 9%
+  info: ** Updating DB LFCPIX.............. 10%
+  info: ** Updating DB LFCPIX.............. 11%
+  info: ** Updating DB LFCPIX.............. 12%
+  info: ** Updating DB LFCPIX.............. 13%
+  info: ** Updating DB schema for project: LFpassive, this may take a while....
+  info: ** Updating DB LFCPIX.............. 13%
+  info: ** Updating DB LFCPIX.............. 14%
+  info: ** Updating DB LFCPIX.............. 15%
+  info: ** Updating DB LFCPIX.............. 16%
+  info: ** Updating DB LFCPIX.............. 17%
+  info: ** Updating DB LFCPIX.............. 18%
+  info: ** Updating DB schema for project: TSMC65LP, this may take a while....
+  info: ** Updating DB LFpassive........... 1%
+  info: ** Updating DB LFpassive........... 2%
+  info: ** Updating DB TSMC65LP............ 1%
+  info: ** Updating DB TSMC65LP............ 2%
+  info: ** Updating DB LFpassive........... 3%
+  info: ** Updating DB LFpassive........... 4%
+  info: ** Updating DB LFpassive........... 5%
+  info: ** Updating DB LFpassive........... 6%
+  info: ** Updating DB TSMC65LP............ 3%
+  info: ** Updating DB LFpassive........... 7%
+  info: ** Updating DB TSMC65LP............ 4%
+  info: ** Updating DB LFpassive........... 8%
+  info: ** Updating DB LFpassive........... 9%
+  info: ** Updating DB TSMC65LP............ 5%
+  info: ** Updating DB LFpassive........... 10%
+  info: ** Updating DB LFpassive........... 11%
+  info: ** Updating DB TSMC65LP............ 6%
+  info: ** Updating DB LFpassive........... 12%
+  info: ** Updating DB LFpassive........... 13%
+  info: ** Updating DB schema for project: LFB01, this may take a while....
+  info: ** Updating DB TSMC65LP............ 7%
+  info: ** Updating DB TSMC65LP............ 8%
+  info: ** Updating DB TSMC65LP............ 9%
+  info: ** Updating DB LFpassive........... 13%
+  info: ** Updating DB LFpassive........... 14%
+  info: ** Updating DB LFpassive........... 15%
+  info: ** Updating DB TSMC65LP............ 10%
+  info: ** Updating DB TSMC65LP............ 11%
+  info: ** Updating DB TSMC65LP............ 12%
+  info: ** Updating DB LFpassive........... 16%
+  info: ** Updating DB TSMC65LP............ 13%
+  info: ** Updating DB LFpassive........... 17%
+  info: ** Updating DB LFpassive........... 18%
+  info: ** Updating DB TSMC65LP............ 13%
+  info: ** Updating DB TSMC65LP............ 14%
+  info: ** Updating DB TSMC65LP............ 15%
+  info: ** Updating DB TSMC65LP............ 16%
+  info: ** Updating DB TSMC65LP............ 17%
+  info: ** Updating DB TSMC65LP............ 18%
+  info: ** Updating DB LFB01............... 1%
+  info: ** Updating DB LFB01............... 2%
+  info: ** Updating DB LFB01............... 3%
+  info: ** Updating DB LFB01............... 4%
+  info: ** Updating DB LFB01............... 5%
+  info: ** Updating DB LFB01............... 6%
+  info: ** Updating DB LFB01............... 7%
+  info: ** Updating DB LFB01............... 8%
+  info: ** Updating DB LFB01............... 9%
+  info: ** Updating DB LFB01............... 10%
+  info: ** Updating DB LFB01............... 11%
+  info: ** Updating DB LFB01............... 12%
+  info: ** Updating DB LFB01............... 13%
+  info: ** Updating DB LFB01............... 13%
+  info: ** Updating DB LFB01............... 14%
+  info: ** Updating DB LFB01............... 15%
+  info: ** Updating DB LFB01............... 16%
+  info: ** Updating DB LFB01............... 17%
+  info: ** Updating DB LFB01............... 18%
+  info: ** Updating DB TJMONOPIX........... 19%
+  info: ** Updating DB TJMONOPIX........... 20%
+  info: ** Updating DB TJMONOPIX........... 21%
+  info: ** Updating DB TJMONOPIX........... 22%
+  info: ** Updating DB TJMONOPIX........... 23%
+  info: ** Updating DB TJMONOPIX........... 24%
+  info: ** Updating DB TJMONOPIX........... 25%
+  info: ** Updating DB TJMONOPIX........... 26%
+  info: ** Updating DB TJMONOPIX........... 27%
+  info: ** Updating DB TJMONOPIX........... 28%
+  info: ** Updating DB TJMONOPIX........... 29%
+  info: ** Updating DB TJMONOPIX........... 30%
+  info: ** Updating DB TJMONOPIX........... 31%
+  info: ** Updating DB TJMONOPIX........... 32%
+  info: ** Updating DB TJMONOPIX........... 33%
+  info: ** Updating DB TJMONOPIX........... 34%
+  info: ** Updating DB TJMONOPIX........... 35%
+  info: ** Updating DB TJMONOPIX........... 36%
+  info: ** Updating DB TJMONOPIX........... 37%
+  info: ** Updating DB TJMONOPIX........... 38%
+  info: ** Updating DB TJMONOPIX........... 38%
+  info: ** Updating DB TJMONOPIX........... 39%
+  info: ** Updating DB TJMONOPIX........... 40%
+  info: ** Updating DB TJMONOPIX........... 41%
+  info: ** Updating DB TJMONOPIX........... 42%
+  info: ** Updating DB TJMONOPIX........... 43%
+  info: ** Updating DB TJMONOPIX........... 44%
+  info: ** Updating DB TJMONOPIX........... 45%
+  info: ** Updating DB TJMONOPIX........... 46%
+  info: ** Updating DB TJMONOPIX........... 47%
+  info: ** Updating DB TJMONOPIX........... 48%
+  info: ** Updating DB TJMONOPIX........... 49%
+  info: ** Updating DB TJMONOPIX........... 50%
+  info: ** Updating DB TJMONOPIX........... 51%
+  info: ** Updating DB TJMONOPIX........... 52%
+  info: ** Updating DB TJMONOPIX........... 53%
+  info: ** Updating DB TJMONOPIX........... 54%
+  info: ** Updating DB TJMONOPIX........... 55%
+  info: ** Updating DB TJMONOPIX........... 56%
+  info: ** Updating DB TJMONOPIX........... 57%
+  info: ** Updating DB TSMC65LP............ 19%
+  info: ** Updating DB TJMONOPIX........... 58%
+  info: ** Updating DB TSMC65LP............ 20%
+  info: ** Updating DB TSMC65LP............ 21%
+  info: ** Updating DB TSMC65LP............ 22%
+  info: ** Updating DB TSMC65LP............ 23%
+  info: ** Updating DB TSMC65LP............ 24%
+  info: ** Updating DB TJMONOPIX........... 59%
+  info: ** Updating DB TSMC65LP............ 25%
+  info: ** Updating DB TSMC65LP............ 26%
+  info: ** Updating DB TSMC65LP............ 27%
+  info: ** Updating DB TSMC65LP............ 28%
+  info: ** Updating DB TJMONOPIX........... 60%
+  info: ** Updating DB TSMC65LP............ 29%
+  info: ** Updating DB TSMC65LP............ 30%
+  info: ** Updating DB TJMONOPIX........... 61%
+  info: ** Updating DB TJMONOPIX........... 62%
+  info: ** Updating DB TJMONOPIX........... 63%
+  info: ** Updating DB LFpassive........... 19%
+  info: ** Updating DB LFpassive........... 20%
+  info: ** Updating DB LFpassive........... 21%
+  info: ** Updating DB LFpassive........... 22%
+  info: ** Updating DB LFpassive........... 23%
+  info: ** Updating DB LFpassive........... 24%
+  info: ** Updating DB LFpassive........... 25%
+  info: ** Updating DB LFpassive........... 26%
+  info: ** Updating DB LFpassive........... 27%
+  info: ** Updating DB TSMC65LP............ 31%
+  info: ** Updating DB LFpassive........... 28%
+  info: ** Updating DB LFpassive........... 29%
+  info: ** Updating DB LFpassive........... 30%
+  info: ** Updating DB TSMC65LP............ 32%
+  info: ** Updating DB LFCPIX.............. 19%
+  info: ** Updating DB TSMC65LP............ 33%
+  info: ** Updating DB TJMONOPIX........... 63%
+  info: ** Updating DB TSMC65LP............ 34%
+  info: ** Updating DB TSMC65LP............ 35%
+  info: ** Updating DB TSMC65LP............ 36%
+  info: ** Updating DB TSMC65LP............ 37%
+  info: ** Updating DB TSMC65LP............ 38%
+  info: ** Updating DB TSMC65LP............ 38%
+  info: ** Updating DB LFCPIX.............. 20%
+  info: ** Updating DB LFCPIX.............. 21%
+  info: ** Updating DB LFCPIX.............. 22%
+  info: ** Updating DB LFCPIX.............. 23%
+  info: ** Updating DB LFCPIX.............. 24%
+  info: ** Updating DB TSMC65LP............ 39%
+  info: ** Updating DB TSMC65LP............ 40%
+  info: ** Updating DB TSMC65LP............ 41%
+  info: ** Updating DB TSMC65LP............ 42%
+  info: ** Updating DB TSMC65LP............ 43%
+  info: ** Updating DB LFCPIX.............. 25%
+  info: ** Updating DB LFCPIX.............. 26%
+  info: ** Updating DB LFCPIX.............. 27%
+  info: ** Updating DB TSMC65LP............ 44%
+  info: ** Updating DB TSMC65LP............ 45%
+  info: ** Updating DB TSMC65LP............ 46%
+  info: ** Updating DB LFCPIX.............. 28%
+  info: ** Updating DB TSMC65LP............ 47%
+  info: ** Updating DB TSMC65LP............ 48%
+  info: ** Updating DB LFCPIX.............. 29%
+  info: ** Updating DB LFCPIX.............. 30%
+  info: ** Updating DB TSMC65LP............ 49%
+  info: ** Updating DB TJMONOPIX........... 64%
+  info: ** Updating DB TJMONOPIX........... 65%
+  info: ** Updating DB TJMONOPIX........... 66%
+  info: ** Updating DB TSMC65LP............ 50%
+  info: ** Updating DB TJMONOPIX........... 67%
+  info: ** Updating DB TJMONOPIX........... 68%
+  info: ** Updating DB TSMC65LP............ 51%
+  info: ** Updating DB TJMONOPIX........... 69%
+  info: ** Updating DB TJMONOPIX........... 70%
+  info: ** Updating DB TJMONOPIX........... 71%
+  info: ** Updating DB TJMONOPIX........... 72%
+  info: ** Updating DB TJMONOPIX........... 73%
+  info: ** Updating DB TSMC65LP............ 52%
+  info: ** Updating DB TSMC65LP............ 53%
+  info: ** Updating DB TJMONOPIX........... 74%
+  info: ** Updating DB TJMONOPIX........... 75%
+  info: ** Updating DB TJMONOPIX........... 76%
+  info: ** Updating DB TJMONOPIX........... 77%
+  info: ** Updating DB TJMONOPIX........... 78%
+  info: ** Updating DB TJMONOPIX........... 79%
+  info: ** Updating DB TJMONOPIX........... 80%
+  info: ** Updating DB TJMONOPIX........... 81%
+  info: ** Updating DB TSMC65LP............ 54%
+  info: ** Updating DB TSMC65LP............ 55%
+  info: ** Updating DB TJMONOPIX........... 82%
+  info: ** Updating DB TJMONOPIX........... 83%
+  info: ** Updating DB TJMONOPIX........... 84%
+  info: ** Updating DB TSMC65LP............ 56%
+  info: ** Updating DB TJMONOPIX........... 85%
+  info: ** Updating DB TJMONOPIX........... 86%
+  info: ** Updating DB TJMONOPIX........... 87%
+  info: ** Updating DB TJMONOPIX........... 88%
+  info: ** Updating DB TJMONOPIX........... 88%
+  info: ** Updating DB TSMC65LP............ 57%
+  info: ** Updating DB TJMONOPIX........... 89%
+  info: ** Updating DB TSMC65LP............ 58%
+  info: ** Updating DB TSMC65LP............ 59%
+  info: ** Updating DB TJMONOPIX........... 90%
+  info: ** Updating DB TJMONOPIX........... 91%
+  info: ** Updating DB TSMC65LP............ 60%
+  info: ** Updating DB LFB01............... 19%
+  info: ** Updating DB TJMONOPIX........... 92%
+  info: ** Updating DB TSMC65LP............ 61%
+  info: ** Updating DB TJMONOPIX........... 93%
+  info: ** Updating DB LFB01............... 20%
+  info: ** Updating DB TSMC65LP............ 62%
+  info: ** Updating DB LFB01............... 21%
+  info: ** Updating DB LFCPIX.............. 31%
+  info: ** Updating DB LFB01............... 22%
+  info: ** Updating DB LFB01............... 23%
+  info: ** Updating DB LFB01............... 24%
+  info: ** Updating DB TSMC65LP............ 63%
+  info: ** Updating DB LFCPIX.............. 32%
+  info: ** Updating DB LFpassive........... 31%
+  info: ** Updating DB LFB01............... 25%
+  info: ** Updating DB LFB01............... 26%
+  info: ** Updating DB LFB01............... 27%
+  info: ** Updating DB LFCPIX.............. 33%
+  info: ** Updating DB LFpassive........... 32%
+  info: ** Updating DB LFCPIX.............. 34%
+  info: ** Updating DB LFCPIX.............. 35%
+  info: ** Updating DB LFCPIX.............. 36%
+  info: ** Updating DB LFCPIX.............. 37%
+  info: ** Updating DB LFCPIX.............. 38%
+  info: ** Updating DB LFB01............... 28%
+  info: ** Updating DB LFCPIX.............. 38%
+  info: ** Updating DB LFB01............... 29%
+  info: ** Updating DB LFB01............... 30%
+  info: ** Updating DB TSMC65LP............ 63%
+  info: ** Updating DB LFCPIX.............. 39%
+  info: ** Updating DB LFpassive........... 33%
+  info: ** Updating DB TSMC65LP............ 64%
+  info: ** Updating DB TSMC65LP............ 65%
+  info: ** Updating DB LFpassive........... 34%
+  info: ** Updating DB LFpassive........... 35%
+  info: ** Updating DB TSMC65LP............ 66%
+  info: ** Updating DB LFpassive........... 36%
+  info: ** Updating DB LFpassive........... 37%
+  info: ** Updating DB LFpassive........... 38%
+  info: ** Updating DB LFpassive........... 38%
+  info: ** Updating DB TSMC65LP............ 67%
+  info: ** Updating DB TSMC65LP............ 68%
+  info: ** Updating DB LFpassive........... 39%
+  info: ** Updating DB LFpassive........... 40%
+  info: ** Updating DB LFpassive........... 41%
+  info: ** Updating DB LFpassive........... 42%
+  info: ** Updating DB LFpassive........... 43%
+  info: ** Updating DB LFCPIX.............. 40%
+  info: ** Updating DB LFCPIX.............. 41%
+  info: ** Updating DB LFCPIX.............. 42%
+  info: ** Updating DB LFCPIX.............. 43%
+  info: ** Updating DB LFpassive........... 44%
+  info: ** Updating DB LFpassive........... 45%
+  info: ** Updating DB LFpassive........... 46%
+  info: ** Updating DB LFCPIX.............. 44%
+  info: ** Updating DB LFCPIX.............. 45%
+  info: ** Updating DB LFCPIX.............. 46%
+  info: ** Updating DB TSMC65LP............ 69%
+  info: ** Updating DB LFpassive........... 47%
+  info: ** Updating DB LFpassive........... 48%
+  info: ** Updating DB TSMC65LP............ 70%
+  info: ** Updating DB TSMC65LP............ 71%
+  info: ** Updating DB TSMC65LP............ 72%
+  info: ** Updating DB LFCPIX.............. 47%
+  info: ** Updating DB LFCPIX.............. 48%
+  info: ** Updating DB TSMC65LP............ 73%
+  info: ** Updating DB TSMC65LP............ 74%
+  info: ** Updating DB TSMC65LP............ 75%
+  info: ** Updating DB TSMC65LP............ 76%
+  info: ** Updating DB TSMC65LP............ 77%
+  info: ** Updating DB LFpassive........... 49%
+  info: ** Updating DB TSMC65LP............ 78%
+  info: ** Updating DB LFCPIX.............. 49%
+  info: ** Updating DB TSMC65LP............ 79%
+  info: ** Updating DB TSMC65LP............ 80%
+  info: ** Updating DB TSMC65LP............ 81%
+  info: ** Updating DB TSMC65LP............ 82%
+  info: ** Updating DB TSMC65LP............ 83%
+  info: ** Updating DB TSMC65LP............ 84%
+  info: ** Updating DB TSMC65LP............ 85%
+  info: ** Updating DB TSMC65LP............ 86%
+  info: ** Updating DB TSMC65LP............ 87%
+  info: ** Updating DB TSMC65LP............ 88%
+  info: ** Updating DB LFpassive........... 50%
+  info: ** Updating DB TSMC65LP............ 88%
+  info: ** Updating DB TSMC65LP............ 89%
+  info: ** Updating DB TSMC65LP............ 90%
+  info: ** Updating DB TSMC65LP............ 91%
+  info: ** Updating DB TSMC65LP............ 92%
+  info: ** Updating DB LFpassive........... 51%
+  info: ** Updating DB TSMC65LP............ 93%
+  info: ** Updating DB LFCPIX.............. 50%
+  info: ** Updating DB LFCPIX.............. 51%
+  info: ** Updating DB LFpassive........... 52%
+  info: ** Updating DB LFpassive........... 53%
+  info: ** Updating DB LFCPIX.............. 52%
+  info: ** Updating DB LFCPIX.............. 53%
+  info: ** Updating DB LFpassive........... 54%
+  info: ** Updating DB LFpassive........... 55%
+  info: ** Updating DB LFpassive........... 56%
+  info: ** Updating DB LFpassive........... 57%
+  info: ** Updating DB LFCPIX.............. 54%
+  info: ** Updating DB LFCPIX.............. 55%
+  info: ** Updating DB LFCPIX.............. 56%
+  info: ** Updating DB LFpassive........... 58%
+  info: ** Updating DB LFCPIX.............. 57%
+  info: ** Updating DB LFpassive........... 59%
+  info: ** Updating DB LFB01............... 31%
+  info: ** Updating DB LFCPIX.............. 58%
+  info: ** Updating DB LFB01............... 32%
+  info: ** Updating DB LFCPIX.............. 59%
+  info: ** Updating DB LFCPIX.............. 60%
+  info: ** Updating DB LFB01............... 33%
+  info: ** Updating DB LFB01............... 34%
+  info: ** Updating DB LFB01............... 35%
+  info: ** Updating DB LFB01............... 36%
+  info: ** Updating DB LFB01............... 37%
+  info: ** Updating DB LFCPIX.............. 61%
+  info: ** Updating DB LFB01............... 38%
+  info: ** Updating DB LFB01............... 38%
+  info: ** Updating DB LFCPIX.............. 62%
+  info: ** Updating DB LFB01............... 39%
+  info: ** Updating DB LFCPIX.............. 63%
+  info: ** Updating DB LFCPIX.............. 63%
+  info: ** Updating DB LFpassive........... 60%
+  info: ** Updating DB LFB01............... 40%
+  info: ** Updating DB LFB01............... 41%
+  info: ** Updating DB LFB01............... 42%
+  info: ** Updating DB LFCPIX.............. 64%
+  info: ** Updating DB LFB01............... 43%
+  info: ** Updating DB LFCPIX.............. 65%
+  info: ** Updating DB LFCPIX.............. 66%
+  info: ** Updating DB LFCPIX.............. 67%
+  info: ** Updating DB LFB01............... 44%
+  info: ** Updating DB LFB01............... 45%
+  info: ** Updating DB LFB01............... 46%
+  info: ** Updating DB LFpassive........... 61%
+  info: ** Updating DB LFCPIX.............. 68%
+  info: ** Updating DB LFCPIX.............. 69%
+  info: ** Updating DB LFCPIX.............. 70%
+  info: ** Updating DB LFCPIX.............. 71%
+  info: ** Updating DB LFCPIX.............. 72%
+  info: ** Updating DB LFB01............... 47%
+  info: ** Updating DB LFpassive........... 62%
+  info: ** Updating DB LFB01............... 48%
+  info: ** Updating DB LFCPIX.............. 73%
+  info: ** Updating DB LFCPIX.............. 74%
+  info: ** Updating DB LFCPIX.............. 75%
+  info: ** Updating DB LFCPIX.............. 76%
+  info: ** Updating DB LFCPIX.............. 77%
+  info: ** Updating DB LFCPIX.............. 78%
+  info: ** Updating DB LFCPIX.............. 79%
+  info: ** Updating DB LFCPIX.............. 80%
+  info: ** Updating DB LFCPIX.............. 81%
+  info: ** Updating DB LFCPIX.............. 82%
+  info: ** Updating DB LFCPIX.............. 83%
+  info: ** Updating DB LFCPIX.............. 84%
+  info: ** Updating DB LFCPIX.............. 85%
+  info: ** Updating DB LFCPIX.............. 86%
+  info: ** Updating DB LFpassive........... 63%
+  info: ** Updating DB LFCPIX.............. 87%
+  info: ** Updating DB LFCPIX.............. 88%
+  info: ** Updating DB LFCPIX.............. 88%
+  info: ** Updating DB LFCPIX.............. 89%
+  info: ** Updating DB LFB01............... 49%
+  info: ** Updating DB LFCPIX.............. 90%
+  info: ** Updating DB LFCPIX.............. 91%
+  info: ** Updating DB LFCPIX.............. 92%
+  info: ** Updating DB LFCPIX.............. 93%
+  info: ** Updating DB LFB01............... 50%
+  info: ** Updating DB LFB01............... 51%
+  info: ** Updating DB LFB01............... 52%
+  info: ** Updating DB LFB01............... 53%
+  info: ** Updating DB LFB01............... 54%
+  info: ** Updating DB LFB01............... 55%
+  info: ** Updating DB LFpassive........... 63%
+  info: ** Updating DB LFB01............... 56%
+  info: ** Updating DB LFpassive........... 64%
+  info: ** Updating DB LFB01............... 57%
+  info: ** Updating DB LFpassive........... 65%
+  info: ** Updating DB LFpassive........... 66%
+  info: ** Updating DB LFpassive........... 67%
+  info: ** Updating DB LFB01............... 58%
+  info: ** Updating DB LFB01............... 59%
+  info: ** Updating DB LFpassive........... 68%
+  info: ** Updating DB LFB01............... 60%
+  info: ** Updating DB LFB01............... 61%
+  info: ** Updating DB LFpassive........... 69%
+  info: ** Updating DB LFpassive........... 70%
+  info: ** Updating DB LFpassive........... 71%
+  info: ** Updating DB LFB01............... 62%
+  info: ** Updating DB LFpassive........... 72%
+  info: ** Updating DB LFpassive........... 73%
+  info: ** Updating DB LFpassive........... 74%
+  info: ** Updating DB LFB01............... 63%
+  info: ** Updating DB LFpassive........... 75%
+  info: ** Updating DB LFpassive........... 76%
+  info: ** Updating DB LFpassive........... 77%
+  info: ** Updating DB LFpassive........... 78%
+  info: ** Updating DB LFpassive........... 79%
+  info: ** Updating DB LFB01............... 63%
+  info: ** Updating DB LFpassive........... 80%
+  info: ** Updating DB LFB01............... 64%
+  info: ** Updating DB LFpassive........... 81%
+  info: ** Updating DB LFB01............... 65%
+  info: ** Updating DB LFB01............... 66%
+  info: ** Updating DB LFB01............... 67%
+  info: ** Updating DB LFpassive........... 82%
+  info: ** Updating DB LFpassive........... 83%
+  info: ** Updating DB LFpassive........... 84%
+  info: ** Updating DB LFpassive........... 85%
+  info: ** Updating DB LFpassive........... 86%
+  info: ** Updating DB LFpassive........... 87%
+  info: ** Updating DB LFpassive........... 88%
+  info: ** Updating DB LFpassive........... 88%
+  info: ** Updating DB LFpassive........... 89%
+  info: ** Updating DB LFpassive........... 90%
+  info: ** Updating DB LFpassive........... 91%
+  info: ** Updating DB LFpassive........... 92%
+  info: ** Updating DB LFpassive........... 93%
+  info: ** Updating DB LFB01............... 68%
+  info: ** Updating DB LFB01............... 69%
+  info: ** Updating DB LFB01............... 70%
+  info: ** Updating DB LFB01............... 71%
+  info: ** Updating DB LFB01............... 72%
+  info: ** Updating DB LFB01............... 73%
+  info: ** Updating DB LFB01............... 74%
+  info: ** Updating DB LFB01............... 75%
+  info: ** Updating DB LFB01............... 76%
+  info: ** Updating DB LFB01............... 77%
+  info: ** Updating DB LFB01............... 78%
+  info: ** Updating DB LFB01............... 79%
+  info: ** Updating DB LFB01............... 80%
+  info: ** Updating DB LFB01............... 81%
+  info: ** Updating DB LFB01............... 82%
+  info: ** Updating DB LFB01............... 83%
+  info: ** Updating DB LFB01............... 84%
+  info: ** Updating DB LFB01............... 85%
+  info: ** Updating DB LFB01............... 86%
+  info: ** Updating DB LFB01............... 87%
+  info: ** Updating DB LFB01............... 88%
+  info: ** Updating DB LFB01............... 88%
+  info: ** Updating DB LFB01............... 89%
+  info: ** Updating DB LFB01............... 90%
+  info: ** Updating DB LFB01............... 91%
+  info: ** Updating DB LFB01............... 92%
+  info: ** Updating DB LFB01............... 93%
+  info: ** Updating DB TJMONOPIX........... 100%
+  note: ** Started reading config file for project 'TJMONOPIX' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/TJMONOPIX/setup/sosd.cfg
+
+  info: ** Updating DB TSMC65LP............ 100%
+  note: ** Started reading config file for project 'TSMC65LP' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/TSMC65LP/setup/sosd.cfg
+
+  info: ** Updating DB LFCPIX.............. 100%
+  info: ** Updating DB LFB01............... 100%
+  note: ** Started reading config file for project 'LFB01' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/LFB01/setup/sosd.cfg
+
+  info: ** Updating DB LFpassive........... 100%
+  note: ** Started reading config file for project 'LFCPIX' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/LFCPIX/setup/sosd.cfg
+
+  note: ** Started reading config file for project 'LFpassive' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/LFpassive/setup/sosd.cfg
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/TJMONOPIX/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+
+ADMIN  themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/TJMONOPIX/setup/sosd.cfg'
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/TSMC65LP/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+
+ADMIN  hemperek, themperek, krueger;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/TSMC65LP/setup/sosd.cfg'
+
+  info: ** Updating DB schema for project: LF, this may take a while....
+  info: ** Updating DB schema for project: EPC, this may take a while....
+  info: ** Updating DB LF.................. 1%
+  info: ** Updating DB LF.................. 2%
+  info: ** Updating DB EPC................. 1%
+  info: ** Updating DB EPC................. 2%
+  info: ** Updating DB LF.................. 3%
+  info: ** Updating DB LF.................. 4%
+  info: ** Updating DB LF.................. 5%
+  info: ** Updating DB LF.................. 6%
+  info: ** Updating DB EPC................. 3%
+  info: ** Updating DB EPC................. 4%
+  info: ** Updating DB EPC................. 5%
+  info: ** Updating DB LF.................. 7%
+  info: ** Updating DB LF.................. 8%
+  info: ** Updating DB LF.................. 9%
+  info: ** Updating DB EPC................. 6%
+  info: ** Updating DB LF.................. 10%
+  info: ** Updating DB LF.................. 11%
+  info: ** Updating DB LF.................. 12%
+  info: ** Updating DB EPC................. 7%
+  info: ** Updating DB EPC................. 8%
+  info: ** Updating DB EPC................. 9%
+  info: ** Updating DB LF.................. 13%
+  info: ** Updating DB EPC................. 10%
+  info: ** Updating DB EPC................. 11%
+  info: ** Updating DB LF.................. 13%
+  info: ** Updating DB LF.................. 14%
+  info: ** Updating DB LF.................. 15%
+  info: ** Updating DB EPC................. 12%
+  info: ** Updating DB EPC................. 13%
+  info: ** Updating DB LF.................. 16%
+  info: ** Updating DB LF.................. 17%
+  info: ** Updating DB LF.................. 18%
+  info: ** Updating DB EPC................. 13%
+  info: ** Updating DB EPC................. 14%
+  info: ** Updating DB EPC................. 15%
+  info: ** Updating DB EPC................. 16%
+  info: ** Updating DB EPC................. 17%
+  info: ** Updating DB EPC................. 18%
+  info: ** Updating DB EPC................. 19%
+  info: ** Updating DB EPC................. 20%
+  info: ** Updating DB EPC................. 21%
+  info: ** Updating DB EPC................. 22%
+  info: ** Updating DB EPC................. 23%
+  info: ** Updating DB EPC................. 24%
+  info: ** Updating DB EPC................. 25%
+  info: ** Updating DB EPC................. 26%
+  info: ** Updating DB EPC................. 27%
+  info: ** Updating DB EPC................. 28%
+  info: ** Updating DB EPC................. 29%
+  info: ** Updating DB EPC................. 30%
+  info: ** Updating DB LF.................. 19%
+  info: ** Updating DB LF.................. 20%
+  info: ** Updating DB LF.................. 21%
+  info: ** Updating DB LF.................. 22%
+  info: ** Updating DB LF.................. 23%
+  info: ** Updating DB LF.................. 24%
+  info: ** Updating DB LF.................. 25%
+  info: ** Updating DB LF.................. 26%
+  info: ** Updating DB LF.................. 27%
+  info: ** Updating DB LF.................. 28%
+  info: ** Updating DB LF.................. 29%
+  info: ** Updating DB LF.................. 30%
+  info: ** Updating DB EPC................. 31%
+  info: ** Updating DB EPC................. 32%
+  info: ** Updating DB EPC................. 33%
+  info: ** Updating DB EPC................. 34%
+  info: ** Updating DB EPC................. 35%
+  info: ** Updating DB EPC................. 36%
+  info: ** Updating DB EPC................. 37%
+  info: ** Updating DB EPC................. 38%
+  info: ** Updating DB EPC................. 38%
+  info: ** Updating DB EPC................. 39%
+  info: ** Updating DB EPC................. 40%
+  info: ** Updating DB EPC................. 41%
+  info: ** Updating DB EPC................. 42%
+  info: ** Updating DB EPC................. 43%
+  info: ** Updating DB EPC................. 44%
+  info: ** Updating DB EPC................. 45%
+  info: ** Updating DB EPC................. 46%
+  info: ** Updating DB EPC................. 47%
+  info: ** Updating DB EPC................. 48%
+  info: ** Updating DB EPC................. 49%
+  info: ** Updating DB EPC................. 50%
+  info: ** Updating DB EPC................. 51%
+  info: ** Updating DB LF.................. 31%
+  info: ** Updating DB EPC................. 52%
+  info: ** Updating DB EPC................. 53%
+  info: ** Updating DB LF.................. 32%
+  info: ** Updating DB LF.................. 33%
+  info: ** Updating DB EPC................. 54%
+  info: ** Updating DB EPC................. 55%
+  info: ** Updating DB LF.................. 34%
+  info: ** Updating DB LF.................. 35%
+  info: ** Updating DB LF.................. 36%
+  info: ** Updating DB LF.................. 37%
+  info: ** Updating DB LF.................. 38%
+  info: ** Updating DB LF.................. 38%
+  info: ** Updating DB EPC................. 56%
+  info: ** Updating DB EPC................. 57%
+  info: ** Updating DB LF.................. 39%
+  info: ** Updating DB EPC................. 58%
+  info: ** Updating DB LF.................. 40%
+  info: ** Updating DB LF.................. 41%
+  info: ** Updating DB LF.................. 42%
+  info: ** Updating DB LF.................. 43%
+  info: ** Updating DB EPC................. 59%
+  info: ** Updating DB EPC................. 60%
+  info: ** Updating DB LF.................. 44%
+  info: ** Updating DB LF.................. 45%
+  info: ** Updating DB LF.................. 46%
+  info: ** Updating DB EPC................. 61%
+  info: ** Updating DB LF.................. 47%
+  info: ** Updating DB LF.................. 48%
+  info: ** Updating DB EPC................. 62%
+  info: ** Updating DB EPC................. 63%
+  info: ** Updating DB LF.................. 49%
+  info: ** Updating DB LF.................. 50%
+  info: ** Updating DB EPC................. 63%
+  info: ** Updating DB LF.................. 51%
+  info: ** Updating DB EPC................. 64%
+  info: ** Updating DB EPC................. 65%
+  info: ** Updating DB EPC................. 66%
+  info: ** Updating DB EPC................. 67%
+  info: ** Updating DB EPC................. 68%
+  info: ** Updating DB LF.................. 52%
+  info: ** Updating DB LF.................. 53%
+  info: ** Updating DB LF.................. 54%
+  info: ** Updating DB LF.................. 55%
+  info: ** Updating DB LF.................. 56%
+  info: ** Updating DB LF.................. 57%
+  info: ** Updating DB LF.................. 58%
+  info: ** Updating DB LF.................. 59%
+  info: ** Updating DB EPC................. 69%
+  info: ** Updating DB EPC................. 70%
+  info: ** Updating DB EPC................. 71%
+  info: ** Updating DB EPC................. 72%
+  info: ** Updating DB EPC................. 73%
+  info: ** Updating DB EPC................. 74%
+  info: ** Updating DB EPC................. 75%
+  info: ** Updating DB EPC................. 76%
+  info: ** Updating DB EPC................. 77%
+  info: ** Updating DB EPC................. 78%
+  info: ** Updating DB EPC................. 79%
+  info: ** Updating DB EPC................. 80%
+  info: ** Updating DB EPC................. 81%
+  info: ** Updating DB EPC................. 82%
+  info: ** Updating DB EPC................. 83%
+  info: ** Updating DB EPC................. 84%
+  info: ** Updating DB EPC................. 85%
+  info: ** Updating DB EPC................. 86%
+  info: ** Updating DB EPC................. 87%
+  info: ** Updating DB EPC................. 88%
+  info: ** Updating DB EPC................. 88%
+  info: ** Updating DB EPC................. 89%
+  info: ** Updating DB EPC................. 90%
+  info: ** Updating DB EPC................. 91%
+  info: ** Updating DB EPC................. 92%
+  info: ** Updating DB EPC................. 93%
+  info: ** Updating DB LF.................. 60%
+  info: ** Updating DB LF.................. 61%
+  info: ** Updating DB LF.................. 62%
+  info: ** Updating DB LF.................. 63%
+  info: ** Updating DB LF.................. 63%
+  info: ** Updating DB LF.................. 64%
+  info: ** Updating DB LF.................. 65%
+  info: ** Updating DB LF.................. 66%
+  info: ** Updating DB LF.................. 67%
+  info: ** Updating DB LF.................. 68%
+  info: ** Updating DB LF.................. 69%
+  info: ** Updating DB LF.................. 70%
+  info: ** Updating DB LF.................. 71%
+  info: ** Updating DB LF.................. 72%
+  info: ** Updating DB LF.................. 73%
+  info: ** Updating DB LF.................. 74%
+  info: ** Updating DB LF.................. 75%
+  info: ** Updating DB LF.................. 76%
+  info: ** Updating DB LF.................. 77%
+  info: ** Updating DB LF.................. 78%
+  info: ** Updating DB LF.................. 79%
+  info: ** Updating DB LF.................. 80%
+  info: ** Updating DB LF.................. 81%
+  info: ** Updating DB LF.................. 82%
+  info: ** Updating DB LF.................. 83%
+  info: ** Updating DB LF.................. 84%
+  info: ** Updating DB LF.................. 85%
+  info: ** Updating DB LF.................. 86%
+  info: ** Updating DB LF.................. 87%
+  info: ** Updating DB LF.................. 88%
+  info: ** Updating DB LF.................. 88%
+  info: ** Updating DB LF.................. 89%
+  info: ** Updating DB LF.................. 90%
+  info: ** Updating DB LF.................. 91%
+  info: ** Updating DB LF.................. 92%
+  info: ** Updating DB LF.................. 93%
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LFB01/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+
+ADMIN  krueger, themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LFB01/setup/sosd.cfg'
+
+  info: ** Updating DB schema for project: DMC65, this may take a while....
+  info: ** Updating DB DMC65............... 1%
+  info: ** Updating DB DMC65............... 2%
+  info: ** Updating DB DMC65............... 3%
+  info: ** Updating DB DMC65............... 4%
+  info: ** Updating DB DMC65............... 5%
+  info: ** Updating DB DMC65............... 6%
+  info: ** Updating DB DMC65............... 7%
+  info: ** Updating DB DMC65............... 8%
+  info: ** Updating DB DMC65............... 9%
+  info: ** Updating DB DMC65............... 10%
+  info: ** Updating DB DMC65............... 11%
+  info: ** Updating DB DMC65............... 12%
+  info: ** Updating DB DMC65............... 13%
+  info: ** Updating DB DMC65............... 14%
+  info: ** Updating DB DMC65............... 15%
+  info: ** Updating DB DMC65............... 16%
+  info: ** Updating DB DMC65............... 17%
+  info: ** Updating DB DMC65............... 18%
+  info: ** Updating DB DMC65............... 19%
+  info: ** Updating DB EPC................. 100%
+  note: ** Started reading config file for project 'EPC' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/EPC/setup/sosd.cfg
+
+  info: ** Updating DB DMC65............... 20%
+  info: ** Updating DB DMC65............... 21%
+  info: ** Updating DB DMC65............... 22%
+  info: ** Updating DB DMC65............... 23%
+  info: ** Updating DB DMC65............... 24%
+  info: ** Updating DB DMC65............... 25%
+  info: ** Updating DB DMC65............... 26%
+  info: ** Updating DB DMC65............... 27%
+  info: ** Updating DB DMC65............... 28%
+  info: ** Updating DB DMC65............... 29%
+  info: ** Updating DB DMC65............... 30%
+  info: ** Updating DB DMC65............... 31%
+  info: ** Updating DB DMC65............... 32%
+  info: ** Updating DB DMC65............... 33%
+  info: ** Updating DB DMC65............... 34%
+  info: ** Updating DB DMC65............... 35%
+  info: ** Updating DB DMC65............... 36%
+  info: ** Updating DB DMC65............... 37%
+  info: ** Updating DB DMC65............... 38%
+  info: ** Updating DB DMC65............... 39%
+  info: ** Updating DB DMC65............... 40%
+  info: ** Updating DB DMC65............... 41%
+  info: ** Updating DB DMC65............... 42%
+  info: ** Updating DB DMC65............... 43%
+  info: ** Updating DB DMC65............... 44%
+  info: ** Updating DB DMC65............... 45%
+  info: ** Updating DB DMC65............... 46%
+  info: ** Updating DB DMC65............... 47%
+  info: ** Updating DB DMC65............... 48%
+  info: ** Updating DB DMC65............... 49%
+  info: ** Updating DB DMC65............... 50%
+  info: ** Updating DB DMC65............... 50%
+  info: ** Updating DB DMC65............... 51%
+  info: ** Updating DB DMC65............... 52%
+  info: ** Updating DB DMC65............... 53%
+  info: ** Updating DB DMC65............... 54%
+  info: ** Updating DB DMC65............... 55%
+  info: ** Updating DB DMC65............... 56%
+  info: ** Updating DB DMC65............... 57%
+  info: ** Updating DB DMC65............... 58%
+  info: ** Updating DB DMC65............... 59%
+  info: ** Updating DB DMC65............... 60%
+  info: ** Updating DB DMC65............... 61%
+  info: ** Updating DB DMC65............... 62%
+  info: ** Updating DB DMC65............... 63%
+  info: ** Updating DB DMC65............... 64%
+  info: ** Updating DB DMC65............... 65%
+  info: ** Updating DB DMC65............... 66%
+  info: ** Updating DB DMC65............... 67%
+  info: ** Updating DB DMC65............... 68%
+  info: ** Updating DB DMC65............... 69%
+  info: ** Updating DB DMC65............... 70%
+  info: ** Updating DB DMC65............... 71%
+  info: ** Updating DB DMC65............... 72%
+  info: ** Updating DB DMC65............... 73%
+  info: ** Updating DB DMC65............... 74%
+  info: ** Updating DB DMC65............... 75%
+  info: ** Updating DB DMC65............... 76%
+  info: ** Updating DB DMC65............... 77%
+  info: ** Updating DB DMC65............... 78%
+  info: ** Updating DB DMC65............... 79%
+  info: ** Updating DB DMC65............... 80%
+  info: ** Updating DB DMC65............... 81%
+  info: ** Updating DB DMC65............... 82%
+  info: ** Updating DB DMC65............... 83%
+  info: ** Updating DB DMC65............... 84%
+  info: ** Updating DB DMC65............... 85%
+  info: ** Updating DB DMC65............... 86%
+  info: ** Updating DB DMC65............... 87%
+  info: ** Updating DB DMC65............... 88%
+  info: ** Updating DB DMC65............... 89%
+  info: ** Updating DB DMC65............... 90%
+  info: ** Updating DB DMC65............... 91%
+  info: ** Updating DB DMC65............... 92%
+  info: ** Updating DB DMC65............... 93%
+  info: ** Updating DB DMC65............... 94%
+  info: ** Updating DB DMC65............... 95%
+  info: ** Updating DB DMC65............... 96%
+  info: ** Updating DB LF.................. 100%
+  note: ** Started reading config file for project 'LF' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/LF/setup/sosd.cfg
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LFCPIX/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+
+ADMIN  themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LFCPIX/setup/sosd.cfg'
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LFpassive/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+--------------------------------------------------------------------------------
+--  
+-- File : LFpassive/setup/sosd.cfg
+--
+--  Description :
+--    This file is used to setup users, admins, groups etc at the
+--    project level to provide access control.
+--    Also used to setup project configuration such as names of projects
+--    referenced by this primary project, default RSO for the primary
+--    and reference projects, default branch and predefined path to populate
+--    in workareas based on user, group or project.
+--
+--  Notes:
+--    + The configuration setup language is case sensitive.
+--
+--------------------------------------------------------------------------------
+
+-- Project Administrators are given full permissions to manage the project.
+ADMIN prymaszewski, themperek, tianyang;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LFpassive/setup/sosd.cfg'
+
+  info: ** Updating DB schema for project: DHPT12B, this may take a while....
+  info: ** Updating DB DHPT12B............. 1%
+  info: ** Updating DB DHPT12B............. 2%
+  info: ** Updating DB DHPT12B............. 3%
+  info: ** Updating DB DHPT12B............. 4%
+  info: ** Updating DB DHPT12B............. 5%
+  info: ** Updating DB DHPT12B............. 6%
+  info: ** Updating DB DHPT12B............. 7%
+  info: ** Updating DB DHPT12B............. 8%
+  info: ** Updating DB DHPT12B............. 9%
+  info: ** Updating DB DHPT12B............. 10%
+  info: ** Updating DB DHPT12B............. 11%
+  info: ** Updating DB schema for project: CoRDIA, this may take a while....
+  info: ** Updating DB CoRDIA.............. 1%
+  info: ** Updating DB CoRDIA.............. 2%
+  info: ** Updating DB CoRDIA.............. 3%
+  info: ** Updating DB CoRDIA.............. 4%
+  info: ** Updating DB CoRDIA.............. 5%
+  info: ** Updating DB CoRDIA.............. 6%
+  info: ** Updating DB CoRDIA.............. 7%
+  info: ** Updating DB CoRDIA.............. 8%
+  info: ** Updating DB CoRDIA.............. 9%
+  info: ** Updating DB CoRDIA.............. 10%
+  info: ** Updating DB CoRDIA.............. 11%
+  info: ** Updating DB CoRDIA.............. 12%
+  info: ** Updating DB CoRDIA.............. 13%
+  info: ** Updating DB CoRDIA.............. 14%
+  info: ** Updating DB CoRDIA.............. 15%
+  info: ** Updating DB CoRDIA.............. 16%
+  info: ** Updating DB CoRDIA.............. 17%
+  info: ** Updating DB CoRDIA.............. 18%
+  info: ** Updating DB CoRDIA.............. 19%
+  info: ** Updating DB DHPT12B............. 12%
+  info: ** Updating DB DHPT12B............. 13%
+  info: ** Updating DB DHPT12B............. 14%
+  info: ** Updating DB DHPT12B............. 15%
+  info: ** Updating DB DHPT12B............. 16%
+  info: ** Updating DB DHPT12B............. 17%
+  info: ** Updating DB DHPT12B............. 18%
+  info: ** Updating DB DHPT12B............. 19%
+  info: ** Updating DB CoRDIA.............. 20%
+  info: ** Updating DB CoRDIA.............. 21%
+  info: ** Updating DB CoRDIA.............. 22%
+  info: ** Updating DB CoRDIA.............. 23%
+  info: ** Updating DB CoRDIA.............. 24%
+  info: ** Updating DB CoRDIA.............. 25%
+  info: ** Updating DB CoRDIA.............. 25%
+  info: ** Updating DB CoRDIA.............. 26%
+  info: ** Updating DB CoRDIA.............. 27%
+  info: ** Updating DB CoRDIA.............. 28%
+  info: ** Updating DB CoRDIA.............. 29%
+  info: ** Updating DB CoRDIA.............. 30%
+  info: ** Updating DB DHPT12B............. 20%
+  info: ** Updating DB CoRDIA.............. 31%
+  info: ** Updating DB DHPT12B............. 21%
+  info: ** Updating DB DHPT12B............. 22%
+  info: ** Updating DB DHPT12B............. 23%
+  info: ** Updating DB CoRDIA.............. 32%
+  info: ** Updating DB DHPT12B............. 24%
+  info: ** Updating DB DHPT12B............. 25%
+  info: ** Updating DB DHPT12B............. 26%
+  info: ** Updating DB DHPT12B............. 27%
+  info: ** Updating DB DHPT12B............. 28%
+  info: ** Updating DB CoRDIA.............. 33%
+  info: ** Updating DB CoRDIA.............. 34%
+  info: ** Updating DB CoRDIA.............. 35%
+  info: ** Updating DB DHPT12B............. 29%
+  info: ** Updating DB CoRDIA.............. 36%
+  info: ** Updating DB CoRDIA.............. 37%
+  info: ** Updating DB CoRDIA.............. 38%
+  info: ** Updating DB CoRDIA.............. 39%
+  info: ** Updating DB DHPT12B............. 30%
+  info: ** Updating DB DHPT12B............. 31%
+  info: ** Updating DB CoRDIA.............. 40%
+  info: ** Updating DB CoRDIA.............. 41%
+  info: ** Updating DB CoRDIA.............. 42%
+  info: ** Updating DB CoRDIA.............. 43%
+  info: ** Updating DB CoRDIA.............. 44%
+  info: ** Updating DB CoRDIA.............. 45%
+  info: ** Updating DB CoRDIA.............. 46%
+  info: ** Updating DB CoRDIA.............. 47%
+  info: ** Updating DB CoRDIA.............. 48%
+  info: ** Updating DB CoRDIA.............. 49%
+  info: ** Updating DB CoRDIA.............. 50%
+  info: ** Updating DB CoRDIA.............. 51%
+  info: ** Updating DB CoRDIA.............. 52%
+  info: ** Updating DB CoRDIA.............. 53%
+  info: ** Updating DB CoRDIA.............. 54%
+  info: ** Updating DB CoRDIA.............. 55%
+  info: ** Updating DB CoRDIA.............. 56%
+  info: ** Updating DB CoRDIA.............. 57%
+  info: ** Updating DB CoRDIA.............. 58%
+  info: ** Updating DB CoRDIA.............. 59%
+  info: ** Updating DB CoRDIA.............. 60%
+  info: ** Updating DB DHPT12B............. 32%
+  info: ** Updating DB DHPT12B............. 33%
+  info: ** Updating DB DHPT12B............. 34%
+  info: ** Updating DB DHPT12B............. 35%
+  info: ** Updating DB DHPT12B............. 36%
+  info: ** Updating DB DHPT12B............. 37%
+  info: ** Updating DB DHPT12B............. 38%
+  info: ** Updating DB DHPT12B............. 39%
+  info: ** Updating DB DHPT12B............. 40%
+  info: ** Updating DB DHPT12B............. 41%
+  info: ** Updating DB DHPT12B............. 42%
+  info: ** Updating DB DHPT12B............. 43%
+  info: ** Updating DB DHPT12B............. 44%
+  info: ** Updating DB DHPT12B............. 45%
+  info: ** Updating DB DHPT12B............. 46%
+  info: ** Updating DB DHPT12B............. 47%
+  info: ** Updating DB DHPT12B............. 48%
+  info: ** Updating DB DHPT12B............. 49%
+  info: ** Updating DB DHPT12B............. 50%
+  info: ** Updating DB CoRDIA.............. 61%
+  info: ** Updating DB DHPT12B............. 50%
+  info: ** Updating DB CoRDIA.............. 62%
+  info: ** Updating DB CoRDIA.............. 63%
+  info: ** Updating DB CoRDIA.............. 64%
+  info: ** Updating DB DHPT12B............. 51%
+  info: ** Updating DB DHPT12B............. 52%
+  info: ** Updating DB DHPT12B............. 53%
+  info: ** Updating DB DHPT12B............. 54%
+  info: ** Updating DB DHPT12B............. 55%
+  info: ** Updating DB DHPT12B............. 56%
+  info: ** Updating DB DHPT12B............. 57%
+  info: ** Updating DB DHPT12B............. 58%
+  info: ** Updating DB DHPT12B............. 59%
+  info: ** Updating DB DHPT12B............. 60%
+  info: ** Updating DB CoRDIA.............. 65%
+  info: ** Updating DB CoRDIA.............. 66%
+  info: ** Updating DB CoRDIA.............. 67%
+  info: ** Updating DB CoRDIA.............. 68%
+  info: ** Updating DB CoRDIA.............. 69%
+  info: ** Updating DB CoRDIA.............. 70%
+  info: ** Updating DB DHPT12B............. 61%
+  info: ** Updating DB CoRDIA.............. 71%
+  info: ** Updating DB CoRDIA.............. 72%
+  info: ** Updating DB CoRDIA.............. 73%
+  info: ** Updating DB CoRDIA.............. 74%
+  info: ** Updating DB CoRDIA.............. 75%
+  info: ** Updating DB CoRDIA.............. 75%
+  info: ** Updating DB CoRDIA.............. 76%
+  info: ** Updating DB CoRDIA.............. 77%
+  info: ** Updating DB DHPT12B............. 62%
+  info: ** Updating DB CoRDIA.............. 78%
+  info: ** Updating DB CoRDIA.............. 79%
+  info: ** Updating DB DHPT12B............. 63%
+  info: ** Updating DB CoRDIA.............. 80%
+  info: ** Updating DB CoRDIA.............. 81%
+  info: ** Updating DB CoRDIA.............. 82%
+  info: ** Updating DB CoRDIA.............. 83%
+  info: ** Updating DB CoRDIA.............. 84%
+  info: ** Updating DB CoRDIA.............. 85%
+  info: ** Updating DB CoRDIA.............. 86%
+  info: ** Updating DB CoRDIA.............. 87%
+  info: ** Updating DB CoRDIA.............. 88%
+  info: ** Updating DB CoRDIA.............. 89%
+  info: ** Updating DB CoRDIA.............. 90%
+  info: ** Updating DB DHPT12B............. 64%
+  info: ** Updating DB CoRDIA.............. 91%
+  info: ** Updating DB CoRDIA.............. 92%
+  info: ** Updating DB CoRDIA.............. 93%
+  info: ** Updating DB CoRDIA.............. 94%
+  info: ** Updating DB CoRDIA.............. 95%
+  info: ** Updating DB DHPT12B............. 65%
+  info: ** Updating DB DHPT12B............. 66%
+  info: ** Updating DB DHPT12B............. 67%
+  info: ** Updating DB DHPT12B............. 68%
+  info: ** Updating DB DHPT12B............. 69%
+  info: ** Updating DB DHPT12B............. 70%
+  info: ** Updating DB DHPT12B............. 71%
+  info: ** Updating DB DHPT12B............. 72%
+  info: ** Updating DB DHPT12B............. 73%
+  info: ** Updating DB DHPT12B............. 74%
+  info: ** Updating DB DHPT12B............. 75%
+  info: ** Updating DB DHPT12B............. 76%
+  info: ** Updating DB DHPT12B............. 77%
+  info: ** Updating DB DHPT12B............. 78%
+  info: ** Updating DB DHPT12B............. 79%
+  info: ** Updating DB DHPT12B............. 80%
+  info: ** Updating DB DHPT12B............. 81%
+  info: ** Updating DB DHPT12B............. 82%
+  info: ** Updating DB DHPT12B............. 83%
+  info: ** Updating DB DHPT12B............. 84%
+  info: ** Updating DB DHPT12B............. 85%
+  info: ** Updating DB DHPT12B............. 86%
+  info: ** Updating DB DHPT12B............. 87%
+  info: ** Updating DB DHPT12B............. 88%
+  info: ** Updating DB DHPT12B............. 89%
+  info: ** Updating DB DHPT12B............. 90%
+  info: ** Updating DB DHPT12B............. 91%
+  info: ** Updating DB DHPT12B............. 92%
+  info: ** Updating DB DHPT12B............. 93%
+  info: ** Updating DB DHPT12B............. 94%
+  info: ** Updating DB DHPT12B............. 95%
+  info: ** Updating DB DHPT12B............. 96%
+  info: ** Updating DB DMC65............... 100%
+  info: ** Updating DB CoRDIA.............. 100%
+  note: ** Started reading config file for project 'DMC65' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/DMC65/setup/sosd.cfg
+
+  info: ** Updating DB DHPT12B............. 100%
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/EPC/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+
+ADMIN  krueger, themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/EPC/setup/sosd.cfg'
+
+  note: ** Started reading config file for project 'CoRDIA' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/CoRDIA/setup/sosd.cfg
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LF/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+
+ADMIN  themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/LF/setup/sosd.cfg'
+
+  info: ** Updating DB schema for project: CDR53B, this may take a while....
+  info: ** Updating DB CDR53B.............. 1%
+  info: ** Updating DB CDR53B.............. 2%
+  info: ** Updating DB CDR53B.............. 3%
+  info: ** Updating DB CDR53B.............. 4%
+  info: ** Updating DB CDR53B.............. 5%
+  info: ** Updating DB CDR53B.............. 6%
+  info: ** Updating DB CDR53B.............. 7%
+  info: ** Updating DB CDR53B.............. 8%
+  info: ** Updating DB CDR53B.............. 9%
+  info: ** Updating DB CDR53B.............. 10%
+  info: ** Updating DB CDR53B.............. 10%
+  info: ** Updating DB CDR53B.............. 11%
+  info: ** Updating DB CDR53B.............. 12%
+  info: ** Updating DB CDR53B.............. 13%
+  info: ** Updating DB CDR53B.............. 14%
+  info: ** Updating DB CDR53B.............. 15%
+  info: ** Updating DB CDR53B.............. 16%
+  info: ** Updating DB CDR53B.............. 17%
+  info: ** Updating DB CDR53B.............. 18%
+  note: ** Started reading config file for project 'DHPT12B' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/DHPT12B/setup/sosd.cfg
+
+  info: ** Updating DB CDR53B.............. 19%
+  info: ** Updating DB CDR53B.............. 20%
+  info: ** Updating DB CDR53B.............. 21%
+  info: ** Updating DB CDR53B.............. 22%
+  info: ** Updating DB CDR53B.............. 23%
+  info: ** Updating DB CDR53B.............. 24%
+  info: ** Updating DB CDR53B.............. 25%
+  info: ** Updating DB CDR53B.............. 26%
+  info: ** Updating DB CDR53B.............. 27%
+  info: ** Updating DB CDR53B.............. 28%
+  info: ** Updating DB CDR53B.............. 29%
+  info: ** Updating DB CDR53B.............. 30%
+  info: ** Updating DB CDR53B.............. 30%
+  info: ** Updating DB CDR53B.............. 31%
+  info: ** Updating DB CDR53B.............. 32%
+  info: ** Updating DB CDR53B.............. 33%
+  info: ** Updating DB CDR53B.............. 34%
+  info: ** Updating DB CDR53B.............. 35%
+  info: ** Updating DB CDR53B.............. 36%
+  info: ** Updating DB CDR53B.............. 37%
+  info: ** Updating DB CDR53B.............. 38%
+  info: ** Updating DB CDR53B.............. 39%
+  info: ** Updating DB CDR53B.............. 40%
+  info: ** Updating DB CDR53B.............. 41%
+  info: ** Updating DB CDR53B.............. 42%
+  info: ** Updating DB CDR53B.............. 43%
+  info: ** Updating DB CDR53B.............. 44%
+  info: ** Updating DB CDR53B.............. 45%
+  info: ** Updating DB CDR53B.............. 46%
+  info: ** Updating DB CDR53B.............. 47%
+  info: ** Updating DB CDR53B.............. 48%
+  info: ** Updating DB CDR53B.............. 49%
+  info: ** Updating DB CDR53B.............. 50%
+  info: ** Updating DB CDR53B.............. 50%
+  info: ** Updating DB CDR53B.............. 51%
+  info: ** Updating DB CDR53B.............. 52%
+  info: ** Updating DB CDR53B.............. 53%
+  info: ** Updating DB CDR53B.............. 54%
+  info: ** Updating DB CDR53B.............. 55%
+  info: ** Updating DB CDR53B.............. 56%
+  info: ** Updating DB CDR53B.............. 57%
+  info: ** Updating DB CDR53B.............. 58%
+  info: ** Updating DB CDR53B.............. 59%
+  info: ** Updating DB CDR53B.............. 60%
+  info: ** Updating DB CDR53B.............. 61%
+  info: ** Updating DB CDR53B.............. 62%
+  info: ** Updating DB CDR53B.............. 63%
+  info: ** Updating DB CDR53B.............. 64%
+  info: ** Updating DB CDR53B.............. 65%
+  info: ** Updating DB CDR53B.............. 66%
+  info: ** Updating DB CDR53B.............. 67%
+  info: ** Updating DB CDR53B.............. 68%
+  info: ** Updating DB CDR53B.............. 69%
+  info: ** Updating DB CDR53B.............. 70%
+  info: ** Updating DB CDR53B.............. 70%
+  info: ** Updating DB CDR53B.............. 71%
+  info: ** Updating DB CDR53B.............. 72%
+  info: ** Updating DB CDR53B.............. 73%
+  info: ** Updating DB CDR53B.............. 74%
+  info: ** Updating DB CDR53B.............. 75%
+  info: ** Updating DB CDR53B.............. 76%
+  info: ** Updating DB CDR53B.............. 77%
+  info: ** Updating DB CDR53B.............. 78%
+  info: ** Updating DB CDR53B.............. 79%
+  info: ** Updating DB CDR53B.............. 80%
+  info: ** Updating DB CDR53B.............. 81%
+  info: ** Updating DB CDR53B.............. 82%
+  info: ** Updating DB CDR53B.............. 83%
+  info: ** Updating DB CDR53B.............. 84%
+  info: ** Updating DB CDR53B.............. 85%
+  info: ** Updating DB CDR53B.............. 86%
+  info: ** Updating DB CDR53B.............. 87%
+  info: ** Updating DB CDR53B.............. 88%
+  info: ** Updating DB CDR53B.............. 89%
+  info: ** Updating DB CDR53B.............. 90%
+  info: ** Updating DB CDR53B.............. 90%
+  info: ** Updating DB CDR53B.............. 91%
+  info: ** Updating DB CDR53B.............. 92%
+  info: ** Updating DB CDR53B.............. 100%
+  note: ** Started reading config file for project 'CDR53B' : /cadence/clio/SERVERS7/LOCAL/BONN.rep/CDR53B/setup/sosd.cfg
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/DMC65/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+--------------------------------------------------------------------------------
+--  
+-- File : DMC65/setup/sosd.cfg
+--
+--  Description :
+--    This file is used to setup users, admins, groups etc at the
+--    project level to provide access control.
+--    Also used to setup project configuration such as names of projects
+--    referenced by this primary project, default RSO for the primary
+--    and reference projects, default branch and predefined path to populate
+--    in workareas based on user, group or project.
+--
+--  Notes:
+--    + The configuration setup language is case sensitive.
+--
+--------------------------------------------------------------------------------
+
+-- Project Administrators are given full permissions to manage the project.
+ADMIN krueger, prymaszewski, themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/DMC65/setup/sosd.cfg'
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/CoRDIA/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+--------------------------------------------------------------------------------
+--  
+-- File : CoRDIA/setup/sosd.cfg
+--
+--  Description :
+--    This file is used to setup users, admins, groups etc at the
+--    project level to provide access control.
+--    Also used to setup project configuration such as names of projects
+--    referenced by this primary project, default RSO for the primary
+--    and reference projects, default branch and predefined path to populate
+--    in workareas based on user, group or project.
+--
+--  Notes:
+--    + The configuration setup language is case sensitive.
+--
+--------------------------------------------------------------------------------
+
+-- Project Administrators are given full permissions to manage the project.
+ADMIN prymaszewski, themperek, tianyang;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/CoRDIA/setup/sosd.cfg'
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/DHPT12B/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+--------------------------------------------------------------------------------
+--  
+-- File : DHPT12B/setup/sosd.cfg
+--
+--  Description :
+--    This file is used to setup users, admins, groups etc at the
+--    project level to provide access control.
+--    Also used to setup project configuration such as names of projects
+--    referenced by this primary project, default RSO for the primary
+--    and reference projects, default branch and predefined path to populate
+--    in workareas based on user, group or project.
+--
+--  Notes:
+--    + The configuration setup language is case sensitive.
+--
+--------------------------------------------------------------------------------
+
+-- Project Administrators are given full permissions to manage the project.
+ADMIN krueger, prymaszewski, themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/DHPT12B/setup/sosd.cfg'
+
+  note: ** Reading config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/CDR53B/setup/sosd.cfg'
+
+ROLE ADMIN {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, delete-F, deleterev, discardco, discardco-ED, modattr, move, revert, rename, snapshot, snapshot-F, tag, tag-B, tag-F, termbranch, termbranch-unT, override-permission, retiretag, retiretag-A, retirebranch, retirebranch-A, retiresnapshot, retiresnapshot-A;
+}
+ROLE MEMBER {
+  COMMAND populate, addreference, editreference, ci, co, co-C, co-b, create, definetag, definebranch, delete, undelete, discardco, modattr, move, revert, rename, snapshot, tag, tag-B, tag-F, termbranch;
+}
+ROLE GUEST {
+  COMMAND populate;
+}
+
+--------------------------------------------------------------------------------
+--  
+-- File : CDR53B/setup/sosd.cfg
+--
+--  Description :
+--    This file is used to setup users, admins, groups etc at the
+--    project level to provide access control.
+--    Also used to setup project configuration such as names of projects
+--    referenced by this primary project, default RSO for the primary
+--    and reference projects, default branch and predefined path to populate
+--    in workareas based on user, group or project.
+--
+--  Notes:
+--    + The configuration setup language is case sensitive.
+--
+--------------------------------------------------------------------------------
+
+-- Project Administrators are given full permissions to manage the project.
+ADMIN prymaszewski, themperek;
+
+
+
+  note: ** End of config file '/cadence/clio/SERVERS7/LOCAL/BONN.rep/CDR53B/setup/sosd.cfg'
+
+  note: ** Listening on faust02.physik.uni-bonn.de:6002

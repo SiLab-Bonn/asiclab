@@ -131,3 +131,56 @@ export PATH="${CLIOSOFT_DIR}/bin:${PATH}"
   artifacts of the automounter like '/tmp_mnt'.
 
 - After the installation is successful you can delete the installation files.
+
+
+
+
+The current configs for sos6:
+```
+/cadence/clio/sos/bin/sosd -primary faust /cadence/clio/sos /cadence/clio/sos/SERVERS
+#/cadence/clio/sos/bin/sosd -cache ATPIX /cadence/clio/sos /cadence/clio/sos/SERVERS
+
+#/cadence/clio/sos/bin/sosd -cache FEI4_B /cadence/clio/sos /cadence/clio/sos/SERVERS
+#/cadence/clio/sos/bin/sosd -cache gossipo /cadence/clio/sos /cadence/clio/sos/SERVERS
+
+/cadence/clio/sos/bin/sosd -primary PXD /cadence/clio/sos /cadence/clio/sos/SERVERS
+
+#/cadence/clio/sos/bin/sosd -primary BONN /cadence/clio/sos /cadence/clio/sos/SERVERS
+
+/cadence/clio/sos/bin/sosd -primary Toshiba /cadence/clio/sos /cadence/clio/sos/SERVERS
+
+/cadence/clio/sos/bin/sosd -primary CCPDLF /cadence/clio/sos /cadence/clio/sos/SERVERS
+/cadence/clio/sos/bin/sosd -primary HVSOI /cadence/clio/sos z
+
+/cadence/clio/sos/bin/sosd -primary FE65 /cadence/clio/sos /cadence/clio/sos/SERVERS
+/cadence/clio/sos/bin/sosd -primary FE65_P2 /cadence/clio/sos /cadence/clio/sos/SERVERS
+```
+
+and for sos7
+```
+/cadence/clio/sos7/sbin/sosd BONN /cadence/clio/sos7 /cadence/clio/SERVERS7
+```
+
+36G	./SERVERS7
+42G	./SERVERS
+
+19G	./cache7
+48G	./cache
+
+
+
+/tools/clio/latest_sos/sbin/sosd BONN /tools/clio/latest_sos /tools/clio/SERVERS7
+
+
+
+
+running on faust02:
+
+ldap:noyce.physik.uni-bonn.de:nisMapName=auto_direct,ou=autofs,dc=faust,dc=de on /cadence type autofs (rw,relatime,fd=24,pgrp=27191,timeout=300,minproto=5,maxproto=5,direct,pipe_ino=48737867)
+
+penelope.physik.uni-bonn.de:/export/disk/cadence on /cadence type nfs4 (rw,relatime,vers=4.1,rsize=1048576,wsize=1048576,namlen=255,soft,nocto,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=131.220.160.32,local_lock=none,addr=131.220.165.56)
+
+
+ldap:noyce.physik.uni-bonn.de:nisMapName=auto.faust,ou=autofs,dc=faust,dc=de on /faust type autofs (rw,relatime,fd=18,pgrp=27191,timeout=300,minproto=5,maxproto=5,indirect,pipe_ino=48737863)
+
+penelope.physik.uni-bonn.de:/export/disk/users on /faust/user type nfs4 (rw,relatime,vers=4.1,rsize=1048576,wsize=1048576,namlen=255,soft,nocto,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=131.220.160.32,local_lock=none,addr=131.220.165.56)

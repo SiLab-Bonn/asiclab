@@ -111,33 +111,36 @@ sudo fwupdmgr get-updates
 sudo fwupdmgr update
 ```
 
+If you get an error that `Failed to connect to daemon: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: startup job failed.`. Simply delete `/var/lib/fwupd` directory, which will be automatically recreated.
+
 Afterwards, you can check firmware version with `hostnamectl`.
 
-1. [Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
+###[Connect to the NFS file server](file_server.md) providing user directories, EDA tools, and process design kits. This is necessary so that home directories exist.
 
 Create mount points
 ```
 sudo mkdir /users
 sudo mkdir /tools
+echo 'penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0' | sudo tee --append /etc/fstab
+echo 'penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0' | sudo tee --append /etc/fstab
+sudo systemctl daemon-reload
+sudo mount -a
 ```
 
-Also make sure for backward compatbility, that:
+Also, not that Hans's computer has the following links for compatibility
 
-```
 /cadence -> /tools
 /faust/user -> /users
-```
 
 This cand be created with a command like `sudo ln -s /tools /cadence`, etc
 
-1. Append mount instructions to the end of `/etc/fstab`, using these hand commands:
+### Append mount instructions to the end of `/etc/fstab`, using these hand commands:
 
 ```
 echo 'penelope.physik.uni-bonn.de:/export/disk/users /users nfs4 defaults 0 0' | sudo tee --append /etc/fstab
-```
-
-```
 echo 'penelope.physik.uni-bonn.de:/export/disk/tools /tools nfs4 ro 0 0' | sudo tee --append /etc/fstab
+sudo systemctl daemon-reload
+sudo mount -a
 ```
 
 Check the commands are there only once:
@@ -265,7 +268,7 @@ sudo touch /etc/cups/client.conf
 And then append the server name to the file, so that is contains the line. Be sure to check with `cat`:
 
 ```
-echo 'ServerName cups.physik.uni-bonn.de' | sudo tee --append /etc/cups/client.conf
+sudo echo 'ServerName cups.physik.uni-bonn.de' | sudo tee --append /etc/cups/client.conf
 ```
 
 All printers on the FTD network should now be available. To check, you can view a summary of available network printers with the following command:
@@ -289,12 +292,7 @@ Perhaps consider copying static hostname file to machines?
 
 ## System tools, dev tools, and extra repos:
 
-Perhaps consider: 
-
-Providing: nmap tmux zsh tigervnc, etc.... hmm no I don't want tigervnc or zsh
-```
-sudo dnf groupinstall "System Tools"
-```
+Perhaps consider: Providing: nmap tmux zsh tigervnc, etc.... hmm no I don't want tigervnc or zsh. No don't groupinstall "System Tools"
 
 Providing: gcc gcc-c++ make cmake git, and many rpm tools
 ```
@@ -310,9 +308,9 @@ sudo dnf install python3-devel python3-pip
 Install the extra repos, including 'power tools repo', also called CRB
 
 ```
-sudo dnf install epel-release
-sudo dnf install elrepo-release
-sudo dnf config-manager --set-enabled crb
+sudo dnf install epel-release -y
+sudo dnf install elrepo-release -y
+sudo dnf config-manager --set-enabled crb -y
 
 sudo dnf clean all
 sudo dnf update
@@ -328,7 +326,7 @@ sudo dnf install -y csh tcsh glibc elfutils-libelf ksh mesa-libGL mesa-libGLU mo
 For IC617 and before, you need 32 bit package versions:
 
 ```
-sudo dnf install -y glibc.i686 elfutils-libelf.i686 mesa-libGL.i686 mesa-libGLU.i686 motif.i686 libXp.i686 libpng.i686 libjpeg-turbo.i686 expat.i686 glibc-devel.i686 redhat-lsb.i686  
+sudo dnf install -y glibc.i686 elfutils-libelf.i686 mesa-libGL.i686 mesa-libGLU.i686 motif.i686 libXp.i686 libpng.i686 libjpeg-turbo.i686 expat.i686 glibc-devel.i686 redhat-lsb.i686
 ```
 
 ```
@@ -367,7 +365,7 @@ https://almalinux.pkgs.org/9/almalinux-devel-x86_64/redhat-lsb-core-4.1-56.el9.x
 `sudo dnf config-manager --add-repo https://repo.almalinux.org/almalinux/9/devel/almalinux-devel.repo`
 
 `sudo dnf --enablerepo=devel install redhat-lsb-core`
-`udo dnf config-manager --set-disabled copr:copr.fedorainfracloud.org:mlampe:compat-db47`
+`sudo dnf config-manager --set-disabled copr:copr.fedorainfracloud.org:mlampe:compat-db47`
 
 Then make sure that devel is disabled with `sudo dnf config-manager --set-disabled devel`
 and then `dnf repolist`, shouldn't show devel
@@ -456,6 +454,9 @@ sudo java -jar jedit5.6.0install.jar
 This will provide jedit which can be launched from inside TCAD as the default editor.
 
 
+
+
+
 # Hardware notes
 
 LenovoThinkstation E30:
@@ -468,3 +469,200 @@ LenovoThinkstation E30:
 
 A CR2032 lithium battery should read between 3.0-3.4
 A Duracell AAA Alkaline battery should present 1.5V
+
+# Installing GUI apps from zip
+
+Installing Typora, Thunderbird, or any other plain zip program. [Instructions](https://support.mozilla.org/en-US/kb/installing-thunderbird-linux)
+
+1. Go to the [Thunderbird's download page](https://www.thunderbird.net/download/) and click on the Free Download button.
+2. Open a terminal and go to the folder where your download has been saved. For example:
+
+    ```
+    cd ~/Downloads 
+    ```
+
+3. Extract the contents of the downloaded file by typing:
+
+    ```
+    tar xjf thunderbird-*.tar.bz2 
+    ```
+
+4. Move the uncompressed Thunderbird folder to /opt:
+
+    ```
+    cp thunderbird /opt 
+    ```
+
+5. Create a symlink to the Thunderbird executable:
+
+    ```
+    ln -s /opt/thunderbird/thunderbird /usr/local/bin/thunderbird 
+    ```
+
+6. Download and install a copy of the desktop file:
+
+    ```
+    wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/installing-thunderbird-linux/thunderbird.desktop -P /usr/local/share/applications 
+    ```
+
+# H.264 Support
+
+<!-- As of Fedora 37+, H.264 decoders were removed from the based distribution due to legal reasons (alongside H.265). To install alternative H.264 decoders, you can follow the instructions found [here:](https://fedoraproject.org/wiki/OpenH264) -->
+
+<!-- ```
+sudo dnf config-manager --set-enabled fedora-cisco-openh264
+``` -->
+
+
+RHEL or compatible like CentOS, to enable the necessary repos (RPM Fusion free and non-free):
+
+```
+sudo dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+sudo dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
+```
+
+and then install the plugins:
+
+```
+sudo dnf install openh264 gstreamer1-plugin-openh264 mozilla-openh264
+```
+
+Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable OpenH264 plugin.
+
+You can do a simple test whether your H.264 works in RTC on [this page](https://mozilla.github.io/webrtc-landing/pc_test.html) (check Require H.264 video).
+
+
+# Install and uninstall standalone rpm packages
+
+To manuall installl an rpm package:
+
+```
+sudo rpm --import [package.rpm]
+```
+
+Execute the following command to discover the name of the installed package:
+
+```rpm -qa | grep PackageName```
+
+This returns PackageName, the RPM name of your Micro Focus product which is used to identify the install package.
+Execute the following command to uninstall the product:
+
+```rpm -e PackageName```
+
+
+# Additional programs:
+
+- mc
+- hwinfo
+- htop
+- thunderbird
+- libreoffice-calc, libreoffice-impress, libreoffice-writer
+- chromium
+- gnome-tweaks
+- groupinstall "Workstation"
+- inkscape
+
+# VS Code
+VS Code is currently only shipped in a yum repository, so first add the repository:
+
+```
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+```
+
+Then add the package repo to `/etc/yum.repos.d`, via:
+
+```
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+```
+
+Update the package cache
+
+```
+dnf check-update
+```
+
+and install the package using dnf (Fedora 22 and above):
+
+```
+sudo dnf install code
+```
+
+# Zoom
+
+Check the link for the latest rpm package from the `download` website. Then download it via `wget`, for example :
+
+```bash
+wget https://zoom.us/client/5.16.10.668/zoom_x86_64.rpm
+```
+
+Get the latest public key like so:
+
+```
+# This is currently not working, due to RHEL9 deprecating SHA1:
+
+"warning: Signature not supported. Hash algorithm SHA1 not available."
+
+wget https://zoom.us/linux/download/pubkey
+sudo rpm --import pubkey
+```
+
+Finally, you may need to set SELinux to 'permissive' mode, to prevent it from blocking Zoom usage:
+
+```
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/changing-selinux-states-and-modes_using-selinux#changing-to-permissive-mode_changing-selinux-states-and-modes
+```
+
+# Python venvs
+
+If you're normally used to only Anaconda, stop, and take a deep breath. Weigh the value of your sanity, and then look into how to create Python venvs. This is a new-ish feature in Python, and will make your life better.
+
+
+# Email
+
+### Incoming Server Settings:
+
+```
+Protocol: IMAP
+Hostname: mail.uni-bonn.de
+Port: 993
+Connection Security: SSL/TLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
+### Outgoing Server Settings:
+
+```
+Protocol: SMTP
+Server Name: mail.uni-bonn.de
+Port: 587
+Connection Security: STARTTLS
+Authentication Method: Normal Password
+Username: kcaisley@uni-bonn.de
+```
+
+# Calendar:
+
+
+For Thunderbird:
+```
+Username: kcaisley
+CalDAV: https://mail.uni-bonn.de/CalDAV/Work/
+```
+
+For Evolution:
+```
+Servername:
+https://posteo.de:8443/calendars/kcaisley/default/
+```
+
+# Contacts
+Network address book is integrated via CardDAV
+The address book provided with each Uni ID on the e-mail server is called "Contacts"
+the URL is: https://mail.uni-bonn.de/CardDAV/Contacts
+user name is the Uni ID with the corresponding password
+Note upper and lower case!!!
+
+# Gnome extensions
+
+Go to https://extensions.gnome.org/local/ and enable 'Launch new ...'
