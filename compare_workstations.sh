@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 ssh_list=(  asiclab@asiclab000.physik.uni-bonn.de \
             asiclab@asiclab001.physik.uni-bonn.de \
@@ -10,11 +10,11 @@ ssh_list=(  asiclab@asiclab000.physik.uni-bonn.de \
 	    asiclab@asiclab008.physik.uni-bonn.de \
             asiclab@asiclab011.physik.uni-bonn.de \
    )
-split_list=()
-for ssh_entry in "${ssh_list[@]:1}"; do
-    split_list+=( split-pane -v -p 30 -h -p 50 ssh "$ssh_entry" ';' select-layout tiled ';' )
-done
 
-tmux new-session ssh "${ssh_list[0]}" ';' \
-    "${split_list[@]}" \
-    set-option -w synchronize-panes
+#for host in "${ssh_list[@]}"; do ssh $host "hostname"; done
+
+packages=$(for host in "${ssh_list[@]}"; do
+    ssh $host "rpm -qa"
+done)
+
+echo $packages | tr ' ' '\n' | sort | uniq -c | awk '$1 != 9'
