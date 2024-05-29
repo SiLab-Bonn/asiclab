@@ -5,15 +5,19 @@ sudo dnf groupinstall -y "Network File System Client"
 sudo dnf groupinstall -y --with-optional "Development Tools"
 sudo dnf groupinstall -y --with-optional "System Tools"
 sudo dnf install -y nfsv4-client-utils cachefilesd
-sudo dnf install -y python3-devel python3-pip
+sudo dnf install -y python3-devel python3-pip python3-sphinx
 sudo dnf install -y epel-release
 sudo dnf install -y elrepo-release
 sudo dnf config-manager --set-enabled crb -y
 sudo dnf install -y htop hwinfo gnome-tweaks curl wget git gcc cmake g++ perl tmux pdfgrep tigervnc-server
-sudo dnf install -y chromium thunderbird
+sudo dnf install -y chromium thunderbird rdesktop
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf install -y code
+
+# Build requirements for iverilog
+sudo dnf install -y autoconf gperf make gcc g++ bison flex
+
 
 # For ngspice
 sudo dnf install -y libXaw-devel
@@ -61,4 +65,5 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 sudo flatpak install org.libreoffice.LibreOffice -y
 sudo flatpak install org.gnome.Maps -y
 sudo flatpak install com.slack.Slack -y
+sudo flatpak install org.inkscape.Inkscape -y
 
