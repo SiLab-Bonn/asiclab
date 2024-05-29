@@ -16,6 +16,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 sudo dnf install -y code
 
 #Packages needed for Ramon/Basil:
+sudo dnf install -y gtkwave
 
 # Build requirements for iverilog
 sudo dnf install -y autoconf gperf make gcc g++ bison flex
