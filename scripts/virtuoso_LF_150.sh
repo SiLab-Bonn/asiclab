@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Usage instructions:
-# * `cd ~/cadence/nopdk`
-# * `source ./virtuoso.sh`
+# * `cd ~/cadence/*PDK environment dir*}`
+# * `source ./virtuoso_**.sh`
 # * `virtuoso &`
 
-# Cadence tools should be started from a PDK specific working dir, e.g. `~/cadence/tsmc28`
+# Cadence tools should be started from a PDK specific working dir, e.g. `~/cadence/tsmc65`
 if [ "$HOME" == "$PWD" ]; then
    echo "You shouldn't start cadence tools from your HOME directory."
    echo "It will create a bunch of Virtuoso-specific stuff you don't want in there."
@@ -56,26 +56,41 @@ export PATH="${PATH}:${CDS_SPECTRE}/tools/plot/bin"
 # Create alias to easily start help
 alias help_cds_spectre='$CDS_SPECTRE/tools/cdnshelp/bin/cdnshelp &'
 
+### Cadence PVS: a replacement for the DRC/LVS/PERC portions of Assura, PVE, EXT, etc below 45nm
+export CDS_PVS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/PVS_22.22.000"
+# provides commands `pvs` and `k2_viewer`
+export PATH="${PATH}:${CDS_PVS}/bin"
+export PATH="${PATH}:${CDS_PVS}/tools/bin"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CDS_PVS}/tools/lib"    # not sure if necessary?
+# Create alias to easily start help
+alias help_cds_pvs='$CDS_PVS/tools/cdnshelp/bin/cdnshelp &'
+
+### Cadence Quantus: a replacement for the PEX aka QRC components of Assura, PVE, EXT, etc below 45nm
+export CDS_QUANTUS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/QUANTUS_23.10.000"
+# non-path ENV var, used by cadence
+export QRC_HOME=$CDS_QUANTUS
+# provides commands qrc
+export PATH="${PATH}:${CDS_QUANTUS}/bin"
+#export PATH="${PATH}:${CDS_QUANTUS}/tools/bin"  # commented out in the example scripts
+# Create alias to easily start help
+alias help_cds_qrc='$CDS_QUANTUS/tools/cdnshelp/bin/cdnshelp=&'
+
+### Cadence Xcelium: digital simulation replacement for Incisive, ncsim, AMSHOME etc
+export CDS_XCELIUM="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/XCELIUM_23.03.007"
+# provides commands `xrun`, `simvision`, `xmvhdl`, `xmvlog`, `xmsc`, `xmelab`, `xmsim`, `xmls`, `xmhelp`, `xfr`, `xmxlimport`
+export PATH="${PATH}:${CDS_XCELIUM}/bin"
+export PATH="${PATH}:${CDS_XCELIUM}/tools/bin"
+export PATH="${PATH}:${CDS_XCELIUM}/tools/cdsgcc/gcc/bin"
+# Create alias to easily start help
+alias help_cds_xcelium='$CDS_XCELIUM/tools/cdnshelp/bin/cdnshelp &'
+
+# Cliosoft: Version control system for OA design libs
+export CLIOSOFT_DIR=/tools/clio/sos7
+export PATH="${CLIOSOFT_DIR}/bin:${PATH}"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CLIOSOFT_DIR}/lib"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CLIOSOFT_DIR}/lib/64bit"
+export SOS_CDS_EXIT=yes
+
 ####################### PDK Specific Settings ########################
 
-# none!
 
-############### Create Temp Directories ################
-
-directories=("DRC" "LVS" "SIM" "XRC")
-
-# Fancy loop which repeats the same process for the four locations listed above
-for dir in "${directories[@]}"; do
-    if [ ! -d /tmp/"$USER"/"$dir" ]; then
-        mkdir -p /tmp/"$USER"/"$dir"
-        echo "Created directory: /tmp/$USER/$dir"
-    fi
-
-    if [ ! -d ./"$dir" ]; then
-        ln -s /tmp/"$USER"/"$dir" "$dir"
-        echo "Created local symbolic link: $dir"
-    fi
-done
-
-# see lines 12-14 above for explanation of this exit command
-return 2> /dev/null; exit
