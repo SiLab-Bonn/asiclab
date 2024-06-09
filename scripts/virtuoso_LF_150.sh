@@ -56,33 +56,13 @@ export PATH="${PATH}:${CDS_SPECTRE}/tools/plot/bin"
 # Create alias to easily start help
 alias help_cds_spectre='$CDS_SPECTRE/tools/cdnshelp/bin/cdnshelp &'
 
-### Cadence PVS: a replacement for the DRC/LVS/PERC portions of Assura, PVE, EXT, etc below 45nm
-export CDS_PVS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/PVS_22.22.000"
-# provides commands `pvs` and `k2_viewer`
-export PATH="${PATH}:${CDS_PVS}/bin"
-export PATH="${PATH}:${CDS_PVS}/tools/bin"
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CDS_PVS}/tools/lib"    # not sure if necessary?
-# Create alias to easily start help
-alias help_cds_pvs='$CDS_PVS/tools/cdnshelp/bin/cdnshelp &'
-
-### Cadence Quantus: a replacement for the PEX aka QRC components of Assura, PVE, EXT, etc below 45nm
-export CDS_QUANTUS="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/QUANTUS_23.10.000"
-# non-path ENV var, used by cadence
-export QRC_HOME=$CDS_QUANTUS
-# provides commands qrc
-export PATH="${PATH}:${CDS_QUANTUS}/bin"
-#export PATH="${PATH}:${CDS_QUANTUS}/tools/bin"  # commented out in the example scripts
-# Create alias to easily start help
-alias help_cds_qrc='$CDS_QUANTUS/tools/cdnshelp/bin/cdnshelp=&'
-
-### Cadence Xcelium: digital simulation replacement for Incisive, ncsim, AMSHOME etc
-export CDS_XCELIUM="${CDS_TOOLS_PREFIX}/${RELEASE_YEAR}/RHELx86/XCELIUM_23.03.007"
-# provides commands `xrun`, `simvision`, `xmvhdl`, `xmvlog`, `xmsc`, `xmelab`, `xmsim`, `xmls`, `xmhelp`, `xfr`, `xmxlimport`
-export PATH="${PATH}:${CDS_XCELIUM}/bin"
-export PATH="${PATH}:${CDS_XCELIUM}/tools/bin"
-export PATH="${PATH}:${CDS_XCELIUM}/tools/cdsgcc/gcc/bin"
-# Create alias to easily start help
-alias help_cds_xcelium='$CDS_XCELIUM/tools/cdnshelp/bin/cdnshelp &'
+# Calibre DRC/LVS/ERC/PERC/RCX/
+export CALIBRE_HOME=/tools/Siemens/2023-24/RHELx86/CALIBRE_2023.4_17/aoj_cal_2023.4_17.10
+export PATH="${PATH}:${CALIBRE_HOME}/bin"
+alias help_mg_cal='${CALIBRE_HOME}/bin/mgcdocs'
+#${CALIBRE_HOME}/docs/pdfdocs/Calbr_Doc_Set.pdx
+# calibredrv, calibre -gui, calibrewb
+export MGC_HOME="${CALIBRE_HOME}" # Stated in LF15A pdk, DGp12, to be required
 
 # Cliosoft: Version control system for OA design libs
 export CLIOSOFT_DIR=/tools/clio/sos7
@@ -93,4 +73,18 @@ export SOS_CDS_EXIT=yes
 
 ####################### PDK Specific Settings ########################
 
+# See Perl script: /tools/kits/LF/PDK_LF15Ai_V0_6_3/tools/installation/workarea.PDK_LF15Ai_V0_6_3
+# Which generates a file like: /users/ydieter/cadence/lf_200/lf15ai_141
+# But we can do it manually too. See page 12 of LF150 user guide:
+
+export LF15A_HOME="/tools/kits/LF/PDK_LF15Ai_V1_4_1"
+export LF15A_OPTION="6metal"
+export LF15A-DISPLAY="true"
+
+# Now we just need: cds.lib, .cdsinit (copy from $LF15A_HOME/tools/user)
+
+# .cdsinit defines Cadence bindkeys (.cdesiger.tcl would be for Synopsys)
+# cds.lib which defines
+
+# And do I need assura_tech.lib?
 
