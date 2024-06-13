@@ -29,7 +29,18 @@ PubkeyAcceptedAlgorithms=+ssh-rsa,ssh-rsa-cert-v01@openssh.com
 
 Note: If you're trying to connect to, or from an older system, you may run into issues where the version keys supported is deprecated.
 
-An alternative way to enable ssh-rsa is to just add the following to a corresponding `~/.ssh/config` file.
+An alternative way to enable ssh-rsa is to just add the following to a corresponding `~/.ssh/config` file?
+
+### This doesn't appear to work
+```
+Host pdksftp.lfoundry.com
+    Port 6317
+    HostKeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+    Ciphers aes128-cbc,aes192-cbc,aes256-cbc,3des-cbc
+```
+
 
 ## Passwordless Authentication
 For passwordless authentication, one can generate SSH keys, and move it to another computer for authentication

@@ -13,7 +13,7 @@ if [ "$HOME" == "$PWD" ]; then
    # having just an exit will cause sourcing the script to crash the terminal
    # having just a `return` will casues execution of this script to fail
    # therefore, we do both:
-   return 2> /dev/null; exit  # learned from https://www.baeldung.com/linux/safely-exit-scripts#the-return-command
+   return 2> /dev/null; exit  # learned from https://www.baeldung.com/linux/safely-exit-scripts#1-the-return-and-exit-combo
 fi
 
 ### FlexLM: License manager server
@@ -138,5 +138,5 @@ for dir in "${directories[@]}"; do
     fi
 done
 
-# see lines 12-14 above for explanation of this exit command
+# https://www.baeldung.com/linux/safely-exit-scripts#1-the-return-and-exit-combo
 return 2> /dev/null; exit
