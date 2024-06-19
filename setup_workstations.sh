@@ -17,6 +17,7 @@ sudo dnf install -y code
 
 #Packages needed for Ramon/Basil:
 sudo dnf install -y gtkwave
+sudo dnf install -y texlive-scheme-basic
 
 # Build requirements for iverilog
 sudo dnf install -y autoconf gperf make gcc g++ bison flex
