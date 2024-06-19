@@ -13,3 +13,23 @@ A wrapper for the startup script could look like this:
 
 Check /tools/kits/TSMC/CRN65LP/Base_PDK_2017/setup for 65 ... was this modified?
 Check /tools/kits/TSMC/CRN28HPC+/HEP_DesignKit_TSMC28_HPCplusRF_v1.0/CERN/StartFiles for 28
+
+
+## Older notes:
+
+Source the startup script
+
+```
+source /tools/asiclab/scripts/tsmc_crn28hpcp_2024.sh
+```
+
+Then start virtuoso:
+```
+virtuoso &
+```
+
+To check Cadence config:
+
+```
+/tools/cadence/2022-23/RHELx86/IC_6.1.8.320/tools.lnx86/bin/checkSysConf IC6.1.8
+```
