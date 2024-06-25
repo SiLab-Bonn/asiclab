@@ -26,6 +26,36 @@ PersistentKeepalive = 25
 
 ---
 
+# X11 forwarding for GUI application
+
+From this link, I found that:
+
+The default ssh settings make for a pretty slow connection. Try the following instead:
+
+```ssh -YC4c arcfour,blowfish-cbc user@hostname firefox -no-remote```
+
+The options used are:
+
+```
+-Y      Enables trusted X11 forwarding.  Trusted X11 forwardings are not
+         subjected to the X11 SECURITY extension controls.
+ -C      Requests compression of all data (including stdin, stdout,
+         stderr, and data for forwarded X11 and TCP connections).  The
+         compression algorithm is the same used by gzip(1), and the
+         “level” can be controlled by the CompressionLevel option for pro‐
+         tocol version 1.  Compression is desirable on modem lines and
+         other slow connections, but will only slow down things on fast
+         networks.  The default value can be set on a host-by-host basis
+         in the configuration files; see the Compression option.
+ -4      Forces ssh to use IPv4 addresses only.
+ -c cipher_spec
+         Selects the cipher specification for encrypting the session.
+
+         For protocol version 2, cipher_spec is a comma-separated list of
+         ciphers listed in order of preference.  See the Ciphers keyword
+         in ssh_config(5) for more information.
+```
+
 
 ---
 

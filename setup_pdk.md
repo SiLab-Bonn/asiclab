@@ -389,3 +389,19 @@ TSMC65_CERN_V1.7A_1_pre8.0_2017_digital12t.tar.gz
 
 # IHP 130nm
 There is a /skel directory which has an example `cshrc.cadence` file.
+
+
+# LFoundary PDKs
+
+### This doesn't appear to work
+```
+Host pdksftp.lfoundry.com
+    Port 6317
+    HostKeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    KexAlgorithms diffie-hellman-group1-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+    Ciphers aes128-cbc,aes192-cbc,aes256-cbc,3des-cbc
+```
+
+Just used an older machine to ssh.
+
